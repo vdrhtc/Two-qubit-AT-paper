@@ -1,0 +1,232 @@
+% ****** Start of file aipsamp.tex ******
+%
+%   This file is part of the AIP files in the AIP distribution for REVTeX 4.
+%   Version 4.1 of REVTeX, October 2009
+%
+%   Copyright (c) 2009 American Institute of Physics.
+%
+%   See the AIP README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+% 
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex  aipsamp
+%  2)  bibtex aipsamp
+%  3)  latex  aipsamp
+%  4)  latex  aipsamp
+%
+% Use this file as a source of example code for your aip document.
+% Use the file aiptemplate.tex as a template for your document.
+\documentclass[%
+ aip,
+% jmp,
+% bmf,
+% sd,
+% rsi,
+ amsmath,amssymb,
+%preprint,%
+ reprint,%
+%author-year,%
+%author-numerical,%
+% Conference Proceedings
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+%\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{xparse}
+\usepackage{bbm}
+%\usepackage{multirow}
+%\usepackage{makecell}
+\graphicspath{{Pictures/}}
+\begin{document}
+	\preprint{AIP/123-QED}
+	
+	\title[Multiphoton transition and  Autler-Townes splittings in a strongly coupled double transmon system]{Multiphoton transition and  Autler-Townes splittings in a strongly coupled double transmon system\\~}
+	
+	\author{G.P. Fedorov}
+	\email{gleb.fedorov@phystech.edu}
+	
+	\affiliation{ 
+		Russian Quantum Center, Skolkovo village, Russia
+	}%
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
+	}%
+	
+	\author{A.V. Ustinov}
+	\affiliation{ 
+		Russian Quantum Center, Skolkovo village, Russia
+	}%
+	\affiliation{%
+		Karlsruhe Institute of Technology, Karlsruhe, Germany
+	}%
+	
+	\date{\today}% It is always \today, today,
+	%  but any date may be explicitly specified
+	
+	
+	\begin{abstract}
+		To build a full-scale quantum processor it is necessary to automate as many steps as possible on the physical, hardware level. Circuit quantum electrodynamics (cQED) is a contemporary architecture for dispersive readout and Purcell protection of superconducting qubits of various types, and thus it is necessary to develop software that is able to perform every kind of automatic calibration of such systems from scratch without any human participation. An important step towards this goal is to build a noise-insensitive and accurate computer vision tool to process three-dimensional spectroscopic data. In this work, we present and describe two scalable algorithms that are able to extract the Hamiltonian parameters of the cQED systems from spectroscopic data. 
+	\end{abstract}
+	
+	\maketitle
+\section{Introduction}
+Over the past twenty years, significant progress has been achieved in the research of the superconducting quantum circuits. 
+
+We investigate a system of two interacting transmons. The transmon\cite{koch2007charge} represents two Josephson junctions (dc-SQUID) which are shunted by an additional large capacitance(compared to other capacitances in the circuit). This dc-SQUID setup allows for the tuning of the Josephson energy $E_J = E_J^{max}|\cos(\pi \frac{\Phi}{\Phi_0})|$  by
+means of an external magnetic flux $\Phi$. The transmon can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. The system of two transmons and their connection forms a level system.
+A sufficiently large anharmonicity is needed to prevent qubit operations from exciting other transitions in the system. Therefore, we will use two- and three-level approximations for our calculations
+
+
+A quantum system exposed to external driving, can experience a number of quantum phenomena due to the resonant transitions between energy levels. The most known examples are coherent population trapping, electromagnetically induced transparency (EIT)\cite{boller1991observation}, stimulated Raman adiabatic passage\cite{bergmann1998coherent} and Autler-Townes (AT) splitting\cite{autler1955stark} which can happen in systems with just three energy levels. 
+The main attention in our work is paid to the last effect, which related to the dressed states.
+The AT effect has been studied in atomic\cite{picque1976direct} and molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and superconducting qubits\cite{li2011decoherence, novikov2013autler}.
+
+If the driving field is strong the interaction between the system and the field become significant and leads to oscillates with Rabi frequency. The new energy state called dressed states. If an additional weak probing field is applied, the spectra of the strongly driven system can be probed. In particular the dressed state model nicely explains the emergence of the Mollow triplet\cite{newstein1968spontaneous} spectrum, which consists of a central peak with two side bands separated by the Rabi frequency.
+
+For example, the implementation of the controlled-PHASE quantum gate for typical alkali atoms (such as Rb or Cs)  is based on the effect of dressed states in conjunction with the effect of Rydberg-blockade\cite{sun2018analysis}. One of the possible way to build quantum memory with trapped atomic ions based on dressed states is described in this work\cite{timoney2011quantum}. 
+
+In this article will be shown how the spectrum of the system depends on drivers on different qubits and explicitly shown the dressed states.\autoref{sec:level1}
+ 
+\section{Methods}
+\subsection{Theoretical description of the system}
+In this section we analyse theoretically two qubit system.
+ In our study we used transmons.The transmon Hamiltonian is $H = 4\cdot E_C(n-n_g)^2 -E_J\cos(\phi)$, where $E_c $ and $E_J$ -charge and Josephson energy respectively. The symbols $n$ and $\phi$ denote the number of Cooper pairs transferred between the islands and the
+ gauge-invariant phase difference between the superconductors,
+ respectively.
+ When the ratio $\frac{E_C}{E_J}$ is large the perturbation approach can
+ be employed. After the expansion of the cosine for small angles and neglecting of the small terms the Hamiltonian can be
+ viewed as a harmonic oscillator with a quartic perturbation describing the leading-order anharmonicity.
+ After conversion to dimensionless variables and neglecting small terms and set $\hbar = 1$, we move to the new Hamiltonian of transmon. 
+\begin{equation}
+H_{tr}= \omega_{tr} b^{\dagger}b +\frac{1}{2}\alpha b^{\dagger}b(b^{\dagger}b-1)
+\end{equation}
+Where $\alpha=-E_C$, $\omega_{tr}=\sqrt{8E_CE_J}+\alpha$.
+
+
+The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
+Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source.
+
+For simplifications select the dependence on time:
+\begin{equation}
+H_{dr} = \Omega\cos(\omega_d t)(b+b^{\dagger})
+\end{equation}
+Let's move on to the consideration of the two-qubit system. The complete Hamiltonian will contain the members responsible for transmons, the drives on each of them separately with frequencies $\omega_d$ and $\omega_d+\delta_{\omega}$ respectively, and the interaction term between qubits:
+\begin{equation}
+H_{system}= H_{tr1}+H_{tr2}+H_{dr1}+H_{dr2}+H_{int}
+\end{equation}
+Where $H_{int}= J(bc^{\dagger}+b^{\dagger}c)$, $b^{\dagger}$;$b$ and $c^{\dagger}$,$c$ - denote the regular annihilation and creation operators
+for the harmonic oscillator approximating both of qubits respectively.
+
+
+Let's consider our system in rotating frame. Moving to this frame is achieved by the rotation:
+\begin{equation}
+R = \exp(-i\omega_d t (b^{\dagger}b+c^{\dagger}c))
+\end{equation}  
+After this transformation the effective Hamiltonian can be found from equation:
+\begin{equation}
+H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
+\end{equation}
+
+From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
+\begin{widetext}
+	\begin{equation}\label{matrix} 
+	\text{$H^R$} = \left(\begin{matrix}
+	0 & \text{$\Omega_1 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t} & 0 & 0 & 0 \\
+	\text{$\Omega_1 $} & 0 & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t} & 0 & 0 \\
+	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t} & J & -\text{$\Delta_2 $} &
+	\text{$\Omega_1$} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t} & 0 \\
+	0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t} & \text{$\Omega_1$} &
+	-\text{$\Delta_2 $} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
+			$} t} \\
+	0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t} & \sqrt{2} J &
+	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1$} \\
+	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t} & \text{$\Omega_1
+		$} & \text{$\alpha$}-2 \text{$\Delta_2$} \\
+	\end{matrix}\right)
+	\end{equation}
+\end{widetext}
+Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{tr1}=0$,$\Delta_2 = \omega_d-\omega_{tr2}$.
+
+\subsection{Master equation solution in QuTip}
+
+\subsection{Experiment}
+\subsubsection{Device design and fabrication}
+The chip consist the transmission line capacitively couple to $\lambda/4$ coplanar waveguide resonator which capacitively couple to two transmons. Qubit control is achieved by external microwave driving line and two flux bias lines. 
+\subsubsection{Experimental parameters}
+\subsubsection{Experimental setup}
+The sample was measured in laboratory of artificial quantum systems at Moscow Institute of Physics and Technology. Cryogenic equipment was
+represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was flux biased using YOKOGAWA GS200 current source.
+
+Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
+
+\section{Results}
+\subsection{\label{sec:level1} Experimental and numerical parts}
+Two tone spectroscopy was found experimentally and shows good agreement with modelling data\autoref{fig:two-tone}. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{two-tone}
+	\caption{Two-tone spectroscopy: (a) Experiment;b(b) Modelling ; the colorbar is common.  Clear flux-dependent transmon transitions are visible.}
+	\label{fig:two-tone}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{drawing}
+	\caption{papapa}
+	\label{fig:difdrive}
+\end{figure}
+
+
+\subsection{Theoretical description of AF}
+Let's consider the Hamiltonian (\ref{matrix}) in details. Divide it into three parts: time-dependent $(V_t)$, the part responsible for the interaction between the qubits $(V_J)$ and all the rest $(H_0)$.
+\begin{equation}
+	H^R=H_0+V_J+V_t
+\end{equation}
+The Hamiltonian $H_0$ is station and we can find eigenvectors and eigenvalues. After that according to the perturbation theory (with perturbation $V_J$) we found the first-order corrections to the wave functions.
+
+\section{Text}
+
+
+In order to determine which transitions correspond to the lines, the stationary Schrödinger equation was solved \autoref{fig:spectr} in three-level approximation for both of qubits. With the Hamiltonian of the system:
+\begin{equation}
+	H_{system} = H_{tr1}\otimes\mathbbm{1}+\mathbbm{1}\otimes H_{tr2}+H_{int}
+\end{equation}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{spectr}
+	\caption{Two-tone spectroscopy with transitions lines. In the red frame, four transitions intersect, three of which originate from the state $\ket{00}$ to $\ket{10}$, two-photon
+		$\ket{02}$, three-photon
+		$\ket{12}$ and the fourth from  $\ket{10}$ to  $\ket{02}$, where $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively}
+	\label{fig:spectr}
+\end{figure}
+
+
+ Let's described the anti-crossing highlighted in red in the picture. 
+ 
+ 
+\newpage
+In this section we analyse theoretically two qubit system in the three-level approximation for both of them. Let $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively, and set $\hbar = 1$. First of all, we consider the small range  of the external magnetic flux and choose a narrow frequency range. In this region, the workspace is limited to four levels. The Hamiltonian of the system at the operating point without drives and interaction between qubits can define as
+
+\begin{equation}
+\hat{H_0} = \omega \ket{10}\bra{10} + 2\cdot\omega\ket{02}\bra{02}+3\cdot\omega\ket{12}\bra{12}
+\end{equation}
+Then define the interaction Hamiltonian as
+\begin{equation}
+	\hat{H_i} = g_{q}\cdot\sigma_x\otimes
+\sigma_x
+\end{equation}
+\bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
+\end{document}
