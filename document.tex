@@ -50,10 +50,12 @@
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
+
+\newcommand{\mytitile}{Effects of intense light-matter interaction in a superconducting artificial molecule}
 \begin{document}
 	\preprint{AIP/123-QED}
 	
-	\title[Multiphoton transition and  Autler-Townes splittings in a strongly coupled double transmon system]{Multiphoton transition and  Autler-Townes splittings in a strongly coupled double transmon system\\~}
+	\title[\mytitile]{\mytitile\\~}
 	
 	\author{G.P. Fedorov}
 	\email{gleb.fedorov@phystech.edu}
@@ -65,13 +67,28 @@
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
 	
-	\author{A.V. Ustinov}
+	\author{V.B. Yursa}
 	\affiliation{ 
-		Russian Quantum Center, Skolkovo village, Russia
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
-	\affiliation{%
-		Karlsruhe Institute of Technology, Karlsruhe, Germany
+	
+	\author{A. Efimov}
+	
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
+
+	\author{K. Shiyanov}
+
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
+	}%
+
+	\author{O.V. Astafiev}
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia 
+	}%
+	
 	
 	\date{\today}% It is always \today, today,
 	%  but any date may be explicitly specified
@@ -140,6 +157,12 @@ After this transformation the effective Hamiltonian can be found from equation:
 H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
 \end{equation}
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=.9\linewidth]{main_scheme}
+	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the orange are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites may be observed.}
+\end{figure*}
+
 From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
 \begin{widetext}
 	\begin{equation}\label{matrix} 
@@ -168,7 +191,8 @@ The chip consist the transmission line capacitively couple to $\lambda/4$ coplan
 \subsubsection{Experimental parameters}
 \subsubsection{Experimental setup}
 The sample was measured in laboratory of artificial quantum systems at Moscow Institute of Physics and Technology. Cryogenic equipment was
-represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was flux biased using YOKOGAWA GS200 current source.
+represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was 
+flux biased using YOKOGAWA GS200 current source.
 
 Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
 
