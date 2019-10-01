@@ -124,41 +124,14 @@ For simplifications select the dependence on time:
 H_{dr} = \Omega\cos(\omega_d t)(b+b^{\dagger})
 \end{equation}
 Let's move on to the consideration of the two-qubit system. The complete Hamiltonian will contain the members responsible for transmons, the drives on each of them separately with frequencies $\omega_d$ and $\omega_d+\delta_{\omega}$ respectively, and the interaction term between qubits:
-\begin{equation}
+\begin{equation}\label{Hsystem}
 H_{system}= H_{tr1}+H_{tr2}+H_{dr1}+H_{dr2}+H_{int}
 \end{equation}
 Where $H_{int}= J(bc^{\dagger}+b^{\dagger}c)$, $b^{\dagger}$;$b$ and $c^{\dagger}$,$c$ - denote the regular annihilation and creation operators
 for the harmonic oscillator approximating both of qubits respectively.
 
 
-Let's consider our system in rotating frame. Moving to this frame is achieved by the rotation:
-\begin{equation}
-R = \exp(-i\omega_d t (b^{\dagger}b+c^{\dagger}c))
-\end{equation}  
-After this transformation the effective Hamiltonian can be found from equation:
-\begin{equation}
-H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
-\end{equation}
 
-From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
-\begin{widetext}
-	\begin{equation}\label{matrix} 
-	\text{$H^R$} = \left(\begin{matrix}
-	0 & \text{$\Omega_1 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t} & 0 & 0 & 0 \\
-	\text{$\Omega_1 $} & 0 & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t} & 0 & 0 \\
-	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t} & J & -\text{$\Delta_2 $} &
-	\text{$\Omega_1$} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t} & 0 \\
-	0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t} & \text{$\Omega_1$} &
-	-\text{$\Delta_2 $} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
-			$} t} \\
-	0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t} & \sqrt{2} J &
-	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1$} \\
-	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t} & \text{$\Omega_1
-		$} & \text{$\alpha$}-2 \text{$\Delta_2$} \\
-	\end{matrix}\right)
-	\end{equation}
-\end{widetext}
-Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{tr1}=0$,$\Delta_2 = \omega_d-\omega_{tr2}$.
 
 \subsection{Master equation solution in QuTip}
 
@@ -168,7 +141,8 @@ The chip consist the transmission line capacitively couple to $\lambda/4$ coplan
 \subsubsection{Experimental parameters}
 \subsubsection{Experimental setup}
 The sample was measured in laboratory of artificial quantum systems at Moscow Institute of Physics and Technology. Cryogenic equipment was
-represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was flux biased using YOKOGAWA GS200 current source.
+represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was 
+flux biased using YOKOGAWA GS200 current source.
 
 Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
 
@@ -182,20 +156,54 @@ Two tone spectroscopy was found experimentally and shows good agreement with mod
 	\label{fig:two-tone}
 \end{figure}
 
+We obtain illustrative example of dressed states\autoref{fig:difdrive}. On this figure the microwave drive acts only on the one of qubits. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{drawing}
-	\caption{papapa}
+	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
 	\label{fig:difdrive}
 \end{figure}
 
 
 \subsection{Theoretical description of AF}
-Let's consider the Hamiltonian (\ref{matrix}) in details. Divide it into three parts: time-dependent $(V_t)$, the part responsible for the interaction between the qubits $(V_J)$ and all the rest $(H_0)$.
+Let's consider our system (\autoref{Hsystem}) in rotating frame. Moving to this frame is achieved by the rotation:
+\begin{equation}
+R = \exp(-i\omega_d t (b^{\dagger}b+c^{\dagger}c))
+\end{equation}  
+After this transformation the effective Hamiltonian can be found from equation:
+\begin{equation}
+H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
+\end{equation}
+
+From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
+\begin{widetext}
+	\begin{equation}\label{matrix} 
+	\text{$H^R$} = \left(\begin{matrix}
+	0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
+	\text{$\Omega_1/2 $} & 0 & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
+	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
+	\text{$\Omega_1$/2} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 \\
+	0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2$} &
+	-\text{$\Delta_2 $} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
+			$} t}/2 \\
+	0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t}/2 & \sqrt{2} J &
+	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
+	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
+		$} & \text{$\alpha$}-2 \text{$\Delta_2$} \\
+	\end{matrix}\right)
+	\end{equation}
+\end{widetext}
+Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{tr1}=0$,$\Delta_2 = \omega_d-\omega_{tr2}$.
+Let's consider the Hamiltonian (\autoref{matrix}) in details. Divide it into three parts: time-dependent $(V_t)$, the part responsible for the interaction between the qubits $(V_J)$ and all the rest $(H_0)$.
 \begin{equation}
 	H^R=H_0+V_J+V_t
 \end{equation}
-The Hamiltonian $H_0$ is station and we can find eigenvectors and eigenvalues. After that according to the perturbation theory (with perturbation $V_J$) we found the first-order corrections to the wave functions.
+The $\Omega_1\gg \Omega_2,\Delta_2\gg J$, so the driven field on the first qubit is strong and form the dressed states defined by the Hamiltonian $H_0$.
+The Hamiltonian $H_0$ is station and we can find eigenvectors and eigenvalues. The drive on the second qubit is weak with very low intensity, so we can neglect any perturbation introduced by second drive on the position, width os the dressed states.
+Firstly, we consider the system of non-interacting qubits $(J=0)$. In this case some transitions are prohibited and the splitting we are interested in is not observed. 
+Therefore a non-zero interaction between qubits is necessary to observe AT effect.
+
+After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
 
 \section{Text}
 
@@ -217,16 +225,6 @@ In order to determine which transitions correspond to the lines, the stationary 
  Let's described the anti-crossing highlighted in red in the picture. 
  
  
-\newpage
-In this section we analyse theoretically two qubit system in the three-level approximation for both of them. Let $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively, and set $\hbar = 1$. First of all, we consider the small range  of the external magnetic flux and choose a narrow frequency range. In this region, the workspace is limited to four levels. The Hamiltonian of the system at the operating point without drives and interaction between qubits can define as
 
-\begin{equation}
-\hat{H_0} = \omega \ket{10}\bra{10} + 2\cdot\omega\ket{02}\bra{02}+3\cdot\omega\ket{12}\bra{12}
-\end{equation}
-Then define the interaction Hamiltonian as
-\begin{equation}
-	\hat{H_i} = g_{q}\cdot\sigma_x\otimes
-\sigma_x
-\end{equation}
 \bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
 \end{document}
