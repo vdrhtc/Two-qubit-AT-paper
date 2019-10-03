@@ -78,18 +78,20 @@ class MainPicturePlot:
 
 
     def _zoom(self, ax, data):
+
+        color = "black"
         axins = zoomed_inset_axes(ax, 2.5, loc=4)  # zoom-factor: 2.5, location: upper-left
         axins1 = zoomed_inset_axes(ax, 2.5, loc=3)
         axinss1 = zoomed_inset_axes(ax, 2.5, loc=2)
         # ax1.broken_barh([(3.1,0.4)],(5.31,0.02),edgecolors = 'r', facecolors = 'none',linewidth= 1, linestyle = '--')
         for axis in ['top', 'bottom', 'left', 'right']:
-            axins.spines[axis].set_color('C1')
+            axins.spines[axis].set_color(color)
         axins.pcolormesh(*data, rasterized=True)
         for axis in ['top', 'bottom', 'left', 'right']:
-            axins1.spines[axis].set_color('C1')
+            axins1.spines[axis].set_color(color)
         axins1.pcolormesh(*data, rasterized=True)
         for axis in ['top', 'bottom', 'left', 'right']:
-            axinss1.spines[axis].set_color('C1')
+            axinss1.spines[axis].set_color(color)
         axinss1.pcolormesh(*data, rasterized=True)
         x1, x2, y1, y2 = 3.5, 3.8, 5.25, 5.29  # specify the limits
         axins.set_xlim(x1, x2)  # apply the x-limits
@@ -107,9 +109,9 @@ class MainPicturePlot:
         axinss1.set_yticklabels([])
         axinss1.set_xticklabels([])
         from mpl_toolkits.axes_grid1.inset_locator import mark_inset
-        mark_inset(ax, axins, loc1=3, loc2=1, fc="none", ec='C1', linestyle='--')
-        mark_inset(ax, axins1, loc1=4, loc2=2, fc="none", ec='C1', linestyle='--')
-        mark_inset(ax, axinss1, loc1=3, loc2=1, fc="none", ec='C1', linestyle='--')
+        mark_inset(ax, axins, loc1=3, loc2=1, fc="none", ec=color, linestyle='--')
+        mark_inset(ax, axins1, loc1=4, loc2=2, fc="none", ec=color, linestyle='--')
+        mark_inset(ax, axinss1, loc1=3, loc2=1, fc="none", ec=color, linestyle='--')
 
 
     def _load_data(self):
