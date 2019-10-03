@@ -50,10 +50,12 @@
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
+
+\newcommand{\mytitile}{Effects of intense light-matter interaction in a superconducting artificial molecule}
 \begin{document}
 	\preprint{AIP/123-QED}
 	
-	\title[Multiphoton transition and  Autler-Townes splittings in a strongly coupled double transmon system]{Multiphoton transition and  Autler-Townes splittings in a strongly coupled double transmon system\\~}
+	\title[\mytitile]{\mytitile\\~}
 	
 	\author{G.P. Fedorov}
 	\email{gleb.fedorov@phystech.edu}
@@ -65,13 +67,28 @@
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
 	
-	\author{A.V. Ustinov}
+	\author{V.B. Yursa}
 	\affiliation{ 
-		Russian Quantum Center, Skolkovo village, Russia
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
-	\affiliation{%
-		Karlsruhe Institute of Technology, Karlsruhe, Germany
+	
+	\author{A. Efimov}
+	
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
+	
+	\author{K. Shiyanov}
+
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
+	}%
+
+	\author{O.V. Astafiev}
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia 
+	}%
+	
 	
 	\date{\today}% It is always \today, today,
 	%  but any date may be explicitly specified
@@ -132,6 +149,13 @@ for the harmonic oscillator approximating both of qubits respectively.
 
 
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=.9\linewidth]{main_scheme}
+	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the orange are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites may be observed.}
+\end{figure*}
+
+
 
 \subsection{Master equation solution in QuTip}
 
@@ -180,16 +204,16 @@ From the simulation follows that a two-level approximation for first qubit and t
 	\begin{equation}\label{matrix} 
 	\text{$H^R$} = \left(\begin{matrix}
 	0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
-	\text{$\Omega_1/2 $} & 0 & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
+	\text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
 	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
 	\text{$\Omega_1$/2} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 \\
 	0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2$} &
-	-\text{$\Delta_2 $} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
+	\text{$-\Delta_2 -\Delta_1$} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
 			$} t}/2 \\
 	0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t}/2 & \sqrt{2} J &
 	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
 	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
-		$} & \text{$\alpha$}-2 \text{$\Delta_2$} \\
+		$} & \text{$\alpha$}-2 \text{$\Delta_2$}- \text{$\Delta_1$} \\
 	\end{matrix}\right)
 	\end{equation}
 \end{widetext}
@@ -204,6 +228,12 @@ Firstly, we consider the system of non-interacting qubits $(J=0)$. In this case 
 Therefore a non-zero interaction between qubits is necessary to observe AT effect.
 
 After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
+\appendix
+\section{Theoretical description of two-photon process}
+
+
+
+
 
 \section{Text}
 
