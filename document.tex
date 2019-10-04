@@ -35,9 +35,11 @@
 
 \usepackage{graphicx}% Include figure files
 %\usepackage{dcolumn}% Align table columns on decimal point
-
+\usepackage{bm}% bold math
 %\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
+\usepackage{hyperref}
+\usepackage{kbordermatrix}% http://www.hss.caltech.edu/~kcb/TeX/kbordermatrix.sty
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
@@ -46,12 +48,10 @@
 \usepackage{physics}
 \usepackage{xparse}
 \usepackage{bbm}
-\usepackage{hyperref}
+\usepackage{nicematrix}
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
-
-\renewcommand*{\figureautorefname}{Fig.}
 
 \newcommand{\mytitile}{Effects of intense light-matter interaction in a superconducting artificial molecule}
 \begin{document}
@@ -79,7 +79,7 @@
 	\affiliation{ 
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
-
+	
 	\author{K. Shiyanov}
 
 	\affiliation{ 
@@ -102,9 +102,10 @@
 	
 	\maketitle
 \section{Introduction}
-Over the past twenty years, many 
+Over the past twenty years, significant progress has been achieved in the research of the superconducting quantum circuits. 
 
-
+We investigate a system of two interacting transmons. The transmon\cite{koch2007charge} represents two Josephson junctions (dc-SQUID) which are shunted by an additional large capacitance(compared to other capacitances in the circuit). This dc-SQUID setup allows for the tuning of the Josephson energy $E_J = E_J^{max}|\cos(\pi \frac{\Phi}{\Phi_0})|$  by
+means of an external magnetic flux $\Phi$. The transmon can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. The system of two transmons and their connection forms a level system.
 A sufficiently large anharmonicity is needed to prevent qubit operations from exciting other transitions in the system. Therefore, we will use two- and three-level approximations for our calculations
 
 
@@ -116,14 +117,10 @@ If the driving field is strong the interaction between the system and the field 
 
 For example, the implementation of the controlled-PHASE quantum gate for typical alkali atoms (such as Rb or Cs)  is based on the effect of dressed states in conjunction with the effect of Rydberg-blockade\cite{sun2018analysis}. One of the possible way to build quantum memory with trapped atomic ions based on dressed states is described in this work\cite{timoney2011quantum}. 
 
-In this article will be shown how the spectrum of the system depends on drivers on different qubits and explicitly shown the dressed states.%\autoref{sec:level1}
+In this article will be shown how the spectrum of the system depends on drivers on different qubits and explicitly shown the dressed states.\autoref{sec:level1}
  
 \section{Methods}
 \subsection{Theoretical description of the system}
-
-We investigate a system of two interacting transmons. The transmon\cite{koch2007charge} represents two Josephson junctions (dc-SQUID) which are shunted by an additional large capacitance(compared to other capacitances in the circuit). This dc-SQUID setup allows for the tuning of the Josephson energy $E_J = E_J^{max}|\cos(\pi \frac{\Phi}{\Phi_0})|$  by
-means of an external magnetic flux $\Phi$. The transmon can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. The system of two transmons and their connection forms a level system.
-
 In this section we analyse theoretically two qubit system.
  In our study we used transmons.The transmon Hamiltonian is $H = 4\cdot E_C(n-n_g)^2 -E_J\cos(\phi)$, where $E_c $ and $E_J$ -charge and Josephson energy respectively. The symbols $n$ and $\phi$ denote the number of Cooper pairs transferred between the islands and the
  gauge-invariant phase difference between the superconductors,
@@ -158,7 +155,6 @@ for the harmonic oscillator approximating both of qubits respectively.
 	\centering
 	\includegraphics[width=.9\linewidth]{main_scheme}
 	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the orange are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be two $\Omega_1^R$.}
-	\label{fig:main_scheme}
 \end{figure*}
 
 
@@ -179,11 +175,10 @@ Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of at
 \section{Results}
 \subsection{\label{sec:level1} Experimental and numerical parts}
 Two tone spectroscopy was found experimentally and shows good agreement with modelling data\autoref{fig:two-tone}. 
-
-\begin{figure*}
+\begin{figure*}[h]
 	\centering
 	\includegraphics[width=\linewidth]{main_picture}
-	\caption{Two-tone spectroscopy: \textbf{(a)} Experiment;\textbf{(b)} Modelling ; the colorbar is common.  Clear flux-dependent transmon transitions are visible.}
+	\caption{Two-tone spectroscopy: (a) Experiment;b(b) Modelling ; the colorbar is common.  Clear flux-dependent transmon transitions are visible.}
 	\label{fig:two-tone}
 \end{figure*}
 
@@ -207,9 +202,13 @@ H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
 \end{equation}
 
 From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
+
+\renewcommand{\kbldelim}{(}% Left delimiter
+\renewcommand{\kbrdelim}{)}% Right delimiter
 \begin{widetext}
 	\begin{equation}\label{matrix} 
-	\text{$H^R$} = \left(\begin{matrix}
+	\text{$H^R$} = \kbordermatrix{
+	\ket{00} & \ket{10} & \ket{01} & \ket{11} & \ket{02} & \ket{12} \\
 	0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
 	\text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
 	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
@@ -221,7 +220,7 @@ From the simulation follows that a two-level approximation for first qubit and t
 	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
 	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
 		$} & \text{$\alpha$}-2 \text{$\Delta_2$}- \text{$\Delta_1$} \\
-	\end{matrix}\right)
+}
 	\end{equation}
 \end{widetext}
 Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{tr1}=0$,$\Delta_2 = \omega_d-\omega_{tr2}$.
@@ -237,8 +236,7 @@ Therefore a non-zero interaction between qubits is necessary to observe AT effec
 After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
 \appendix
 \section{Theoretical description of two-photon process}
-
-
+Perturbation theory allows semianalytical calculation of the transition rates (Rabi oscillation frequencies) for single and multi-photon processes.
 
 
 
