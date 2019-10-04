@@ -40,38 +40,46 @@ class MainPicturePlot:
 
 
     def plot_experiment(self, ax):
-        data = self._X_exp, self._Y_exp, self._C_exp.real
+        data = self._X_exp, self._Y_exp, np.real(self._C_exp)
         img1 = ax.pcolormesh(*data, rasterized=True)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
-        cb1 = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
+        cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
         ax.set_ylabel('Frequency [GHz]');
-        cb1.ax.set_title(r"$\mathfrak{Re} [S_{21}]$", position=(1.1,-1.5))
-
-        plt.text(-0.2, 1.05, "(a)", fontdict={"name": "STIX"}, fontsize=22,
+        cb.ax.set_title(r"$\mathfrak{Re} [S^{exp}_{21}]$", position=(1.125,-1.5))
+        loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
+        cb.locator = loc
+        cb.update_ticks()
+        plt.text(-0.15, 1.1, "(a)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
 
         self._zoom(ax, data)
 
     def plot_theory(self, ax):
 
-        try:
-            C = self._cache[self.nstate]
-        except KeyError:
-            C = np.zeros(self._C_th.shape)
-            for i in range(C.shape[0]):
-                for j in range(C.shape[1]):
-                    C[i,j] = self._C_th[i][j][self.nstate][0][self.nstate].real
-            self._cache[self.nstate] = C
+        # try:
+        #     C = self._cache[self.nstate]
+        # except KeyError:
+        #     C = np.zeros(self._C_th.shape)
+        #     for i in range(C.shape[0]):
+        #         for j in range(C.shape[1]):
+        #             C[i,j] = self._C_th[i][j][self.nstate][0][self.nstate].real
+        #     self._cache[self.nstate] = C
+
+        C = np.real(self._C_th.T)
+        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.039+0.005
 
         data = self._X_th, self._Y_th, C
-        img1 = ax.pcolormesh(*data, rasterized=True)
+        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.05*np.max(C))
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
-        cb1 = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
+        cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
         # ax.set_ylabel('Frequency [GHz]');
-        cb1.ax.set_title(r"$P(\left|00\right\rangle)$", position=(-0.1,-1.5))
-        plt.text(-0.1, 1.05, "(b)", fontdict={"name": "STIX"}, fontsize=22,
+        cb.ax.set_title(r"$\mathfrak{Re} [S^{sim}_{21}]$", position=(-0.125,-1.5))
+        loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
+        cb.locator = loc
+        cb.update_ticks()
+        plt.text(-0.075, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
 
         self._zoom(ax, data)
@@ -96,22 +104,22 @@ class MainPicturePlot:
         x1, x2, y1, y2 = 3.5, 3.8, 5.25, 5.29  # specify the limits
         axins.set_xlim(x1, x2)  # apply the x-limits
         axins.set_ylim(y1, y2)  # apply the y-limits
-        axins.set_yticklabels([])
-        axins.set_xticklabels([])
-        x1, x2, y1, y2 = 2.925, 3.225, 5.225, 5.265
+        axins.set_yticks([])
+        axins.set_xticks([])
+        x1, x2, y1, y2 = 2.925, 3.225, 5.2275, 5.2675
         axins1.set_xlim(x1, x2)  # apply the x-limits
         axins1.set_ylim(y1, y2)  # apply the y-limits
-        axins1.set_yticklabels([])
-        axins1.set_xticklabels([])
+        axins1.set_yticks([])
+        axins1.set_xticks([])
         x1, x2, y1, y2 = 3.16, 3.46, 5.30, 5.34
         axinss1.set_xlim(x1, x2)  # apply the x-limits
         axinss1.set_ylim(y1, y2)  # apply the y-limits
-        axinss1.set_yticklabels([])
-        axinss1.set_xticklabels([])
+        axinss1.set_yticks([])
+        axinss1.set_xticks([])
         from mpl_toolkits.axes_grid1.inset_locator import mark_inset
-        mark_inset(ax, axins, loc1=3, loc2=1, fc="none", ec=color, linestyle='--')
-        mark_inset(ax, axins1, loc1=4, loc2=2, fc="none", ec=color, linestyle='--')
-        mark_inset(ax, axinss1, loc1=3, loc2=1, fc="none", ec=color, linestyle='--')
+        mark_inset(ax, axins, loc1=3, loc2=1, fc="none", ec=color, linestyle=':')
+        mark_inset(ax, axins1, loc1=4, loc2=2, fc="none", ec=color, linestyle=':')
+        mark_inset(ax, axinss1, loc1=3, loc2=1, fc="none", ec=color, linestyle=':')
 
 
     def _load_data(self):
@@ -122,12 +130,12 @@ class MainPicturePlot:
         self._Y_exp = self._data_exp['Frequency [Hz]'] * (10 ** -9)  # in GHz
         self._C_exp = self._data_exp['data'].T
 
-        if self.nstate not in self._cache:
-            with open('two-tone-0.1-0.05.pkl', 'rb') as f:
-                self._data_th = pickle.load(f)
-            self._C_th = np.array(self._data_th).T
-        else:
-            self._C_th = self._cache[self.nstate]
+        # if self.nstate not in self._cache:
+        with open('two-tone-0.1-0.05_color_only.pkl', 'rb') as f:
+            self._data_th = pickle.load(f)
+            self._C_th = np.array(self._data_th)
+        # else:
+        #     self._C_th = self._cache[self.nstate]
 
         self._X_th = np.linspace(self._X_exp[0], self._X_exp[-1], self._C_th.shape[1])
         self._Y_th = np.linspace(self._Y_exp[0], self._Y_exp[-1], self._C_th.shape[0])
