@@ -102,14 +102,23 @@
 	
 	\maketitle
 \section{Introduction}
-Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to their synthetic nature, their Hamiltonians can be pre-designed and engineered which makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime when the coupling strength between light and a quantum system approaches 1\% of their frequency has been a major milestone for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this landmark using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first discovery\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
-Moreover, SAAs do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strong with the free-propagating EM-waves in the on-chip 1D waveguides\cite{astafiev2010resonance} without having to use cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already in the ultra-strong coupling regime.
+Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to synthetic nature of SAA, their Hamiltonians can be pre-designed and engineered, and this makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime when the coupling strength between light and a quantum system approaches 1\% of their frequency has been a major milestone for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this landmark using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first discovery\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
+Moreover, SAA do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strong with the free-propagating EM-waves in the on-chip 1D waveguides\cite{astafiev2010resonance} without having to use cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already the ultra-strong coupling regime.
 
-In general, a quantum system exposed to strong external driving can experience various quantum phenomena explained by resonant single- and multi-photon transitions between energy levels. The most known examples are coherent population trapping, electromagnetically induced transparency (EIT)\cite{boller1991observation}, stimulated Raman adiabatic passage\cite{bergmann1998coherent} and Autler-Townes (AT) splitting\cite{autler1955stark} which can happen in systems with just three energy levels. 
+In general, a quantum system exposed to strong external driving can experience various quantum phenomena explained by resonant single- and multi-photon transitions between energy levels. The most known examples are coherent population trapping, electromagnetically induced transparency (EIT)\cite{boller1991observation}, stimulated Raman adiabatic passage\cite{bergmann1998coherent} and Autler-Townes (A-T) splitting\cite{autler1955stark}. 
 
-Our work is focused on the last effect, which has been studied in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and also was observed for SAAs in several experiments\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}.
+In this work, we are studying effects of light-matter interaction that occur in a system of two coupled artificial atoms: a superconducting artificial molecule (SAM). In our experiment, we use two transmons\cite{koch2007charge} interacting with each other through a cavity bus\cite{majer2007coupling}. Microwave radiation is applied to this system through a coplanar on-chip antenna and transmon states may be monitored by dispersive readout using the same coupling cavity \cite{chow2010detecting}.
 
-The main cause of the AT effect is the dressing of the atomic levels by strong EM radiation. This dressing The new energy state called dressed states. If an additional weak probing field is applied, the spectra of the strongly driven system can be probed. In particular the dressed state model nicely explains the emergence of the Mollow triplet\cite{newstein1968spontaneous} spectrum, which consists of a central peak with two side bands separated by the Rabi frequency.
+It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAAs as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics; instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. 
+
+Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
+
+In  cause of the AT effect is the dressing of the atomic levels by strong EM radiation. This dressing The new energy state called dressed states. If an additional weak probing field is applied, the spectra of the strongly driven system can be probed. In particular the dressed state model nicely explains the emergence of the Mollow triplet\cite{newstein1968spontaneous} spectrum, which consists of a central peak with two side bands separated by the Rabi frequency. 
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{intro_scheme}
+	\caption{Illustrating the AT splitting in the rotating frame ($\hbar=1$ here). \textbf{(a)} The three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$. It induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ with frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
+\end{figure}
 
 For example, the implementation of the controlled-PHASE quantum gate for typical alkali atoms (such as Rb or Cs)  is based on the effect of dressed states in conjunction with the effect of Rydberg-blockade\cite{sun2018analysis}. One of the possible way to build quantum memory with trapped atomic ions based on dressed states is described in this work\cite{timoney2011quantum}. 
 
@@ -121,7 +130,7 @@ In this article will be shown how the spectrum of the system depends on drivers 
 \section{Methods}
 \subsection{Theoretical description of the system}
 
-We investigate a system of two interacting transmons. The transmon\cite{koch2007charge} represents two Josephson junctions (dc-SQUID) which are shunted by an additional large capacitance(compared to other capacitances in the circuit). This dc-SQUID setup allows for the tuning of the Josephson energy $E_J = E_J^{max}|\cos(\pi \frac{\Phi}{\Phi_0})|$  by
+We investigate a system of two interacting transmons. The transmon represents two Josephson junctions (dc-SQUID) which are shunted by an additional large capacitance(compared to other capacitances in the circuit). This dc-SQUID setup allows for the tuning of the Josephson energy $E_J = E_J^{max}|\cos(\pi \frac{\Phi}{\Phi_0})|$  by
 means of an external magnetic flux $\Phi$. The transmon can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. The system of two transmons and their connection forms a level system.
 
 In this section we analyse theoretically two qubit system.
@@ -236,6 +245,11 @@ Therefore a non-zero interaction between qubits is necessary to observe AT effec
 
 After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
 \appendix
+
+\subsection{The standard Autler-Townes effect}
+
+
+
 \section{Theoretical description of two-photon process}
 
 
@@ -261,7 +275,8 @@ In order to determine which transitions correspond to the lines, the stationary 
 
  Let's described the anti-crossing highlighted in red in the picture. 
  
- 
+
+
 
 \bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
 \end{document}
