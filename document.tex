@@ -109,16 +109,11 @@ In general, a quantum system exposed to strong external driving can experience v
 
 In this work, we are studying effects of light-matter interaction that occur in a system of two coupled artificial atoms: a superconducting artificial molecule (SAM). In our experiment, we use two transmons\cite{koch2007charge} interacting with each other through a cavity bus\cite{majer2007coupling}. Microwave radiation is applied to this system through a coplanar on-chip antenna and transmon states may be monitored by dispersive readout using the same coupling cavity \cite{chow2010detecting}.
 
-It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAAs as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics; instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. 
+It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAA as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics; instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. 
 
 Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
 
-In  cause of the AT effect is the dressing of the atomic levels by strong EM radiation. This dressing The new energy state called dressed states. If an additional weak probing field is applied, the spectra of the strongly driven system can be probed. In particular the dressed state model nicely explains the emergence of the Mollow triplet\cite{newstein1968spontaneous} spectrum, which consists of a central peak with two side bands separated by the Rabi frequency. 
 
-\begin{figure}
-	\includegraphics[width=\linewidth]{intro_scheme}
-	\caption{Illustrating the AT splitting in the rotating frame ($\hbar=1$ here). \textbf{(a)} The three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$. It induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ with frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
-\end{figure}
 
 For example, the implementation of the controlled-PHASE quantum gate for typical alkali atoms (such as Rb or Cs)  is based on the effect of dressed states in conjunction with the effect of Rydberg-blockade\cite{sun2018analysis}. One of the possible way to build quantum memory with trapped atomic ions based on dressed states is described in this work\cite{timoney2011quantum}. 
 
@@ -246,7 +241,56 @@ Therefore a non-zero interaction between qubits is necessary to observe AT effec
 After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
 \appendix
 
-\subsection{The standard Autler-Townes effect}
+\section{Theory of the standard Autler-Townes effect}
+
+The underlying cause of the A-T effect is the dressing of the atomic levels by strong EM radiation. There are two equivalent mathematical models for it: the light may be classical or quantized.
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{intro_scheme}
+	\caption{Illustrating the A-T splitting in the rotating frame ($\hbar=1$ here). \textbf{(a)} The three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$. It induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ with frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
+	\label{fig:at-standard}
+\end{figure}
+
+In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_1$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$. Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_2$ between $\ket{1}$ and $\ket{2}$. This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
+
+\begin{equation}
+\hat H_0 = \left[\begin{matrix}
+0 & \Omega_{1} \cos{\left(\omega_{01}- \Delta \right)t} & 0\\
+\Omega_{1} \cos{\left(\omega_{01} - \Delta \right)t}   & \omega_{01} &\Omega_{2} \cos\omega_p t  \\
+0 & \Omega_{2} \cos{\omega_p t}  & \omega_{02}\end{matrix}\right].
+\end{equation}
+
+Next, we move to the rotating frame by using an operator
+\[
+\hat U = \left[\begin{matrix} 
+1 & 0 & 0\\0 & e^{- i t \left(\omega_{01}- \Delta\right)} & 0\\0 & 0 & e^{- i t \left(\omega_{01}- \Delta\right)}\end{matrix}\right].
+\]
+Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_2$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat U^\dag \hat H_0 \hat U - i \dot{\hat{U}}^\dag \hat U$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
+\begin{equation}
+\hat H_1 = \left[\begin{matrix}0 &\Omega_{1}/2 & 0\\\Omega_{1}/2 & \Delta & \Omega_{2} e^{- i t \omega_p}/2\\0 & \Omega_{2} e^{i t \omega_p}/2 & \omega_{02} - \omega_{01}+\Delta \end{matrix}\right].
+\end{equation}
+
+Next, moving to the basis where the upper left 2x2 corner is diagonal (the right part of \autoref{fig:at-standard}~(b)), we obtain:
+
+\begin{equation}
+\hat H_3 = \left[\begin{matrix} 
+\frac{\Delta}{2} - \frac{\sqrt{\Delta^{2} + \Omega_{1}^{2}}}{2} & 
+0 &
+\frac{\Omega_{2} e^{i t \omega_{p}}}{2}\sin(\theta)
+\\
+0 & 
+\frac{\Delta}{2} + \frac{\sqrt{\Delta^{2} + \Omega_{1}^{2}}}{2} & 
+\frac{\Omega_{2} e^ {i t \omega_p}}{2}\cos(\theta)
+\\
+\frac{\Omega_{2} e^{-i t \omega_{p}} }{2}\sin(\theta) & 
+\frac{\Omega_{2} e^{-i t \omega_{p}}}{2} \cos(\theta) & 
+\omega_{12} +\Delta 
+\end{matrix}\right].
+\end{equation}
+
+One may see that now resonant conditions for the probe drive are $\omega_p = \omega_{12} + \dfrac{(\Delta \pm \Omega^R)}{2}$, where $\Omega^R = \sqrt{\Omega_1^2 + \Delta^2}$, $\omega_{12} = \omega_{02}- \omega_{01}$, and its amplitude is renormalized by an angle $\theta,\ \tan 2\theta = -\frac{\Omega_1}{\Delta}$.
+
+
 
 
 
