@@ -86,6 +86,11 @@
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
 
+	\author{A. Yu. Dmitriev}
+	\affiliation{ 
+	Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
+	}%
+
 	\author{O.V. Astafiev}
 	\affiliation{ 
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia 
@@ -109,65 +114,57 @@ In general, a quantum system exposed to strong external driving can experience v
 
 In this work, we are studying effects of light-matter interaction that occur in a system of two coupled artificial atoms: a superconducting artificial molecule (SAM). In our experiment, we use two transmons\cite{koch2007charge} interacting with each other through a cavity bus\cite{majer2007coupling}. Microwave radiation is applied to this system through a coplanar on-chip antenna and transmon states may be monitored by dispersive readout using the same coupling cavity \cite{chow2010detecting}.
 
-It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAA as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics; instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. 
+It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAA as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics (see Appendix \ref{sec:3-level-at}); instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
 
-Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
+The manuscript consists of four main parts and an Appendix. Section I is this introduction; Section II is devoted to the approaches that were used in our study; Section III contains the results of our experimental and theoretical research; finally, in Section IV we make a conclusion of our work and discuss future prospects. The Appendix contains important details of the theoretical framework that we use to model the observed processes.
 
-
-
-For example, the implementation of the controlled-PHASE quantum gate for typical alkali atoms (such as Rb or Cs)  is based on the effect of dressed states in conjunction with the effect of Rydberg-blockade\cite{sun2018analysis}. One of the possible way to build quantum memory with trapped atomic ions based on dressed states is described in this work\cite{timoney2011quantum}. 
-
-A sufficiently large anharmonicity is needed to prevent qubit operations from exciting other transitions in the system. Therefore, we will use two- and three-level approximations for our calculations
-
-
-In this article will be shown how the spectrum of the system depends on drivers on different qubits and explicitly shown the dressed states.%\autoref{sec:level1}
- 
 \section{Methods}
+
+In this section, we provide the mathematical formulation of the employed models, specify the numerical approaches that were used in simulations and describe the experimental equipment and some measurement aspects.  
+
 \subsection{Theoretical description of the system}
 
-We investigate a system of two interacting transmons. The transmon represents two Josephson junctions (dc-SQUID) which are shunted by an additional large capacitance(compared to other capacitances in the circuit). This dc-SQUID setup allows for the tuning of the Josephson energy $E_J = E_J^{max}|\cos(\pi \frac{\Phi}{\Phi_0})|$  by
-means of an external magnetic flux $\Phi$. The transmon can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. The system of two transmons and their connection forms a level system.
-
-In this section we analyse theoretically two qubit system.
- In our study we used transmons.The transmon Hamiltonian is $H = 4\cdot E_C(n-n_g)^2 -E_J\cos(\phi)$, where $E_c $ and $E_J$ -charge and Josephson energy respectively. The symbols $n$ and $\phi$ denote the number of Cooper pairs transferred between the islands and the
- gauge-invariant phase difference between the superconductors,
- respectively.
- When the ratio $\frac{E_C}{E_J}$ is large the perturbation approach can
- be employed. After the expansion of the cosine for small angles and neglecting of the small terms the Hamiltonian can be
- viewed as a harmonic oscillator with a quartic perturbation describing the leading-order anharmonicity.
- After conversion to dimensionless variables and neglecting small terms and set $\hbar = 1$, we move to the new Hamiltonian of transmon. 
+A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators (this approach is covered Appendix) and write down its Hamiltonian using the annihilation operator $\hat b$:
 \begin{equation}
-H_{tr}= \omega_{tr} b^{\dagger}b +\frac{1}{2}\alpha b^{\dagger}b(b^{\dagger}b-1)
+\hat H_{tr}/\hbar = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
 \end{equation}
-Where $\alpha=-E_C$, $\omega_{tr}=\sqrt{8E_CE_J}+\alpha$.
+where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}.
 
 
-The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
-Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source.
-
-For simplifications select the dependence on time:
+To induce state transitions in a transmon one should irradiate it by a monochromatic external microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The interaction term between the transmon and this classical EM field is then modelled by the following operator: 
 \begin{equation}
-H_{dr} = \Omega\cos(\omega_d t)(b+b^{\dagger})
+\hat H_{dr}/\hbar = \Omega\cos(\omega_d t)(\hat b+\hat b^{\dagger}),
 \end{equation}
-Let's move on to the consideration of the two-qubit system. The complete Hamiltonian will contain the members responsible for transmons, the drives on each of them separately with frequencies $\omega_d$ and $\omega_d+\delta_{\omega}$ respectively, and the interaction term between qubits:
+where $\Omega$ stands for the frequency of the Rabi oscillations between $\ket{0}$ and $\ket{1}$.
+
+Now, for the molecule composed of two coupled transmons, the complete Hamiltonian contains two terms describing each of them in isolation (with the corresponding annihilation operators $\hat b$ and $\hat c$ and the $ge$ frequencies $\omega_{1,2}$), two terms representing the interaction of each transmon with the driving field at the same frequency $\omega_d$, and the qubit-qubit interaction term:
 \begin{equation}\label{Hsystem}
-H_{system}= H_{tr1}+H_{tr2}+H_{dr1}+H_{dr2}+H_{int}
+\hat H = \hat H_{tr1}+\hat H_{tr2}+\hat H_{dr1}+\hat H_{dr2}+\hat H_{int},
 \end{equation}
-Where $H_{int}= J(bc^{\dagger}+b^{\dagger}c)$, $b^{\dagger}$;$b$ and $c^{\dagger}$,$c$ - denote the regular annihilation and creation operators
-for the harmonic oscillator approximating both of qubits respectively.
+where $\hat H_{int}/\hbar= J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms.
+
+Besides the unitary evolution, we take into account the incoherent processes of relaxation and dephasing for each transmon. They are modelled using the Lindblad equation with the following collapse operators:
+\begin{equation}\
+\begin{split}
+\hat{\mathcal{O}}_{\gamma, 1} = \sqrt{\gamma_1}\, \hat b,\ 
+\hat{\mathcal{O}}_{\phi, 1} = \sqrt{2\gamma_{\phi,1}}\, \hat b^\dag \hat b,\\
+\hat{\mathcal{O}}_{\gamma,2} = \sqrt{\gamma_2}\, \hat c,\ 
+\hat{\mathcal{O}}_{\phi,2} = \sqrt{2\gamma_{ \phi,2}}\, \hat c^\dag \hat c.
+\end{split}
+\end{equation}
+As one can see, the collapse operators are in a separable form, i.e. acting only upon a single transmon each. This is a valid approach until the coupling strength $J$ is not too large\cite{beaudoin2011dissipation}. Therefore, the complete evolution equation for the system density matrix $\hat \rho$ is
+\begin{equation}
+\partial_t \hat \rho = \frac{i}{\hbar} [\hat \rho, \hat H] + \sum_{\alpha, i} \mathcal{D}[\hat{\mathcal{O}}_{\alpha, i}] \hat \rho, \label{eq:master}
+\end{equation}
+where $\mathcal{D}[\hat{\mathcal{O}}]\hat \rho = \hat{\mathcal{O}} \hat \rho \hat{\mathcal{O}}^\dag - \frac{1}{2}\{ \hat{\mathcal{O}}^\dag \hat{\mathcal{O}}, \hat \rho\}$.
 
 
 
-\begin{figure*}
-	\centering
-	\includegraphics[width=.9\linewidth]{main_scheme}
-	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the orange are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be two $\Omega_1^R$.}
-	\label{fig:main_scheme}
-\end{figure*}
+\subsection{Master equation solution in QuTiP}
 
+Numerical simulations are crucial in studying the equation \eqref{eq:master} since is does not allow an analytical solution. We have been using the \textit{qutip}\cite{johansson2013qutip} quantum optics toolbox to simulate the dynamics and find the steady state of the system for various parameter combinations of the Hamiltonian.
 
-
-\subsection{Master equation solution in QuTip}
+When modelling the experimental behaviour, we 
 
 \subsection{Experiment}
 \subsubsection{Device design and fabrication}
@@ -180,9 +177,11 @@ flux biased using YOKOGAWA GS200 current source.
 
 Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
 
+
 \section{Results}
+
 \subsection{\label{sec:level1} Experimental and numerical parts}
-Two tone spectroscopy was found experimentally and shows good agreement with modelling data\autoref{fig:two-tone}. 
+Two tone spectroscopy was found experimentally and shows good agreement with modelling data \autoref{fig:two-tone}. 
 
 \begin{figure*}
 	\centering
@@ -191,8 +190,15 @@ Two tone spectroscopy was found experimentally and shows good agreement with mod
 	\label{fig:two-tone}
 \end{figure*}
 
+\begin{figure*}
+	\centering
+	\includegraphics[width=.9\linewidth]{main_scheme}
+	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the orange are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be two $\Omega_1^R$.}
+	\label{fig:main_scheme}
+\end{figure*}
+
 We obtain illustrative example of dressed states\autoref{fig:difdrive}. On this figure the microwave drive acts only on the one of qubits. 
-\begin{figure}[h]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{drawing}
 	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
@@ -200,8 +206,8 @@ We obtain illustrative example of dressed states\autoref{fig:difdrive}. On this 
 \end{figure}
 
 
-\subsection{Theoretical description of AF}
-Let's consider our system (\autoref{Hsystem}) in rotating frame. Moving to this frame is achieved by the rotation:
+\subsection{Theoretical description of the observed spectral lines}
+For the three-level system, the A-T effect is described in Appendix \ref{sec:3-level-at}. Let's consider our system (\autoref{Hsystem}) in rotating frame. Moving to this frame is achieved by the rotation:
 \begin{equation}
 R = \exp(-i\omega_d t (b^{\dagger}b+c^{\dagger}c))
 \end{equation}  
@@ -241,39 +247,39 @@ Therefore a non-zero interaction between qubits is necessary to observe AT effec
 After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
 \appendix
 
-\section{Theory of the standard Autler-Townes effect}
+\section{Standard Autler-Townes effect for a three-level atom} \label{sec:3-level-at}
 
 The underlying cause of the A-T effect is the dressing of the atomic levels by strong EM radiation. There are two equivalent mathematical models for it: the light may be classical or quantized.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{intro_scheme}
-	\caption{Illustrating the A-T splitting in the rotating frame ($\hbar=1$ here). \textbf{(a)} The three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$. It induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ with frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
+	\caption{Illustrating the A-T splitting by  the classical driving in the rotating frame ($\hbar=1$ here). \textbf{(a)} The three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$. It induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ at frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
 	\label{fig:at-standard}
 \end{figure}
 
-In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_1$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$. Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_2$ between $\ket{1}$ and $\ket{2}$. This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
+\paragraph{Classical derivation.} In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_1$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$. Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_2$ between $\ket{1}$ and $\ket{2}$. This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
 
-\begin{equation}
-\hat H_0 = \left[\begin{matrix}
+\begin{equation*}
+\hat H^c_0 = \left[\begin{matrix}
 0 & \Omega_{1} \cos{\left(\omega_{01}- \Delta \right)t} & 0\\
 \Omega_{1} \cos{\left(\omega_{01} - \Delta \right)t}   & \omega_{01} &\Omega_{2} \cos\omega_p t  \\
 0 & \Omega_{2} \cos{\omega_p t}  & \omega_{02}\end{matrix}\right].
-\end{equation}
+\end{equation*}
 
 Next, we move to the rotating frame by using an operator
 \[
-\hat U = \left[\begin{matrix} 
-1 & 0 & 0\\0 & e^{- i t \left(\omega_{01}- \Delta\right)} & 0\\0 & 0 & e^{- i t \left(\omega_{01}- \Delta\right)}\end{matrix}\right].
+\hat R = \left[\begin{matrix} 
+1 & 0 & 0\\0 & e^{i t \left(\omega_{01}- \Delta\right)} & 0\\0 & 0 & e^{i t \left(\omega_{01}- \Delta\right)}\end{matrix}\right].
 \]
-Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_2$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat U^\dag \hat H_0 \hat U - i \dot{\hat{U}}^\dag \hat U$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
-\begin{equation}
-\hat H_1 = \left[\begin{matrix}0 &\Omega_{1}/2 & 0\\\Omega_{1}/2 & \Delta & \Omega_{2} e^{- i t \omega_p}/2\\0 & \Omega_{2} e^{i t \omega_p}/2 & \omega_{02} - \omega_{01}+\Delta \end{matrix}\right].
-\end{equation}
+Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_2$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat R^\dag \hat H_0 \hat R + i \dot{\hat{R}}^\dag \hat R$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
+\begin{equation*}
+\hat H^c_1 = \left[\begin{matrix}0 &\Omega_{1}/2 & 0\\\Omega_{1}/2 & \Delta & \Omega_{2} e^{i t \omega_p}/2\\0 & \Omega_{2} e^{-i t \omega_p}/2 & \omega_{02} - \omega_{01}+\Delta \end{matrix}\right].
+\end{equation*}
 
 Next, moving to the basis where the upper left 2x2 corner is diagonal (the right part of \autoref{fig:at-standard}~(b)), we obtain:
 
-\begin{equation}
-\hat H_3 = \left[\begin{matrix} 
+\begin{equation*}
+\hat H^c_3 = \left[\begin{matrix} 
 \frac{\Delta}{2} - \frac{\sqrt{\Delta^{2} + \Omega_{1}^{2}}}{2} & 
 0 &
 \frac{\Omega_{2} e^{i t \omega_{p}}}{2}\sin(\theta)
@@ -286,13 +292,24 @@ Next, moving to the basis where the upper left 2x2 corner is diagonal (the right
 \frac{\Omega_{2} e^{-i t \omega_{p}}}{2} \cos(\theta) & 
 \omega_{12} +\Delta 
 \end{matrix}\right].
-\end{equation}
+\end{equation*}
 
 One may see that now resonant conditions for the probe drive are $\omega_p = \omega_{12} + \dfrac{(\Delta \pm \Omega^R)}{2}$, where $\Omega^R = \sqrt{\Omega_1^2 + \Delta^2}$, $\omega_{12} = \omega_{02}- \omega_{01}$, and its amplitude is renormalized by an angle $\theta,\ \tan 2\theta = -\frac{\Omega_1}{\Delta}$.
 
 
-
-
+\paragraph{Quantum derivation.} For the fully quantum interpretation, we model the incident radiation at the frequency $\omega_{01}-\Delta$ as a single-mode quantum oscillator which is coupled to the system. The Hamiltonian for this model will be as follows:
+\[
+\begin{split}
+\hat H^q_0 = \omega_{01} \ket{1}\bra{1} + \omega_{02} \ket{2}\bra{2} + (\omega_{01}-\Delta) \hat a^\dag \hat a + \\\ g (\hat a^\dag + \hat a)\otimes (\ket{1}\bra{0}+\ket{0}\bra{1}),
+\end{split}
+\]
+where $g$ is the coupling strength and $a$ is the photon annihilation operator. After moving to the rotating frame with $\hat R = \exp[i t (\omega_{01}-\Delta)(\hat a^\dag \hat a + \ket{1}\bra{1}+\ket{2}\bra{2})]$ and applying the RWA, the Hamiltonian transforms into
+\[
+\begin{split}
+\hat H^q_1 = \Delta \ket{1}\bra{1} + (\omega_{12}+\Delta) \ket{2}\bra{2} + \\\ g \left[\hat a^\dag \otimes \ket{0}\bra{1} + \hat a \otimes \ket{1}\bra{0}\right].
+\end{split}
+\]
+If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\Delta$ to $\Omega_R = \sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
 
 \section{Theoretical description of two-photon process}
 
