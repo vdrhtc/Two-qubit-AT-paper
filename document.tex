@@ -136,7 +136,7 @@ Where $\alpha=-E_C$, $\omega_{tr}=\sqrt{8E_CE_J}+\alpha$.
 
 
 The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
-Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source.
+Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source; $n =\frac{1}{\sqrt{2}} (\frac{E_J}{8E_C})^{1/4}(b+b^{\dagger})$.
 
 For simplifications select the dependence on time:
 \begin{equation}
@@ -237,6 +237,28 @@ After that according to the perturbation theory (with perturbation $V_J$) to $H_
 \appendix
 \section{Theoretical description of two-photon process}
 Perturbation theory allows semianalytical calculation of the transition rates (Rabi oscillation frequencies) for single and multi-photon processes.
+
+Let's consider the Hamiltonian $H = H_0+V(t)$, with time-dependent interaction $V(t)$ and "reference" part -- $H_0$ and wave function $\Psi(t)$ . After switching to the interaction picture $V(t)$ modifies to $\tilde{V}(t) = \exp(i H_0 t)V(t)\exp(-i H_0 t)$ and Schrödinger equation gives by $i \derivative{\psi(t)}{t}=\tilde{V}(t)\psi(t)$, where $\psi(t)=\exp(i H_0 t)\Psi(t)$. The reference states of $H_0$ will be denoted $\ket{j}$, $H_0 \ket{j} = \omega_j \ket{j}$ whence it follows that matrix elements  of the modified interaction take the form $\bra{j}\tilde{V}(t)\ket{i}=\exp(i(\omega_j-\omega_i)t)\bra{j}V(t)\ket{i}$. A "solution" of Schrödinger equation in interaction picture corresponding to the initial reference state $\ket{i}$ is
+\begin{equation}\label{forpsi}
+	\psi_i(t)=\ket{i} - i \int_{-\infty}^{t}dt_1\tilde{V}(t_1)\ket{\psi_i(t_1)}
+\end{equation} 
+
+The quantity of primary interest is not the wave function but the probability of transition from the initial state $\ket{i}\rightarrow\ket{f}$, where $\ket{f}$ is the final state of interest. Firstly, we find the transition amplitude $A_{fi} = \bra{f}U(t,t_0)\ket{i}=\bra{f}\psi_i(t)$ where $U(t,t_0)$ evolution operator. 
+
+Solving \autoref{forpsi} by simple iteration gives the series solution
+\begin{equation}
+	U(t,t_0) = 1+\sum_{n}U^{(n)}(t,t_0)
+\end{equation}
+\begin{equation}
+	U^{(n)}(t,t_0) = -i^n \int_{t_0}^{t}d t_1\tilde{V}(t_1)...\int_{t_0}^{t_{n-1}}d t_n\tilde{V}(t_n)
+\end{equation}
+For "weak" interaction the series may be truncated to a fine term $n$ and the $n$th- order transition amplitude $\bra{f}U^{(n)}(t,t_0)\ket{i}$ can be evaluated. 
+In our case the interaction in interaction picture satisfies the following relation
+\begin{equation}
+	\tilde{V}(t)=\exp(i H_0 t) \exp(-i H_0 t)
+\end{equation}
+
+
 
 
 
