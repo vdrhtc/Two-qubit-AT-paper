@@ -122,13 +122,32 @@ The manuscript consists of four main parts and an Appendix. Section I is this in
 
 In this section, we provide the mathematical formulation of the employed models, specify the numerical approaches that were used in simulations and describe the experimental equipment and some measurement aspects.  
 
+\subsection{Experiment}
+\subsubsection{Device design and fabrication}
+The chip consist the transmission line capacitively couple to $\lambda/4$ coplanar waveguide resonator which capacitively couple to two transmons. Qubit control is achieved by external microwave driving line and two flux bias lines. 
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{experiment}
+	\caption{Experimental details. \textbf{(a)} Sample optical photograph \textbf{(b)} Electrical scheme \textbf{(c)} Spectral lines of the qubits}
+\end{figure}
+
+\subsubsection{Experimental parameters}
+\subsubsection{Experimental setup}
+The sample was measured in laboratory of artificial quantum systems at Moscow Institute of Physics and Technology. Cryogenic equipment was
+represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was 
+flux biased using YOKOGAWA GS200 current source.
+
+Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
+
+
+
 \subsection{Theoretical description of the system}
 
 A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators (this approach is covered Appendix) and write down its Hamiltonian using the annihilation operator $\hat b$:
 \begin{equation}
 \hat H_{tr}/\hbar = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
 \end{equation}
-where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}.
+where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or the  $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}.
 
 
 To induce state transitions in a transmon one should irradiate it by a monochromatic external microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The interaction term between the transmon and this classical EM field is then modelled by the following operator: 
@@ -160,22 +179,11 @@ where $\mathcal{D}[\hat{\mathcal{O}}]\hat \rho = \hat{\mathcal{O}} \hat \rho \ha
 
 
 
-\subsection{Master equation solution in QuTiP}
+\subsection{Master equation solution in \textit{qutip}}
 
 Numerical simulations are crucial in studying the equation \eqref{eq:master} since is does not allow an analytical solution. We have been using the \textit{qutip}\cite{johansson2013qutip} quantum optics toolbox to simulate the dynamics and find the steady state of the system for various parameter combinations of the Hamiltonian.
 
-When modelling the experimental behaviour, we 
-
-\subsection{Experiment}
-\subsubsection{Device design and fabrication}
-The chip consist the transmission line capacitively couple to $\lambda/4$ coplanar waveguide resonator which capacitively couple to two transmons. Qubit control is achieved by external microwave driving line and two flux bias lines. 
-\subsubsection{Experimental parameters}
-\subsubsection{Experimental setup}
-The sample was measured in laboratory of artificial quantum systems at Moscow Institute of Physics and Technology. Cryogenic equipment was
-represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was 
-flux biased using YOKOGAWA GS200 current source.
-
-Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
+Two distinct modes of operation were used during the 
 
 
 \section{Results}
