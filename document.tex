@@ -123,13 +123,29 @@ The manuscript consists of four main parts and an Appendix. Section I is this in
 In this section, we provide the mathematical formulation of the employed models, specify the numerical approaches that were used in simulations and describe the experimental equipment and some measurement aspects.  
 
 \subsection{Experiment}
+
 \subsubsection{Device design and fabrication}
-The chip consist the transmission line capacitively couple to $\lambda/4$ coplanar waveguide resonator which capacitively couple to two transmons. Qubit control is achieved by external microwave driving line and two flux bias lines. 
+We have designed the SAM as a pair of transmon (Xmon\cite{barends2013coherent}) SAAs with asymmetric SQUIDs\cite{hutchings2017tunable} coupled to a single notch-type\cite{probst2015efficient} $\lambda/4$ resonator which serves both to couple\cite{majer2007coupling} the qubits and for the joint\cite{chow2010detecting} readout of their states. In \autoref{fig:experiment}~(a) the optical photograph of the device is shown depicting the layout of the components. The resonator in its upper part is connected to a coplanar waveguide through which the readout is performed. In its lower part, it is coupled to the transmons by a dual ``claw''\cite{barends2013coherent} coupler. Flux lines that allow independent control of the $ge$ transitions of the transmons are coming from the sides. Finally, the excitation waveguide coming from below directs microwave signal towards the SAM. In \autoref{fig:experiment}~(b) the equivalent electrical circuit of the device. The resonator fundamental mode is approximated as an LC-circuit (in the middle), the transmons are shown in colour on the sides as the LC-circuits as well, but with tunable non-linear inductances. The capacitively coupled excitation line is also shown in green. Finally, in \autoref{fig:experiment}~(c) we show schematically the $ge$ transitions of the transmons depending on the external magnetic flux. Since the effective junction of the first transmon is larger, its spectrum (orange) lies higher in frequency the spectrum of the second qubit (blue). Using both coils, it is possible to align them so that the lower sweet-spot of the orange qubit. As will be shown, this arrangement allows to see multiple energy level intersections including higher transmon levels, and thus we are measuring the SAM in the region shown with the dashed rectangle.
+
+
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{experiment}
-	\caption{Experimental details. \textbf{(a)} Sample optical photograph \textbf{(b)} Electrical scheme \textbf{(c)} Spectral lines of the qubits}
+	\caption{Experimental device. \textbf{(a)} Optical photograph of the device (false coloured). Two transmons (orange, 1 and blue, 2) are coupled capacitively to a $\lambda/4$ coplanar resonator. From both sides come the frequency control flux lines, and from below a microwave excitation waveguide is connected (green). \textbf{(b)} The equivalent electrical circuit. Tunable Josephson junctions are in fact SQUIDs with magnetic flux control. \textbf{(c)} Frequencies of the $ge$ transitions of the transmons $\omega_1(\Phi_e)$ and $\omega_2(\Phi_e)$ depending on the external magnetic flux (coloured correspondingly). In this work, we concentrate on the area inside the dashed rectangle.}
+	\label{fig:experiment}
 \end{figure}
+
+
+\begin{table}
+	\begin{tabular}{c|c|c|c}
+	Parameter & Resonator & Qubit 1 & Qubit 2\\\hline
+	$\omega/2\pi$ [GHz] & 7 & 5.12 - 6.9 & 4 - 5.45\\
+	$\Gamma_1$ [$\mu$s] & 0.1 & $\leq$ 10  &  $\leq$ 5\\
+	$\Gamma_2$ [$\mu$s] & - & $\leq$ 7  &  $\leq$ 1
+	\end{tabular}
+	\caption{Device parameters}
+\end{table}
+
 
 \subsubsection{Experimental parameters}
 \subsubsection{Experimental setup}
