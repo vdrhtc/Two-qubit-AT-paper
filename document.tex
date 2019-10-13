@@ -35,9 +35,12 @@
 
 \usepackage{graphicx}% Include figure files
 %\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
 \usepackage{fixme}
 %\usepackage[mathlines]{lineno}% Enable numbering of text and display math
 %\linenumbers\relax % Commence numbering lines
+\usepackage{hyperref}
+\usepackage{kbordermatrix}% http://www.hss.caltech.edu/~kcb/TeX/kbordermatrix.sty
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
@@ -46,7 +49,7 @@
 \usepackage{physics}
 \usepackage{xparse}
 \usepackage{bbm}
-\usepackage{hyperref}
+\usepackage{nicematrix}
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
@@ -54,6 +57,7 @@
 \renewcommand*{\figureautorefname}{Fig.}
 
 \newcommand{\mytitile}{Effects of strong interaction between light and matter in a superconducting artificial molecule}
+
 \begin{document}
 	\preprint{AIP/123-QED}
 	
@@ -79,7 +83,7 @@
 	\affiliation{ 
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
-
+	
 	\author{K. Shiyanov}
 
 	\affiliation{ 
@@ -107,12 +111,14 @@
 	
 	\maketitle
 \section{Introduction}
+
 Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to synthetic nature of SAA, their Hamiltonians can be pre-designed and engineered, and this makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime when the coupling strength between light and a quantum system approaches 1\% of their frequency has been a major milestone for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this landmark using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first discovery\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
 Moreover, SAA do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strong with the free-propagating EM-waves in the on-chip 1D waveguides\cite{astafiev2010resonance} without having to use cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already the ultra-strong coupling regime.
 
 In general, a quantum system exposed to strong external driving can experience various quantum phenomena explained by resonant single- and multi-photon transitions between energy levels. The most known examples are coherent population trapping, electromagnetically induced transparency (EIT)\cite{boller1991observation}, stimulated Raman adiabatic passage\cite{bergmann1998coherent} and Autler-Townes (A-T) splitting\cite{autler1955stark}. 
 
 In this work, we are studying effects of light-matter interaction that occur in a system of two coupled artificial atoms: a superconducting artificial molecule (SAM). In our experiment, we use two transmons\cite{koch2007charge} interacting with each other through a cavity bus\cite{majer2007coupling}. Microwave radiation is applied to this system through a coplanar on-chip antenna and transmon states may be monitored by dispersive readout using the same coupling cavity \cite{chow2010detecting}.
+
 
 It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAA as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics (see Appendix \ref{sec:3-level-at}); instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
 
@@ -121,6 +127,7 @@ The manuscript consists of four main parts and an Appendix. Section I is this in
 \section{Methods}
 
 In this section, we provide the mathematical formulation of the employed models, specify the numerical approaches that were used in simulations and describe the experimental equipment and some measurement aspects.  
+
 
 \subsection{Experiment}
 
@@ -170,6 +177,9 @@ A single transmon SAA can be considered as an oscillator with a quartic perturba
 where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or the  $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}.
 
 
+The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
+Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source; $n =\frac{1}{\sqrt{2}} (\frac{E_J}{8E_C})^{1/4}(b+b^{\dagger})$.
+
 To induce state transitions in a transmon one should irradiate it by a monochromatic external microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The interaction term between the transmon and this classical EM field is then modelled by the following operator: 
 \begin{equation}
 \hat H_{dr}/\hbar = \Omega\cos(\omega_d t)(\hat b+\hat b^{\dagger}),
@@ -198,8 +208,8 @@ As one can see, the collapse operators are in a separable form, i.e. acting only
 where $\mathcal{D}[\hat{\mathcal{O}}]\hat \rho = \hat{\mathcal{O}} \hat \rho \hat{\mathcal{O}}^\dag - \frac{1}{2}\{ \hat{\mathcal{O}}^\dag \hat{\mathcal{O}}, \hat \rho\}$.
 
 
-
 \subsection{Master equation solution in \textit{qutip}}
+
 
 Numerical simulations are crucial in studying the equation \eqref{eq:master} since is does not allow an analytical solution. We have been using the \textit{qutip}\cite{johansson2013qutip} quantum optics toolbox to simulate the dynamics and find the steady state of the system for various parameter combinations of the Hamiltonian.
 
@@ -209,12 +219,14 @@ Two distinct modes of operation were used during the
 \section{Results}
 
 \subsection{\label{sec:level1} Experimental and numerical parts}
+
 Two tone spectroscopy was found experimentally and shows good agreement with modelling data \autoref{fig:two-tone}. 
 
 \begin{figure*}
+
 	\centering
 	\includegraphics[width=\linewidth]{main_picture}
-	\caption{Two-tone spectroscopy: \textbf{(a)} Experiment;\textbf{(b)} Modelling ; the colorbar is common.  Clear flux-dependent transmon transitions are visible.}
+	\caption{Two-tone spectroscopy: (a) Experiment;b(b) Modelling ; the colorbar is common.  Clear flux-dependent transmon transitions are visible.}
 	\label{fig:two-tone}
 \end{figure*}
 
@@ -245,9 +257,13 @@ H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
 \end{equation}
 
 From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
+
+\renewcommand{\kbldelim}{(}% Left delimiter
+\renewcommand{\kbrdelim}{)}% Right delimiter
 \begin{widetext}
 	\begin{equation}\label{matrix} 
-	\text{$H^R$} = \left(\begin{matrix}
+	\text{$H^R$} = \kbordermatrix{
+	\ket{00} & \ket{10} & \ket{01} & \ket{11} & \ket{02} & \ket{12} \\
 	0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
 	\text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
 	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
@@ -259,7 +275,7 @@ From the simulation follows that a two-level approximation for first qubit and t
 	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
 	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
 		$} & \text{$\alpha$}-2 \text{$\Delta_2$}- \text{$\Delta_1$} \\
-	\end{matrix}\right)
+}
 	\end{equation}
 \end{widetext}
 Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{tr1}=0$,$\Delta_2 = \omega_d-\omega_{tr2}$.
@@ -340,8 +356,51 @@ where $g$ is the coupling strength and $a$ is the photon annihilation operator. 
 If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\Delta$ to $\Omega_R = \sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
 
 \section{Theoretical description of two-photon process}
+Perturbation theory allows semianalytical calculation of the transition rates (Rabi oscillation frequencies) for single and multi-photon processes.
 
+Let's consider the Hamiltonian $H = H_0+V(t)$, with time-dependent interaction $V(t)$ and "reference" part -- $H_0$ and wave function $\Psi(t)$ . After switching to the interaction picture $V(t)$ modifies to $\tilde{V}(t) = \exp(i H_0 t)V(t)\exp(-i H_0 t)$ and Schrödinger equation gives by $i \derivative{\psi(t)}{t}=\tilde{V}(t)\psi(t)$, where $\psi(t)=\exp(i H_0 t)\Psi(t)$. The reference states of $H_0$ will be denoted $\ket{j}$, $H_0 \ket{j} = \omega_j \ket{j}$ whence it follows that matrix elements  of the modified interaction take the form $\bra{j}\tilde{V}(t)\ket{i}=\exp(i(\omega_j-\omega_i)t)\bra{j}V(t)\ket{i}$. A "solution" of Schrödinger equation in interaction picture corresponding to the initial reference state $\ket{i}$ is
+\begin{equation}\label{forpsi}
+	\psi_i(t)=\ket{i} - i \int_{-\infty}^{t}dt_1\tilde{V}(t_1)\ket{\psi_i(t_1)}
+\end{equation} 
 
+The quantity of primary interest is not the wave function but the probability of transition from the initial state $\ket{i}\rightarrow\ket{f}$, where $\ket{f}$ is the final state of interest. Firstly, we find the transition amplitude $A_{fi} = \bra{f}U(t,t_0)\ket{i}=\bra{f}\psi_i(t)$ where $U(t,t_0)$ evolution operator. 
+
+Solving \autoref{forpsi} by simple iteration gives the series solution
+\begin{equation}
+	U(t,t_0) = 1+\sum_{n}U^{(n)}(t,t_0)
+\end{equation}
+\begin{equation}
+	U^{(n)}(t,t_0) = -i^n \int_{t_0}^{t}d t_1\tilde{V}(t_1)...\int_{t_0}^{t_{n-1}}d t_n\tilde{V}(t_n)
+\end{equation}
+For "weak" interaction the series may be truncated to a fine term $n$ and the $n$th- order transition amplitude $\bra{f}U^{(n)}(t,t_0)\ket{i}$ can be evaluated. 
+In our case the interaction in interaction picture satisfies the following relation
+\begin{equation}
+	\begin{split}
+	\tilde{V}(t)=\exp(i H_0 t) \Omega\cos(\omega_d t)(\hat b+\hat b^{\dagger})\exp(-i H_0 t)\overset{RWA}{=}\\ \exp(i H_0 t) \Omega(\hat b^{\dagger} e^{-i\omega_d t}+\hat be^{i\omega_d t})\exp(-i H_0 t)
+	\end{split}
+\end{equation}
+Taking the matrix element between the initial and the final states $\ket{i}$ and $\ket{f}$, one immediately obtains
+\begin{equation}
+	\begin{split}
+	\bra{f}U^{(1)}(t,t_0)\ket{i}=-i\int_{t_0}^{t}dt_1\tilde{V}(t_1)=\\-i\frac{\Omega}{2}\big[\int_{t_0}^{t}dt_1e^{i(\omega_f-\omega_i-\omega_d)t_1}\bra{f}b^{\dagger}\ket{i}+\\
+	\int_{t_0}^{t}dt_1e^{i(\omega_f-\omega_i+\omega_d)t_1}\bra{f}b\ket{i}\big]
+	\end{split}
+\end{equation}
+To calculate second-order term we used the following expression $\sum_{j}\ket{j}\bra{j}=\mathbbm{1}$.
+\begin{equation}
+	\begin{split}
+	\bra{f}U^{(2)}(t,t_0)\ket{i}=-\bra{f}\int_{t_0}^{t}dt_1\tilde{V}(t_1)\mathbbm{1}\int_{t_0}^{t_1}dt_2\tilde{V}(t_2)\ket{i}=\\-\int_{t_0}^{t}dt_1 e^{i(\omega_f-\omega_j)t_1}\bra{f}V(t_1)\ket{j}\int_{t_0}^{t_1}dt_2e^{i(\omega_j-\omega_i)t_2}\bra{j}V(t_2)\ket{i}
+	\end{split}
+\end{equation}
+Go over the long-time limit $t\rightarrow\infty$ in the final integral and collect the terms belongings to the same delta functions. This gives
+\begin{equation}
+	\begin{split}
+	\bra{f}U^{(2)}(\infty)\ket{i}=\\\frac{\pi i\Omega^2}{2}\bigg[\delta(\omega_f-\omega_i+2\omega_d)\sum_j\frac{\bra{f}b\ket{j}\bra{j}b\ket{i}}{\omega_j-\omega_i+\omega_d}+\\
+	\delta(\omega_f-\omega_i)\bigg(\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b\ket{i}}{\omega_j-\omega_i+\omega_d}+\\
+	\sum_j\frac{\bra{f}b\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg)+\\
+	\delta(\omega_f-\omega_i-2\omega_d)\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg]
+	\end{split}
+\end{equation}
 
 
 
@@ -350,7 +409,7 @@ If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\ome
 
 In order to determine which transitions correspond to the lines, the stationary Schrödinger equation was solved \autoref{fig:spectr} in three-level approximation for both of qubits. With the Hamiltonian of the system:
 \begin{equation}
-	H_{system} = H_{tr1}\otimes\mathbbm{1}+\mathbbm{1}\otimes H_{tr2}+H_{int}
+	H_{system} = H_{tr1}\otimes \mathbbm{1}+\mathbbm{1}\otimes H_{tr2}+H_{int}
 \end{equation}
 \begin{figure}[h]
 	\centering
