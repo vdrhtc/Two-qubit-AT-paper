@@ -67,10 +67,11 @@ class MainPicturePlot:
         #     self._cache[self.nstate] = C
 
         C = np.real(self._C_th.T)
-        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.039+0.005
+        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.039+0.005# + np.random.normal(scale=0.001,
+                                                           #                    size=C.shape)
 
         data = self._X_th, self._Y_th, C
-        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.05*np.max(C))
+        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.0*np.max(C))
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
