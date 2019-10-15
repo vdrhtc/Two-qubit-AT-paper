@@ -41,7 +41,7 @@ class MainPicturePlot:
 
     def plot_experiment(self, ax):
         data = self._X_exp, self._Y_exp, np.real(self._C_exp)
-        img1 = ax.pcolormesh(*data, rasterized=True)
+        img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
@@ -53,7 +53,7 @@ class MainPicturePlot:
         plt.text(-0.15, 1.1, "(a)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
 
-        self._zoom(ax, data)
+        self._zoom(ax, data, vmin=-0.005, vmax = 0.022)
 
     def plot_theory(self, ax):
 
@@ -67,11 +67,11 @@ class MainPicturePlot:
         #     self._cache[self.nstate] = C
 
         C = np.real(self._C_th.T)
-        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.039+0.005# + np.random.normal(scale=0.001,
+        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.027+(0.027/2-0.005)# + np.random.normal(scale=0.001,
                                                            #                    size=C.shape)
-
+        C = C
         data = self._X_th, self._Y_th, C
-        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.0*np.max(C))
+        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C))
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
@@ -83,10 +83,10 @@ class MainPicturePlot:
         plt.text(-0.075, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
 
-        self._zoom(ax, data)
+        self._zoom(ax, data, vmin=np.min(C), vmax = np.max(C))
 
 
-    def _zoom(self, ax, data):
+    def _zoom(self, ax, data, vmin, vmax):
 
         color = "black"
         axins = zoomed_inset_axes(ax, 2.5, loc=4)  # zoom-factor: 2.5, location: upper-left
@@ -95,13 +95,13 @@ class MainPicturePlot:
         # ax1.broken_barh([(3.1,0.4)],(5.31,0.02),edgecolors = 'r', facecolors = 'none',linewidth= 1, linestyle = '--')
         for axis in ['top', 'bottom', 'left', 'right']:
             axins.spines[axis].set_color(color)
-        axins.pcolormesh(*data, rasterized=True)
+        axins.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
         for axis in ['top', 'bottom', 'left', 'right']:
             axins1.spines[axis].set_color(color)
-        axins1.pcolormesh(*data, rasterized=True)
+        axins1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
         for axis in ['top', 'bottom', 'left', 'right']:
             axinss1.spines[axis].set_color(color)
-        axinss1.pcolormesh(*data, rasterized=True)
+        axinss1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
         x1, x2, y1, y2 = 3.5, 3.8, 5.25, 5.29  # specify the limits
         axins.set_xlim(x1, x2)  # apply the x-limits
         axins.set_ylim(y1, y2)  # apply the y-limits
