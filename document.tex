@@ -258,13 +258,12 @@ From the simulation follows that a two-level approximation for first qubit and t
 }
 	\end{equation}
 \end{widetext}
-Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{tr1}=0$,$\Delta_2 = \omega_d-\omega_{tr2}$.
+Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{1}=0$,$\Delta_2 = \omega_d-\omega_{2}$, $\delta_{\omega} = \omega_{dr1}-\omega_{dr2}$.
 Let's consider the Hamiltonian (\autoref{matrix}) in details. Divide it into three parts: time-dependent $(V_t)$, the part responsible for the interaction between the qubits $(V_J)$ and all the rest $(H_0)$.
 \begin{equation}
 	H^R=H_0+V_J+V_t
 \end{equation}
-The $\Omega_1\gg \Omega_2,\Delta_2\gg J$, so the driven field on the first qubit is strong and form the dressed states defined by the Hamiltonian $H_0$.
-The Hamiltonian $H_0$ is station and we can find eigenvectors and eigenvalues. The drive on the second qubit is weak with very low intensity, so we can neglect any perturbation introduced by second drive on the position, width os the dressed states.
+The $\Omega_1\gg \Omega_2,\Delta_2\gg J$, so the driven field on the first qubit is strong and form the dressed states defined by the Hamiltonian $H_0$, which is stationary, so the levels can be found and schematically depicted in \autoref{fig:main_scheme}~(b). The drive on the second qubit is weak with very low intensity, so we can neglect any perturbation introduced by second drive on the position, width off the dressed states.
 Firstly, we consider the system of non-interacting qubits $(J=0)$. In this case some transitions are prohibited and the splitting we are interested in is not observed. 
 Therefore a non-zero interaction between qubits is necessary to observe AT effect.
 
@@ -336,14 +335,14 @@ where $g$ is the coupling strength and $a$ is the photon annihilation operator. 
 If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\Delta$ to $\Omega_R = \sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
 
 \section{Theoretical description of two-photon process}
-Perturbation theory allows semianalytical calculation of the transition rates (Rabi oscillation frequencies) for single and multi-photon processes.
+Perturbation theory allows semianalytical calculation of the transition rates for single and multi-photon processes\cite{faisal2013theory}.
 
-Let's consider the Hamiltonian $H = H_0+V(t)$, with time-dependent interaction $V(t)$ and "reference" part -- $H_0$ and wave function $\Psi(t)$ . After switching to the interaction picture $V(t)$ modifies to $\tilde{V}(t) = \exp(i H_0 t)V(t)\exp(-i H_0 t)$ and Schrödinger equation gives by $i \derivative{\psi(t)}{t}=\tilde{V}(t)\psi(t)$, where $\psi(t)=\exp(i H_0 t)\Psi(t)$. The reference states of $H_0$ will be denoted $\ket{j}$, $H_0 \ket{j} = \omega_j \ket{j}$ whence it follows that matrix elements  of the modified interaction take the form $\bra{j}\tilde{V}(t)\ket{i}=\exp(i(\omega_j-\omega_i)t)\bra{j}V(t)\ket{i}$. A "solution" of Schrödinger equation in interaction picture corresponding to the initial reference state $\ket{i}$ is
+Let's consider the Hamiltonian $H = H_0+V(t)$, with time-dependent interaction $V(t)$ and "reference" part -- $H_0$. After switching to the interaction picture $V(t)$ modifies to $\tilde{V}(t) = \exp(i H_0 t)V(t)\exp(-i H_0 t)$ and Schrödinger equation gives by $i \derivative{\tilde{\psi}(t)}{t}=\tilde{V}(t)\tilde{\psi}(t)$. The reference states of $H_0$ will be denoted as $\ket{j}$, $H_0 \ket{j} = \omega_j \ket{j}$ whence it follows that matrix elements  of the modified interaction take the form $\bra{j}\tilde{V}(t)\ket{i}=\exp(i(\omega_j-\omega_i)t)\bra{j}V(t)\ket{i}$. A "solution" of Schrödinger equation in interaction picture corresponding to the initial reference state $\ket{i}$ is
 \begin{equation}\label{forpsi}
-	\psi_i(t)=\ket{i} - i \int_{-\infty}^{t}dt_1\tilde{V}(t_1)\ket{\psi_i(t_1)}
+	\tilde{\psi_i}(t)=\ket{i} - i \int_{-\infty}^{t}dt_1\tilde{V}(t_1)\ket{\tilde{\psi_i}(t_1)}
 \end{equation} 
 
-The quantity of primary interest is not the wave function but the probability of transition from the initial state $\ket{i}\rightarrow\ket{f}$, where $\ket{f}$ is the final state of interest. Firstly, we find the transition amplitude $A_{fi} = \bra{f}U(t,t_0)\ket{i}=\bra{f}\psi_i(t)$ where $U(t,t_0)$ evolution operator. 
+Mainly important for us is to find not the wave function but the probability of transition from the initial state $\ket{i}\rightarrow\ket{f}$, where $\ket{f}$ is the final state. Firstly, we find the transition amplitude $A_{fi} = \bra{f}U(t,t_0)\ket{i}=\bra{f}\psi_i(t)$ where $U(t,t_0)$ evolution operator. 
 
 Solving \autoref{forpsi} by simple iteration gives the series solution
 \begin{equation}
@@ -381,11 +380,22 @@ Go over the long-time limit $t\rightarrow\infty$ in the final integral and colle
 	\delta(\omega_f-\omega_i-2\omega_d)\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg]
 	\end{split}
 \end{equation}
-
+The probability of two-photon transition from state $\ket{i}$ to state $\ket{f}$ is simply the square modulus of the corresponding amplitude. So, $P^{(2)}_{i\rightarrow f}= |	\bra{f}U^{(2)}(\infty)\ket{i}|^2$.
+The rate (probability per unit interaction time T) of absorption of $2$ photons is defined as:
+\begin{equation}
+	W^{(2)}_{i\rightarrow f}=\lim\limits_{T\rightarrow\infty}\frac{P^{(2)}_{i\rightarrow f}}{T}
+\end{equation}
+For simplifier the equation we have made use of the relation:
+\begin{equation}\nonumber
+	\delta(\omega_f-\omega_i-2\omega_d) =\frac{1}{2\pi} \lim\limits_{T\rightarrow\infty}\int_{-T/2}^{T/2}e^{i(\omega_f-\omega_i-2\omega_d)t}dt = \lim\limits_{T\rightarrow\infty}\frac{T}{2\pi}
+\end{equation} 
+For $\omega_f=\omega_i+2\omega_d$.
+\begin{equation}
+	W^{(2)}_{i\rightarrow f}=\frac{\pi\Omega^4}{8}\bigg|\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg|^2\delta(\omega_f-\omega_i-2\omega_d)
+\end{equation}
 
 
 \section{Text}
-
 
 In order to determine which transitions correspond to the lines, the stationary Schrödinger equation was solved \autoref{fig:spectr} in three-level approximation for both of qubits. With the Hamiltonian of the system:
 \begin{equation}
@@ -399,11 +409,6 @@ In order to determine which transitions correspond to the lines, the stationary 
 		$\ket{12}$ and the fourth from  $\ket{10}$ to  $\ket{02}$, where $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively}
 	\label{fig:spectr}
 \end{figure}
-
-
- Let's described the anti-crossing highlighted in red in the picture. 
- 
-
 
 
 \bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
