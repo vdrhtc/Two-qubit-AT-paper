@@ -49,7 +49,6 @@
 \usepackage{physics}
 \usepackage{xparse}
 \usepackage{bbm}
-\usepackage{nicematrix}
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
@@ -126,74 +125,106 @@ The manuscript consists of four main parts and an Appendix. Section I is this in
 
 \section{Methods}
 
-In this section, we provide the mathematical formulation of the employed models, specify the numerical approaches that were used in simulations and describe the experimental equipment and some measurement aspects.  
+\subsection{Device design and fabrication}
+We have designed the SAM as a pair of transmon (Xmon\cite{barends2013coherent}) SAAs with asymmetric SQUIDs\cite{hutchings2017tunable} coupled to a single notch-type\cite{probst2015efficient} $\lambda/4$ resonator ($\omega_r/2\pi \equiv f_r = 7$ GHz, $\kappa = 1/100\ \text{ns}^{-1}$) which serves both to couple\cite{majer2007coupling} the qubits and for the joint\cite{chow2010detecting} readout of their states. In \autoref{fig:experiment}~(a) the optical photograph of the device is shown depicting the layout of the components. The resonator in its upper part is connected to a coplanar waveguide through which the readout is performed. In its lower part, it is coupled to the transmons by a dual ``claw''\cite{barends2013coherent} coupler. Flux lines that allow independent control of the $ge$ transitions of the transmons are coming from the sides. Finally, the excitation waveguide coming from below directs microwave signal towards the SAM. In \autoref{fig:experiment}~(b) the equivalent electrical circuit of the device. The resonator fundamental mode is approximated as an LC-circuit (in the middle), the transmons are shown in colour on the sides as the LC-circuits as well, but with tunable non-linear inductances. The capacitively coupled excitation line is also shown in green. Finally, in \autoref{fig:experiment}~(c) we show schematically the $ge$ transitions of the transmons depending on the external magnetic flux. Since the effective junction of the first transmon is larger, its spectrum (orange) lies higher in frequency the spectrum of the second qubit (blue). Using both coils, it is possible to align them so that the lower sweet-spot of the orange transmon is just below the upper sweet-spot of the blue transmon (see the dashed rectangle,  \autoref{fig:experiment}~(c)). This is convenient as it is possible to track higher energy level intersections through multi-photon transitions using a single spectroscopic scan since the transmons are staying close to each other in frequency. Additionally, the transmons are better protected from the flux noise in this area being close to their sweet spots.
 
+The fabrication process...
 
-\subsection{Experiment}
-\subsubsection{Device design and fabrication}
-The chip consist the transmission line capacitively couple to $\lambda/4$ coplanar waveguide resonator which capacitively couple to two transmons. Qubit control is achieved by external microwave driving line and two flux bias lines. 
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{experiment}
-	\caption{Experimental details. \textbf{(a)} Sample optical photograph \textbf{(b)} Electrical scheme \textbf{(c)} Spectral lines of the qubits}
+	\caption{\textbf{(a)} Optical photograph of the device (false coloured). Two transmons (orange, 1 and blue, 2) are coupled capacitively to a $\lambda/4$ coplanar resonator. From both sides come the frequency control flux lines, and from below a microwave excitation waveguide is connected (green). \textbf{(b)} The equivalent electrical circuit. Tunable Josephson junctions are in fact SQUIDs with magnetic flux control. \textbf{(c)} Frequencies of the $ge$ transitions of the transmons $\omega_1(\Phi_e)$ and $\omega_2(\Phi_e)$ depending on the external magnetic flux (coloured correspondingly). In this work, we concentrate on the area inside the dashed rectangle.}
+	\label{fig:experiment}
 \end{figure}
 
-\subsubsection{Experimental parameters}
-\subsubsection{Experimental setup}
-The sample was measured in laboratory of artificial quantum systems at Moscow Institute of Physics and Technology. Cryogenic equipment was
-represented by BlueFors LD250 dilution refrigerator, with base temperature of 16 mK. The microwave equipment included KEYSIGHT PNA-L N5232A 300 kHz-20 GHz vector network analyser, Agilent MXG N5183B 9 kHz - 40 GHz analog signal generator. The sample was 
-flux biased using YOKOGAWA GS200 current source.
 
-Microwave line was thermalized with 60 dB of attenuation, additional 20 dB of attenuation were introduced on a directional coupler which added the second tone from the $\mu$-wave source. After leaving the sample the signal passed through two isolators and a hybrid coupler. Finally, the signal was amplified with 4-8 GHz LNF amplifier at 4 K and a with a room-temperature amplifier.
+\begin{table}
+	\begin{ruledtabular}
+	\begin{tabular}{rll}
+	Parameter & Transmon 1  & Transmon 2\\\hline
+	$\omega/2\pi$ [GHz] & 5.12 - 6.3  & 4 - 5.45\\
+	$\alpha/2\pi$ [MHz] & 250 & 250 \\
+	$T_1$ [$\mu$s]  & 6.82 &  4.41 \\
+	$T_2^*$ [$\mu$s]  & 5.14  &  3.33\\\hline
+	$J/2\pi$ [MHz] &\multicolumn{2}{c}{10} 
+	\end{tabular}
+	\end{ruledtabular}
+	\caption{SAM parameters. Transmons are only different in the frequency tuning range and coherence times measured in the lower sweet spot for the 1\textsuperscript{st} one and in the higher sweet spot for the 2\textsuperscript{nd}.}
+\end{table}
 
 
+\subsection{Theoretical description of the SAM}
 
-\subsection{Theoretical description of the system}
-
-A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators (this approach is covered Appendix) and write down its Hamiltonian using the annihilation operator $\hat b$:
+A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators (this approach is covered Appendix) and write down its Hamiltonian using the annihilation operator $\hat b$ ($\hbar = 1$):
 \begin{equation}
-\hat H_{tr}/\hbar = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
+\hat{{H}}_{tr} = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
 \end{equation}
-where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or the  $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}.
+where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or the  $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}. In our modelling, we take into account only the three lowest states of the transmon ($\ket{0},\ \ket{1}$ and $\ket{2}$).
 
-
-The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
-Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source; $n =\frac{1}{\sqrt{2}} (\frac{E_J}{8E_C})^{1/4}(b+b^{\dagger})$.
-
-To induce state transitions in a transmon one should irradiate it by a monochromatic external microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The interaction term between the transmon and this classical EM field is then modelled by the following operator: 
+To induce state transitions in a transmon one should irradiate it by a monochromatic microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The interaction term between the transmon and the field is then modelled by the following operator: 
 \begin{equation}
-\hat H_{dr}/\hbar = \Omega\cos(\omega_d t)(\hat b+\hat b^{\dagger}),
+\hat H_{dr} = \Omega (\hat b+\hat b^{\dagger}) \cos\omega_d t,
 \end{equation}
 where $\Omega$ stands for the frequency of the Rabi oscillations between $\ket{0}$ and $\ket{1}$.
 
-Now, for the molecule composed of two coupled transmons, the complete Hamiltonian contains two terms describing each of them in isolation (with the corresponding annihilation operators $\hat b$ and $\hat c$ and the $ge$ frequencies $\omega_{1,2}$), two terms representing the interaction of each transmon with the driving field at the same frequency $\omega_d$, and the qubit-qubit interaction term:
+Now, the complete Hamiltonian of SAM contains two terms describing each of them in isolation (with the corresponding annihilation operators $\hat b$ and $\hat c$ and the $ge$ frequencies $\omega_{1,2}$), two terms representing the interaction of each transmon with the driving field at the same frequency $\omega_d$, and the transmon-transmon interaction term:
 \begin{equation}\label{Hsystem}
 \hat H = \hat H_{tr1}+\hat H_{tr2}+\hat H_{dr1}+\hat H_{dr2}+\hat H_{int},
 \end{equation}
-where $\hat H_{int}/\hbar= J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms.
+where $\hat H_{int} = J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms. In the following, we will also transform \eqref{eq:master} into the frame rotating with both drives by an operator
+\begin{align}
+&\hat R = \exp[i (\omega_d^1 b^{\dagger}b+\omega_d^2 c^{\dagger}c)t],\\
+&\hat H_R = \hat R^{\dagger}\hat H \hat R + i\hat R^{\dagger}\partial_t \hat R.
+\end{align}
+After the transformation and application of RWA:
+\begin{equation}
+\begin{aligned}
+	\omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_{(1,2)} - \omega_d^{(1,2)},\\
+	\hat H_{int} &\rightarrow J \left[\hat b^\dag \hat c e^{-(\omega_d^1 - \omega_d^2)t} + \hat b \hat c^\dag e^{(\omega_d^1 - \omega_d^2)t}\right],\\
+	\hat H_{dr}^1 &\rightarrow \frac{\Omega_1}{2}(\hat b  + \hat b^\dag),\\ 
+	\hat H_{dr}^2 &\rightarrow \frac{\Omega_2}{2}(\hat c  + \hat c^\dag).
+\end{aligned}
+\label{eq:RWA}
+\end{equation}
 
 Besides the unitary evolution, we take into account the incoherent processes of relaxation and dephasing for each transmon. They are modelled using the Lindblad equation with the following collapse operators:
 \begin{equation}\
 \begin{split}
-\hat{\mathcal{O}}_{\gamma, 1} = \sqrt{\gamma_1}\, \hat b,\ 
-\hat{\mathcal{O}}_{\phi, 1} = \sqrt{2\gamma_{\phi,1}}\, \hat b^\dag \hat b,\\
-\hat{\mathcal{O}}_{\gamma,2} = \sqrt{\gamma_2}\, \hat c,\ 
-\hat{\mathcal{O}}_{\phi,2} = \sqrt{2\gamma_{ \phi,2}}\, \hat c^\dag \hat c.
+\hat{{O}}_{\gamma, 1} = \sqrt{\gamma_1}\, \hat b,\ 
+\hat{{O}}_{\phi, 1} = \sqrt{2\gamma_{\phi,1}}\, \hat b^\dag \hat b,\\
+\hat{{O}}_{\gamma,2} = \sqrt{\gamma_2}\, \hat c,\ 
+\hat{{O}}_{\phi,2} = \sqrt{2\gamma_{ \phi,2}}\, \hat c^\dag \hat c.
 \end{split}
 \end{equation}
 As one can see, the collapse operators are in a separable form, i.e. acting only upon a single transmon each. This is a valid approach until the coupling strength $J$ is not too large\cite{beaudoin2011dissipation}. Therefore, the complete evolution equation for the system density matrix $\hat \rho$ is
 \begin{equation}
-\partial_t \hat \rho = \frac{i}{\hbar} [\hat \rho, \hat H] + \sum_{\alpha, i} \mathcal{D}[\hat{\mathcal{O}}_{\alpha, i}] \hat \rho, \label{eq:master}
+\partial_t \hat \rho = {i}[\hat \rho, \hat H] + \sum_{\alpha, i} \mathcal{D}[\hat{O}_{\alpha, i}] \hat \rho = \mathcal{L}\hat\rho, \label{eq:master}
 \end{equation}
-where $\mathcal{D}[\hat{\mathcal{O}}]\hat \rho = \hat{\mathcal{O}} \hat \rho \hat{\mathcal{O}}^\dag - \frac{1}{2}\{ \hat{\mathcal{O}}^\dag \hat{\mathcal{O}}, \hat \rho\}$.
+where $\mathcal{D}[\hat{{O}}]\hat \rho = \hat{{O}} \hat \rho \hat{{O}}^\dag - \frac{1}{2}\{ \hat{{O}}^\dag \hat{{O}}, \hat \rho\}$ and $\mathcal{L}$ is the Liouville superoperator or the Liouvillian.
 
 
-\subsection{Master equation solution in \textit{qutip}}
+The readout resonator is not included in the model since in the dispersive regime is does not affect the dynamics of the SAM. The readout is modelled just by using the measurement operator $\hat M(f_p)$ that can be obtained by measuring the transmission $S_{21}(f_p)$ ($f_p$ is the probe frequency near the resonance) through the sample for the nine different states of the SAM $\ket{ij},\ i=0..2,\ j=0..2$\cite{filipp2009two}. Another way to find $\hat M(f_p)$ is to calculate the transmission using the dispersive shifts for these states by correspondingly offsetting the experimental resonance curve. Since we have not directly measured the dispersive shifts, in our modelling they are treated as fitting parameters. Finally, the observable value for any state $\hat \rho$ is calculated as $S_{21}^{sim}(f_p) = \Tr[\hat M(f_p) \hat \rho]$.
 
 
-Numerical simulations are crucial in studying the equation \eqref{eq:master} since is does not allow an analytical solution. We have been using the \textit{qutip}\cite{johansson2013qutip} quantum optics toolbox to simulate the dynamics and find the steady state of the system for various parameter combinations of the Hamiltonian.
+\subsection{Numerical solution in \textit{qutip}}
 
-Two distinct modes of operation were used during the 
+
+Numerical simulations are crucial for studying the equation \eqref{eq:master} since is does not allow  analytical solution. Therefore, we have been using the \textit{qutip}\cite{johansson2013qutip} (quantum optics toolbox) to simulate the dynamics and find the steady state of the system for various parameter combinations of the Liouvillian.
+
+Two distinct modes of simulation were used during the modelling. The first one is for the Liouvillians that do not explicitly depend on time (stationary case). In this case, the steady state $\hat \rho_{ss}$ of the system should be calculated from the set of linear equations obtained from \eqref{eq:master}:
+\begin{equation}
+\partial_t \hat \rho = 0 = \mathcal{L} \hat \rho
+\end{equation}
+This equation is solved with the qutip's \textit{steadystate} function\footnote{http://qutip.org/docs/4.0.2/guide/guide-steady.html}. This method is applicable when the driving of the two transmons is at the same frequency since from \eqref{eq:RWA} follows that $\hat H_{int}$ becomes time independent when $\omega_d^1 = \omega_d^2$.
+
+The second mode is required when it is not possible to avoid the time-dependence of the Liouvillian. This is the case when the transmons have to be excited at different frequencies ($\omega_d^1 - \omega_d^2 = \delta \neq 0$). From \eqref{eq:RWA} we find that even in the doubly-rotating frame $\hat H_{int}$ is oscillating, and it is not possible to simply drop this term in RWA because this will lead to qualitatively different results. In this case, to find the steady state of the system we employ the qutip's \textit{propagator} and \textit{propagator\_steadystate} functions. The propagator is a completely positive map $\Lambda(t_1, t_0): \hat \rho(t_0) \rightarrow \hat \rho(t_1)$ describing the time evolution of the system density matrix; for \eqref{eq:master}, it is defined as
+\begin{equation}
+\Lambda(t_1, t_0) = \mathcal{T} \exp [\int_{t_0}^{t_1} \mathcal L(\tau) d\tau],
+\end{equation}
+where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is periodic with a period of $T = 2\pi/\delta$, it is possible to calculate the steady state as the eigenvector $\hat \rho_{ss}$ of the single-period propagator $\Lambda(T, 0)$ corresponding to its largest eigenvalue\cite{dittrich1998quantum, rivas2012open}. Upon infinite applications of $\Lambda$: 
+\[
+\lim_{n\to \infty} \left[\Lambda(T, 0)\right]^n \hat \rho = \Lambda(nT, 0) \hat \rho \to \hat \rho_{ss}.
+\]
 
 
 \section{Results}
@@ -213,17 +244,17 @@ Two tone spectroscopy was found experimentally and shows good agreement with mod
 \begin{figure*}
 	\centering
 	\includegraphics[width=.9\linewidth]{main_scheme}
-	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the orange are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be two $\Omega_1^R$.}
+	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the red are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be two $\Omega_1^R$.}
 	\label{fig:main_scheme}
 \end{figure*}
 
 We obtain illustrative example of dressed states\autoref{fig:difdrive}. On this figure the microwave drive acts only on the one of qubits. 
-\begin{figure}
+\begin{figure*}
 	\centering
 	\includegraphics[width=\linewidth]{drawing}
 	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
 	\label{fig:difdrive}
-\end{figure}
+\end{figure*}
 
 
 \subsection{Theoretical description of the observed spectral lines}
@@ -238,22 +269,22 @@ H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
 
 From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
 
-\renewcommand{\kbldelim}{(}% Left delimiter
-\renewcommand{\kbrdelim}{)}% Right delimiter
+\renewcommand{\kbldelim}{[}% Left delimiter
+\renewcommand{\kbrdelim}{]}% Right delimiter
 \begin{widetext}
 	\begin{equation}\label{matrix} 
 	\text{$H^R$} = \kbordermatrix{
-	\ket{00} & \ket{10} & \ket{01} & \ket{11} & \ket{02} & \ket{12} \\
-	0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
-	\text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
-	\text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
+	&\ket{00} & \ket{10} & \ket{01} & \ket{11} & \ket{02} & \ket{12} \\
+	\ket{00}& 0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
+	\ket{10} & \text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
+	\ket{01} & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
 	\text{$\Omega_1$/2} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 \\
-	0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2$} &
+	\ket{11} & 0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2$} &
 	\text{$-\Delta_2 -\Delta_1$} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
 			$} t}/2 \\
-	0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t}/2 & \sqrt{2} J &
+	\ket{02} & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t}/2 & \sqrt{2} J &
 	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
-	0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
+	\ket{12} & 0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
 		$} & \text{$\alpha$}-2 \text{$\Delta_2$}- \text{$\Delta_1$} \\
 }
 	\end{equation}
@@ -334,6 +365,7 @@ where $g$ is the coupling strength and $a$ is the photon annihilation operator. 
 \]
 If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\Delta$ to $\Omega_R = \sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
 
+
 \section{Theoretical description of two-photon process}
 Perturbation theory allows semianalytical calculation of the transition rates for single and multi-photon processes\cite{faisal2013theory}.
 
@@ -394,6 +426,13 @@ For $\omega_f=\omega_i+2\omega_d$.
 	W^{(2)}_{i\rightarrow f}=\frac{\pi\Omega^4}{8}\bigg|\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg|^2\delta(\omega_f-\omega_i-2\omega_d)
 \end{equation}
 
+\section{Measurement setup}
+The sample was measured in a BlueFors LD250 dilution refrigerator at 16 mK. For the readout a Keysight PNA-L N5232A VNA was used. For the coherent excitation of the SAM, we used an Agilent MXG N5183B analog signal generator. The sample was 
+flux biased using Yokogawa GS200 current sources (two for the flux lines and one for the external coil wrapped around the sample).
+
+Input microwave lines were isolated from high-temperature noise with 60 dB of attenuation (10 @ 4K, 10 @ 1K, 20 @ 100 and 16 mK) and custom-made IR filters. Coaxial flux-bias lines were attenuated by 20 dB @ 4K and IR filtered as well. Output path contained two 20 dB isolators and two amplifiers: the 4-14 GHz LNF amplifier at the 4 K stage and the room-temperature LNF amplifier.
+
+
 
 \section{Text}
 
@@ -411,5 +450,15 @@ In order to determine which transitions correspond to the lines, the stationary 
 \end{figure}
 
 
+<<<<<<< HEAD
+=======
+ Let's described the anti-crossing highlighted in red in the picture. 
+ 
+ The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
+ Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source; $n =\frac{1}{\sqrt{2}} (\frac{E_J}{8E_C})^{1/4}(b+b^{\dagger})$.
+
+
+
+>>>>>>> b213165e9833f15556191a573b4864348e20bdb1
 \bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
 \end{document}
