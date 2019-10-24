@@ -5668,11 +5668,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.97492585"
-     inkscape:cx="436.92376"
-     inkscape:cy="80.478929"
+     inkscape:zoom="1.3787534"
+     inkscape:cx="503.35434"
+     inkscape:cy="27.638098"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="surface8514651"
      showgrid="false"
      showguides="false"
      inkscape:guide-bbox="true"
@@ -5820,7 +5820,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -9886,18 +9886,18 @@
        inkscape:connector-curvature="0" />
     <g
        id="g122509-2"
-       style="stroke:#000000;stroke-opacity:1"
+       style="stroke:#ff0000"
        transform="translate(106.11693,25.529073)">
       <path
          inkscape:connector-curvature="0"
          id="path122490-2"
          d="m 75.49865,157.44816 3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
       <path
          inkscape:connector-curvature="0"
          id="path122490-6-4"
          d="m 79.004379,157.44816 -3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
     <path
        style="opacity:1;fill:#1f77b4;fill-opacity:1;stroke:#1f77b4;stroke-width:0.49999991;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker50857-8-92-9-3-3);paint-order:fill markers stroke"
@@ -9906,18 +9906,18 @@
        inkscape:connector-curvature="0" />
     <g
        id="g122509-1-6"
-       style="fill:#ff0000;stroke:#000000;stroke-opacity:1"
+       style="fill:#ff0000;stroke:#ff0000"
        transform="translate(112.52734,24.293649)">
       <path
          inkscape:connector-curvature="0"
          id="path122490-1-8"
          d="m 75.49865,157.44816 3.505729,3.50573"
-         style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
       <path
          inkscape:connector-curvature="0"
          id="path122490-6-8-0"
          d="m 79.004379,157.44816 -3.505729,3.50573"
-         style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
     <path
        style="opacity:1;fill:#d62728;fill-opacity:1;stroke:#d62728;stroke-width:0.49999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker50857-8-5-9-3-1-8);paint-order:fill markers stroke"
@@ -9929,18 +9929,18 @@
        sodipodi:nodetypes="cc" />
     <g
        id="g122509-4-6"
-       style="stroke:#000000;stroke-opacity:1"
+       style="stroke:#ff0000"
        transform="translate(90.341407,4.1455622)">
       <path
          inkscape:connector-curvature="0"
          id="path122490-7-9"
          d="m 75.49865,157.44816 3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
       <path
          inkscape:connector-curvature="0"
          id="path122490-6-2-3"
          d="m 79.004379,157.44816 -3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
     <path
        style="opacity:1;fill:#1f77b4;fill-opacity:1;stroke:#1f77b4;stroke-width:0.49999991;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker50857-8-92-9-3-0-2);paint-order:fill markers stroke"
@@ -9950,18 +9950,18 @@
        sodipodi:nodetypes="cc" />
     <g
        id="g122509-4-0-0"
-       style="stroke:#000000;stroke-opacity:1"
+       style="stroke:#ff0000"
        transform="translate(106.09464,0.38144354)">
       <path
          inkscape:connector-curvature="0"
          id="path122490-7-3-5"
          d="m 75.49865,157.44816 3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
       <path
          inkscape:connector-curvature="0"
          id="path122490-6-2-0-4"
          d="m 79.004379,157.44816 -3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
     <g
        id="surface4920646-9"
@@ -10343,18 +10343,18 @@
          id="flowPara5798-6-5-0"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.66666794px;font-family:STIX;-inkscape-font-specification:STIX">(с)</flowPara></flowRoot>    <g
        id="g122509-4-0-0-3"
-       style="stroke:#000000;stroke-opacity:1"
+       style="stroke:#ff0000"
        transform="translate(94.683116,-14.856053)">
       <path
          inkscape:connector-curvature="0"
          id="path122490-7-3-5-8"
          d="m 75.49865,157.44816 3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
       <path
          inkscape:connector-curvature="0"
          id="path122490-6-2-0-4-6"
          d="m 79.004379,157.44816 -3.505729,3.50573"
-         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+         style="opacity:1;fill:#ff6600;fill-opacity:1;stroke:#ff0000;stroke-width:0.60000002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
     </g>
     <g
        id="surface7873330"
@@ -10583,7 +10583,7 @@
         </g>
         <g
            id="g139261"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139259"
              y="38.510159"
@@ -10591,11 +10591,11 @@
              xlink:href="#glyph1-1-18"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139265"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139263"
              y="40.00391"
@@ -10603,11 +10603,11 @@
              xlink:href="#glyph2-1-88"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139269"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139267"
              y="38.510159"
@@ -10615,11 +10615,11 @@
              xlink:href="#glyph5-1-1"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139273"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139271"
              y="38.510159"
@@ -10627,11 +10627,11 @@
              xlink:href="#glyph3-2-2"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139277"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139275"
              y="34.894138"
@@ -10639,11 +10639,11 @@
              xlink:href="#glyph4-1-6"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139281"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139279"
              y="40.982029"
@@ -10651,11 +10651,11 @@
              xlink:href="#glyph2-1-88"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139285"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139283"
              y="38.510159"
@@ -10663,11 +10663,11 @@
              xlink:href="#glyph1-2-115"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
         <g
            id="g139289"
-           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848">
+           style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1">
           <use
              id="use139287"
              y="38.510159"
@@ -10675,7 +10675,7 @@
              xlink:href="#glyph3-3-6"
              width="100%"
              height="100%"
-             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848" />
+             style="fill:#d62728;fill-opacity:1;stroke-width:0.88177848;stroke:#d62728;stroke-opacity:1" />
         </g>
       </g>
     </g>
