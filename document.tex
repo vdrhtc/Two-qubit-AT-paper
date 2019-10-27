@@ -49,6 +49,9 @@
 \usepackage{physics}
 \usepackage{xparse}
 \usepackage{bbm}
+\usepackage{xcolor}
+
+
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
@@ -111,6 +114,7 @@
 	\maketitle
 \section{Introduction}
 
+
 Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to synthetic nature of SAA, their Hamiltonians can be pre-designed and engineered, and this makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime when the coupling strength between light and a quantum system approaches 1\% of their frequency has been a major milestone for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this landmark using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first discovery\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
 Moreover, SAA do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strong with the free-propagating EM-waves in the on-chip 1D waveguides\cite{astafiev2010resonance} without having to use cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already the ultra-strong coupling regime.
 
@@ -143,7 +147,7 @@ The fabrication process...
 	\begin{tabular}{rll}
 	Parameter & Transmon 1  & Transmon 2\\\hline
 	$\omega/2\pi$ [GHz] & 5.12 - 6.3  & 4 - 5.45\\
-	$\alpha/2\pi$ [MHz] & 250 & 250 \\
+	$\alpha/2\pi$ [MHz] & 220 & 220 \\
 	$T_1$ [$\mu$s]  & 6.82 &  4.41 \\
 	$T_2^*$ [$\mu$s]  & 5.14  &  3.33\\\hline
 	$J/2\pi$ [MHz] &\multicolumn{2}{c}{10} 
@@ -155,7 +159,7 @@ The fabrication process...
 
 \subsection{Theoretical description of the SAM}
 
-A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators (this approach is covered Appendix) and write down its Hamiltonian using the annihilation operator $\hat b$ ($\hbar = 1$):
+A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators and write down its Hamiltonian using the annihilation operator $\hat b$ ($\hbar = 1$):
 \begin{equation}
 \hat{{H}}_{tr} = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
 \end{equation}
@@ -243,13 +247,42 @@ where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is 
 
 Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy (qubit Rabi frequencies $\Omega_1$ and $\Omega_2$ were around 20 MHz) to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe three distinct features shown in insets marked with Roman numerals. Some secondary details are shown with Arabic-numbered markers.
 
-Remarkably, in areas I, II and III we could observe avoided crossings which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing it taking 3 levels for each transmon (and total 9 states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels} in Appendix. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}, it completely misses the Roman-numbered effects. Taking into account more energy levels of each transmon does not help, and is not even necessary to reproduce this effect, as we will show below.
+Remarkably, in areas I, II and III we could observe avoided crossings and triplet transitions which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing $\hat H_{tr1}+\hat H_{tr2}+\hat H_{int}$ taking 3 levels for each transmon (and total 9 basis states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels} in Appendix. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}, it completely misses the Roman-numbered effects. Taking into account more energy levels of each transmon does not help, and is not even necessary to reproduce this effect, as we will show in the following.
 
-To check whether these avoided crossings are observable in the dynamic regime, we have solved the master equation \eqref{eq:master} to find the steady state of the system $\hat \rho_{ss}$ and the corresponding expected measurement outcome $\mathfrak{Re}\left[\Tr[\hat M \hat \rho_{ss}]\right]$. Strikingly, all the experimental features are immediately reproduced using this approach even with only 9 SAM states. We have solved \eqref{eq:master} with and without RWA (using the propagator approach \eqref{eq:propagator}) and did not find any noticeable difference in the result; though, the runtime of a single 401 by 401 points simulation was 9 hours without RWA vs. 3 minutes with RWA.
+To check whether the described features are present in the dynamic regime, we have solved the master equation \eqref{eq:master} to find the steady state of the system $\hat \rho_{ss}$ and the corresponding expected measurement outcome $\mathfrak{Re}\left[\Tr[\hat M \hat \rho_{ss}]\right]$. Strikingly, all the experimental features are immediately reproduced using this approach with just 9 SAM states. We have solved \eqref{eq:master} with and without RWA (using the propagator approach \eqref{eq:propagator}) and did not find any noticeable difference in the results; though, the runtime of a single 401 by 401 points simulation was 9 hours without RWA vs. 3 minutes with RWA.
 
-Next, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the other (not shown, should we show?). Upon this, it has become clear that feature II and feature III actually have the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with a two-photon one to $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
+\subsection{Analysis of the spectra}
 
-All of the observed features depend significantly on power.
+\begin{figure}
+	\includegraphics[width=\linewidth]{zoom_picture}
+	\caption{Zoomed-in simulation of feature III with increasing amplitude of the driving of the first transmon $\Omega_1/2\pi=$2, 4, 10 and 20 MHz while the second drive is fixed at $\Omega_2/2\pi=$10 MHz; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect. Interestingly, population inversion is observed inside the red-coloured areas of the graph: $\ket{00}$ population is less than 20\% there.}
+	\label{fig:zoom}
+\end{figure}
+
+
+\paragraph{Identification of the spectral lines.} Though it is not possible to describe all of the experimental features with the stationary model, it is possible to find which spectral lines correspond to which transitions in the system. In \autoref{fig:two-tone}~(b), we have labelled the brightest lines with $\ket{ij/n}$ where $i,j$ denote the final transmon states after the transition from $\ket{00}$, and $/n$ is optional for an $n$-photon process. We put the labels at the line of symmetry where the transmons are in their sweet spots; the SAM states at this point are nearly factorized (dispersive regime for two coupled SAAs) and thus may be easily distinguished.
+
+Due to the strong driving, we observe several multiphoton transitions besides the main lines at $\omega_{(1,2)}(\Phi_e)/2\pi$. The $\ket{02/2}$ and $\ket{20/2}$ are very common for transmons and lie $|\alpha_{(1,2)}|/2$ lower than the main lines $\omega_{(1,2)}(\Phi_e)$. Another two-photon process appears as $\ket{11/2}$ line when two qubits are excited simultaneously. This process is used, for example, for doing the bSWAP gate\cite{poletto2012entanglement}; in our case, it is taking part in formation of feature I. A three-photon process $\ket{00}\rightarrow\ket{12/3}$ is also clearly visible just below the $\ket{02/2}$ line. As we will see, it is involved in forming features II and III. 
+
+Notably, transitions $\ket{11/2}$ and $\ket{12/3}$ are forbidden when there is no interaction ($J=0$). Therefore, it is expected that all Roman-numbered features should only appear with non-vanishing $\hat H_{int}$.
+
+When two lines intersect, they may form an avoided crossing if the corresponding matrix element is non-zero in $\hat H_{int}$. In such cases, the SAM becomes inseparable with some of the eigenstates becoming superpositions of the factorized states. For a two-transmon SAM, such points are, for instance, crossings between $\ket{01}$, $\ket{10}$ or $ \ket{11} $, $ \ket{02} $($ \ket{20} $). Additionally, marked as feature 3 in \autoref{fig:two-tone}, we see an avoided crossing between $\ket{12},\ \ket{21}$ at the same $\Phi_e$ where $\ket{01}$, $\ket{10}$ cross.
+
+
+\paragraph{Analysing features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the other \textbf{(not shown, should we show?)}. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
+
+From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and usually invisible $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. From additional simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}. There is no dependence on the drive power of the second transmon, though. As one can see, the growth of the splitting with increasing power is approximately linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line. 
+
+We come to the same conclusion for feature I: increasing drive amplitude on one of the transmons while keeping the other one small and constant again elicits an avoided crossing with a proportionally enlarging splitting (see \autoref{fig:difdrive}). Notably, two qualitatively different patterns of avoided crossings arise when the first or the second qubit is strongly driven.
+
+
+These observation lead to understanding that the effect is caused by the light-dressing. In case III, the first transmon is dressed by a strong resonant field, in case II the second one, and in case I both transmons are dressed at the same time. The exact origin of the triplet structure of the resulting 
+
+
+\paragraph{Analysing }
+
+Finally, we have found that when the coupling is turned off ($J=0$), the system does not demonstrate at all any of the Roman-numbered features highlighted in \autoref{fig:two-tone} (similarly, Arabic ones also disappear). This is expected due to the lines participating in them  means that these effects can only be attributed molecule as a whole and not the SAAs themselves. 
+
 
 
 
@@ -260,13 +293,6 @@ All of the observed features depend significantly on power.
 	\label{fig:main_scheme}
 \end{figure*}
 
-
-\begin{figure*}
-	\centering
-	\includegraphics[width=\linewidth]{drawing}
-	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
-	\label{fig:difdrive}
-\end{figure*}
 
 
 \subsection{Theoretical description of the observed spectral lines}
@@ -450,6 +476,16 @@ In order to determine which transitions correspond to the lines, the stationary 
 		$\ket{12}$ and the fourth from  $\ket{10}$ to  $\ket{02}$, where $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively}
 	\label{fig:statinary_levels}
 \end{figure}
+
+
+
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=\linewidth]{drawing}
+	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
+	\label{fig:difdrive}
+\end{figure*}
 
 
  Let's described the anti-crossing highlighted in red in the picture. 

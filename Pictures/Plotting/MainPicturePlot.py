@@ -13,6 +13,7 @@ class MainPicturePlot:
 
     def __init__(self):
         self._cache_file = "main_pic_cache.pkl"
+        self._cmap = "Spectral"
         self.nstate = 0
         try:
             with open(self._cache_file, "rb") as f:
@@ -41,7 +42,7 @@ class MainPicturePlot:
 
     def plot_experiment(self, ax):
         data = self._X_exp, self._Y_exp, np.real(self._C_exp)
-        img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022)
+        img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022, cmap = self._cmap)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
@@ -100,7 +101,7 @@ class MainPicturePlot:
                                                            #                    size=C.shape)
         C = C
         data = self._X_th, self._Y_th, C
-        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C))
+        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C), cmap = self._cmap)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
@@ -173,13 +174,13 @@ class MainPicturePlot:
         # ax1.broken_barh([(3.1,0.4)],(5.31,0.02),edgecolors = 'r', facecolors = 'none',linewidth= 1, linestyle = '--')
         for axis in ['top', 'bottom', 'left', 'right']:
             axins.spines[axis].set_color(color)
-        axins.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
+        axins.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin, cmap = self._cmap)
         for axis in ['top', 'bottom', 'left', 'right']:
             axins1.spines[axis].set_color(color)
-        axins1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
+        axins1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin, cmap = self._cmap)
         for axis in ['top', 'bottom', 'left', 'right']:
             axinss1.spines[axis].set_color(color)
-        axinss1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
+        axinss1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin, cmap = self._cmap)
         x1, x2, y1, y2 = 3.5, 3.8, 5.25, 5.29  # specify the limits
         axins.set_xlim(x1, x2)  # apply the x-limits
         axins.set_ylim(y1, y2)  # apply the y-limits
