@@ -294,11 +294,24 @@ Let's consider the Hamiltonian (\autoref{matrix}) in details. Divide it into thr
 \begin{equation}
 	H^R=H_0+V_J+V_t
 \end{equation}
-The $\Omega_1\gg \Omega_2,\Delta_2\gg J$, so the driven field on the first qubit is strong and form the dressed states defined by the Hamiltonian $H_0$, which is stationary, so the levels can be found and schematically depicted in \autoref{fig:main_scheme}~(b). The drive on the second qubit is weak with very low intensity, so we can neglect any perturbation introduced by second drive on the position, width off the dressed states.
-Firstly, we consider the system of non-interacting qubits $(J=0)$. In this case some transitions are prohibited and the splitting we are interested in is not observed. 
-Therefore a non-zero interaction between qubits is necessary to observe AT effect.
+The $\Omega_1\gg \Omega_2,\Delta_2> J$, so the driven field on the first qubit is strong and form the dressed states defined by the Hamiltonian $H_0$, which is stationary, so the levels can be found and schematically depicted in \autoref{fig:main_scheme}~(b). The drive on the second qubit is weak with very low intensity, so we can neglect any perturbation introduced by second drive on the position, width of the dressed states.
+At our working point the condition $\Delta_2=\alpha/2$ is met and $H_0$ becomes degenerate.
 
-After that according to the perturbation theory (with perturbation $V_J$) to $H_0$ we found the first-order corrections to the wave functions. We can use Fermi Golden Rule to find the probability of transition.
+
+According to the degenerate perturbation theory (with perturbation $V_J$) we found the first-order corrections to the wave functions. Calculating the probability of two-photon transition per unit interaction time using the \autoref{prob} for corrected  wave functions and neglecting small terms we obtain:
+\begin{equation}
+	A^{(2)}_{1\rightarrow 6} =\frac{\pi\Omega_2^4}{8} \frac{8 J^4 (6 \text{$\alpha $}+19 \text{$\Omega_1 $})^2}{\text{$\alpha
+			$}^6 \text{$\Omega_1$}^2}
+\end{equation}
+\begin{equation}
+A^{(2)}_{2\rightarrow 5} =\frac{\pi\Omega_2^4}{8} \frac{8 J^4 (6 \text{$\alpha $}-19 \text{$\Omega_1 $})^2}{\text{$\alpha
+		$}^6 \text{$\Omega_1$}^2}
+\end{equation}
+
+So, in the system of non-interacting qubits $(J=0)$ some transitions are prohibited and the splitting we are interested in is not observed. Therefore a non-zero interaction between qubits is necessary to observe AT effect in our system.
+
+
+
 \appendix
 
 \section{Standard Autler-Townes effect for a three-level atom} \label{sec:3-level-at}
@@ -365,6 +378,39 @@ where $g$ is the coupling strength and $a$ is the photon annihilation operator. 
 \]
 If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\Delta$ to $\Omega_R = \sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
 
+\section{Degenerate perturbation theory}
+\begin{equation}
+H^R=H_0+V_J
+\end{equation}
+At our working point the equation $\Delta_2=\alpha/2$ is true and $H_0$ becomes degenerate. Let's consider our system in the basis of dressed states.
+\begin{equation}
+H_0^{d}= diag(-\frac{\Omega_{1}}{2},\frac{\Omega_{1}}{2},\frac{(-\alpha-\Omega_{1})}{2},\frac{-\alpha+\Omega_{1}}{2},-\frac{\Omega_{1}}{2},\frac{\Omega_{1}}{2})
+\end{equation}
+The choice of wave functions from a degenerate subspace is arbitrary because any linear combination of functions from this subspace will satisfy the Schrodinger equation. However, if we demand that the change of wave functions be small under the applied small perturbation, then the choice of wave functions become defined. To obtain correct wave functions we need to diagonalize $V_J^{d}$ in the degenerate subspace. However, we can notice that $V_J^{d}$ is identically the zero matrix in our subspace, so technically any choice of basis will diagonalize $V_J^{d}$. This means that the degeneracy is not lifted at first-order in perturbation theory. We have to pick eigenvectors which diagonalize following matrix:
+\begin{equation}
+	\begin{matrix}
+	M_{nn'} = \sum_{m}\frac{V_{nm}V_{mn'}}{E_n-E_m}
+	\end{matrix}
+\end{equation}
+Where $\ket{n}$ and $\ket{n'}$ are states with same energy $E_n$.  The sum is over all states $m$ not in the degenerate subspace.
+For example, in our case for one of degenerate subspaces:
+\begin{equation}
+	M_{15} =\left[\begin{matrix}\frac{J^{2} \left(\Omega_{1} - \alpha\right)}{\alpha \left(2 \Omega_{1} - \alpha\right)} & \frac{\sqrt{2} J^{2} \Omega_{1}}{\alpha \left(2 \Omega_{1} - \alpha\right)}\\\frac{\sqrt{2} J^{2} \Omega_{1}}{\alpha \left(2 \Omega_{1} - \alpha\right)} & \frac{2 J^{2} \left(\Omega_{1} - \alpha\right)}{\alpha \left(2 \Omega_{1} - \alpha\right)}\end{matrix}\right]
+\end{equation}
+The normalized eigenvectors $(C_n,C_{n'})$ of the matrix will give the desired zero approximation wave-functions.
+The first-order correction to the states from degenerate subspace:
+\begin{equation}
+	\ket{n^0}+\ket{n^1} = \sum_n C_{n}\ket{n^0} + \sum_{m\ne n}\ket{m^0}\frac{\bra{m^0}V\ket{n^0}}{E_n^0-E_m^0}
+\end{equation}
+The sum is over all states $n$ in the degenerate subspace $n=(n,n')$.
+The first-order corrections for not degenerate state compute by using the ordinary perturbation theory.
+\begin{equation}
+	\ket{j^1} = \sum_{m\ne j}\ket{m^0}\frac{\bra{m^0}V\ket{j^0}}{E_j^0-E_m^0}
+\end{equation}
+
+
+
+
 
 \section{Theoretical description of two-photon process}
 Perturbation theory allows semianalytical calculation of the transition rates for single and multi-photon processes\cite{faisal2013theory}.
@@ -422,8 +468,10 @@ For simplifier the equation we have made use of the relation:
 	\delta(\omega_f-\omega_i-2\omega_d) =\frac{1}{2\pi} \lim\limits_{T\rightarrow\infty}\int_{-T/2}^{T/2}e^{i(\omega_f-\omega_i-2\omega_d)t}dt = \lim\limits_{T\rightarrow\infty}\frac{T}{2\pi}
 \end{equation} 
 For $\omega_f=\omega_i+2\omega_d$.
-\begin{equation}
-	W^{(2)}_{i\rightarrow f}=\frac{\pi\Omega^4}{8}\bigg|\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg|^2\delta(\omega_f-\omega_i-2\omega_d)
+\begin{equation}\label{prob}
+\begin{split}
+	W^{(2)}_{i\rightarrow f}=\frac{\pi\Omega^4}{8}\bigg|\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg|^2\delta(\omega_f-\omega_i-2\omega_d)=\\ A^{(2)}_{i\rightarrow f}\delta(\omega_f-\omega_i-2\omega_d)
+\end{split}
 \end{equation}
 
 \section{Measurement setup}
@@ -450,15 +498,5 @@ In order to determine which transitions correspond to the lines, the stationary 
 \end{figure}
 
 
-<<<<<<< HEAD
-=======
- Let's described the anti-crossing highlighted in red in the picture. 
- 
- The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
- Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source; $n =\frac{1}{\sqrt{2}} (\frac{E_J}{8E_C})^{1/4}(b+b^{\dagger})$.
-
-
-
->>>>>>> b213165e9833f15556191a573b4864348e20bdb1
 \bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
 \end{document}
