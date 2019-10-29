@@ -49,6 +49,9 @@
 \usepackage{physics}
 \usepackage{xparse}
 \usepackage{bbm}
+\usepackage{xcolor}
+
+
 %\usepackage{multirow}
 %\usepackage{makecell}
 \graphicspath{{Pictures/}}
@@ -111,6 +114,7 @@
 	\maketitle
 \section{Introduction}
 
+
 Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to synthetic nature of SAA, their Hamiltonians can be pre-designed and engineered, and this makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime when the coupling strength between light and a quantum system approaches 1\% of their frequency has been a major milestone for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this landmark using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first discovery\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
 Moreover, SAA do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strong with the free-propagating EM-waves in the on-chip 1D waveguides\cite{astafiev2010resonance} without having to use cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already the ultra-strong coupling regime.
 
@@ -143,7 +147,7 @@ The fabrication process...
 	\begin{tabular}{rll}
 	Parameter & Transmon 1  & Transmon 2\\\hline
 	$\omega/2\pi$ [GHz] & 5.12 - 6.3  & 4 - 5.45\\
-	$\alpha/2\pi$ [MHz] & 250 & 250 \\
+	$\alpha/2\pi$ [MHz] & 220 & 220 \\
 	$T_1$ [$\mu$s]  & 6.82 &  4.41 \\
 	$T_2^*$ [$\mu$s]  & 5.14  &  3.33\\\hline
 	$J/2\pi$ [MHz] &\multicolumn{2}{c}{10} 
@@ -155,7 +159,7 @@ The fabrication process...
 
 \subsection{Theoretical description of the SAM}
 
-A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators (this approach is covered Appendix) and write down its Hamiltonian using the annihilation operator $\hat b$ ($\hbar = 1$):
+A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators and write down its Hamiltonian using the annihilation operator $\hat b$ ($\hbar = 1$):
 \begin{equation}
 \hat{{H}}_{tr} = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
 \end{equation}
@@ -167,20 +171,20 @@ To induce state transitions in a transmon one should irradiate it by a monochrom
 \end{equation}
 where $\Omega$ stands for the frequency of the Rabi oscillations between $\ket{0}$ and $\ket{1}$.
 
-Now, the complete Hamiltonian of SAM contains two terms describing each of them in isolation (with the corresponding annihilation operators $\hat b$ and $\hat c$ and the $ge$ frequencies $\omega_{1,2}$), two terms representing the interaction of each transmon with the driving field at the same frequency $\omega_d$, and the transmon-transmon interaction term:
+Now, the complete Hamiltonian of SAM contains two terms describing each of them in isolation (with the corresponding annihilation operators $\hat b$ and $\hat c$, the $ge$ frequencies $\omega_{1,2}$ and anharmonicities $\alpha_{1,2}$), two terms representing the interaction of each transmon with the driving field at the same frequency $\omega_d$, and the transmon-transmon interaction term:
 \begin{equation}\label{Hsystem}
 \hat H = \hat H_{tr1}+\hat H_{tr2}+\hat H_{dr1}+\hat H_{dr2}+\hat H_{int},
 \end{equation}
 where $\hat H_{int} = J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms. In the following, we will also transform \eqref{eq:master} into the frame rotating with both drives by an operator
 \begin{align}
-&\hat R = \exp[i (\omega_d^1 b^{\dagger}b+\omega_d^2 c^{\dagger}c)t],\\
-&\hat H_R = \hat R^{\dagger}\hat H \hat R + i\hat R^{\dagger}\partial_t \hat R.
+&\hat R = \exp[-i t (\omega_d^1 b^{\dagger}b+\omega_d^2 c^{\dagger}c)],\\
+&\hat H_R = \hat R^{\dagger}\hat H \hat R - i\hat R^{\dagger}\partial_t \hat R.
 \end{align}
 After the transformation and application of RWA:
 \begin{equation}
 \begin{aligned}
-	\omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_{(1,2)} - \omega_d^{(1,2)},\\
-	\hat H_{int} &\rightarrow J \left[\hat b^\dag \hat c e^{-(\omega_d^1 - \omega_d^2)t} + \hat b \hat c^\dag e^{(\omega_d^1 - \omega_d^2)t}\right],\\
+	\omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_d^{(1,2)}-\omega_{(1,2)},\\
+	\hat H_{int} &\rightarrow J \left[\hat b^\dag \hat c e^{(\omega_d^1 - \omega_d^2)t} + \hat b \hat c^\dag e^{-(\omega_d^1 - \omega_d^2)t}\right],\\
 	\hat H_{dr}^1 &\rightarrow \frac{\Omega_1}{2}(\hat b  + \hat b^\dag),\\ 
 	\hat H_{dr}^2 &\rightarrow \frac{\Omega_2}{2}(\hat c  + \hat c^\dag).
 \end{aligned}
@@ -203,7 +207,7 @@ As one can see, the collapse operators are in a separable form, i.e. acting only
 where $\mathcal{D}[\hat{{O}}]\hat \rho = \hat{{O}} \hat \rho \hat{{O}}^\dag - \frac{1}{2}\{ \hat{{O}}^\dag \hat{{O}}, \hat \rho\}$ and $\mathcal{L}$ is the Liouville superoperator or the Liouvillian.
 
 
-The readout resonator is not included in the model since in the dispersive regime is does not affect the dynamics of the SAM. The readout is modelled just by using the measurement operator $\hat M(f_p)$ that can be obtained by measuring the transmission $S_{21}(f_p)$ ($f_p$ is the probe frequency near the resonance) through the sample for the nine different states of the SAM $\ket{ij},\ i=0..2,\ j=0..2$\cite{filipp2009two}. Another way to find $\hat M(f_p)$ is to calculate the transmission using the dispersive shifts for these states by correspondingly offsetting the experimental resonance curve. Since we have not directly measured the dispersive shifts, in our modelling they are treated as fitting parameters. Finally, the observable value for any state $\hat \rho$ is calculated as $S_{21}^{sim}(f_p) = \Tr[\hat M(f_p) \hat \rho]$.
+The readout resonator is not included in the model since in the dispersive regime is does not affect the dynamics of the SAM. Hence, the readout is modelled just by using the measurement operator $\hat M(f_p)$ that can be obtained by measuring the transmission $S_{21}(f_p)$ ($f_p$ is the probe frequency near the resonance) through the sample for the nine different states of the SAM $\ket{ij},\ i=0..2,\ j=0..2$\cite{filipp2009two}. Another way to find $\hat M(f_p)$ is to calculate the transmission by offsetting the experimental resonance curve using the dispersive shifts corresponding to these states. Since we have not directly measured the dispersive shifts, in our modelling they are treated as fitting parameters. Finally, the observable value for any state $\hat \rho$ is calculated as $S_{21}^{sim}(f_p) = \Tr[\hat M(f_p) \hat \rho]$.
 
 
 \subsection{Numerical solution in \textit{qutip}}
@@ -220,6 +224,7 @@ This equation is solved with the qutip's \textit{steadystate} function\footnote{
 The second mode is required when it is not possible to avoid the time-dependence of the Liouvillian. This is the case when the transmons have to be excited at different frequencies ($\omega_d^1 - \omega_d^2 = \delta \neq 0$). From \eqref{eq:RWA} we find that even in the doubly-rotating frame $\hat H_{int}$ is oscillating, and it is not possible to simply drop this term in RWA because this will lead to qualitatively different results. In this case, to find the steady state of the system we employ the qutip's \textit{propagator} and \textit{propagator\_steadystate} functions. The propagator is a completely positive map $\Lambda(t_1, t_0): \hat \rho(t_0) \rightarrow \hat \rho(t_1)$ describing the time evolution of the system density matrix; for \eqref{eq:master}, it is defined as
 \begin{equation}
 \Lambda(t_1, t_0) = \mathcal{T} \exp [\int_{t_0}^{t_1} \mathcal L(\tau) d\tau],
+\label{eq:propagator}
 \end{equation}
 where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is periodic with a period of $T = 2\pi/\delta$, it is possible to calculate the steady state as the eigenvector $\hat \rho_{ss}$ of the single-period propagator $\Lambda(T, 0)$ corresponding to its largest eigenvalue\cite{dittrich1998quantum, rivas2012open}. Upon infinite applications of $\Lambda$: 
 \[
@@ -229,17 +234,57 @@ where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is 
 
 \section{Results}
 
-\subsection{\label{sec:level1} Experimental and numerical parts}
-
-Two tone spectroscopy was found experimentally and shows good agreement with modelling data \autoref{fig:two-tone}. 
+\subsection{\label{sec:level1} Spectroscopy: experiment and numerical simulation}
 
 \begin{figure*}
-
+	
 	\centering
 	\includegraphics[width=\linewidth]{main_picture}
-	\caption{Two-tone spectroscopy: (a) Experiment;b(b) Modelling ; the colorbar is common.  Clear flux-dependent transmon transitions are visible.}
+	\caption{Two-tone spectroscopy: experiment \textbf{(a)} and numerical modelling \textbf{(b)}. Colour shows the real part of complex transmission  through the sample. Two transmons are aligned as in \autoref{fig:experiment}~(c) and thus the picture is symmetric. Panel \textbf{(a)} contains an additional horizontal line which origins from a parasitic resonance interacting with the readout resonator but not with the SAM. Three avoided crossings not predicted by the stationary model are shown in insets I, II and III; some other pronounced features reproduced by the modelling are shown with numbered markers (see text for description). In panel \textbf{(b)}, we also denote where possible some of the transitions $\ket{00}\rightarrow \ket{ij/n}$ where $i,j$ stand for the transmon eigenstates and $/n$ is optional for an $n$-photon process.}
 	\label{fig:two-tone}
 \end{figure*}
+
+
+Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy (qubit Rabi frequencies $\Omega_1$ and $\Omega_2$ were around 20 MHz) to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe three distinct features shown in insets marked with Roman numerals. Some secondary details are shown with Arabic-numbered markers.
+
+Remarkably, in areas I, II and III we could observe avoided crossings and triplet transitions which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing $\hat H_{tr1}+\hat H_{tr2}+\hat H_{int}$ taking 3 levels for each transmon (and total 9 basis states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels} in Appendix. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}, it completely misses the Roman-numbered effects. Taking into account more energy levels of each transmon does not help, and is not even necessary to reproduce this effect, as we will show in the following.
+
+To check whether the described features are present in the dynamic regime, we have solved the master equation \eqref{eq:master} to find the steady state of the system $\hat \rho_{ss}$ and the corresponding expected measurement outcome $\mathfrak{Re}\left[\Tr[\hat M \hat \rho_{ss}]\right]$. Strikingly, all the experimental features are immediately reproduced using this approach with just 9 SAM states. We have solved \eqref{eq:master} with and without RWA (using the propagator approach \eqref{eq:propagator}) and did not find any noticeable difference in the results; though, the runtime of a single 401 by 401 points simulation was 9 hours without RWA vs. 3 minutes with RWA.
+
+\subsection{Analysis of the spectra}
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{zoom_picture}
+	\caption{Zoomed-in simulation of feature III with increasing amplitude of the driving of the first transmon $\Omega_1/2\pi=$2, 4, 10 and 20 MHz while the second drive is fixed at $\Omega_2/2\pi=$10 MHz; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect. Interestingly, population inversion is observed inside the red-coloured areas of the graph: $\ket{00}$ population is less than 20\% there.}
+	\label{fig:zoom}
+\end{figure}
+
+
+\paragraph{Identification of the spectral lines.} Though it is not possible to describe all of the experimental features with the stationary model, it is possible to find which spectral lines correspond to which transitions in the system. In \autoref{fig:two-tone}~(b), we have labelled the brightest lines with $\ket{ij/n}$ where $i,j$ denote the final transmon states after the transition from $\ket{00}$, and $/n$ is optional for an $n$-photon process. We put the labels at the line of symmetry where the transmons are in their sweet spots; the SAM states at this point are nearly factorized (dispersive regime for two coupled SAAs) and thus may be easily distinguished.
+
+Due to the strong driving, we observe several multiphoton transitions besides the main lines at $\omega_{(1,2)}(\Phi_e)/2\pi$. The $\ket{02/2}$ and $\ket{20/2}$ are very common for transmons and lie $|\alpha_{(1,2)}|/2$ lower than the main lines $\omega_{(1,2)}(\Phi_e)$. Another two-photon process appears as $\ket{11/2}$ line when two qubits are excited simultaneously. This process is used, for example, for doing the bSWAP gate\cite{poletto2012entanglement}; in our case, it is taking part in formation of feature I. A three-photon process $\ket{00}\rightarrow\ket{12/3}$ is also clearly visible just below the $\ket{02/2}$ line. As we will see, it is involved in forming features II and III. 
+
+Notably, transitions $\ket{11/2}$ and $\ket{12/3}$ are forbidden when there is no interaction ($J=0$). Therefore, it is expected that all Roman-numbered features should only appear with non-vanishing $\hat H_{int}$.
+
+When two lines intersect, they may form an avoided crossing if the corresponding matrix element is non-zero in $\hat H_{int}$. In such cases, the SAM becomes inseparable with some of the eigenstates becoming superpositions of the factorized states. For a two-transmon SAM, such points are, for instance, crossings between $\ket{01}$, $\ket{10}$ or $ \ket{11} $, $ \ket{02} $($ \ket{20} $). Additionally, marked as feature 3 in \autoref{fig:two-tone}, we see an avoided crossing between $\ket{12},\ \ket{21}$ at the same $\Phi_e$ where $\ket{01}$, $\ket{10}$ cross.
+
+
+\paragraph{Analysing features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the other \textbf{(not shown, should we show?)}. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
+
+From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and usually invisible $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. From additional simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}. There is no dependence on the drive power of the second transmon, though. As one can see, the growth of the splitting with increasing power is approximately linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line. 
+
+We come to the same conclusion for feature I: increasing drive amplitude on one of the transmons while keeping the other one small and constant again elicits an avoided crossing with a proportionally enlarging splitting (see \autoref{fig:difdrive}). Notably, two qualitatively different patterns of avoided crossings arise when the first or the second qubit is strongly driven.
+
+
+These observation lead to understanding that the effect is caused by the light-dressing. In case III, the first transmon is dressed by a strong resonant field, in case II the second one, and in case I both transmons are dressed at the same time. The exact origin of the triplet structure of the resulting 
+
+
+\paragraph{Analysing }
+
+Finally, we have found that when the coupling is turned off ($J=0$), the system does not demonstrate at all any of the Roman-numbered features highlighted in \autoref{fig:two-tone} (similarly, Arabic ones also disappear). This is expected due to the lines participating in them  means that these effects can only be attributed molecule as a whole and not the SAAs themselves. 
+
+
+
 
 \begin{figure*}
 	\centering
@@ -248,13 +293,6 @@ Two tone spectroscopy was found experimentally and shows good agreement with mod
 	\label{fig:main_scheme}
 \end{figure*}
 
-We obtain illustrative example of dressed states\autoref{fig:difdrive}. On this figure the microwave drive acts only on the one of qubits. 
-\begin{figure*}
-	\centering
-	\includegraphics[width=\linewidth]{drawing}
-	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
-	\label{fig:difdrive}
-\end{figure*}
 
 
 \subsection{Theoretical description of the observed spectral lines}
@@ -415,7 +453,8 @@ The first-order corrections for not degenerate state compute by using the ordina
 \section{Theoretical description of two-photon process}
 Perturbation theory allows semianalytical calculation of the transition rates for single and multi-photon processes\cite{faisal2013theory}.
 
-Let's consider the Hamiltonian $H = H_0+V(t)$, with time-dependent interaction $V(t)$ and "reference" part -- $H_0$. After switching to the interaction picture $V(t)$ modifies to $\tilde{V}(t) = \exp(i H_0 t)V(t)\exp(-i H_0 t)$ and Schrödinger equation gives by $i \derivative{\tilde{\psi}(t)}{t}=\tilde{V}(t)\tilde{\psi}(t)$. The reference states of $H_0$ will be denoted as $\ket{j}$, $H_0 \ket{j} = \omega_j \ket{j}$ whence it follows that matrix elements  of the modified interaction take the form $\bra{j}\tilde{V}(t)\ket{i}=\exp(i(\omega_j-\omega_i)t)\bra{j}V(t)\ket{i}$. A "solution" of Schrödinger equation in interaction picture corresponding to the initial reference state $\ket{i}$ is
+Let's consider the Hamiltonian $H = H_0+V(t)$, with time-dependent interaction $V(t)$ and "reference" part -- $H_0$ and wave function $\Psi(t)$. After switching to the interaction picture $V(t)$ modifies to $\tilde{V}(t) = \exp(i H_0 t)V(t)\exp(-i H_0 t)$ and Schrödinger equation gives by $i \derivative{\psi(t)}{t}=\tilde{V}(t)\psi(t)$, where $\psi(t)=\exp(i H_0 t)\Psi(t)$. The reference states of $H_0$ will be denoted $\ket{j}$, $H_0 \ket{j} = \omega_j \ket{j}$ whence it follows that matrix elements  of the modified interaction take the form $\bra{j}\tilde{V}(t)\ket{i}=\exp(i(\omega_j-\omega_i)t)\bra{j}V(t)\ket{i}$. A "solution" of Schrödinger equation in interaction picture corresponding to the initial reference state $\ket{i}$ is
+
 \begin{equation}\label{forpsi}
 	\tilde{\psi_i}(t)=\ket{i} - i \int_{-\infty}^{t}dt_1\tilde{V}(t_1)\ket{\tilde{\psi_i}(t_1)}
 \end{equation} 
@@ -474,13 +513,13 @@ For $\omega_f=\omega_i+2\omega_d$.
 \end{split}
 \end{equation}
 
-\section{Measurement setup}
+\section{Measurement setup and methods}\label{sec:meas_setup}
 The sample was measured in a BlueFors LD250 dilution refrigerator at 16 mK. For the readout a Keysight PNA-L N5232A VNA was used. For the coherent excitation of the SAM, we used an Agilent MXG N5183B analog signal generator. The sample was 
 flux biased using Yokogawa GS200 current sources (two for the flux lines and one for the external coil wrapped around the sample).
 
-Input microwave lines were isolated from high-temperature noise with 60 dB of attenuation (10 @ 4K, 10 @ 1K, 20 @ 100 and 16 mK) and custom-made IR filters. Coaxial flux-bias lines were attenuated by 20 dB @ 4K and IR filtered as well. Output path contained two 20 dB isolators and two amplifiers: the 4-14 GHz LNF amplifier at the 4 K stage and the room-temperature LNF amplifier.
+Input microwave lines were isolated from high-temperature noise with 60 dB of attenuation (10 @ 4K, 10 @ 1K, 20 @ 100 and 16 mK) and custom-made IR filters. The additional on-chip attenuation (due to the small capacitive coupling) between the qubit drive line and the qubits was calculated in Sonnet to be around 70 dB @ 6 GHz. Coaxial flux-bias lines were attenuated by 20 dB @ 4K and IR filtered as well. Output path contained two 20 dB isolators and two amplifiers: the 4-14 GHz LNF amplifier at the 4 K stage and the room-temperature LNF amplifier.
 
-
+As the main experimental method, we have employed the two-tone spectroscopy which consists of exciting the SAM with monochromatic light at certain frequency until steady state is reached while simultaneously measuring the signal transmission at the readout resonator frequency. This measurement yields the average value of the joint measurement operator $\hat M$ in the steady-state.
 
 \section{Text}
 
@@ -494,9 +533,15 @@ In order to determine which transitions correspond to the lines, the stationary 
 	\caption{Two-tone spectroscopy with transitions lines. In the red frame, four transitions intersect, three of which originate from the state $\ket{00}$ to $\ket{10}$, two-photon
 		$\ket{02}$, three-photon
 		$\ket{12}$ and the fourth from  $\ket{10}$ to  $\ket{02}$, where $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively}
-	\label{fig:spectr}
+	\label{fig:statinary_levels}
 \end{figure}
 
+
+
+
+
+ The implementations of the transitions between the eigenstates is achieved by external microwave driving through a capacitively coupled transition line. In the notations used above, the pump Hamiltonian can be written generically as $ 	H_{dr} = -2e n\beta V_{dr}(t)=\Omega(t)(b+b^{\dagger})$.
+ Where $2en$ -- the charge on island, $\beta$ -- dimensionless coefficient depending on the geometry of the system and the ratio of capacities, $V_{dr}(t)$ -- the voltage on the external source; $n =\frac{1}{\sqrt{2}} (\frac{E_J}{8E_C})^{1/4}(b+b^{\dagger})$.
 
 \bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
 \end{document}

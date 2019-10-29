@@ -13,6 +13,7 @@ class MainPicturePlot:
 
     def __init__(self):
         self._cache_file = "main_pic_cache.pkl"
+        self._cmap = "Spectral"
         self.nstate = 0
         try:
             with open(self._cache_file, "rb") as f:
@@ -41,7 +42,7 @@ class MainPicturePlot:
 
     def plot_experiment(self, ax):
         data = self._X_exp, self._Y_exp, np.real(self._C_exp)
-        img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022)
+        img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022, cmap = self._cmap)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
@@ -52,6 +53,35 @@ class MainPicturePlot:
         cb.update_ticks()
         plt.text(-0.15, 1.1, "(a)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
+
+        plt.text(.53, .815, r"$\omega_2(\Phi_e)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
+                 transform=ax.transAxes, ha='center')
+
+        plt.text(.54, .355, r"$\omega_1(\Phi_e)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
+                 transform=ax.transAxes, ha='center')
+
+        ax.annotate('spurious\nresonance', xy=(5, 5.37), xytext=(5.1, 5.45), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width =1, headwidth = 5, headlength = 7, shrink=0.05))
+
+
+        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.55, 5.21), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width =.5, headwidth = 3, headlength = 3.5, shrink=0.05))
+
+        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.185), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate('4', xy=(4.9, 5.195), xytext=(4.8, 5.195), ha="center", va="top", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate("5", xy=(3.515, 5.177), xytext=(3.585, 5.1795), ha="center", va="bottom", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
 
         self._zoom(ax, data, vmin=-0.005, vmax = 0.022)
 
@@ -71,7 +101,7 @@ class MainPicturePlot:
                                                            #                    size=C.shape)
         C = C
         data = self._X_th, self._Y_th, C
-        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C))
+        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C), cmap = self._cmap)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
@@ -80,8 +110,48 @@ class MainPicturePlot:
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()
+
+        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.55, 5.21), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.185), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate('3', xy=(3.31, 5.245), xytext=(3.31, 5.255), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate('4', xy=(4.9, 5.195), xytext=(4.8, 5.195), ha="center", va="top", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.575, 5.1775), ha="center", va="bottom", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
+
+        plt.text(.53, .82, r"$\left|01\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+                 transform=ax.transAxes, ha='center')
+
+        plt.text(.53, .35, r"$\left|10\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+                 transform=ax.transAxes, ha='center')
+
+        plt.text(.53, .6, r"$\left|11/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+                 transform=ax.transAxes, ha='center')
+
+        plt.text(.53, .525, r"$\left|02/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+                 transform=ax.transAxes, ha='center')
+
+        plt.text(.53, .465, r"$\left|12/3\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+                 transform=ax.transAxes, ha='center')
+
+        plt.text(.53, .07, r"$\left|20/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+                 transform=ax.transAxes, ha='center')
+
         plt.text(-0.075, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
+
 
         self._zoom(ax, data, vmin=np.min(C), vmax = np.max(C))
 
@@ -92,16 +162,25 @@ class MainPicturePlot:
         axins = zoomed_inset_axes(ax, 2.5, loc=4)  # zoom-factor: 2.5, location: upper-left
         axins1 = zoomed_inset_axes(ax, 2.5, loc=3)
         axinss1 = zoomed_inset_axes(ax, 2.5, loc=2)
+
+
+        plt.text(0.04, 0.83, "I", fontdict={"name": "STIX"}, fontsize=10,
+                 transform=axinss1.transAxes)
+        plt.text(0.04, 0.83, "II", fontdict={"name": "STIX"}, fontsize=10,
+                 transform=axins1.transAxes)
+        plt.text(0.04, 0.83, "III", fontdict={"name": "STIX"}, fontsize=10,
+                 transform=axins.transAxes)
+
         # ax1.broken_barh([(3.1,0.4)],(5.31,0.02),edgecolors = 'r', facecolors = 'none',linewidth= 1, linestyle = '--')
         for axis in ['top', 'bottom', 'left', 'right']:
             axins.spines[axis].set_color(color)
-        axins.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
+        axins.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin, cmap = self._cmap)
         for axis in ['top', 'bottom', 'left', 'right']:
             axins1.spines[axis].set_color(color)
-        axins1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
+        axins1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin, cmap = self._cmap)
         for axis in ['top', 'bottom', 'left', 'right']:
             axinss1.spines[axis].set_color(color)
-        axinss1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin)
+        axinss1.pcolormesh(*data, rasterized=True, vmax = vmax, vmin=vmin, cmap = self._cmap)
         x1, x2, y1, y2 = 3.5, 3.8, 5.25, 5.29  # specify the limits
         axins.set_xlim(x1, x2)  # apply the x-limits
         axins.set_ylim(y1, y2)  # apply the y-limits
