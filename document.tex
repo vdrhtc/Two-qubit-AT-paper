@@ -260,26 +260,24 @@ To check whether the described features are present in the dynamic regime, we ha
 \end{figure}
 
 
-\paragraph{Identification of the spectral lines.} Though it is not possible to describe all of the experimental features with the stationary model, it is possible to find which spectral lines correspond to which transitions in the system. In \autoref{fig:two-tone}~(b), we have labelled the brightest lines with $\ket{ij/n}$ where $i,j$ denote the final transmon states after the transition from $\ket{00}$, and $/n$ is optional for an $n$-photon process. We put the labels at the line of symmetry where the transmons are in their sweet spots; the SAM states at this point are nearly factorized (dispersive regime for two coupled SAAs) and thus may be easily distinguished.
+\paragraph{Identification of the spectral lines.} Though it is not possible to describe all of the experimental features with the stationary model, it is possible to use it to find which spectral lines correspond to which transitions in the system (see \autoref{fig:statinary_levels}). In \autoref{fig:two-tone}~(b), we have labelled the brightest lines with $\ket{ij/n}$ where $i,j$ denote the final transmon states after the transition from $\ket{00}$, and $/n$ is optional for an $n$-photon process. We put the labels at the line of symmetry where the transmons are in their sweet spots; the SAM states at this point are nearly factorized (dispersive regime for two coupled SAAs) and thus may be easily distinguished.
 
-Due to the strong driving, we observe several multiphoton transitions besides the main lines at $\omega_{(1,2)}(\Phi_e)/2\pi$. The $\ket{02/2}$ and $\ket{20/2}$ are very common for transmons and lie $|\alpha_{(1,2)}|/2$ lower than the main lines $\omega_{(1,2)}(\Phi_e)$. Another two-photon process appears as $\ket{11/2}$ line when two qubits are excited simultaneously. This process is used, for example, for doing the bSWAP gate\cite{poletto2012entanglement}; in our case, it is taking part in formation of feature I. A three-photon process $\ket{00}\rightarrow\ket{12/3}$ is also clearly visible just below the $\ket{02/2}$ line. As we will see, it is involved in forming features II and III. 
+Due to the strong driving, we observe several multiphoton transitions besides the main lines at $\omega_{(1,2)}(\Phi_e)/2\pi$. The $\ket{02/2}$ and $\ket{20/2}$ are very common for transmons and lie $|\alpha_{(1,2)}|/2$ lower than the main lines $\omega_{(1,2)}(\Phi_e)$. Another two-photon process appears as $\ket{11/2}$ line when two qubits are excited simultaneously. This process is used, for example, for doing the bSWAP gate\cite{poletto2012entanglement}; in our case, it is taking part in formation of feature I. A three-photon process $\ket{00}\rightarrow\ket{12/3}$ is also clearly visible just below the $\ket{02/2}$ line. As we will see, it is involved in forming features II and III. Notably, transitions $\ket{11/2}$ and $\ket{12/3}$ are forbidden when there is no interaction ($J=0$). Therefore, it is expected that all Roman-numbered features should only appear with non-vanishing $\hat H_{int}$.
 
-Notably, transitions $\ket{11/2}$ and $\ket{12/3}$ are forbidden when there is no interaction ($J=0$). Therefore, it is expected that all Roman-numbered features should only appear with non-vanishing $\hat H_{int}$.
-
-When two lines intersect, they may form an avoided crossing if the corresponding matrix element is non-zero in $\hat H_{int}$. In such cases, the SAM becomes inseparable with some of the eigenstates becoming superpositions of the factorized states. For a two-transmon SAM, such points are, for instance, crossings between $\ket{01}$, $\ket{10}$ or $ \ket{11} $, $ \ket{02} $($ \ket{20} $). Additionally, marked as feature 3 in \autoref{fig:two-tone}, we see an avoided crossing between $\ket{12},\ \ket{21}$ at the same $\Phi_e$ where $\ket{01}$, $\ket{10}$ cross.
+When two lines intersect, they may form an avoided crossing if the corresponding matrix element of $\hat H_{int}$ is non-zero. In such cases, the SAM becomes inseparable with some of the eigenstates becoming superpositions of the factorized states. For a two-transmon SAM, such points are, for instance, crossings between $\ket{01}$, $\ket{10}$ or $ \ket{11} $, $ \ket{02} $($ \ket{20} $). Additionally, marked as feature 3 in \autoref{fig:two-tone}, we see an avoided crossing between $\ket{12},\ \ket{21}$ at the same $\Phi_e$ where $\ket{01}$, $\ket{10}$ intersect.
 
 
-\paragraph{Analysing features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the other \textbf{(not shown, should we show?)}. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
+\paragraph{Features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the other \textbf{(not shown, should we show?)}. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
 
 From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and usually invisible $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. From additional simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}. There is no dependence on the drive power of the second transmon, though. As one can see, the growth of the splitting with increasing power is approximately linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line. 
 
 We come to the same conclusion for feature I: increasing drive amplitude on one of the transmons while keeping the other one small and constant again elicits an avoided crossing with a proportionally enlarging splitting (see \autoref{fig:difdrive}). Notably, two qualitatively different patterns of avoided crossings arise when the first or the second qubit is strongly driven.
 
 
-These observation lead to understanding that the effect is caused by the light-dressing. In case III, the first transmon is dressed by a strong resonant field, in case II the second one, and in case I both transmons are dressed at the same time. The exact origin of the triplet structure of the resulting 
+These observation lead to understanding that the effect is caused by light dressing. In case III, the first transmon is dressed by a strong resonant field; in case II, the second one; finally, in case I, both transmons are dressed at the same time. In the following section we will discuss this process in detail.
 
 
-\paragraph{Analysing }
+\paragraph{Secondary features.} Using \autoref{fig:statinary_levels}, we conclude that 
 
 Finally, we have found that when the coupling is turned off ($J=0$), the system does not demonstrate at all any of the Roman-numbered features highlighted in \autoref{fig:two-tone} (similarly, Arabic ones also disappear). This is expected due to the lines participating in them  means that these effects can only be attributed molecule as a whole and not the SAAs themselves. 
 
@@ -529,10 +527,8 @@ In order to determine which transitions correspond to the lines, the stationary 
 \end{equation}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\linewidth]{spectr}
-	\caption{Two-tone spectroscopy with transitions lines. In the red frame, four transitions intersect, three of which originate from the state $\ket{00}$ to $\ket{10}$, two-photon
-		$\ket{02}$, three-photon
-		$\ket{12}$ and the fourth from  $\ket{10}$ to  $\ket{02}$, where $\ket{ij}$ denote the $ij-th$ energy eigenstate of the transmon system, i,j represent first and second qubit respectively}
+	\includegraphics[width=\linewidth]{stationary}
+	\caption{Simulated population of the first qubit excited state ($\lg P_{\ket{10}}$ is shown with colour). Bottom picture is same as the top one but with transitions from the stationary Hamiltonian overlaid. The legend labels the transitions (notation as in the the main text) at the sweet spot current; if elsewhere any two lines cross, the labels should be swapped after the intersection.}
 	\label{fig:statinary_levels}
 \end{figure}
 
