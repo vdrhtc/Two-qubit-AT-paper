@@ -5668,11 +5668,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3787534"
-     inkscape:cx="503.35434"
-     inkscape:cy="27.638098"
+     inkscape:zoom="0.97492588"
+     inkscape:cx="281.36149"
+     inkscape:cy="115.47678"
      inkscape:document-units="mm"
-     inkscape:current-layer="surface8514651"
+     inkscape:current-layer="layer1"
      showgrid="false"
      showguides="false"
      inkscape:guide-bbox="true"
@@ -5820,7 +5820,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -8608,10 +8608,10 @@
     <g
        id="surface884448-3"
        transform="matrix(0.69787172,0,0,0.69787172,31.584164,198.25058)"
-       style="stroke-width:0.50550514">
+       style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1">
       <g
          id="g5209-7"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.50550514">
+         style="fill:#ff6600;fill-opacity:1;stroke-width:0.50550514">
         <use
            id="use5207-5"
            y="4.7789998"
@@ -8619,11 +8619,11 @@
            xlink:href="#glyph0-1-4"
            width="100%"
            height="100%"
-           style="stroke-width:0.50550514" />
+           style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1" />
       </g>
       <g
          id="g5213-7"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.50550514">
+         style="fill:#ff6600;fill-opacity:1;stroke-width:0.50550514">
         <use
            id="use5211-7"
            y="6.27314"
@@ -8631,16 +8631,16 @@
            xlink:href="#glyph1-1-1"
            width="100%"
            height="100%"
-           style="stroke-width:0.50550514" />
+           style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1" />
       </g>
     </g>
     <g
        id="surface884448-1-8"
        transform="matrix(0.69787172,0,0,0.69787172,22.445959,176.52869)"
-       style="stroke-width:0.50550514">
+       style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1">
       <g
          id="g5209-1-0"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.50550514">
+         style="fill:#ff6600;fill-opacity:1;stroke-width:0.50550514">
         <use
            id="use5207-0-1"
            y="4.7789998"
@@ -8648,11 +8648,11 @@
            xlink:href="#glyph0-1-4"
            width="100%"
            height="100%"
-           style="stroke-width:0.50550514" />
+           style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1" />
       </g>
       <g
          id="g5213-2-1"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.50550514">
+         style="fill:#ff6600;fill-opacity:1;stroke-width:0.50550514">
         <use
            id="use5211-1-8"
            y="6.27314"
@@ -8660,7 +8660,7 @@
            xlink:href="#glyph1-1-1"
            width="100%"
            height="100%"
-           style="stroke-width:0.50550514" />
+           style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1" />
       </g>
     </g>
     <g
@@ -10403,10 +10403,10 @@
     <g
        id="surface884448-1-8-2"
        transform="matrix(0.69787172,0,0,0.69787172,31.392742,154.99645)"
-       style="stroke-width:0.50550514">
+       style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1">
       <g
          id="g5209-1-0-0"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.50550514">
+         style="fill:#ff6600;fill-opacity:1;stroke-width:0.50550514">
         <use
            id="use5207-0-1-1"
            y="4.7789998"
@@ -10414,11 +10414,11 @@
            xlink:href="#glyph0-1-4"
            width="100%"
            height="100%"
-           style="stroke-width:0.50550514" />
+           style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1" />
       </g>
       <g
          id="g5213-2-1-7"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.50550514">
+         style="fill:#ff6600;fill-opacity:1;stroke-width:0.50550514">
         <use
            id="use5211-1-8-6"
            y="6.27314"
@@ -10426,7 +10426,7 @@
            xlink:href="#glyph1-1-1"
            width="100%"
            height="100%"
-           style="stroke-width:0.50550514" />
+           style="stroke-width:0.50550514;fill:#ff6600;fill-opacity:1" />
       </g>
     </g>
     <path

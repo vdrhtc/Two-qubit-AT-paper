@@ -1,7 +1,7 @@
 import pickle
 from numpy import *
 import matplotlib
-from matplotlib import ticker, colorbar as clb
+from matplotlib import ticker, colorbar as clb, patches
 
 matplotlib.use('Qt5Agg')
 
@@ -20,6 +20,43 @@ class StationaryPlot:
 
         mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
                            cmap="Spectral_r")
+
+        for ax in axes:
+            rect1 = patches.Rectangle((3.5, 5.25), .3, .04,
+                                      linewidth=1, edgecolor='black',
+                                      facecolor='none', linestyle=":")
+            ax.add_patch(rect1)
+            rect2 = patches.Rectangle((2.925, 5.2275),
+                                      3.225-2.925,
+                                      5.2675-5.2275,
+                                      linewidth=1, edgecolor='black',
+                                      facecolor='none', linestyle=":")
+            ax.add_patch(rect2)
+            rect3 = patches.Rectangle((3.16, 5.3), .3, .04,
+                                      linewidth=1, edgecolor='black',
+                                      facecolor='none', linestyle=":")
+            ax.add_patch(rect3)
+            ax.annotate("1", xy=(3.48, 5.23), xytext=(3.575, 5.205), ha="center", fontsize=10,
+                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                        shrink=0.05))
+
+            ax.annotate('2', xy=(5.08, 5.21), xytext=(5.08, 5.18), ha="center", fontsize=10,
+                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                        shrink=0.05))
+
+            ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
+                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                        shrink=0.05))
+
+            ax.annotate('4', xy=(4.9, 5.195), xytext=(4.75, 5.195), ha="center", va="top", fontsize=10,
+                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                        shrink=0.05))
+
+            ax.annotate("5", xy=(3.5, 5.175), xytext=(3.65, 5.18), ha="center", va="center",
+                        fontsize=10,
+                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                        shrink=0.05))
+
         axes[1].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
                            cmap="Spectral_r")
 
@@ -33,7 +70,7 @@ class StationaryPlot:
                  color=secondary_colour);  # 01->11
         plt.plot(currs, ((energies[:, 5].T - energies[:, 1]).T), linewidth=t, linestyle=typ2,
                  color=secondary_colour);  # 10-> 11
-        
+
         plt.plot(currs, ((energies[:, 6].T - energies[:, 1]).T / 2), linestyle=typ2, linewidth=t,
                  color=secondary_colour);  # 01->21
         plt.plot(currs, ((energies[:, 6].T - energies[:, 2]).T / 2), linestyle=typ2, linewidth=t,

@@ -177,8 +177,8 @@ Now, the complete Hamiltonian of SAM contains two terms describing each of them 
 \end{equation}
 where $\hat H_{int} = J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms. In the following, we will also transform \eqref{eq:master} into the frame rotating with both drives by an operator
 \begin{align}
-&\hat R = \exp[-i t (\omega_d^1 b^{\dagger}b+\omega_d^2 c^{\dagger}c)],\\
-&\hat H_R = \hat R^{\dagger}\hat H \hat R - i\hat R^{\dagger}\partial_t \hat R.
+&\hat R = \exp[-i t (\omega_d^1 b^{\dagger}b+\omega_d^2 c^{\dagger}c)],\label{eq:R}\\
+&\hat H_R = \hat R^{\dagger}\hat H \hat R - i\hat R^{\dagger}\partial_t \hat R.\label{eq:rotation}
 \end{align}
 After the transformation and application of RWA:
 \begin{equation}
@@ -254,10 +254,18 @@ To check whether the described features are present in the dynamic regime, we ha
 \subsection{Analysis of the spectra}
 
 \begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{stationary}
+	\caption{Simulated population of the first qubit excited state ($\lg P_{\ket{10}}$ is shown with colour). Bottom picture is same as the top one but with transitions from the stationary Hamiltonian overlaid. The legend labels the transitions (notation as in the the main text) at the sweet spot current; if elsewhere any two lines cross, the labels should be swapped after the intersection.}
+	\label{fig:statinary_levels}
+\end{figure}
+
+\begin{figure}
 	\includegraphics[width=\linewidth]{zoom_picture}
 	\caption{Zoomed-in simulation of feature III with increasing amplitude of the driving of the first transmon $\Omega_1/2\pi=$2, 4, 10 and 20 MHz while the second drive is fixed at $\Omega_2/2\pi=$10 MHz; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect. Interestingly, population inversion is observed inside the red-coloured areas of the graph: $\ket{00}$ population is less than 20\% there.}
 	\label{fig:zoom}
 \end{figure}
+
 
 
 \paragraph{Identification of the spectral lines.} Though it is not possible to describe all of the experimental features with the stationary model, it is possible to use it to find which spectral lines correspond to which transitions in the system (see \autoref{fig:statinary_levels}). In \autoref{fig:two-tone}~(b), we have labelled the brightest lines with $\ket{ij/n}$ where $i,j$ denote the final transmon states after the transition from $\ket{00}$, and $/n$ is optional for an $n$-photon process. We put the labels at the line of symmetry where the transmons are in their sweet spots; the SAM states at this point are nearly factorized (dispersive regime for two coupled SAAs) and thus may be easily distinguished.
@@ -267,19 +275,19 @@ Due to the strong driving, we observe several multiphoton transitions besides th
 When two lines intersect, they may form an avoided crossing if the corresponding matrix element of $\hat H_{int}$ is non-zero. In such cases, the SAM becomes inseparable with some of the eigenstates becoming superpositions of the factorized states. For a two-transmon SAM, such points are, for instance, crossings between $\ket{01}$, $\ket{10}$ or $ \ket{11} $, $ \ket{02} $($ \ket{20} $). Additionally, marked as feature 3 in \autoref{fig:two-tone}, we see an avoided crossing between $\ket{12},\ \ket{21}$ at the same $\Phi_e$ where $\ket{01}$, $\ket{10}$ intersect.
 
 
-\paragraph{Features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the other \textbf{(not shown, should we show?)}. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
+\paragraph{Features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the transmon 2. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b) where the spectral lines are identified with the corresponding transitions.
 
-From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and usually invisible $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. From additional simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}. There is no dependence on the drive power of the second transmon, though. As one can see, the growth of the splitting with increasing power is approximately linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line. 
+From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. The latter process is discernible in \autoref{fig:statinary_levels} as it depopulates $\ket{10}$, but is not visible in \autoref{fig:two-tone}. From additional simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}. There is no dependence on the drive power of the second transmon, though. As one can see, the growth of the splitting with increasing power is approximately linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line which is approximately $\Omega_1/2\pi$ Hz. 
 
 We come to the same conclusion for feature I: increasing drive amplitude on one of the transmons while keeping the other one small and constant again elicits an avoided crossing with a proportionally enlarging splitting (see \autoref{fig:difdrive}). Notably, two qualitatively different patterns of avoided crossings arise when the first or the second qubit is strongly driven.
 
 
-These observation lead to understanding that the effect is caused by light dressing. In case III, the first transmon is dressed by a strong resonant field; in case II, the second one; finally, in case I, both transmons are dressed at the same time. In the following section we will discuss this process in detail.
+These observation lead to understanding that the effect is caused by light dressing. In case III, the first transmon is dressed by a strong resonant field; in case II, the second one; finally, in case I, both transmons are dressed at the same time. We will discuss these effects in greater detail in \autoref{sec:theory}.
 
 
-\paragraph{Secondary features.} Using \autoref{fig:statinary_levels}, we conclude that 
+\paragraph{Secondary features.} Using \autoref{fig:statinary_levels}, we can get an insight into the features 1-5 as well. Feature2 is a small avoided crossing between $\ket{02/2}$ and $\ket{21/3}$. It is missing in the stationary solution and thus is a manifestation of dressing by light. Feature 2 is its twin: $\ket{12/3}$ and $\ket{20/2}$ intersect but the avoided crossing is smaller and is not resolved due to the asymmetry of the driving strengths. Feature 3 is a large avoided crossing between $\ket{12/3}$ and $\ket{21/3}$ predicted by the model. A remarkable detail here is that the dim lower branch implies the presence of a dark state with respect to the driving operator. Feature 4 is explained by the stationary model and is a consequence of multiple spectral lines of a peculiar shape formed by a pair of avoided crossings passing through a single point (dotted lines in \autoref{fig:statinary_levels}). It appears at the point where $\ket{02/2}$ intersects $\ket{20/2}$ and is just barely visible in the experimental data due to the noise. Feature 5 is located at the intersection between $\ket{20/2}$ and normally invisible $\ket{10}\rightarrow \ket{02}$. It is hardly visible in the experimental data, too.
 
-Finally, we have found that when the coupling is turned off ($J=0$), the system does not demonstrate at all any of the Roman-numbered features highlighted in \autoref{fig:two-tone} (similarly, Arabic ones also disappear). This is expected due to the lines participating in them  means that these effects can only be attributed molecule as a whole and not the SAAs themselves. 
+Finally, when the coupling is turned off ($J=0$) in modelling, the system does not demonstrate any of the described details. This means that all these effects can only be attributed to the SAM as a whole. 
 
 
 
@@ -287,45 +295,54 @@ Finally, we have found that when the coupling is turned off ($J=0$), the system 
 \begin{figure*}
 	\centering
 	\includegraphics[width=.9\linewidth]{main_scheme}
-	\caption{Explaining the origin of the AT satellites. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha/2$ ($\omega_2 - \omega_1 = \alpha/2$), and thus $E_{02} - E_{10} = \hbar\omega_1$. Since $E_{12} - E_{02} = \omega_1$ as well, both $00\rightarrow 10$, two-photon $00 \rightarrow 02/2$ and three-photon $00\rightarrow 12/3$ transitions can occur around the same frequency of $\omega_1$. During the two-tone spectroscopy, the first transmon is driven by a strong signal of amplitude $\Omega_1$ (possibly, at a small detuning $\Delta_1$ from $\omega_1$ shown in green). The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = \sqrt{\Omega_1^2 + \Delta_1^2}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by the corresponding drive operator are shown as blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted. The structure of the levels gives rise to three cases: the green transitions are not shifted in frequency, the red are red-shifted by $\Omega_R^1/2$ and the blue are blue-shifted by $\Omega_R^2/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2/(\omega_1-\omega_2)^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be two $\Omega_1^R$.}
+	\caption{Explaining the origin of the AT satellites for feature III. \textbf{(a)} System level structure at 3.65 mA. At this current, the first transmon (orange) is below the second one (blue) exactly by $\alpha_2/2$. The first transmon is driven by a strong signal of amplitude $\Omega_1$ at a small detuning $\Delta_1$ from $\omega_1$ shown in green. The transmon-transmon interaction in RWA conserves the number of excitations and is depicted as orange-blue circles. \textbf{(b)} Moving to the frame rotating with the drive of the first transmon, we make all the states $\ket{0j},\ket{1j}$ nearly degenerate (in fact, now the first transmon splitting equals $\Delta_1$). However, the presence of a strong excitation lifts the degeneracy and the splitting changes to $\Omega_1^R = (\Omega_1^2 + \Delta_1^2)^{\frac{1}{2}}$ (the first transmon becomes light-dressed). \textbf{(c)} Transitions in the light-dressed system when the second qubit is excited (level subspaces coupled by $\hat H_{dr}^2$ are shown with blue ellipses). In the left part of the panel, all possible two-photon transitions near $\omega_1$ are depicted: the green transitions are not shifted in frequency, the red are red-shifted by $\Omega^R_1/2$ and the blue are blue-shifted by $\Omega^R_1/2$. However, as shown in the right part of the panel, without the transmon-transmon interaction the satellite transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. When the coupling equals $J$, the dispersive approximation yields $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2\ket{b, j+1}\propto J^2$ and the satellites become visible. Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be just $\Omega_1^R$.}
 	\label{fig:main_scheme}
 \end{figure*}
 
 
+\subsection{Explaining extra avoided crossings}\label{sec:theory}
 
-\subsection{Theoretical description of the observed spectral lines}
-For the three-level system, the A-T effect is described in Appendix \ref{sec:3-level-at}. Let's consider our system (\autoref{Hsystem}) in rotating frame. Moving to this frame is achieved by the rotation:
+Since we had already connected the additional avoided crossings with light dressing, it was natural to expect the Autler-Townes effect to play a part. For a three-level system, the standard A-T effect is reviewed in Appendix \ref{sec:3-level-at}. However, in our case the situation is more complicated. We will first explain the feature III. Feature II is explained in the exactly same way. Feature I is of the same origin but is not discussed here in such detail. 
+
+First of all, during the spectroscopy we apply only a single microwave tone, and thus is has to be simultaneously the coupler tone and the probe tone to observe the A-T effect. This configuration is possible due to the resonance condition between the transmons at III: the light is resonant with $\ket{10}$ and detuned from $\ket{01}$; however, it is instead resonant with a two-photon transition $\ket{02/2}$ (the resonance condition is $\omega_1 = \omega_2+\alpha_2/2$). Since the two-photon Rabi frequency is much smaller than the single-photon $\Omega_2$, it is natural to view this two-photon excitation as the probing process which does not affect the level structure. In other words, in our case the A-T coupling operator is $\hat H_{dr}^1$ (strong), and the probing operator is $\hat H_{dr}^2$ (weak in the two-photon regime). Their separation in our case is not in frequency but in the Hilbert subspaces they act upon.
+
+In \autoref{fig:main_scheme}, we elaborate on how exactly the A-T effect occurs for feature III. \autoref{fig:main_scheme}~(a) demonstrates the unmodified level structure of the SAM. Orange (blue) levels correspond to first (second) qubit excited, the other being in the ground state. Orange ellipses denote the driving (detuned by $\Delta_1$ from $\omega_1$) of the first transmon. Note that it acts upon every pair of states $\ket{0j},\,\ket{1j},\ j=0..2$. The off-resonant two-photon drive on the second qubit is not shown here. Since from numerical simulation we know that level $\ket{02}$ is not necessary to observe the splitting, it is only shown with a dashed line. From here, we consider the first transmon to be a two-level qubit: $\ket{22}$ is not shown, $\hat H_{int}$ in RWA couples only $\ket{01},\,\ket{10}$ and $\ket{11},\,\ket{12}$.
+
+The next step is to view the system in the frame rotating with the first transmon (\autoref{fig:main_scheme}~(b)). Just as in Appendix \ref{sec:3-level-at}, after rediagonalization it may be regarded as dressed by light, and the whole level system rearranges. Now, the first transmon splitting equals $\Omega_{1}^R = \sqrt{\Omega_1^2+\Delta_1^2}$, and its the new eigenstates (dressed states) are $\ket{a}$ and $\ket{b}$. The second transmon energies stay the same, and thus in overall we obtain just three doublets.
+
+Mathematically, this procedure looks as follows. In the calculation below, we will use the following rotation operator (different from \eqref{eq:R}) to move to the rotating frame with \eqref{eq:rotation}:
 \begin{equation}
-R = \exp(-i\omega_d t (b^{\dagger}b+c^{\dagger}c))
+R = \exp[-i\omega_d^1 t (b^{\dagger}b+c^{\dagger}c)]
 \end{equation}  
-After this transformation the effective Hamiltonian can be found from equation:
-\begin{equation}
-H_{system}^R = R^{\dagger}H_{system}R-iR^{\dagger}\dot{R}
-\end{equation}
 
-From the simulation follows that a two-level approximation for first qubit and three-level approximation for second is sufficient to observe the effect we are interested in. The Hamiltonian in matrix form is given by the following expression:
+Note that for brevity reasons we rotate both transmon subspaces simultaneously (in contrast to what is shown in \autoref{fig:main_scheme}). Moreover, we consider a general case when $\omega_d^1 - \omega_d^2 = \delta \neq 0 $ and $\Delta_{1,2} = \omega_d^1-\omega_{1,2}$ and $\omega_1 - \omega_2$ not necessary equals $\alpha_2/2$. The resulting Hamiltonian with RWA:
 
 \renewcommand{\kbldelim}{[}% Left delimiter
 \renewcommand{\kbrdelim}{]}% Right delimiter
 \begin{widetext}
 	\begin{equation}\label{matrix} 
 	\text{$H^R$} = \kbordermatrix{
-	&\ket{00} & \ket{10} & \ket{01} & \ket{11} & \ket{02} & \ket{12} \\
-	\ket{00}& 0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 & 0 \\
-	\ket{10} & \text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 & 0 \\
-	\ket{01} & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & J & -\text{$\Delta_2 $} &
-	\text{$\Omega_1$/2} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}$} t}/2 & 0 \\
-	\ket{11} & 0 & \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2$} &
-	\text{$-\Delta_2 -\Delta_1$} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta_{\omega}
-			$} t}/2 \\
-	\ket{02} & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega}$} t}/2 & \sqrt{2} J &
-	\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
-	\ket{12} & 0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta_{\omega} $} t}/2 & \text{$\Omega_1/2
-		$} & \text{$\alpha$}-2 \text{$\Delta_2$}- \text{$\Delta_1$} \\
-}
+		&\ket{00} & \ket{10} & \ket{01} & \ket{11} & \ket{02} & \ket{12} \\
+		\ket{00}& 0 & \text{$\Omega_1/2 $} & \text{$\Omega _2$} e^{i \text{$\delta$} t}/2 & 0 & 0 & 0 \\
+		\ket{10} & \text{$\Omega_1/2 $} & \text{$-\Delta_1 $} & J & \text{$\Omega_2$} e^{i \text{$\delta$} t}/2 & 0 & 0 \\
+		\ket{01} & \text{$\Omega_2$} e^{-i \text{$\delta$} t}/2 & J & -\text{$\Delta_2 $} &
+		\text{$\Omega_1$/2} & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta$} t}/2 & 0 \\
+		\ket{11} & 0 & \text{$\Omega_2$} e^{-i \text{$\delta $} t}/2 & \text{$\Omega_1/2$} &
+		\text{$-\Delta_2 -\Delta_1$} & \sqrt{2} J & \sqrt{2} \text{$\Omega_2$} e^{i \text{$\delta
+				$} t}/2 \\
+		\ket{02} & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta$} t}/2 & \sqrt{2} J &
+		\text{$\alpha$}-2 \text{$\Delta_2$} & \text{$\Omega_1/2$} \\
+		\ket{12} & 0 & 0 & 0 & \sqrt{2} \text{$\Omega_2$} e^{-i \text{$\delta $} t}/2 & \text{$\Omega_1/2
+			$} & \text{$\alpha$}-2 \text{$\Delta_2$}- \text{$\Delta_1$} \\
+	}
 	\end{equation}
 \end{widetext}
-Where $\Omega_1$, $\Omega_2$ - amplitudes of the drives, $\Delta_1 = \omega_d-\omega_{1}=0$,$\Delta_2 = \omega_d-\omega_{2}$, $\delta_{\omega} = \omega_{dr1}-\omega_{dr2}$.
+Here , $\delta = \omega_{dr}^1 - \omega_{dr}^2$.
+
+Finally, in \autoref{fig:main_scheme}
+
+
+
 Let's consider the Hamiltonian (\autoref{matrix}) in details. Divide it into three parts: time-dependent $(V_t)$, the part responsible for the interaction between the qubits $(V_J)$ and all the rest $(H_0)$.
 \begin{equation}
 	H^R=H_0+V_J+V_t
@@ -360,7 +377,7 @@ The underlying cause of the A-T effect is the dressing of the atomic levels by s
 	\label{fig:at-standard}
 \end{figure}
 
-\paragraph{Classical derivation.} In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_1$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$. Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_2$ between $\ket{1}$ and $\ket{2}$. This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
+\paragraph{Classical derivation.} In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_1$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$ (the \textit{coupler} tone). Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_2$ between $\ket{1}$ and $\ket{2}$ (the \textit{probe} tone). This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
 
 \begin{equation*}
 \hat H^c_0 = \left[\begin{matrix}
@@ -525,14 +542,14 @@ In order to determine which transitions correspond to the lines, the stationary 
 \begin{equation}
 	H_{system} = H_{tr1}\otimes \mathbbm{1}+\mathbbm{1}\otimes H_{tr2}+H_{int}
 \end{equation}
-\begin{figure}[h]
+
+
+\begin{figure}
 	\centering
-	\includegraphics[width=\linewidth]{stationary}
-	\caption{Simulated population of the first qubit excited state ($\lg P_{\ket{10}}$ is shown with colour). Bottom picture is same as the top one but with transitions from the stationary Hamiltonian overlaid. The legend labels the transitions (notation as in the the main text) at the sweet spot current; if elsewhere any two lines cross, the labels should be swapped after the intersection.}
-	\label{fig:statinary_levels}
+	\includegraphics[width=\linewidth]{drawing}
+	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
+	\label{fig:difdrive}
 \end{figure}
-
-
 
 
 
