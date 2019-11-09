@@ -244,28 +244,27 @@ where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is 
 \end{figure*}
 
 
+\begin{figure*}
+	\includegraphics[width=.49\linewidth]{powerscan}
+	\includegraphics[width=.49\linewidth]{zoom2_picture}
+	\caption{Investigation of the power dependence of feature II. \textbf{(a)} Experiment (second cooldown, the parameters are different). The power of the microwave source is increased from -20 to 0 dBm so that the amplitude grows linearly, and the proportional growth of the splitting is observed. \textbf{(b)} Simulation with an equal and increasing amplitudes of the driving $\Omega_{1,2}/2\pi=$4, 8, 15 and 30; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect.}
+	\label{fig:zoom}
+\end{figure*}
+
 Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy (qubit Rabi frequencies $\Omega_1$ and $\Omega_2$ were around 20 MHz) to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe three distinct features shown in insets marked with Roman numerals. Some secondary details are shown with Arabic-numbered markers.
 
 Remarkably, in areas I, II and III we could observe avoided crossings and triplet transitions which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing $\hat H_{tr1}+\hat H_{tr2}+\hat H_{int}$ taking 3 levels for each transmon (and total 9 basis states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels} in Appendix. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}, it completely misses the Roman-numbered effects. Taking into account more energy levels for transmons does not help, and is not even necessary to reproduce the experiment, as we will show in the following.
 
 To check whether the described features are present in the dynamic regime, we have solved the master equation \eqref{eq:master} to find the steady state of the system $\hat \rho_{ss}$ and the corresponding expected measurement outcome $\mathfrak{Re}\left[\Tr[\hat M \hat \rho_{ss}]\right]$. Strikingly, all the experimental features are immediately reproduced using this approach with just 9 SAM states. We have solved \eqref{eq:master} with and without RWA (using the propagator approach \eqref{eq:propagator}) and did not find any noticeable difference in the results; though, the runtime of a single 401 by 401 points simulation was 9 hours without RWA vs. 3 minutes with RWA.
 
-\subsection{Analysis of the spectra}
-
-\begin{figure}
+\begin{figure*}
 	\centering
 	\includegraphics[width=\linewidth]{stationary}
 	\caption{Simulated population of the first qubit excited state ($\lg P_{\ket{10}}$ is shown with colour). Bottom picture is same as the top one but with transitions from the stationary Hamiltonian overlaid. The legend labels the transitions (notation as in the the main text) at the sweet spot current; if elsewhere any two lines cross, the labels should be swapped after the intersection.}
 	\label{fig:statinary_levels}
-\end{figure}
+\end{figure*}
 
-\begin{figure}
-	\includegraphics[width=\linewidth]{zoom_picture}
-	\caption{Zoomed-in simulation of feature III with increasing amplitude of the driving of the first transmon $\Omega_1/2\pi=$2, 4, 10 and 20 MHz while the second drive is fixed at $\Omega_2/2\pi=$10 MHz; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect. Interestingly, population inversion is observed inside the red-coloured areas of the graph: $\ket{00}$ population is less than 20\% there.}
-	\label{fig:zoom}
-\end{figure}
-
-
+\subsection{Analysis of the spectra}
 
 \paragraph{Identification of the spectral lines.} Though it is not possible to describe all of the experimental features with the stationary model, it is possible to use it to find which spectral lines correspond to which transitions in the system (see \autoref{fig:statinary_levels}). In \autoref{fig:two-tone}~(b), we have labelled the brightest lines with $\ket{ij/n}$ where $i,j$ denote the final transmon states after the transition from $\ket{00}$, and $/n$ is optional for an $n$-photon process. We put the labels at the line of symmetry where the transmons are in their sweet spots; the SAM states at this point are nearly factorized (dispersive regime for two coupled SAAs) and thus may be easily distinguished.
 

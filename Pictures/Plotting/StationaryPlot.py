@@ -15,8 +15,8 @@ class StationaryPlot:
         with open("stationary.pkl", "rb") as f:
             currs, freqs, population10, energies = pickle.load(f)
 
-        fig, axes = plt.subplots(2, 1, figsize=(4, 7), sharex=True)
-        plt.subplots_adjust(wspace=.2, hspace=.1)
+        fig, axes = plt.subplots(1, 2, figsize=(8, 3), sharey=True)
+        plt.subplots_adjust(wspace=.1, )
 
         mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
                            cmap="Spectral_r")
@@ -137,14 +137,15 @@ class StationaryPlot:
 
         plt.ylim(5.1, 5.5)
         plt.xlim(2,6)
-        plt.xlabel("Current [$10^{-4}$ A]")
+        axes[0].set_ylabel("Frequency [GHz]")
+
         for ax in axes:
-            ax.set_ylabel("Frequency [GHz]")
+            ax.set_xlabel("Current [$10^{-4}$ A]")
         plt.legend(ncol=3, fontsize=5)
 
-        cbaxes1 = fig.add_axes([0.125, .925, 0.65, .01])
-        cb = plt.colorbar(mappable, ax=axes[0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$\lg P_{\left|10\right\rangle}$", position=(1.125, -2))
+        cbaxes1 = fig.add_axes([.925, 0.11, 0.01, .7])
+        cb = plt.colorbar(mappable, ax=axes[0], cax=cbaxes1, orientation="vertical")
+        cb.ax.set_title(r"$\lg\, P_{\left|10\right\rangle}$", position=(3, 1))
         # print([val.get_text() for val in cb.ax.get_xticklabels()])
         # cbaxes1.set_xticklabels(["$10^{%s}$"%val.get_text() for val in  cb.ax.get_xticklabels()])
         plt.savefig("../stationary.pdf", bbox_inches="tight", dpi=600)
