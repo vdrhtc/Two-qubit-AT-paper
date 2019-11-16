@@ -86,7 +86,7 @@
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
 	}%
 	
-	\author{K. Shiyanov}
+	\author{K. Shiianov}
 
 	\affiliation{ 
 		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia
@@ -245,24 +245,26 @@ where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is 
 
 
 \begin{figure*}
+	\centering
+	\includegraphics[width=\linewidth]{stationary}
+	\caption{Simulated population of the first qubit excited state ($\lg P_{\ket{10}}$ is shown with colour). Left picture is same as the right one but with transitions from the stationary Hamiltonian overlaid. The legend labels the transitions (notation as in the the main text) at the sweet spot current; if elsewhere any two lines cross, the labels should be swapped after the intersection.}
+	\label{fig:statinary_levels}
+\end{figure*}
+
+
+Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe distinct features shown in insets marked with Roman numerals. Some secondary details are shown with Arabic-numbered markers.
+
+Remarkably, in areas I, II and III we could observe avoided crossings and triplet transitions which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing $\hat H_{tr1}+\hat H_{tr2}+\hat H_{int}$ taking 3 levels for each transmon (and total 9 basis states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels}. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}~(a), it completely misses the Roman-numbered effects. Taking into account more energy levels for transmons does not help, and is not even necessary to reproduce the experiment, as we will show in the following.
+
+To check whether the described features are present in the dynamic regime, we have solved the master equation \eqref{eq:master} to find the steady states of the system $\hat \rho_{ss}$ and the corresponding expected measurement outcomes $\mathfrak{Re}\left[\Tr[\hat M \hat \rho_{ss}]\right]$ depending on the excitation frequency and magnetic flux. Strikingly, all the experimental features are immediately reproduced using this approach with just 9 SAM states as shown in \autoref{fig:two-tone}~(b). We have solved \eqref{eq:master} with and without RWA (using the propagator approach \eqref{eq:propagator}) and did not find any noticeable difference in the results; though, the runtime of a single 401 by 401 points simulation was 9 hours without RWA vs. 3 minutes with RWA.
+
+\begin{figure*}
 	\includegraphics[width=.49\linewidth]{powerscan}
 	\includegraphics[width=.49\linewidth]{zoom2_picture}
-	\caption{Investigation of the power dependence of feature II. \textbf{(a)} Experiment (second cooldown, the parameters are different). The power of the microwave source is increased from -20 to 0 dBm so that the amplitude grows linearly, and the proportional growth of the splitting is observed. \textbf{(b)} Simulation with an equal and increasing amplitudes of the driving $\Omega_{1,2}/2\pi=$4, 8, 15 and 30; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect.}
+	\caption{Investigation of the power dependence of feature II. Dashed are the model curves turning to dotted when the model is no longer expected to be valid (see Section \ref{sec:theory}). Model values for $\Omega_2$ are the same for both panels and shown as annotations in (b). \textbf{(a)} Experiment (second cooldown; the parameters are different from \autoref{fig:experiment}). The power of the microwave source is increased from -20 to 0 dBm so that the amplitude grows linearly, and the proportional growth of the splitting is observed. \textbf{(b)} Simulation with an equal and increasing amplitudes of the driving $\Omega_{1,2}/2\pi=$4.5, 11.25, 22.5 and 45 MHz; other parameters as in \autoref{fig:two-tone}. Note that now colours show the population of the ground state ($\ket{00}$). The growth of the splitting is a clear indication of the light-dressing to be at the root of the effect.}
 	\label{fig:zoom}
 \end{figure*}
 
-Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy (qubit Rabi frequencies $\Omega_1$ and $\Omega_2$ were around 20 MHz) to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe three distinct features shown in insets marked with Roman numerals. Some secondary details are shown with Arabic-numbered markers.
-
-Remarkably, in areas I, II and III we could observe avoided crossings and triplet transitions which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing $\hat H_{tr1}+\hat H_{tr2}+\hat H_{int}$ taking 3 levels for each transmon (and total 9 basis states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels} in Appendix. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}, it completely misses the Roman-numbered effects. Taking into account more energy levels for transmons does not help, and is not even necessary to reproduce the experiment, as we will show in the following.
-
-To check whether the described features are present in the dynamic regime, we have solved the master equation \eqref{eq:master} to find the steady state of the system $\hat \rho_{ss}$ and the corresponding expected measurement outcome $\mathfrak{Re}\left[\Tr[\hat M \hat \rho_{ss}]\right]$. Strikingly, all the experimental features are immediately reproduced using this approach with just 9 SAM states. We have solved \eqref{eq:master} with and without RWA (using the propagator approach \eqref{eq:propagator}) and did not find any noticeable difference in the results; though, the runtime of a single 401 by 401 points simulation was 9 hours without RWA vs. 3 minutes with RWA.
-
-\begin{figure*}
-	\centering
-	\includegraphics[width=\linewidth]{stationary}
-	\caption{Simulated population of the first qubit excited state ($\lg P_{\ket{10}}$ is shown with colour). Bottom picture is same as the top one but with transitions from the stationary Hamiltonian overlaid. The legend labels the transitions (notation as in the the main text) at the sweet spot current; if elsewhere any two lines cross, the labels should be swapped after the intersection.}
-	\label{fig:statinary_levels}
-\end{figure*}
 
 \subsection{Analysis of the spectra}
 
@@ -275,20 +277,12 @@ When two lines intersect, they may form an avoided crossing if the corresponding
 
 \paragraph{Features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the transmon 2. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition from $\ket{00}$ to $\ket{01}$ intersects with the two-photon one $\ket{20/2}$ ($\ket{10}$ intersects $\ket{02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b).
 
-From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. The latter process is discernible in \autoref{fig:statinary_levels} as it depopulates $\ket{10}$, but is not visible in \autoref{fig:two-tone}. From additional simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}. There is no dependence on the drive power on the second transmon, though. As one can see, the growth of the splitting with increasing power is approximately linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line which is approximately $\Omega_1/2\pi$ Hz. 
+From \autoref{fig:statinary_levels} we conclude that avoided crossing in III is between two transitions: $\ket{00}\rightarrow\ket{12/3}$ and $\ket{10}\rightarrow \ket{02}$ which are of the same frequency when $\omega_1 = \omega_2-\alpha_2/2$. The latter process is discernible in \autoref{fig:statinary_levels} as it depopulates $\ket{10}$, but is not visible in \autoref{fig:two-tone}. From additional measurements and simulations, we have found that the size of the splitting depends on the driving power on the first transmon; the results are shown in \autoref{fig:zoom}~(a),(b). As one can see, the growth of the splitting with increasing power is linear: its width is roughly equal to the FWHM of the $\ket{10}$ spectral line which is approximately $\Omega_1/2\pi$ Hz. To fully quantify the size of the splitting, in Section \ref{sec:theory} we derive analytical expressions for the dashed curves fitting the spectral lines
 
 We come to the same conclusion for feature I: increasing drive amplitude on one of the transmons while keeping the other one small and constant again elicits an avoided crossing with a proportionally enlarging splitting (see \autoref{fig:difdrive}). Notably, two qualitatively different patterns of avoided crossings arise when the first or the second qubit is strongly driven.
 
 
 These observation lead to understanding that the effect is caused by light dressing. In the case III, the first transmon is dressed by a strong resonant field; in case II, the second one; finally, in case I, both transmons are dressed at the same time. We will discuss these effects in greater detail in \autoref{sec:theory}.
-
-
-\paragraph{Secondary features.} Using \autoref{fig:statinary_levels}, we can get an insight into the features 1-5 as well. Feature2 is a small avoided crossing between $\ket{02/2}$ and $\ket{21/3}$. It is missing in the stationary solution and thus is a manifestation of dressing by light. Feature 2 is its twin: $\ket{12/3}$ and $\ket{20/2}$ intersect but the avoided crossing is smaller and is not resolved due to the asymmetry of the driving strengths. Feature 3 is a large avoided crossing between $\ket{12/3}$ and $\ket{21/3}$ predicted by the model. A remarkable detail here is that the dim lower branch implies the presence of a dark state with respect to the driving operator. Feature 4 is explained by the stationary model and is a consequence of multiple spectral lines of a peculiar shape formed by a pair of avoided crossings passing through a single point (dotted lines in \autoref{fig:statinary_levels}). It appears at the point where $\ket{02/2}$ intersects $\ket{20/2}$ and is just barely visible in the experimental data due to the noise. Feature 5 is located at the intersection between $\ket{20/2}$ and normally invisible $\ket{10}\rightarrow \ket{02}$. It is hardly visible in the experimental data, too. 
-
-Finally, when the coupling is turned off ($J=0$) in modelling, the system does not demonstrate any of the described details. This means that all these effects can only be attributed to the SAM as a whole. 
-
-
-
 
 \begin{figure*}
 	\centering
@@ -298,20 +292,31 @@ Finally, when the coupling is turned off ($J=0$) in modelling, the system does n
 \end{figure*}
 
 
+\paragraph{Secondary features.} Using \autoref{fig:statinary_levels}, we can get an insight into the features 1-5 as well. Feature2 is a small avoided crossing between $\ket{02/2}$ and $\ket{21/3}$. It is missing in the stationary solution and thus is a manifestation of dressing by light. Feature 2 is its twin: $\ket{12/3}$ and $\ket{20/2}$ intersect but the avoided crossing is smaller and is not resolved due to the asymmetry of the driving strengths. Feature 3 is a large avoided crossing between $\ket{12/3}$ and $\ket{21/3}$ predicted by the model. A remarkable detail here is that the dim lower branch implies the presence of a dark state with respect to the driving operator. Feature 4 is explained by the stationary model and is a consequence of multiple spectral lines of a peculiar shape formed by a pair of avoided crossings passing through a single point (dotted lines in \autoref{fig:statinary_levels}). It appears at the point where $\ket{02/2}$ intersects $\ket{20/2}$ and is just barely visible in the experimental data due to the noise. Feature 5 is located at the intersection between $\ket{20/2}$ and normally invisible $\ket{10}\rightarrow \ket{02}$, and can be found in the experimental data, too. 
+
+Finally, when the coupling is turned off ($J=0$) in modelling, the system does not demonstrate any of the described details. This means that all these effects can only be attributed to the SAM as a whole. 
+
+
+
+
 \subsection{Explaining extra avoided crossings}\label{sec:theory}
 
-Since we had already connected the additional avoided crossings with light dressing, it was natural to expect the Autler-Townes effect to cause them. For a three-level system, the standard A-T effect is reviewed in Appendix \ref{sec:3-level-at}. However, in our case the situation is more complicated. We will first explain the feature III.
+Since we had already connected the additional avoided crossings with light dressing, it was natural to expect the Autler-Townes effect to cause them. For a three-level system, the standard A-T effect is reviewed in Appendix \ref{sec:3-level-at}. However, in our case the level structure is more complicated. 
 
-First of all, since during the spectroscopy we apply only a single microwave tone, it has to be simultaneously the coupler tone and the probe tone to observe the A-T effect. This is possible due to the resonance condition $\omega_1 = \omega_2+\alpha_2/2$ at III which means that we can simultaneously excite transitions $\ket{10}$ and $\ket{02/2}$. Since the two-photon Rabi frequency is much smaller than the single-photon $\Omega_2$, it is natural to view this two-photon excitation as the probing process which does not affect the level structure. In contrast, the single-photon excitation is enough to dress the system. In other words, in our case the A-T coupling operator is $\hat H_{dr}^1$ (strong), and the probing operator is $\hat H_{dr}^2$ (weak in the two-photon regime). Their separation in our case is not in frequency but in the Hilbert subspaces they act upon.
+First of all, since during the spectroscopy we apply only a single microwave tone ($\omega_d^1 = \omega_d^2$), for the A-T effect it has to be simultaneously the coupler and the probe; the latter must be much weaker than the former, as well. These conditions are satisfied when $\omega_{(2,1)} = \omega_{(1,2)}+\alpha_{(1,2)}/2$  where we can simultaneously excite transitions $01 (10)$ and $20/2 (02/2)$ (features II and III, respectively) because the of the two-photon probe. Since the two-photon Rabi frequency is much smaller than the single-photon $\Omega_2$, it is natural to view this two-photon excitation as the probing process which does not affect the level structure. In contrast, the single-photon excitation is enough to dress the system. In other words, in our case the A-T coupling operator is $\hat H_{dr}^1$ (strong), and the probing operator is $\hat H_{dr}^2$ (weak in the two-photon regime). Their separation in our case is not in frequency but in the Hilbert subspaces they act upon.
 
-In \autoref{fig:main_scheme}, we elaborate on how exactly the A-T effect occurs for feature III. \autoref{fig:main_scheme}~(a) demonstrates the unmodified level structure of the SAM. Since from numerical simulations we know that level $\ket{02}$ is not necessary to observe the splitting, it is only shown with a dashed line, and hereinafter we consider the first transmon as a two-level system.
+Similarly, for feature I, the simultaneously excited transitions are $01 (10)$ and the two-photon $11/2$. However, as we will show, for the avoided crossing of feature I to be clearly observed it is required that $\Omega_{(1,2)} \gg \Omega_{(2,1)}$. Below, we give the detailed explanation concerning features II and III, and finally, I.
+
+\paragraph{Features II and III.}  
+
+In \autoref{fig:main_scheme}, we elaborate on how exactly the A-T effect would occur for feature III. For simplicity, we  \autoref{fig:main_scheme}~(a) demonstrates the unmodified level structure of the SAM. Since from numerical simulations we know that level $\ket{02}$ is not necessary to observe the splitting, it is only shown with a dashed line, and hereinafter we consider the first transmon as a two-level system.
 
 The next step is to view the system in the frame rotating with the first transmon (\autoref{fig:main_scheme}~(b)) and then move to the  dressed picture similarly to Appendix \ref{sec:3-level-at}. Now, the first transmon splitting equals $\Omega_{1}^R = \sqrt{\Omega_1^2+\Delta_1^2}$, and its the new eigenstates (dressed states) are denoted $\ket{a}$ and $\ket{b}$. At the same time, the second transmon energies stay the same.
 
 
 Finally, in \autoref{fig:main_scheme}~(c) we demonstrate possible two-photon transitions between the resulting eigenstates due to $\hat H_{dr}^2$. In the left part of the panel, the unmodified transition at $\omega_1$ and two sidebands at $\omega_1 \pm \Omega_1^R/2$. The right part describes the mechanism of these two-photon processes through virtual excitations of the intermediate states. From here it becomes obvious that without the transmon-transmon interaction the sideband transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. However, we will show that they become allowed in the second order in $J$ when the coupling is turned on.  Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be just $\Omega_1^R$.
 
-Now, we will repeat this reasoning in a quantitative mathematical model. We start from the initial Hamiltonian \eqref{Hsystem}. To move to the rotating frame with \eqref{eq:rotation} and apply the RWA, will use the following operator:
+Now, we will repeat this reasoning using a quantitative mathematical model. We start from the initial Hamiltonian \eqref{Hsystem}. To move to the rotating frame with \eqref{eq:rotation} and apply the RWA, will use the following operator:
 \begin{equation}
 R = \exp[-i\omega_d^1 t (b^{\dagger}b+c^{\dagger}c)]
 \end{equation}  
@@ -335,6 +340,8 @@ Since $\hat H_{dr}^1$ is now time-independent, we can move to the dressed basis 
 \end{aligned}
 \end{equation}
 The first part is diagonal, and the remaining two will be treated as perturbations. To simplify futher calculations, we take the working point where $\Delta_1 = 0$ and $\Delta_2= - \alpha/2$. In these conditions, $H^D$ becomes degenerate as can be seen below in \eqref{eq:ham_matrix}:
+
+\vspace{1cm}
 
  \renewcommand{\kbldelim}{[}% Left delimiter
 \renewcommand{\kbrdelim}{]}% Right delimiter
@@ -368,11 +375,54 @@ A^{(2)}_{1\rightarrow 6} =\pi\Omega_2^4 \frac{16 J^4 \left(3 \alpha ^2+7 \text{$
 \begin{equation}
 A^{(2)}_{2\rightarrow 5} =\pi\Omega_2^4 \frac{4 J^4 (5 \alpha +3 \text{$\Omega_1$})^2}{\alpha ^8}
 \end{equation}
-
-
 From here it follows that in the studied SAM the sideband transitions are prohibited without interaction $(J=0)$ even in the second order, and the avoided crossing we are interested can not be observed.
 
+\subsection{Shape of the extra avoided crossings}
 
+In this section we will employ the model from \autoref{fig:main_scheme} to explain the experimentally observed splittings when only a single frequency excitation is applied. From here, we will use feature II as the example. In the laboratory frame, the two transitions forming the avoided crossing are $\left|01\right\rangle \rightarrow \left|20\right\rangle$ (one-photon) and $\left|00\right\rangle \rightarrow \left|21/3\right\rangle$ (three-photon). In the rotating frame with the second qubit at a small detuning $\Delta_2$ they both become two-photon since the second qubit splitting $\omega_2$ is replaced by $\Delta_2$ which is close to 0, and we are looking at transitions near $\omega_1+\alpha_1/2$. 
+
+When $\Omega_2$ = 0 (no driving yet on the second qubit), the corresponding frequencies are:
+\begin{equation}
+\begin{aligned}
+\omega_{(01-20)/2} &= (\alpha_1 + 2 \omega_{1} - \Delta_2)/2\\
+ \omega_{21/2} &= (\alpha_1 + 2 \omega_{1} + \Delta_2)/2
+\end{aligned}
+\end{equation}
+When the second qubit becomes dressed by $\Omega_2 \neq 0$, its splitting becomes $\Omega^R_2 =\sqrt{\Omega_{2}^2 + \left(\omega_{2} - \omega_{d}\right)^{2}}$, where $\omega_d$ is the driving frequency. Since we are simultaneously dressing the $\left|i0\right\rangle, \left|i1\right\rangle$ states and probing transitions between them, self-consistent equations have to be solved to find at which $\omega_d$ the sideband spectral lines appear:
+\begin{equation}
+\begin{aligned}
+\omega_{(01-20)/2} &= \omega_d,\\
+\omega_{21/2} &= \omega_d
+\end{aligned}
+\end{equation}
+
+When $\Omega_2 = 0$, these equations yield indentical pairs of solutions due to the properties of the modulus $|\omega_2 - \omega_d|$. Intriguingly, they are the three-photon $\left|00\right\rangle \rightarrow \left|21/3\right\rangle$ and single-photon $\left|01\right\rangle \rightarrow \left|20\right\rangle$ transition frequencies in the laboratory frame:
+\begin{equation}
+\omega_d = \begin{cases} \frac{\alpha_1}{3} + \frac{2 \omega_{1}}{3} + \frac{\omega_{2}}{3}, \\ \alpha_1 + 2 \omega_{1} - \omega_{2}\end{cases}
+\end{equation}
+When $\Omega_2 \neq 0$, we obtain the following solutions:
+\begin{equation}
+\omega_d = \frac{2 \alpha_2}{3} + \frac{4 \omega_{1}}{3} - \frac{\omega_{2}}{3} \pm \frac{\sqrt{3 \Omega_{2}^{2} + \left( \alpha_1 + 2 (\omega_{1} - \omega_{2})\right)^{2}}}{3}
+\label{eq:splitting_model}
+\end{equation}
+The minimal splitting between these lines is found at the resonant point where $\omega_2 = \omega_1 +  \alpha_1/2$ and equals $\frac{2}{\sqrt{3}} \Omega_2$. We find excellent agreement between our analytical model \eqref{eq:splitting_model} and both the experimental and simulated data as can be seen in \autoref{fig:zoom}. To plot the model curves we have fitted the $\omega_{(1,2)}(\Phi_e)$ transitions with simple linear functions and substituted them in \eqref{eq:splitting_model}; $\alpha_2$ is known from spectroscopy. T																																																																																																																																																																																								he only free parameter left was $\Omega_2$. We have repeated this approximation for a range of microwave powers to confirm the linear dependence of the splitting (see \autoref{fig:splitting_linear}).
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{powerscan_1d}
+	\caption{Linear dependence of the splitting size on the driving voltage from the microwave source $V_{rms} = \sqrt{10^{P_{exc}/10}\cdot 1 \text{ mW} \cdot 50\ \Omega}$.}
+	\label{fig:splitting_linear}
+\end{figure}
+
+The upper branch is expected to deviate from the model (see dashed curves in \autoref{fig:zoom}) because of the avoided crossing marked as the secondary feature 3 which was not incorporated in the simple linear model. The small discrepancy between the experimental and simulated data in the upper branch is caused by a slight elevation of the lower sweet spot of the first transmon which has offset the avoided crossing 3 which becomes closer to the feature II; it is not important for our reasoning.
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{topological_splittings}
+	\caption{Simulated population of the ground state when the transmons are driven at different amplitudes $\Omega_{1,2}$. In the left (right), $\Omega_{1(2)}$ is increased while $\Omega_{2(1)} = \text{const}$. Two topologically different splittings may be observed}
+	\label{fig:difdrive}
+\end{figure}
 
 \appendix
 
@@ -553,12 +603,6 @@ In order to determine which transitions correspond to the lines, the stationary 
 \end{equation}
 
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\linewidth]{drawing}
-	\caption{Drive acts on the one of qubit, with different amplitude 100,200,300 MHz}
-	\label{fig:difdrive}
-\end{figure}
 
 
 
