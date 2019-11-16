@@ -1,0 +1,87 @@
+import pickle
+from numpy import *
+import matplotlib
+from matplotlib import ticker, colorbar as clb
+
+matplotlib.use('Qt5Agg')
+
+from matplotlib import pyplot as plt
+from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
+from matplotlib.pyplot import MultipleLocator
+
+
+class TopologicalSplitting:
+
+    def __init__(self):
+        with open('10-01-11.pkl', 'rb') as f:
+            self._X, self._Y, self._plots = pickle.load(f)
+        with open("transitions.pkl", "rb") as f:
+            self._currs, self._transitions_1, self._transitions_2 = pickle.load(f)
+
+        Omegas = array([(15, 7.5),
+                        (30, 7.5),
+                        (45, 7.5),
+                        (7.5, 15),
+                        (7.5, 30),
+                        (7.5, 45)])
+
+        fig, axes = plt.subplots(3, 2, sharex=True, sharey=True, figsize=(5, 5))
+        plt.subplots_adjust(wspace=.1, hspace=.2)
+
+        for idx, ax in enumerate(axes.T.ravel()):
+            m = ax.pcolormesh(self._X, self._Y, array(self._plots[idx]).T,
+                              vmin=0, vmax=1, cmap="Spectral", rasterized=True)
+            if idx in [2, 5]:
+                ax.set_xlabel("Current [$10^{-4}$ A]")
+            if idx < 3:
+                ax.set_ylabel("$\omega_d^{1,2}/2\pi$ [GHz]")
+
+            if idx in [0]:
+                plt.text(.5, .7, "$\Omega_1: {0}$ MHz\n$\Omega_2: {1}$ MHz".format(Omegas[idx][0],
+                                                                                     Omegas[idx][
+                                                                                         1]),
+                         fontsize=10,
+                         transform=ax.transAxes, ha='center', color="black")
+            else:
+                plt.text(.5, .7, "${0}$ MHz\n${1}$ MHz".format(Omegas[idx][0],
+                                                                                     Omegas[idx][
+                                                                                         1]),
+                         fontsize=10,
+                         transform=ax.transAxes, ha='center', color="black")
+
+            ax.plot(self._currs, self._transitions_1, "--", color= "gray", linewidth=1)
+            ax.plot(self._currs, self._transitions_2, "--", color= "gray", linewidth=1)
+
+            ax.set_xlim(self._X[0], self._X[-1])
+            ax.set_ylim(self._Y[0], self._Y[-1])
+
+            ax.yaxis.set_major_locator(MultipleLocator(0.05))
+            ax.tick_params(axis='y', rotation=70)
+
+        plt.text(.075, .7, "10", fontsize=10,
+                 transform=axes[0,0].transAxes,
+                 ha='center', color="black", rotation=-70)
+
+
+        plt.text(.135, .15, "01", fontsize=10,
+                 transform=axes[0,0].transAxes,
+                 ha='center', color="black", rotation=75)
+
+        plt.text(.42, .45, "11/2", fontsize=10,
+                 transform=axes[0,0].transAxes,
+                 ha='center', color="black", rotation=12.5)
+
+        plt.text(.61, .26, "02/2", fontsize=10,
+                 transform=axes[0,0].transAxes,
+                 ha='center', color="black", rotation=-55)
+
+        cbaxes1 = fig.add_axes([0.5 - 0.25 + 0.01, .95, 0.5, .015])
+        # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
+        #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
+        cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
+        cb.ax.set_title(r"$P_{\left|00\right\rangle}$", position=(1.125, -2))
+
+        plt.savefig("../topological_splittings.pdf", bbox_inches="tight", dpi=600)
+
+
+TopologicalSplitting()
