@@ -26,7 +26,7 @@ class MainPicturePlot:
     def plot(self):
         self._load_data()
 
-        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 5), sharey=True)
+        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(10, 4), sharey=True)
         plt.subplots_adjust(wspace=.1)
 
         ax1, ax2 = axes
@@ -131,25 +131,25 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        plt.text(.53, .82, r"$\left|01\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+        plt.text(.67, .77, "01", fontsize=10,
+                 transform=ax.transAxes, ha='center', rotation=-45)
+
+        plt.text(.8, .77, "10", fontsize=10,
+                 transform=ax.transAxes, ha='center', rotation=55)
+
+        plt.text(.42, .6, "11/2", fontsize=10,
+                 transform=ax.transAxes, ha='center', rotation=10)
+
+        plt.text(.475, .525, "02/2", fontsize=10,
+                 transform=ax.transAxes, ha='center', rotation=20)
+
+        plt.text(.53, .465, "12/3", fontsize=10,
                  transform=ax.transAxes, ha='center')
 
-        plt.text(.53, .35, r"$\left|10\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
+        plt.text(.53, .07, "20/2", fontsize=10,
                  transform=ax.transAxes, ha='center')
 
-        plt.text(.53, .6, r"$\left|11/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
-                 transform=ax.transAxes, ha='center')
-
-        plt.text(.53, .525, r"$\left|02/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
-                 transform=ax.transAxes, ha='center')
-
-        plt.text(.53, .465, r"$\left|12/3\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
-                 transform=ax.transAxes, ha='center')
-
-        plt.text(.53, .07, r"$\left|20/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=6,
-                 transform=ax.transAxes, ha='center')
-
-        plt.text(-0.075, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=22,
+        plt.text(-0.09, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=ax.transAxes)
 
 
@@ -164,11 +164,11 @@ class MainPicturePlot:
         axinss1 = zoomed_inset_axes(ax, 2.5, loc=2)
 
 
-        plt.text(0.04, 0.83, "I", fontdict={"name": "STIX"}, fontsize=10,
+        plt.text(0.04, 0.8, "I", fontdict={"name": "STIX"}, fontsize=10,
                  transform=axinss1.transAxes)
-        plt.text(0.04, 0.83, "II", fontdict={"name": "STIX"}, fontsize=10,
+        plt.text(0.04, 0.8, "II", fontdict={"name": "STIX"}, fontsize=10,
                  transform=axins1.transAxes)
-        plt.text(0.04, 0.83, "III", fontdict={"name": "STIX"}, fontsize=10,
+        plt.text(0.04, 0.8, "III", fontdict={"name": "STIX"}, fontsize=10,
                  transform=axins.transAxes)
 
         # ax1.broken_barh([(3.1,0.4)],(5.31,0.02),edgecolors = 'r', facecolors = 'none',linewidth= 1, linestyle = '--')

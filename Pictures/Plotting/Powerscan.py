@@ -7,7 +7,7 @@ matplotlib.use('Qt5Agg')
 
 from matplotlib import pyplot as plt
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
-
+from matplotlib.pyplot import MultipleLocator
 
 class ZoomPlot:
 
@@ -15,10 +15,11 @@ class ZoomPlot:
 
         self._load_data()
 
+
         fig, axes = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(5, 5))
         plt.subplots_adjust(wspace=.2, hspace=.2)
 
-        for idx, ax in enumerate(axes.ravel()):
+        for idx, ax in enumerate(axes.ravel()[:]):
 
             X, Y, data = self._data[idx]["Current [A]"]*1e4,\
                          self._data[idx]["Frequency [Hz]"]/1e9, \
@@ -30,13 +31,25 @@ class ZoomPlot:
             m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r")
             if idx % 2 == 0:
                 ax.set_ylabel('Frequency [GHz]');
+                ax.yaxis.set_major_locator(MultipleLocator(0.01))
             if idx > 1:
                 ax.set_xlabel('Current [$10^{-4}$ A]');
 
-        plt.text(.15, .8, r"$\left|20/2\right\rangle$", fontdict={"name": "STIX"}, fontsize=12,
-                 transform=axes[0,0].transAxes, ha='center', color="black")
-        plt.text(.8, .9, r"$\left|01\right\rangle$", fontdict={"name": "STIX"}, fontsize=12,
-                 transform=axes[0,0].transAxes, ha='center', color="black")
+        self._Omega_2s = array([6e-3, 15e-3, 30e-3, 60e-3])*0.75
+        self._plot_theory(axes)
+        print(self._Omega_2s)
+
+        plt.text(.28, .9, r"$20/2$", fontdict={"name": "STIX"}, fontsize=12,
+                 transform=axes[0,0].transAxes, ha='center', color="black", rotation=-70)
+
+        plt.text(.52, .9, r"$01-20$", fontdict={"name": "STIX"}, fontsize=12,
+                 transform=axes[0,0].transAxes, ha='center', color="black", rotation=-85)
+
+        plt.text(.85, .35, r"$21/3$", fontdict={"name": "STIX"}, fontsize=12,
+                 transform=axes[0, 0].transAxes, ha='center', color="black", rotation=-25)
+
+        plt.text(.7, .9, r"$01$", fontdict={"name": "STIX"}, fontsize=12,
+                 transform=axes[0,0].transAxes, ha='center', color="black", rotation=70)
 
         plt.text(.375, .025, r"$P_{exc} =$-20 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,0].transAxes, ha='left', color="black")
@@ -61,8 +74,39 @@ class ZoomPlot:
         plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=axes[0,0].transAxes)
 
+
+
+
         plt.savefig("../powerscan.pdf", bbox_inches="tight", dpi=600)
 
+
+    def _plot_theory(self, axes):
+
+        X = self._data[0]["Current [A]"] * 1e4
+        Y = self._data[0]["Frequency [Hz]"] / 1e9
+
+        alpha_1 = - .22
+        omega_1s = linspace(5.3365, 5.2505, len(X)) - alpha_1/2
+        omega_2s = linspace(5.2275, 5.3575, len(X))
+
+        for idx, ax in enumerate(axes.ravel()):
+
+            # m = ax.plot(X, omega_2s, "--")
+            # m = ax.plot(X, omega_1s + alpha_1/2, "--")
+
+            sol1 = 2*alpha_1/3 + 4*omega_1s/3 - omega_2s/3 + \
+                sqrt(3*self._Omega_2s[idx]**2+(alpha_1+2*(omega_1s-omega_2s))**2)/3
+
+            ax.plot(X[:len(X)//2+10], sol1[:len(X)//2+10], "--", color="black")
+            ax.plot(X[len(X) // 2 + 10:], sol1[len(X) // 2 + 10:], ":", color="black")
+
+            sol2 = 2 * alpha_1 / 3 + 4 * omega_1s / 3 - omega_2s / 3 - \
+                   sqrt(3 * self._Omega_2s[idx] ** 2 + (alpha_1 + 2 * (omega_1s - omega_2s)) ** 2) / 3
+
+            ax.plot(X, sol2, "--", color="black")
+
+            ax.set_xlim(min(X), max(X))
+            ax.set_ylim(min(Y), max(Y))
 
     def _load_data(self):
 

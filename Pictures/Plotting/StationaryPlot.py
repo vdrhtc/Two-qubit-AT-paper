@@ -15,7 +15,7 @@ class StationaryPlot:
         with open("stationary.pkl", "rb") as f:
             currs, freqs, population10, energies = pickle.load(f)
 
-        fig, axes = plt.subplots(1, 2, figsize=(8, 3), sharey=True)
+        fig, axes = plt.subplots(1, 2, figsize=(10, 3.33), sharey=True)
         plt.subplots_adjust(wspace=.1, )
 
         mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
@@ -40,7 +40,7 @@ class StationaryPlot:
                         arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                         shrink=0.05))
 
-            ax.annotate('2', xy=(5.08, 5.21), xytext=(5.08, 5.18), ha="center", fontsize=10,
+            ax.annotate('2', xy=(5.080001, 5.21), xytext=(5.08, 5.18), ha="center", fontsize=10,
                         arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                         shrink=0.05))
 
@@ -141,7 +141,7 @@ class StationaryPlot:
 
         for ax in axes:
             ax.set_xlabel("Current [$10^{-4}$ A]")
-        plt.legend(ncol=3, fontsize=5)
+        plt.legend(ncol=3, fontsize=7)
 
         cbaxes1 = fig.add_axes([.925, 0.11, 0.01, .7])
         cb = plt.colorbar(mappable, ax=axes[0], cax=cbaxes1, orientation="vertical")
