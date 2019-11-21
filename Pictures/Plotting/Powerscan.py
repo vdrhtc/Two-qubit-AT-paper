@@ -71,7 +71,7 @@ class ZoomPlot:
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
         cb.ax.set_title(r"$\mathfrak{Re} [S^{exp}_{21}]$ [mU]", position=(1.3,-2))
 
-        plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=22,
+        plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=20,
                  transform=axes[0,0].transAxes)
 
 

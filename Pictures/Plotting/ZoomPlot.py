@@ -62,7 +62,7 @@ class ZoomPlot:
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
         cb.ax.set_title(r"$P_{\left|00\right\rangle}$", position=(1.125,-2))
 
-        plt.text(-0.35, 1.15, "(b)", fontdict={"name": "STIX"}, fontsize=22,
+        plt.text(-0.35, 1.15, "(b)", fontdict={"name": "STIX"}, fontsize=20,
                  transform=axes[0,0].transAxes)
 
 

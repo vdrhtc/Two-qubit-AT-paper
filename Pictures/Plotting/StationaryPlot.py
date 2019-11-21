@@ -15,49 +15,47 @@ class StationaryPlot:
         with open("stationary.pkl", "rb") as f:
             currs, freqs, population10, energies = pickle.load(f)
 
-        fig, axes = plt.subplots(1, 2, figsize=(10, 3.33), sharey=True)
-        plt.subplots_adjust(wspace=.1, )
+        fig, ax = plt.subplots(1, 1, figsize=(4.25, 2.75), sharey=True)
 
-        mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
-                           cmap="Spectral_r")
+        # mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
+        #                    cmap="Spectral_r")
 
-        for ax in axes:
-            rect1 = patches.Rectangle((3.5, 5.25), .3, .04,
-                                      linewidth=1, edgecolor='black',
-                                      facecolor='none', linestyle=":")
-            ax.add_patch(rect1)
-            rect2 = patches.Rectangle((2.925, 5.2275),
-                                      3.225-2.925,
-                                      5.2675-5.2275,
-                                      linewidth=1, edgecolor='black',
-                                      facecolor='none', linestyle=":")
-            ax.add_patch(rect2)
-            rect3 = patches.Rectangle((3.16, 5.3), .3, .04,
-                                      linewidth=1, edgecolor='black',
-                                      facecolor='none', linestyle=":")
-            ax.add_patch(rect3)
-            ax.annotate("1", xy=(3.48, 5.23), xytext=(3.575, 5.205), ha="center", fontsize=10,
-                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
-                                        shrink=0.05))
+        rect1 = patches.Rectangle((3.5, 5.25), .3, .04,
+                                  linewidth=1, edgecolor='black',
+                                  facecolor='none', linestyle=":")
+        ax.add_patch(rect1)
+        rect2 = patches.Rectangle((2.925, 5.2275),
+                                  3.225-2.925,
+                                  5.2675-5.2275,
+                                  linewidth=1, edgecolor='black',
+                                  facecolor='none', linestyle=":")
+        ax.add_patch(rect2)
+        rect3 = patches.Rectangle((3.16, 5.3), .3, .04,
+                                  linewidth=1, edgecolor='black',
+                                  facecolor='none', linestyle=":")
+        ax.add_patch(rect3)
+        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.575, 5.205), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
 
-            ax.annotate('2', xy=(5.080001, 5.21), xytext=(5.08, 5.18), ha="center", fontsize=10,
-                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
-                                        shrink=0.05))
+        ax.annotate('2', xy=(5.080001, 5.21), xytext=(5.08, 5.18), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
 
-            ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
-                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
-                                        shrink=0.05))
+        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
 
-            ax.annotate('4', xy=(4.9, 5.195), xytext=(4.75, 5.195), ha="center", va="top", fontsize=10,
-                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
-                                        shrink=0.05))
+        ax.annotate('4', xy=(4.9, 5.195), xytext=(4.75, 5.195), ha="center", va="top", fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
 
-            ax.annotate("5", xy=(3.5, 5.175), xytext=(3.65, 5.18), ha="center", va="center",
-                        fontsize=10,
-                        arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
-                                        shrink=0.05))
+        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.65, 5.18), ha="center", va="center",
+                    fontsize=10,
+                    arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
+                                    shrink=0.05))
 
-        axes[1].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
+        mappable = ax.pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
                            cmap="Spectral_r")
 
         m = 1
@@ -65,6 +63,9 @@ class StationaryPlot:
         typ1 = (0, (5, 0))
         typ2 = (0, (1, 2))
         secondary_colour = (0.5, 0.5, 0.2)
+
+        energies = energies[len(currs)//2+12:, :]
+        currs = currs[len(currs)//2+12:]
 
         plt.plot(currs, ((energies[:, 5].T - energies[:, 2]).T), linewidth=t, linestyle=typ2,
                  color=secondary_colour);  # 01->11
@@ -137,17 +138,19 @@ class StationaryPlot:
 
         plt.ylim(5.1, 5.5)
         plt.xlim(2,6)
-        axes[0].set_ylabel("Frequency [GHz]")
+        ax.set_ylabel("Frequency [GHz]")
 
-        for ax in axes:
-            ax.set_xlabel("Current [$10^{-4}$ A]")
+        ax.set_xlabel("Current [$10^{-4}$ A]")
         plt.legend(ncol=3, fontsize=7)
 
-        cbaxes1 = fig.add_axes([.925, 0.11, 0.01, .7])
-        cb = plt.colorbar(mappable, ax=axes[0], cax=cbaxes1, orientation="vertical")
-        cb.ax.set_title(r"$\lg\, P_{\left|10\right\rangle}$", position=(3, 1))
-        # print([val.get_text() for val in cb.ax.get_xticklabels()])
-        # cbaxes1.set_xticklabels(["$10^{%s}$"%val.get_text() for val in  cb.ax.get_xticklabels()])
+        cbaxes1 = fig.add_axes([0.15, .975, 0.6, .02])
+        # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
+        #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
+        cb = plt.colorbar(mappable, ax=ax, cax=cbaxes1, orientation="horizontal")
+        cb.set_ticks([-3, -2, -1, -0.523])
+        cb.ax.set_xticklabels([.001, 0.01, 0.1, 0.3])
+        cb.ax.set_title(r"$ P_{\left|10\right\rangle}$", position=(1.125, -3.5))
+
         plt.savefig("../stationary.pdf", bbox_inches="tight", dpi=600)
 
 

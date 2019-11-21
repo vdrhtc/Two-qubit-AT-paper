@@ -51,7 +51,7 @@ class MainPicturePlot:
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()
-        plt.text(-0.15, 1.1, "(a)", fontdict={"name": "STIX"}, fontsize=22,
+        plt.text(-0.15, 1.1, "(a)", fontdict={"name": "STIX"}, fontsize=17,
                  transform=ax.transAxes)
 
         plt.text(.53, .815, r"$\omega_2(\Phi_e)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
@@ -149,7 +149,7 @@ class MainPicturePlot:
         plt.text(.53, .07, "20/2", fontsize=10,
                  transform=ax.transAxes, ha='center')
 
-        plt.text(-0.09, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=22,
+        plt.text(-0.09, 1.1, "(b)", fontdict={"name": "STIX"}, fontsize=17,
                  transform=ax.transAxes)
 
 

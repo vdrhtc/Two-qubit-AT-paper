@@ -35,22 +35,68 @@ class TopologicalSplitting:
                 ax.set_xlabel("Current [$10^{-4}$ A]")
             if idx < 3:
                 ax.set_ylabel("$\omega_d^{1,2}/2\pi$ [GHz]")
-
             if idx in [0]:
                 plt.text(.5, .7, "$\Omega_1: {0}$ MHz\n$\Omega_2: {1}$ MHz".format(Omegas[idx][0],
-                                                                                     Omegas[idx][
-                                                                                         1]),
+                                                                                   Omegas[idx][
+                                                                                       1]),
                          fontsize=10,
                          transform=ax.transAxes, ha='center', color="black")
             else:
                 plt.text(.5, .7, "${0}$ MHz\n${1}$ MHz".format(Omegas[idx][0],
-                                                                                     Omegas[idx][
-                                                                                         1]),
+                                                               Omegas[idx][
+                                                                   1]),
                          fontsize=10,
                          transform=ax.transAxes, ha='center', color="black")
 
-            ax.plot(self._currs, self._transitions_1, "--", color= "gray", linewidth=1)
-            ax.plot(self._currs, self._transitions_2, "--", color= "gray", linewidth=1)
+            # ax.plot(self._currs[len(self._currs) // 2 + 10:],
+            #         self._transitions_1[len(self._currs) // 2 + 10:], "--", color="gray",
+            #         linewidth=1)
+            ax.plot(self._currs[len(self._currs) // 2 + 10:],
+                    self._transitions_2[len(self._currs) // 2 + 10:], "--", color="gray",
+                    linewidth=1)
+
+            def transmon_spec(Ej, Ec, d, sws, period, offset, currs):
+                Ej = Ej * abs(cos(pi * (currs - sws) / period + offset * pi) * \
+                              sqrt((1 + d ** 2 * tan(
+                                  pi * (currs - sws) / period + offset * pi) ** 2)))
+                return sqrt(8 * Ej * Ec) - Ec
+
+            currs = self._currs[len(self._currs) // 2 + 10:]
+
+            f1 = transmon_spec(22.75, 0.22, 0.745, 4.145, 9.5, 1 / 2, currs)
+            f2 = transmon_spec(18.15, 0.22, 0.7, 4.12, 6.4, 0, currs)
+
+            # ax.plot(currs, f1, linewidth=1)
+            # ax.plot(currs, f2, linewidth=1)
+
+            Omega_1 = Omegas[idx][0]/1e3
+            Omega_2 = Omegas[idx][1]/1e3
+
+            # if idx in [3,4,5]:
+            sub_currs = currs[f1>f2]
+            sub_f1 = f1[f1>f2]
+            sub_f2 = f2[f1>f2]
+            sol = (sub_f1 ** 2 - sub_f2 ** 2 + Omega_1 ** 2 - Omega_2 ** 2) / 2 / (sub_f1 - sub_f2)
+            ax.plot(sub_currs, sol, "--", color="black", linewidth=1)
+
+            sub_currs = currs[f1<f2]
+            sub_f1 = f1[f1<f2]
+            sub_f2 = f2[f1<f2]
+            sol = (sub_f1 ** 2 - sub_f2 ** 2 + Omega_1 ** 2 - Omega_2 ** 2) / 2 / (sub_f1 - sub_f2)
+            ax.plot(sub_currs, sol, "--", color="black", linewidth=1)
+            # else:
+            #     sub_currs = currs[f1>f2]
+            #     sub_f1 = f1[f1>f2]
+            #     sub_f2 = f2[f1>f2]
+            #     sol = (sub_f1 ** 2 - sub_f2 ** 2 + Omega_1 ** 2) / 2 / (sub_f1 - sub_f2)
+            #     ax.plot(sub_currs, sol, "--", color="black", linewidth=1)
+            #
+            #
+            #     sub_currs = currs[f1<f2]
+            #     sub_f1 = f1[f1<f2]
+            #     sub_f2 = f2[f1<f2]
+            #     sol = (sub_f1 ** 2 - sub_f2 ** 2 + Omega_1 ** 2) / 2 / (sub_f1 - sub_f2)
+            #     ax.plot(sub_currs, sol, "--", color="black", linewidth=1)
 
             ax.set_xlim(self._X[0], self._X[-1])
             ax.set_ylim(self._Y[0], self._Y[-1])
@@ -59,20 +105,19 @@ class TopologicalSplitting:
             ax.tick_params(axis='y', rotation=70)
 
         plt.text(.075, .7, "10", fontsize=10,
-                 transform=axes[0,0].transAxes,
+                 transform=axes[0, 0].transAxes,
                  ha='center', color="black", rotation=-70)
 
-
         plt.text(.135, .15, "01", fontsize=10,
-                 transform=axes[0,0].transAxes,
+                 transform=axes[0, 0].transAxes,
                  ha='center', color="black", rotation=75)
 
         plt.text(.42, .45, "11/2", fontsize=10,
-                 transform=axes[0,0].transAxes,
+                 transform=axes[0, 0].transAxes,
                  ha='center', color="black", rotation=12.5)
 
         plt.text(.61, .26, "02/2", fontsize=10,
-                 transform=axes[0,0].transAxes,
+                 transform=axes[0, 0].transAxes,
                  ha='center', color="black", rotation=-55)
 
         cbaxes1 = fig.add_axes([0.5 - 0.25 + 0.01, .95, 0.5, .015])
