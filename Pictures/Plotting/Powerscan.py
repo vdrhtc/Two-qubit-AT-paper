@@ -30,7 +30,7 @@ class ZoomPlot:
 
             m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r")
             if idx % 2 == 0:
-                ax.set_ylabel('Frequency [GHz]');
+                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ [GHz]');
                 ax.yaxis.set_major_locator(MultipleLocator(0.01))
             if idx > 1:
                 ax.set_xlabel('Current [$10^{-4}$ A]');

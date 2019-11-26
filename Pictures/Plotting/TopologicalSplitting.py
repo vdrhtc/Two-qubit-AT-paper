@@ -15,6 +15,9 @@ class TopologicalSplitting:
     def __init__(self):
         with open('10-01-11.pkl', 'rb') as f:
             self._X, self._Y, self._plots = pickle.load(f)
+        with open('10-01-11-2.pkl', 'rb') as f:
+            dummy1, dummy2, plots2 = pickle.load(f)
+            self._plots += plots2
         with open("transitions.pkl", "rb") as f:
             self._currs, self._transitions_1, self._transitions_2 = pickle.load(f)
 
@@ -23,17 +26,20 @@ class TopologicalSplitting:
                         (45, 7.5),
                         (7.5, 15),
                         (7.5, 30),
-                        (7.5, 45)])
+                        (7.5, 45),
+                        (15, 45),
+                        (30, 45),
+                        (45, 45)])
 
-        fig, axes = plt.subplots(3, 2, sharex=True, sharey=True, figsize=(5, 5))
+        fig, axes = plt.subplots(3, 3, sharex=True, sharey=True, figsize=(10, 5))
         plt.subplots_adjust(wspace=.1, hspace=.2)
 
-        for idx, ax in enumerate(axes.T.ravel()):
+        for idx, ax in enumerate(axes.ravel()):
             m = ax.pcolormesh(self._X, self._Y, array(self._plots[idx]).T,
                               vmin=0, vmax=1, cmap="Spectral", rasterized=True)
-            if idx in [2, 5]:
+            if idx in [8, 7, 6]:
                 ax.set_xlabel("Current [$10^{-4}$ A]")
-            if idx < 3:
+            if idx in [0, 3, 6]:
                 ax.set_ylabel("$\omega_d^{1,2}/2\pi$ [GHz]")
             if idx in [0]:
                 plt.text(.5, .7, "$\Omega_1: {0}$ MHz\n$\Omega_2: {1}$ MHz".format(Omegas[idx][0],
@@ -114,13 +120,13 @@ class TopologicalSplitting:
 
         plt.text(.42, .45, "11/2", fontsize=10,
                  transform=axes[0, 0].transAxes,
-                 ha='center', color="black", rotation=12.5)
+                 ha='center', color="black", rotation=10)
 
         plt.text(.61, .26, "02/2", fontsize=10,
                  transform=axes[0, 0].transAxes,
-                 ha='center', color="black", rotation=-55)
+                 ha='center', color="black", rotation=-47.5)
 
-        cbaxes1 = fig.add_axes([0.5 - 0.25 + 0.01, .95, 0.5, .015])
+        cbaxes1 = fig.add_axes([0.5 - 0.25 + 0.01, .93, 0.5, .015])
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")

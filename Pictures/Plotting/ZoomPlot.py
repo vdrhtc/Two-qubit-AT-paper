@@ -22,7 +22,7 @@ class ZoomPlot:
             m = ax.pcolormesh(self._X, self._Y, real(array(self._plots[idx]).T),
                               vmax=1, vmin=0, rasterized=True, cmap="Spectral")
             if idx % 2 == 0:
-                ax.set_ylabel('Frequency [GHz]');
+                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ [GHz]');
             if idx > 1:
                 ax.set_xlabel('Current [$10^{-4}$ A]');
 

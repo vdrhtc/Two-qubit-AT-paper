@@ -108,36 +108,36 @@
 	
 	
 	\begin{abstract}
-		To build a full-scale quantum processor it is necessary to automate as many steps as possible on the physical, hardware level. Circuit quantum electrodynamics (cQED) is a contemporary architecture for dispersive readout and Purcell protection of superconducting qubits of various types, and thus it is necessary to develop software that is able to perform every kind of automatic calibration of such systems from scratch without any human participation. An important step towards this goal is to build a noise-insensitive and accurate computer vision tool to process three-dimensional spectroscopic data. In this work, we present and describe two scalable algorithms that are able to extract the Hamiltonian parameters of the cQED systems from spectroscopic data. 
+	Since their demonstration, superconducting artificial atoms have been extensively used for studies in quantum optics. Their particular advantages compared to natural systems are the strong coupling to radiation and the high level of control over their state; these properties open the way to previously unexplored physics. In this work, we have irradiated a superconducting artificial molecule composed of two flux-tunable transmons with intense light while monitoring its state via joint dispersive readout. At certain configurations of its energy levels, the molecule has demonstrated a complex spectrum deviating qualitatively from the stationary solution. However, it was reproduced accurately by numerical simulations, and turned out to be a consequence of a modified Autler-Townes effect when a single tone is simultaneously dressing the system and probing the transitions between new eigenstates. To quantify this effect, self-consistent models were employed accounting for both these processes at the same time. We note that this study is an important step towards understanding the behaviour of more complex systems of many atoms interacting with strong radiation.
 	\end{abstract}
 	
 	\maketitle
 \section{Introduction}
 
 
-Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to synthetic nature of SAA, their Hamiltonians can be pre-designed and engineered, and this makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime when the coupling strength between light and a quantum system approaches 1\% of their frequency has been a major milestone for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this landmark using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first discovery\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
-Moreover, SAA do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strong with the free-propagating EM-waves in the on-chip 1D waveguides\cite{astafiev2010resonance} without having to use cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already the ultra-strong coupling regime.
+Over the past twenty years, superconducting artificial atoms (SAA) were used in numerous experiments confidently demonstrating the validity of fundamental quantum mechanical laws\cite{you2011atomic}. Due to synthetic nature of SAA, their Hamiltonians can be pre-designed and engineered, and this makes them a particularly versatile tool for studies in quantum optics. Notably, their parameters may be varied in such a wide range that novel physical effects previously inaccessible for natural systems may be directly observed. For example, the strong coupling regime, when the coupling strength between light and a quantum system approaches 1\% of their frequency, has been a major challenge for atoms, molecules, etc and was only reached using high-finesse cavities. In contrast, superconducting quantum systems have rapidly attained this milestone using \textit{circuit QED}\cite{wallraff2004strong} just in a few years after their first demonstration\cite{chiorescu2004coherent} and have already surpassed other strongly-coupled systems in terms of coherence\cite{forn2019ultrastrong}. 
+Moreover, SAA do not even require confined radiation to implement strong coupling with light: they may be coupled unprecedently strongly to the free-propagating electromagnetic waves in 1D on-chip waveguides\cite{astafiev2010resonance} without using cavities at all. The Rabi frequency in this case may reach 50\% of the transition frequency\cite{deng2015observation} which is already the ultra-strong coupling regime\cite{forn2019ultrastrong}.
 
-In general, a quantum system exposed to strong external driving can experience various quantum phenomena explained by resonant single- and multi-photon transitions between energy levels. The most known examples are coherent population trapping, electromagnetically induced transparency (EIT)\cite{boller1991observation}, stimulated Raman adiabatic passage\cite{bergmann1998coherent} and Autler-Townes (A-T) splitting\cite{autler1955stark}. 
+Strong interaction of a quantum system with light lead to various phenomena explained by resonant single- and multi-photon excitation of transitions between energy levels. The most known examples are coherent population trapping, electromagnetically induced transparency (EIT)\cite{boller1991observation}, stimulated Raman adiabatic passage\cite{bergmann1998coherent} and Autler-Townes (A-T) splitting\cite{autler1955stark}. 
 
-In this work, we are studying effects of light-matter interaction that occur in a system of two coupled artificial atoms: a superconducting artificial molecule (SAM). In our experiment, we use two transmons\cite{koch2007charge} interacting with each other through a cavity bus\cite{majer2007coupling}. Microwave radiation is applied to this system through a coplanar on-chip antenna and transmon states may be monitored by dispersive readout using the same coupling cavity \cite{chow2010detecting}.
+In this work, we study effects of light-matter interaction that occur in a system of two coupled artificial atoms: a superconducting artificial molecule\cite{kou2017fluxonium} (SAM). In our experiment, we use two X-mons\cite{barends2013coherent} interacting with each other through a cavity bus\cite{majer2007coupling}. Microwave radiation is applied to this system through a coplanar on-chip antenna and transmon states may be monitored by dispersive readout using the same coupling cavity \cite{chow2010detecting}.
 
 
-It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we have discovered. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAA as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics (see Appendix \ref{sec:3-level-at}); instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
+It turns out that due to the strong interaction of SAM with the microwave drive, multiphoton transitions and the Autler-Townes effect are playing the crucial role in the phenomena that we observe. The A-T splitting has been observed before in atomic\cite{picque1976direct}, molecular systems\cite{tamarat1995pump}, quantum dots\cite{xu2007coherent}, and for SAA as well\cite{baur2009measurement, sillanpaa2009autler, novikov2013autler, suri2013observation, peng2018vacuum}. However, the previous studies have  only involved just a single SAA and have demonstrated only the standard spectral signatures known from the quantum optics (see Appendix \ref{sec:3-level-at}); instead, a diatomic SAM allows to observe some qualitatively new spectral manifestations of the effect. Remarkably, besides its fundamental value, this experiment may be useful for future quantum computers: a quantum engineer should consider the observed behaviours as unwanted, and thus careful control of the driving power must be employed to avoid them (for instance, as we will show, the bSWAP gate\cite{poletto2012entanglement} is directly affected).
 
 The manuscript consists of four main parts and an Appendix. Section I is this introduction; Section II is devoted to the approaches that were used in our study; Section III contains the results of our experimental and theoretical research; finally, in Section IV we make a conclusion of our work and discuss future prospects. The Appendix contains important details of the theoretical framework that we use.
 
 \section{Methods}
 
 \subsection{Device design and fabrication}
-We have designed the SAM as a pair of transmon (Xmon\cite{barends2013coherent}) SAAs with asymmetric SQUIDs\cite{hutchings2017tunable} coupled to a single notch-type\cite{probst2015efficient} $\lambda/4$ resonator ($\omega_r/2\pi \equiv f_r = 7$ GHz, $\kappa = 1/100\ \text{ns}^{-1}$) which both couples\cite{majer2007coupling} the qubits and allows the joint\cite{chow2010detecting} readout of their states. In \autoref{fig:experiment}~(a), the optical photograph of the device is shown depicting the layout of the components. The resonator in its upper part is connected to a coplanar waveguide through which the readout is performed. In its lower part, it is coupled to the transmons by a dual ``claw''\cite{barends2013coherent} coupler. Flux lines that allow independent control of the transmon frequencies are coming from the sides. Finally, the excitation waveguide coming from below directs microwave signal towards the SAM. In \autoref{fig:experiment}~(b) the equivalent electrical circuit of the device. The resonator fundamental mode is approximated as an LC-circuit (in the middle), the transmons are shown in colour on the sides as the LC-circuits as well, but with tunable non-linear inductances. The capacitively coupled excitation line is also shown in green. Finally, in \autoref{fig:experiment}~(c) we show schematically the frequencies of the transmons depending on the external magnetic flux. Since the effective junction of the first transmon is larger, its spectrum (orange) lies higher in frequency the spectrum of the second qubit (blue). Using both coils, it is possible to align them so that the lower sweet-spot of the orange transmon is just below the upper sweet-spot of the blue transmon (see the dashed rectangle,  \autoref{fig:experiment}~(c)). This configuration is chosen as it is possible to track higher energy level intersections through multi-photon transitions using a single spectroscopic scan since the transmons are staying close to each other in frequency. Additionally, the transmons are better protected from the flux noise in this area being close to their sweet spots.
+We have designed the SAM as a pair of transmon (Xmon\cite{barends2013coherent}) SAAs with asymmetric SQUIDs\cite{hutchings2017tunable} coupled to a single notch-type\cite{probst2015efficient} $\lambda/4$ resonator ($\omega_r/2\pi \equiv f_r = 7$ GHz, $\kappa = 1/100\ \text{ns}^{-1}$) which both couples\cite{majer2007coupling} the qubits and allows the joint\cite{chow2010detecting} readout of their states. In \autoref{fig:experiment}~(a), the optical photograph of the device is shown depicting the layout of the components. The resonator in its upper part is connected to a coplanar waveguide through which the readout is performed. In its lower part, it is coupled to the transmons by a dual ``claw''\cite{barends2013coherent} coupler. Flux lines that allow independent control of the transmon frequencies are coming from the sides. Finally, the excitation waveguide coming from below directs microwave signal towards the SAM. In \autoref{fig:experiment}~(b) the equivalent electrical circuit of the device. The resonator fundamental mode is approximated as an LC-circuit (in the middle), the transmons are shown in colour on the sides as the LC-circuits as well, but with tunable non-linear inductances. A capacitively coupled excitation line is also shown in green. Finally, in \autoref{fig:experiment}~(c) we show schematically the frequencies of the transmons depending on the external magnetic flux. Since an effective junction of the first transmon is larger, its spectrum (orange) lies higher in frequency the spectrum of the second qubit (blue). Using both coils, it is possible to align them so that the lower sweet-spot of the orange transmon is just below the upper sweet-spot of the blue transmon (see the dashed rectangle,  \autoref{fig:experiment}~(c)). This configuration is chosen as it is possible to track higher energy level intersections through multi-photon transitions using a single spectroscopic scan since the transmons are close to each other in frequency. Additionally, the transmons are better protected from the flux noise in this area being close to their sweet spots.
 
 The fabrication process...
 
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{experiment_2}
-	\caption{\textbf{(a)} Optical photograph of the device (false coloured). Two transmons (orange, 1 and blue, 2) are coupled capacitively to a $\lambda/4$ coplanar resonator. From both sides come the frequency control flux lines, and from below a microwave excitation waveguide is connected (green). \textbf{(b)} The equivalent electrical circuit. Tunable Josephson junctions are in fact SQUIDs with magnetic flux control. \textbf{(c)} Frequencies of the $ge$ transitions of the transmons $\omega_1(\Phi_e)$ and $\omega_2(\Phi_e)$ depending on the external magnetic flux (coloured correspondingly). In this work, we concentrate on the area inside the dashed rectangle.}
+	\caption{\textbf{(a)} Optical photograph of the device (false coloured). Two transmons (orange, 1 and blue, 2) are coupled capacitively to a $\lambda/4$ coplanar resonator. Frequency control lines come from both sides, and from below a microwave excitation waveguide is connected (green). \textbf{(b)} The equivalent electrical circuit. Tunable Josephson junctions are SQUIDs with magnetic flux control. \textbf{(c)} Frequencies of the $ge$ transitions of the transmons $\omega_1(\Phi_e)$ and $\omega_2(\Phi_e)$ depending on the external magnetic flux (proportional to the currents applied to control lines). In this work, we focus on the area inside the dashed rectangle.}
 	\label{fig:experiment}
 \end{figure}
 
@@ -157,35 +157,35 @@ The fabrication process...
 \end{table}
 
 
-\subsection{Theoretical description of the SAM}
+\subsection{Theoretical background}
 
-A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators and write down its Hamiltonian using the annihilation operator $\hat b$ ($\hbar = 1$):
+A single transmon SAA can be considered as an oscillator with a quartic perturbation describing the leading-order anharmonicity. Therefore, in the main text we avoid using the standard charge and phase operators and write down its Hamiltonian using the annihilation operator $\hat b$:
 \begin{equation}
-\hat{{H}}_{tr} = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
+\hat{{H}}_{tr}/\hbar = \omega \hat b^{\dagger}\hat b +\frac{1}{2}\alpha \hat b^{\dagger}\hat b(\hat b^{\dagger}\hat b-1),
 \end{equation}
-where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or the  $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ (via a control current) it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}. In our modelling, we take into account only the three lowest states of the transmon ($\ket{0},\ \ket{1}$ and $\ket{2}$).
+where $\omega$ is its $\ket{0}\rightarrow\ket{1}$ (or the ground to first excited state, $ge$) transition frequency and $\alpha$ is the anharmonicity of the transmon. Additionally, by applying external magnetic flux $\Phi_e$ (via a control current) it is possible to control $\omega = \omega(\Phi_e)$\cite{koch2007charge}. In our modelling, we take into account only the three lowest states of the transmon ($\ket{0},\ \ket{1}$ and $\ket{2}$).
 
-To induce state transitions in a transmon one should irradiate it by a monochromatic microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The interaction term between the transmon and the field is then modelled by the following operator: 
+To drive a quantum system, one should irradiate it by a monochromatic microwave signal of frequency $\omega_d$ using a capacitively coupled transmission line. The driving term between the transmon and the field is then modelled by the following operator: 
 \begin{equation}
-\hat H_{d} = \Omega (\hat b+\hat b^{\dagger}) \cos\omega_d t,
+\hat H_{d} = \hbar \Omega (\hat b+\hat b^{\dagger}) \cos\omega_d t,
 \end{equation}
-where $\Omega$ stands for the frequency of the Rabi oscillations between $\ket{0}$ and $\ket{1}$.
+where $\Omega$ is the driving amplitude coinciding with the frequency of the Rabi oscillations between $\ket{0}$ and $\ket{1}$.
 
 Now, the complete Hamiltonian of SAM contains two terms describing each of them in isolation (with the corresponding annihilation operators $\hat b$ and $\hat c$, the $ge$ frequencies $\omega_{1,2}$ and anharmonicities $\alpha_{1,2}$), two terms representing the interaction of each transmon with the driving field at the same frequency $\omega_d$, and the transmon-transmon interaction term:
 \begin{equation}\label{Hsystem}
-\hat H = \hat H_{tr1}+\hat H_{tr2}+\hat H_{d}^1+\hat H_{d}^2+\hat H_{int},
+\hat H = \hat H_{tr}^{1}+\hat H_{tr}^{2}+\hat H_{d}^1+\hat H_{d}^2+\hat H_{int},
 \end{equation}
-where $\hat H_{int} = J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms. In the following, we will also transform \eqref{eq:master} into the frame rotating with both drives by an operator
+where $\hat H_{int} = \hbar J (\hat b +\hat b^\dag)(\hat c+\hat c^{\dagger})$ is the transverse interaction between the atoms. In the following, we will also transform \eqref{Hsystem} into the frame rotating with both drives by an operator
 \begin{align}
 &\hat R = \exp[-i t (\omega_d^1 b^{\dagger}b+\omega_d^2 c^{\dagger}c)],\label{eq:R}\\
-&\hat H_R = \hat R^{\dagger}\hat H \hat R - i\hat R^{\dagger}\partial_t \hat R.\label{eq:rotation}
+&\hat H_R = \hat R^{\dagger}\hat H \hat R -	 {i}\hat R^{\dagger}\partial_t \hat R.\label{eq:rotation}
 \end{align}
-After the transformation and application of the RWA:
+Here we use subscripts 1 and 2 to denote first and second SAAs. After the transformation and application of the RWA:
 \begin{equation}
 \begin{aligned}
 	\omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_{(1,2)} - \omega_d^{(1,2)},\\
-	\hat H_{int} &\rightarrow J \left[\hat b^\dag \hat c e^{-(\omega_d^1 - \omega_d^2)t} + \hat b \hat c^\dag e^{(\omega_d^1 - \omega_d^2)t}\right],\\
-	\hat H_{d}^1 &\rightarrow \frac{\Omega_1}{2}(\hat b  + \hat b^\dag),\ 	\hat H_{d}^2 \rightarrow \frac{\Omega_2}{2}(\hat c  + \hat c^\dag).
+	\hat H_{int} &\rightarrow \hbar J \left[\hat b^\dag \hat c e^{(\omega_d^1 - \omega_d^2)t} + \hat b \hat c^\dag e^{-(\omega_d^1 - \omega_d^2)t}\right],\\
+	\hat H_{d}^1 &\rightarrow \frac{\hbar \Omega_1}{2}(\hat b  + \hat b^\dag),\ 	\hat H_{d}^2 \rightarrow \frac{\hbar \Omega_2}{2}(\hat c  + \hat c^\dag).
 \end{aligned}
 \label{eq:RWA}
 \end{equation}
@@ -201,12 +201,12 @@ Besides the unitary evolution, we take into account the incoherent processes of 
 \end{equation}
 As one can see, the collapse operators are in a separable form, i.e. acting only upon a single transmon each. This is a valid approach until the coupling strength $J$ is not too large\cite{beaudoin2011dissipation}. Therefore, the complete evolution equation for the system density matrix $\hat \rho$ is
 \begin{equation}
-\partial_t \hat \rho = {i}[\hat \rho, \hat H] + \sum_{\alpha, i} \mathcal{D}[\hat{O}_{\alpha, i}] \hat \rho = \mathcal{L}\hat\rho, \label{eq:master}
+\partial_t \hat \rho = \frac{i}{\hbar}[\hat \rho, \hat H] + \sum_{\alpha, i} \mathcal{D}[\hat{O}_{\alpha, i}] \hat \rho = \mathcal{L}\hat\rho, \label{eq:master}
 \end{equation}
 where $\mathcal{D}[\hat{{O}}]\hat \rho = \hat{{O}} \hat \rho \hat{{O}}^\dag - \frac{1}{2}\{ \hat{{O}}^\dag \hat{{O}}, \hat \rho\}$ and $\mathcal{L}$ is the Liouville superoperator or the Liouvillian.
 
 
-The readout resonator is not included in the model since in the dispersive regime is does not affect the dynamics of the SAM. Hence, the readout is modelled just by using the measurement operator $\hat M(f_p)$ that can be obtained by measuring the transmission $S_{21}(f_p)$ ($f_p$ is the probe frequency near the resonance) through the sample for the nine different states of the SAM $\ket{ij},\ i=0..2,\ j=0..2$\cite{filipp2009two}. Another way to find $\hat M(f_p)$ is to calculate the transmission by offsetting the experimental resonance curve using the dispersive shifts corresponding to these states. Since we have not directly measured the dispersive shifts, in our modelling they are treated as fitting parameters. Finally, the observable value for any state $\hat \rho$ is calculated as $S_{21}^{sim}(f_p) = \Tr[\hat M(f_p) \hat \rho]$.
+The readout resonator is not included in the model since in the dispersive regime it does not affect the dynamics of the SAM. Hence, the readout is modelled just by using the measurement operator $\hat M(f_p)$ that can be obtained by measuring the transmission $S_{21}(f_p)$ ($f_p$ is the probe frequency near the resonance) through the sample for the nine different states of the SAM $\ket{ij},\ i=0..2,\ j=0..2$\cite{filipp2009two}. Another way to find $\hat M(f_p)$ is to calculate the transmission by offsetting the experimental resonance curve using the dispersive shifts corresponding to these states. Since we have not directly measured the dispersive shifts, in our modelling they are treated as fitting parameters. Finally, the observable value for any state $\hat \rho$ is calculated as $S_{21}^{sim}(f_p) = \Tr[\hat M(f_p) \hat \rho]$.
 
 
 \subsection{Numerical solution in \textit{qutip}}
@@ -252,7 +252,7 @@ where $\mathcal T$ is the time-ordering superoperator. Since the Liouvillian is 
 \end{figure}
 
 
-Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe distinct features shown in insets marked with Roman numerals. Some secondary details are shown with Arabic-numbered markers.
+Experiment was conducted as described in Appendix \ref{sec:meas_setup}. We have used high-power two-tone spectroscopy to probe transitions between eigenstates of our SAM; the result is shown in \autoref{fig:two-tone}~(a). As one can see, several spectral lines are visible besides the $ge$ ones shown in \autoref{fig:experiment}~(c). Their frequency depends on the applied current, and at multiple points they become resonant with each other. At three pairs of these resonant points, we observe distinct features shown in insets marked with Roman numbers. Some secondary details are shown with Arabic-numbered markers.
 
 Remarkably, in areas I, II and III we could observe avoided crossings and triplet transitions which turn out to be impossible to explain using only the stationary Hamiltonian without driving terms. We confirm this by numerically diagonalizing $\hat H_{tr1}+\hat H_{tr2}+\hat H_{int}$ taking 3 levels for each transmon (and total 9 basis states of SAM); all possible transitions between all eigenlevels of the SAM are shown in \autoref{fig:statinary_levels}. While correctly reproducing, for instance, the avoided crossing labelled as feature 3 in \autoref{fig:two-tone}~(a), it completely misses the Roman-numbered effects. Taking into account more energy levels for transmons does not help, and is not even necessary to reproduce the experiment, as we will show in the following.
 
@@ -271,12 +271,12 @@ To check whether the described features are present in the dynamic regime, we ha
 	\label{fig:splitting_linear}
 \end{figure}
 
-\begin{figure}
+\begin{figure*}
 	\centering
 	\includegraphics[width=\linewidth]{topological_splittings}
-	\caption{Simulated population of the ground state when the transmons are driven at different amplitudes $\Omega_{1,2}$ but at the same frequency. In the left (right), $\Omega_{1(2)}$ is increased while $\Omega_{2(1)} = \text{const}$; two topologically different types of anticrossings arise depending on which transmon is driven stronger. Gray dashed lines show the stationary solution, in black are the model curves based on Sections \ref{sec:theory} and \ref{sec:münchhausen}.}
+	\caption{Simulated population of the ground state when the transmons are driven at the same frequency but at different amplitudes $\Omega_{1,2}$. In the top row (middle row), $\Omega_{1(2)}$ is increased while $\Omega_{2(1)} = \text{const} \ll \Omega_{1(2)}$; two topologically different types of anticrossings arise depending on which transmon is driven stronger. In the bottom row, we show how the splittings vanish when the weaker driving is increased to match with the stronger one. Gray dashed lines show the stationary solution, in black are the model curves based on Sections \ref{sec:theory} and \ref{sec:münchhausen}.}
 	\label{fig:difdrive}
-\end{figure}
+\end{figure*}
 
 
 \subsection{Analysis of the spectra}
@@ -312,7 +312,7 @@ Since we had already connected the additional avoided crossings with the light d
 
 First of all, since during the spectroscopy we apply only a single microwave tone ($\omega_d^1 = \omega_d^2$), for the A-T effect it has to be simultaneously the coupler and the probe; the latter must be much weaker than the former, as well. These conditions are satisfied when $\omega_{(2,1)} = \omega_{(1,2)}+\alpha_{(1,2)}/2$  where we can simultaneously excite transitions $01 (10)$ and $20/2 (02/2)$ (features II and III, respectively) because the of the two-photon probe. Since the two-photon Rabi frequency is much smaller than the single-photon $\Omega_2$, it is natural to view this two-photon excitation as the probing process which does not affect the level structure. In contrast, the single-photon excitation is enough to dress the system. In other words, in our case the A-T coupling operator is $\hat H_{d}^1$ (strong), and the probing operator is $\hat H_{d}^2$ (weak in the two-photon regime). Their separation in our case is not in frequency but in the Hilbert subspaces they act upon.
 
-Similarly, for feature I, the simultaneously excited transitions are $01 (10)$ and the two-photon $11/2$. However, as we have demonstrated in \autoref{fig:difdrive}, for the avoided crossings in I to be clearly observed it is required that $\Omega_{(1,2)} \gg \Omega_{(2,1)}$. 
+Similarly, for feature I, the simultaneously excited transitions are $01 (10)$ and the two-photon $11/2$. However, as we demonstrate in \autoref{fig:difdrive}, for the avoided crossings in I to be clearly observed it is required that $\Omega_{(1,2)} \gg \Omega_{(2,1)}$. 
 
 Below, we give the detailed explanation of features II and III, and finally, I.
 
@@ -346,9 +346,9 @@ Note that we rotate both transmon subspaces simultaneously in contrast to what i
 \begin{equation}
 \begin{aligned}
 \omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_{(1,2)} - \omega_d^{1},\\
-\hat H_{int} &\rightarrow J \left[\hat \sigma_+ \hat c + \hat \sigma_-\hat c^\dag \right],\\
-\hat H_{d}^1 &\rightarrow \frac{\Omega_1}{2} \hat \sigma_x,\ 
-\hat H_{d}^2 \rightarrow \frac{\Omega_2}{2}(\hat c e^{i\delta t}  + \hat c^\dag e^{-i\delta t}),
+\hat H_{int} &\rightarrow  \hbar J \left[\hat \sigma_+ \hat c + \hat \sigma_-\hat c^\dag \right],\\
+\hat H_{d}^1 &\rightarrow \frac{\hbar \Omega_1}{2} \hat \sigma_x,\ 
+\hat H_{d}^2 \rightarrow \frac{\hbar \Omega_2}{2}(\hat c e^{i\delta t}  + \hat c^\dag e^{-i\delta t}),
 \end{aligned}
 \end{equation}
 where $\delta = \omega_{d}^2 - \omega_{d}^1$.
@@ -361,7 +361,7 @@ Since $\hat H_{d}^1$ is now time-independent, we can move to the dressed basis b
 \hat V_t &= \hat S^\dag \hat H_{d}^{2} \hat S \equiv \hat H_{d}^{2}.
 \end{aligned}
 \end{equation}
-The first part is diagonal, and the remaining two will be treated as perturbations. To simplify futher calculations, we take the working point where $\Delta_1 = 0$ and $\Delta_2 = - \alpha_2/2$. In these conditions, $H^D$ becomes degenerate as can be seen below in \eqref{eq:ham_matrix}:
+The first part is diagonal, and the remaining two will be treated as perturbations. To simplify futher calculations, we take the working point where $\Delta_1 = 0$ and $\Delta_2 = - \alpha_2/2$. In these conditions, $H^D$ becomes degenerate as can be seen in \eqref{eq:ham_matrix} of Appendix \ref{sec:H_mat}.
 
 
 Using the degenerate perturbation theory with $\hat V_J$ summarized in Appendix \ref{sec:dpt}, we have found the first-order corrected wave functions of $\hat H^D$, labelled $\ket{k},\ k=1..6$. 
@@ -402,6 +402,7 @@ Since we are simultaneously dressing the states by $\hat H_d^1$ and probing two-
 \omega_{(10-02)/2} &= \omega_d,\\
 \omega_{12/2} &= \omega_d
 \end{aligned}
+\label{eq:two-photon}
 \end{equation}
 
 When $\Omega_1 = 0$, these equations yield indentical pairs of solutions due to the properties of the modulus $|\omega_1 - \omega_d|$. Intriguingly, they are the three-photon and single-photon transition frequencies in the laboratory frame:
@@ -441,6 +442,7 @@ yielding the reversed shape of the splitting.
 Continuing this logic, we can write down the resonance condition in the doubly-rotating frame when both transmons are dressed simultaneously:
 \begin{equation}
 \Omega_1^R \pm \Omega_2^R = 0.
+\label{eq:zero-photon}
 \end{equation}
 Solving it for $\omega_d$, we obtain the generalization of \eqref{eq:topo_1} and \eqref{eq:topo_1_inv}:
 \begin{equation}
@@ -450,13 +452,26 @@ Solving it for $\omega_d$, we obtain the generalization of \eqref{eq:topo_1} and
 
 The equation \eqref{eq:topo_comm} is used to plot the black dashed curves in \autoref{fig:difdrive} taking the $\Omega_{1,2}$ values from the simulation parameters shown therein. The frequencies $\omega_{1,2}$ are extracted from the fits to the visible spectral lines. We find good agreement between the model and the simulated data.
 
+
+\section{Discussion}
+
+We have performed spectroscopy measurements of an isolated diatomic superconducting artificial molecule (SAM) in a regime of strong interaction with classical light. Using joint dispersive readout to directly access population of the SAM eigenstates, we have located several anomalies in the spectral data that were impossible to explain using the simple stationary model of the system. By using extensive numerical modelling explicitly including the interaction with light, we have reproduced the experimentally discovered effects and attributed them to an altered version of the well-known Autler-Townes effect.
+
+In the standard A-T effect, the coupler and the probe tone are separated in frequency and power. In our case, there is only a single spectroscopic frequency interacting with the system; therefore, the is has to be the coupler tone and the probe tone at the same time. However, since there are two components in the driving operator (one for each transmon), the separation between the coupler and the probe may be in the Hilbert space rather than in frequency. Moreover, the effectively weak driving for the probe is achieved when it stimulates a two-photon transition while the coupler tone is resonant with a single-photon one and is dressing the system. We have build a self-consistent model in the frame rotating with the dressed qubit to model the experimental splittings induced by the same field that probes them, and found a good agreement between the model, the experiment, and the numerical simulation. Interestingly, just as in the standard A-T effect on transmons reported previously, no new transitions appear in this more complex case. Instead, for example, spectral lines $12/3$ (three-photon) and $10-02$ (single photon) form an avoided crossing of a non-standard size of $\frac{2\sqrt{3}}{3} \Omega_1$.
+
+Another interesting effect occurs when both components of the driving operator are in the single-photon regime. Now, both transmons are dressed and probed simultaneously. In this case, the $11/2$ transition is split at the resonance into a hyperbolic curve, never forming a doublet in frequency. Moreover, its shape and visibility depends on the relation between the driving amplitudes: if they are equal, it disappears completely. In our sample, we have a fixed ratio of approximately 2 between $\Omega_1$ and $\Omega_2$ which allows us to distinguish the splitting experimentally. In additional simulations with full freedom of choice for the parameter values, we have studied this effect in detail and observed two possible topologically different configurations of this splitting depending on which driving amplitude is larger. Notably, the frequency of $11/2$ transition far from resonance is also changed noticeably with changing power, which means that a fast bSWAP gate should be performed at a different frequency than the stationary model predicts. 
+
+Interestingly, the self-consistent models for the observed effects are implying that multi-photon processes may change their order. For example, for features II and III, we observe a continuous transformation of a three-photon and a single-photon processes to the second order in \eqref{eq:two-photon}, and a two-photon to a zero-photon in \eqref{eq:zero-photon}.
+
+In overall, irradiating an individual diatomic artificial molecule with intense light calls forth a plethora of effects which can not be directly observed in natural systems and extend the validity of the well-known light-dressing models. Relative ease in attaining powers that cause multiphoton transitions promises even more complex dynamics in multi-atom systems. We are looking forward to investigating strong interaction with light in larger artificial structures such as one-dimensional and two dimensional chains and arrays of superconducting artificial atoms.
+
 \appendix
 
 \section{Standard Autler-Townes effect for a three-level atom} \label{sec:3-level-at}
 
 The underlying cause of the A-T effect is the dressing of the atomic levels by strong EM radiation. There are two equivalent mathematical models for it: the light may be classical or quantized.
 
-\begin{figure}
+\begin{figure}[b]	
 	\includegraphics[width=\linewidth]{intro_scheme}
 	\caption{Illustrating the A-T splitting by  the classical driving in the rotating frame ($\hbar=1$ here). \textbf{(a)} A three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$ which induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when the RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ at frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
 	\label{fig:at-standard}
@@ -474,9 +489,9 @@ The underlying cause of the A-T effect is the dressing of the atomic levels by s
 Next, we move to the rotating frame by using an operator
 \[
 \hat R = \left[\begin{matrix} 
-1 & 0 & 0\\0 & e^{i t \left(\omega_{01}- \Delta\right)} & 0\\0 & 0 & e^{i t \left(\omega_{01}- \Delta\right)}\end{matrix}\right].
+1 & 0 & 0\\0 & e^{- i t \left(\omega_{01}- \Delta\right)} & 0\\0 & 0 & e^{- i t \left(\omega_{01}- \Delta\right)}\end{matrix}\right].
 \]
-Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_2$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat R^\dag \hat H_0 \hat R + i \dot{\hat{R}}^\dag \hat R$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
+Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_2$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat R^\dag \hat H_0 \hat R - i \hat{R}^\dag \partial_t  \hat R$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
 \begin{equation*}
 \hat H^c_1 = \left[\begin{matrix}0 &\Omega_{1}/2 & 0\\\Omega_{1}/2 & \Delta & \Omega_{2} e^{i t \omega_p}/2\\0 & \Omega_{2} e^{-i t \omega_p}/2 & \omega_{02} - \omega_{01}+\Delta \end{matrix}\right].
 \end{equation*}
@@ -516,10 +531,14 @@ where $g$ is the coupling strength and $a$ is the photon annihilation operator. 
 \]
 If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\Delta$ to $\Omega_R = \sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
 
-\section{The dressed Hamiltonian in the matrix form}
+\section{The dressed Hamiltonian in the matrix form} \label{sec:H_mat}
 
-\vspace{1cm}
+Since the Hamiltonian in the dressed basis is a useful illustration for \autoref{fig:main_scheme}, we provide it below in \eqref{eq:ham_matrix} for the case $\Delta_1 = 0$, $\delta = \omega_d^2 - 	\omega_d^1 = \omega_d^2 - \omega_1$.
 
+Note that $\hat V_J = \hat S^T \hat H_{int} \hat S$ now has an sub- and super-diagonal block form coupling all the states $\ket{a, j}, \ket{a,j+1}$ and $\ket{b, j}, \ket{b,j+1}$.
+
+The degeneracy between states $\ket{a, 0}, \ket{a,2}$ and $\ket{b, 0}, \ket{b,2}$ occurs only in the resonant case $2\Delta_2   + \alpha_2 = 0$ meaning that the second transmon frame is rotated at its two-photon transition frequency. In this situation, its single-photon subspace is detuned by $-\alpha/2$.
+	
 \renewcommand{\kbldelim}{[}% Left delimiter
 \renewcommand{\kbrdelim}{]}% Right delimiter
 \begin{widetext}
@@ -539,6 +558,7 @@ If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\ome
 	\label{eq:ham_matrix}
 	\end{equation}
 \end{widetext}
+
 
 \section{Degenerate perturbation theory} \label{sec:dpt}
 \begin{equation}
