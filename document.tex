@@ -369,11 +369,12 @@ Using the degenerate perturbation theory with $\hat V_J$ summarized in Appendix 
 The theory for two-photon processes is given in Appendix \ref{sec:2pp}. The probability rate of two-photon transition per unit interaction time using corrected eigenstates $\ket{k}$ and neglecting small terms we obtain:
 
 \begin{equation}
-A^{(2)}_{1\rightarrow 6} =\pi\Omega_2^4 \frac{16 J^4 \left(3 \alpha_2 ^2+7 \text{$\Omega_1
-		$}^2\right)^2}{\alpha_2 ^{10}}
+A^{(2)}_{1\rightarrow 6} = 2\pi\Omega_2^4 \frac{18 J^4 \left(2 \alpha + \text{$\Omega_1
+		$}\right)^2}{\alpha ^{6}\Omega_1^2}
 \end{equation}
 \begin{equation}
-A^{(2)}_{2\rightarrow 5} =\pi\Omega_2^4 \frac{4 J^4 (5 \alpha_2 +3 \text{$\Omega_1$})^2}{\alpha_2 ^8}
+A^{(2)}_{2\rightarrow 5} = 2\pi\Omega_2^4 \frac{18 J^4 \left(2 \alpha - \text{$\Omega_1
+		$}\right)^2}{\alpha ^{6}\Omega_1^2}
 \end{equation}
 From here it follows that in the studied SAM the sideband transitions are prohibited without interaction $(J=0)$ even in the second order, and the avoided crossing we are interested can not be observed.
 
@@ -616,14 +617,15 @@ For "weak" interaction the series may be truncated to a fine term $n$ and the $n
 In our case the interaction in interaction picture satisfies the following relation
 \begin{equation}
 	\begin{split}
-	\tilde{V}(t)=\exp(i H_0 t) \Omega\cos(\omega_d t)(\hat b+\hat b^{\dagger})\exp(-i H_0 t)\overset{RWA}{=}\\ \exp(i H_0 t) \Omega(\hat b^{\dagger} e^{-i\omega_d t}+\hat be^{i\omega_d t})\exp(-i H_0 t)
+	\tilde{V}(t)=\exp(i H_0 t) \Omega\cos(\omega_d t)(\hat b+\hat b^{\dagger})\exp(-i H_0 t)=\\\frac{\Omega}{2} \exp(i H_0 t) \hat{B}(e^{-i\omega_d t}+e^{i\omega_d t})\exp(-i H_0 t)
 	\end{split}
 \end{equation}
+Where, $\hat{b}^{\dagger}+\hat{b}=\hat{B}$.
 Taking the matrix element between the initial and the final states $\ket{i}$ and $\ket{f}$, one immediately obtains
 \begin{equation}
 	\begin{split}
-	\bra{f}U^{(1)}(t,t_0)\ket{i}=-i\int_{t_0}^{t}dt_1\tilde{V}(t_1)=\\-i\frac{\Omega}{2}\big[\int_{t_0}^{t}dt_1e^{i(\omega_f-\omega_i-\omega_d)t_1}\bra{f}b^{\dagger}\ket{i}+\\
-	\int_{t_0}^{t}dt_1e^{i(\omega_f-\omega_i+\omega_d)t_1}\bra{f}b\ket{i}\big]
+	\bra{f}U^{(1)}(t,t_0)\ket{i}=-i\int_{t_0}^{t}dt_1\tilde{V}(t_1)=\\-i\frac{\Omega}{2}\big[\int_{t_0}^{t}dt_1e^{i(\omega_f-\omega_i-\omega_d)t_1}\bra{f}\hat{B}\ket{i}+\\
+	\int_{t_0}^{t}dt_1e^{i(\omega_f-\omega_i+\omega_d)t_1}\bra{f}\hat{B}\ket{i}\big]
 	\end{split}
 \end{equation}
 To calculate second-order term we used the following expression $\sum_{j}\ket{j}\bra{j}=\mathbbm{1}$.
@@ -635,10 +637,10 @@ To calculate second-order term we used the following expression $\sum_{j}\ket{j}
 Go over the long-time limit $t\rightarrow\infty$ in the final integral and collect the terms belongings to the same delta functions. This gives
 \begin{equation}
 	\begin{split}
-	\bra{f}U^{(2)}(\infty)\ket{i}=\\\frac{\pi i\Omega^2}{2}\bigg[\delta(\omega_f-\omega_i+2\omega_d)\sum_j\frac{\bra{f}b\ket{j}\bra{j}b\ket{i}}{\omega_j-\omega_i+\omega_d}+\\
-	\delta(\omega_f-\omega_i)\bigg(\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b\ket{i}}{\omega_j-\omega_i+\omega_d}+\\
-	\sum_j\frac{\bra{f}b\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg)+\\
-	\delta(\omega_f-\omega_i-2\omega_d)\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg]
+	\bra{f}U^{(2)}(\infty)\ket{i}=\\\frac{\pi i\Omega^2}{2}\bigg[\delta(\omega_f-\omega_i+2\omega_d)\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_j-\omega_i+\omega_d}+\\
+	\delta(\omega_f-\omega_i)\bigg(\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_j-\omega_i+\omega_d}+\\
+	\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg)+\\
+	\delta(\omega_f-\omega_i-2\omega_d)\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg]
 	\end{split}
 \end{equation}
 The probability of two-photon transition from state $\ket{i}$ to state $\ket{f}$ is simply the square modulus of the corresponding amplitude. So, $P^{(2)}_{i\rightarrow f}= |	\bra{f}U^{(2)}(\infty)\ket{i}|^2$.
@@ -653,7 +655,7 @@ For simplifier the equation we have made use of the relation:
 For $\omega_f=\omega_i+2\omega_d$.
 \begin{equation}\label{prob}
 \begin{split}
-	W^{(2)}_{i\rightarrow f}=\frac{\pi\Omega^4}{8}\bigg|\sum_j\frac{\bra{f}b^{\dagger}\ket{j}\bra{j}b^{\dagger}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg|^2\delta(\omega_f-\omega_i-2\omega_d)=\\ A^{(2)}_{i\rightarrow f}\delta(\omega_f-\omega_i-2\omega_d)
+	W^{(2)}_{i\rightarrow f}=\frac{\pi\Omega^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_j-\omega_i-\omega_d}\bigg|^2\delta(\omega_f-\omega_i-2\omega_d)=\\ A^{(2)}_{i\rightarrow f}\delta(\omega_f-\omega_i-2\omega_d)
 \end{split}
 \end{equation}
 
@@ -664,13 +666,6 @@ flux biased using Yokogawa GS200 current sources (two for the flux lines and one
 Input microwave lines were isolated from high-temperature noise with 60 dB of attenuation (10 @ 4K, 10 @ 1K, 20 @ 100 and 16 mK) and custom-made IR filters. The additional on-chip attenuation (due to the small capacitive coupling) between the qubit drive line and the qubits was calculated in Sonnet to be around 70 dB @ 6 GHz. Coaxial flux-bias lines were attenuated by 20 dB @ 4K and IR filtered as well. Output path contained two 20 dB isolators and two amplifiers: the 4-14 GHz LNF amplifier at the 4 K stage and the room-temperature LNF amplifier.
 
 As the main experimental method, we have employed the two-tone spectroscopy which consists of exciting the SAM with monochromatic light at certain frequency until steady state is reached while simultaneously measuring the signal transmission at the readout resonator frequency. This measurement yields the average value of the joint measurement operator $\hat M$ in the steady-state.
-
-\section{Text}
-
-In order to determine which transitions correspond to the lines, the stationary Schrödinger equation was solved \autoref{fig:spectr} in three-level approximation for both of qubits. With the Hamiltonian of the system:
-\begin{equation}
-	H_{system} = H_{tr1}\otimes \mathbbm{1}+\mathbbm{1}\otimes H_{tr2}+H_{int}
-\end{equation}
 
 
 
