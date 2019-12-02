@@ -15,7 +15,7 @@ class StationaryPlot:
         with open("stationary.pkl", "rb") as f:
             currs, freqs, population10, energies = pickle.load(f)
 
-        fig, ax = plt.subplots(1, 1, figsize=(4.25, 2.75), sharey=True)
+        fig, ax = plt.subplots(1, 1, figsize=(5, 3), sharey=True)
 
         # mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
         #                    cmap="Spectral_r")
@@ -42,15 +42,15 @@ class StationaryPlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
+        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.265), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('4', xy=(4.9, 5.195), xytext=(4.75, 5.195), ha="center", va="top", fontsize=10,
+        ax.annotate('4', xy=(4.9, 5.195), xytext=(4.76, 5.195), ha="center", va="top", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.65, 5.18), ha="center", va="center",
+        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.63, 5.18), ha="center", va="center",
                     fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
@@ -107,33 +107,33 @@ class StationaryPlot:
         plt.plot(currs, ((energies[:, 8].T - energies[:, 0]).T / 4), linestyle=typ2, linewidth=t,
                  color=secondary_colour);  # 00->22
 
-        plt.plot(currs, ((energies[:, 1].T - energies[:, 0]).T), label=r"$\left|10\right\rangle$",
+        plt.plot(currs, ((energies[:, 1].T - energies[:, 0]).T), label=r"10",
                  linewidth=m,
                  linestyle=typ1);  # 00->10
 
-        plt.plot(currs, ((energies[:, 2].T - energies[:, 0]).T), label=r"$\left|01\right\rangle$",
+        plt.plot(currs, ((energies[:, 2].T - energies[:, 0]).T), label=r"01",
                  linewidth=m,
                  linestyle=typ1);  # 00->01
 
         plt.plot(currs, ((energies[:, 3].T - energies[:, 0]).T / 2),
-                 label=r"$\left|20/2\right\rangle$",
+                 label=r"20/2",
                  linewidth=m, linestyle=typ1);  # 00->20
 
         plt.plot(currs, ((energies[:, 4].T - energies[:, 0]).T / 2),
-                 label=r"$\left|02/2\right\rangle$",
+                 label=r"02/2",
                  linewidth=m, linestyle=typ1);  # 00->02
 
         plt.plot(currs, ((energies[:, 4].T - energies[:, 1]).T),
-                 label=r"$\left|10\right\rangle\rightarrow\left|02\right\rangle$", linewidth=m,
+                 label=r"10-02", linewidth=m,
                  linestyle=typ1);  # 10->02
 
-        plt.plot(currs, ((energies[:, 5].T - energies[:, 0]).T / 2), label=r"$\left|11/2\right\rangle$",
+        plt.plot(currs, ((energies[:, 5].T - energies[:, 0]).T / 2), label=r"11/2",
                  linewidth=m, linestyle=typ1)  # , color='black');  # 00->11
 
-        plt.plot(currs, ((energies[:, 6].T - energies[:, 0]).T / 3), label=r"$\left|21/3\right\rangle$",
+        plt.plot(currs, ((energies[:, 6].T - energies[:, 0]).T / 3), label=r"21/3",
                  linestyle=typ1, linewidth=m , color='C7');  # 00->21/3
 
-        plt.plot(currs, ((energies[:, 7].T - energies[:, 0]).T / 3), label=r"$\left|12/3\right\rangle$",
+        plt.plot(currs, ((energies[:, 7].T - energies[:, 0]).T / 3), label=r"12/3",
                  linestyle=typ1, linewidth=m, color="C9");  # 00->12
 
         plt.ylim(5.1, 5.5)
@@ -150,6 +150,10 @@ class StationaryPlot:
         cb.set_ticks([-3, -2, -1, -0.523])
         cb.ax.set_xticklabels([.001, 0.01, 0.1, 0.3])
         cb.ax.set_title(r"$ P_{\left|10\right\rangle}$", position=(1.125, -3.5))
+
+
+        plt.text(-0.15, 1.1, "(c)", fontdict={"name": "STIX"}, fontsize=18,
+                 transform=ax.transAxes)
 
         plt.savefig("../stationary.pdf", bbox_inches="tight", dpi=600)
 

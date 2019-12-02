@@ -64,14 +64,14 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width =1, headwidth = 5, headlength = 7, shrink=0.05))
 
 
-        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.55, 5.21), ha="center", fontsize=10,
+        ax.annotate("1", xy=(3.5, 5.2325), xytext=(3.64, 5.2075), ha="right", fontsize=10,
                     arrowprops=dict(facecolor='black', width =.5, headwidth = 3, headlength = 3.5, shrink=0.05))
 
-        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.185), ha="center", fontsize=10,
+        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.18), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
+        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.265), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
@@ -79,7 +79,7 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate("5", xy=(3.515, 5.177), xytext=(3.585, 5.1795), ha="center", va="bottom", fontsize=10,
+        ax.annotate("5", xy=(3.516, 5.177), xytext=(3.61, 5.1795), ha="center", va="bottom", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
@@ -111,15 +111,15 @@ class MainPicturePlot:
         cb.locator = loc
         cb.update_ticks()
 
-        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.55, 5.21), ha="center", fontsize=10,
+        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.56, 5.205), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.185), ha="center", fontsize=10,
+        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.18), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('3', xy=(3.31, 5.245), xytext=(3.31, 5.255), ha="center", fontsize=10,
+        ax.annotate('3', xy=(3.31, 5.245), xytext=(3.31, 5.26), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
@@ -127,7 +127,7 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.575, 5.1775), ha="center", va="bottom", fontsize=10,
+        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.59, 5.1775), ha="center", va="bottom", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
