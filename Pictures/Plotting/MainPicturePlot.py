@@ -97,7 +97,7 @@ class MainPicturePlot:
         #     self._cache[self.nstate] = C
 
         C = np.real(self._C_th.T)
-        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.027+(0.027/2-0.005)# + np.random.normal(scale=0.001,
+        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.02+(0.02/2+0.0025)# + np.random.normal(scale=0.001,
                                                            #                    size=C.shape)
         C = C
         data = self._X_th, self._Y_th, C

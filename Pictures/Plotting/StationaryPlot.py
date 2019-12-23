@@ -15,7 +15,7 @@ class StationaryPlot:
         with open("stationary.pkl", "rb") as f:
             currs, freqs, population10, energies = pickle.load(f)
 
-        fig, ax = plt.subplots(1, 1, figsize=(5, 3), sharey=True)
+        fig, ax = plt.subplots(1, 1, figsize=(5*0.9, 3*0.9), sharey=True)
 
         # mappable = axes[0].pcolormesh(currs, freqs, log10(array(population10)), rasterized=True,
         #                    cmap="Spectral_r")
@@ -107,13 +107,14 @@ class StationaryPlot:
         plt.plot(currs, ((energies[:, 8].T - energies[:, 0]).T / 4), linestyle=typ2, linewidth=t,
                  color=secondary_colour);  # 00->22
 
-        plt.plot(currs, ((energies[:, 1].T - energies[:, 0]).T), label=r"10",
-                 linewidth=m,
-                 linestyle=typ1);  # 00->10
 
         plt.plot(currs, ((energies[:, 2].T - energies[:, 0]).T), label=r"01",
                  linewidth=m,
                  linestyle=typ1);  # 00->01
+
+        plt.plot(currs, ((energies[:, 1].T - energies[:, 0]).T), label=r"10",
+                 linewidth=m,
+                 linestyle=typ1);  # 00->10
 
         plt.plot(currs, ((energies[:, 3].T - energies[:, 0]).T / 2),
                  label=r"20/2",
@@ -138,7 +139,7 @@ class StationaryPlot:
 
         plt.ylim(5.1, 5.5)
         plt.xlim(2,6)
-        ax.set_ylabel("Frequency [GHz]")
+        ax.set_ylabel("$\omega_{d}^{1,2}/2\pi$ [GHz]")
 
         ax.set_xlabel("Current [$10^{-4}$ A]")
         plt.legend(ncol=3, fontsize=7)
@@ -152,7 +153,7 @@ class StationaryPlot:
         cb.ax.set_title(r"$ P_{\left|10\right\rangle}$", position=(1.125, -3.5))
 
 
-        plt.text(-0.15, 1.1, "(c)", fontdict={"name": "STIX"}, fontsize=18,
+        plt.text(-0.15, 1.1, "(d)", fontdict={"name": "STIX"}, fontsize=17,
                  transform=ax.transAxes)
 
         plt.savefig("../stationary.pdf", bbox_inches="tight", dpi=600)
