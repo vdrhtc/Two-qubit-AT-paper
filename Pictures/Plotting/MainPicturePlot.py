@@ -46,7 +46,7 @@ class MainPicturePlot:
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current [$10^{-4}$ A]');
-        ax.set_ylabel('Frequency [GHz]');
+        ax.set_ylabel('$\omega_d^{1,2}/2\pi$ [GHz]');
         cb.ax.set_title(r"$\mathfrak{Re} [S^{exp}_{21}]$", position=(1.125,-1.5))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
@@ -64,14 +64,14 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width =1, headwidth = 5, headlength = 7, shrink=0.05))
 
 
-        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.55, 5.21), ha="center", fontsize=10,
+        ax.annotate("1", xy=(3.5, 5.2325), xytext=(3.64, 5.2075), ha="right", fontsize=10,
                     arrowprops=dict(facecolor='black', width =.5, headwidth = 3, headlength = 3.5, shrink=0.05))
 
-        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.185), ha="center", fontsize=10,
+        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.18), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.26), ha="center", fontsize=10,
+        ax.annotate('3', xy=(3.31, 5.25), xytext=(3.31, 5.265), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
@@ -79,7 +79,7 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate("5", xy=(3.515, 5.177), xytext=(3.585, 5.1795), ha="center", va="bottom", fontsize=10,
+        ax.annotate("5", xy=(3.516, 5.177), xytext=(3.61, 5.1795), ha="center", va="bottom", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
@@ -97,7 +97,7 @@ class MainPicturePlot:
         #     self._cache[self.nstate] = C
 
         C = np.real(self._C_th.T)
-        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.027+(0.027/2-0.005)# + np.random.normal(scale=0.001,
+        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.02+(0.02/2+0.0025)# + np.random.normal(scale=0.001,
                                                            #                    size=C.shape)
         C = C
         data = self._X_th, self._Y_th, C
@@ -111,15 +111,15 @@ class MainPicturePlot:
         cb.locator = loc
         cb.update_ticks()
 
-        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.55, 5.21), ha="center", fontsize=10,
+        ax.annotate("1", xy=(3.48, 5.23), xytext=(3.56, 5.205), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.185), ha="center", fontsize=10,
+        ax.annotate('2', xy=(5.07, 5.21), xytext=(5.07, 5.18), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate('3', xy=(3.31, 5.245), xytext=(3.31, 5.255), ha="center", fontsize=10,
+        ax.annotate('3', xy=(3.31, 5.245), xytext=(3.31, 5.26), ha="center", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
@@ -127,7 +127,7 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
-        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.575, 5.1775), ha="center", va="bottom", fontsize=10,
+        ax.annotate("5", xy=(3.5, 5.175), xytext=(3.59, 5.1775), ha="center", va="bottom", fontsize=10,
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 

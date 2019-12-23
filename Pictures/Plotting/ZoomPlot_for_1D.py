@@ -53,7 +53,7 @@ class Powerscan1D:
 
         # plt.savefig("powerscan_1d.png", dpi=400)
 
-        plt.figure(figsize=(5, 2.5))
+        plt.figure(figsize=(7, 2))
         mvolts = sqrt(10 ** (linspace(-20, 0, 11) / 10) * 1e-3 * 50) * 1e3
         plt.plot(mvolts, 1 / sqrt(3) * 2 * mvolts / 5, "black", label="Fit, " + \
                                                                       r"$\frac{2 \sqrt{3}}{3} V_{rms} \cdot %.2f$ MHz/mV" % (
@@ -69,6 +69,10 @@ class Powerscan1D:
         plt.ylabel("Splitting [MHz]")
         plt.legend()
         plt.grid(color='black', linestyle=':', linewidth=1)
+
+        plt.text(-0.1, 1.05, "(c)", fontdict={"name": "STIX"}, fontsize=20,
+                 transform=plt.gca().transAxes)
+
         plt.savefig("../powerscan_1d.pdf", dpi=400, bbox_inches="tight")
 
         # plt.savefig("../powerscan.pdf", bbox_inches="tight", dpi=600)
