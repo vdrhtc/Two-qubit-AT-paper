@@ -54,10 +54,10 @@ class MainPicturePlot:
         plt.text(-0.15, 1.1, "(a)", fontdict={"name": "STIX"}, fontsize=17,
                  transform=ax.transAxes)
 
-        plt.text(.53, .815, r"$\omega_2(\Phi_e)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
+        plt.text(.53, .815, r"$\omega_2(I)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
                  transform=ax.transAxes, ha='center')
 
-        plt.text(.54, .355, r"$\omega_1(\Phi_e)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
+        plt.text(.54, .355, r"$\omega_1(I)/2\pi$", fontdict={"name": "STIX"}, fontsize=7.5,
                  transform=ax.transAxes, ha='center')
 
         ax.annotate('spurious\nresonance', xy=(5, 5.37), xytext=(5.1, 5.45), ha="center", fontsize=10,
