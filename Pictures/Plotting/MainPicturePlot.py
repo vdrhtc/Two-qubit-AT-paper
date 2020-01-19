@@ -34,7 +34,7 @@ class MainPicturePlot:
         self.plot_experiment(ax1)
         self.plot_theory(ax2)
 
-        plt.savefig("../main_picture.pdf", bbox_inches="tight", dpi=600)
+        plt.savefig("../main_picture.pdf", bbox_inches="tight", dpi=800)
 
         with open(self._cache_file, "wb") as f:
             pickle.dump(self._cache, f)
