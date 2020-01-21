@@ -132,14 +132,14 @@ diatomic supercondufcing artificial molecule}
 	Institute, (VNIIA), Moscow, Russia}
 
 	\author{O.V. Astafiev}
-	\affiliation{ 
-		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia 
-	}
 	\affiliation{Skolkovo Institute of Science 
-	and Technology, Moscow, Russian Federation}
+		and Technology, Moscow, Russian Federation}
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia}
 	\affiliation{Physics Department, Royal 
 	Holloway, University of London, Egham, Surrey 
 	TW20 0EX, United Kingdom}
+\affiliation{National Physical Laboratory, Teddington, TW11 0LW, United Kingdom}
 %
 	
 	
@@ -183,11 +183,9 @@ Over the past twenty years, superconducting
 artificial atoms (SAAs) were used in numerous 
 experiments in a compelling demonstration of the 
 validity of fundamental quantum mechanical 
-laws\cite{you2011atomic}. Due to synthetic nature 
-of SAAs, their Hamiltonians can be pre-designed 
+laws\cite{you2011atomic}. Their Hamiltonians can be pre-designed 
 and engineered which makes them a particularly 
-versatile tool for studies in quantum optics. 
-Notably, high controllability of their parameters 
+versatile tool for studies in quantum optics, and high controllability of their parameters 
 allows direct observation of novel physical 
 effects previously inaccessible for natural 
 systems. 
@@ -305,9 +303,9 @@ details of the theoretical framework that we use.
 \subsection{Device design and control}
 We have designed the SAM as a pair of transmon 
 (Xmon) SAAs with asymmetric 
-SQUIDs\cite{hutchings2017tunable} ($E^1_{J, 
+SQUIDs\cite{hutchings2017tunable} (maximal Josephson energies $E^1_{J, 
 \sum}/h = 24.3$ GHz, $E^2_{J,\sum}/h = 18.3$ GHz, 
-$E^{1,2}_C/h = 220$ MHz, $d^{1,2} =0.75$) coupled 
+charging energies $E^{1,2}_C/h = 220$ MHz, asymmetries $d^{1,2} =0.75$) coupled 
 to a single notch-type\cite{probst2015efficient} 
 $\lambda/4$ resonator ($f_r = 7$ GHz, $\kappa = 
 1/100\ \text{ns}^{-1}$) which both 
@@ -357,7 +355,7 @@ area being close to their sweet spots.
 
 \begin{figure}
 	 	\includegraphics[width=\linewidth]{experiment_2}
-	\caption{\textbf{(a)} Optical photograph of 
+	\caption{\textbf{(a)} Optical image of 
 	the device (false coloured). Two transmons 
 	(orange, 1 and blue, 2) are coupled 
 	capacitively to a $\lambda/4$ coplanar 
@@ -555,7 +553,7 @@ calculate $S_{21}(f_p)$ via offsetting the
 experimental resonance curve measured when the 
 SAM is in the ground state by the dispersive 
 shifts corresponding to the SAM basis 
-states\cite{filipp2009two}. Since we have not 
+states\cite{filipp2009two, chow2010detecting}. Since we have not 
 directly measured these dispersive shifts, in our 
 modelling they are treated as fitting parameters. 
 Finally, the observable value for any state $\hat 
@@ -674,8 +672,8 @@ of $\Lambda$
 	population of the state $\ket{10}$ ($\lg 
 	P_{\ket{10}}$ is shown with colour). Lines 
 	show various transition frequencies from the 
-	unperturbed Hamiltonian. Legend labels 
-	transitions near the sweet spot current; if 
+	unperturbed Hamiltonian. In the legend, the 
+	transitions are labelled near the sweet spot current; if 
 	elsewhere any two lines form an avoided 
 	crossing, the labels should be swapped after 
 	the intersection.}
@@ -756,8 +754,7 @@ more detail in a separate section below.
 	
 	\includegraphics[width=.7\linewidth]{powerscan_1d}
 	\caption{Power dependence of feature II: 
-	experiment, simulation and theory. Dashed are 
-	the model curves turning to dotted when the 
+	experiment, simulation and analytic model. Dashed are the model curves turning to dotted when the 
 	model is not expected to be valid (see 
 	Sections \ref{sec:theory} and 
 	\ref{sec:münchhausen}); model values for 
@@ -776,9 +773,7 @@ more detail in a separate section below.
 	colours show the population of the ground 
 	state. \textbf{(c)} Linear dependence of the 
 	splitting size on the driving voltage of the 
-	microwave source $V_{rms} = 
-	\sqrt{10^{P_{exc}/10}\cdot 1 \text{ mW} \cdot 
-	50\ \Omega}$, ${\Omega_2}/{V_{rms}} = 0.23\ 
+	microwave source $V_{rms}$, ${\Omega_2}/{V_{rms}} = 0.23\ 
 	{\text{MHz}}/{\text{mV}}$. From Section 
 	\ref{sec:theory}, the splitting size is 
 	$\frac{2\sqrt{3}}{3} \Omega_2$.}
@@ -794,14 +789,14 @@ more detail in a separate section below.
 	same frequency but at different amplitudes 
 	$\Omega_{1,2}$. In the top row (middle row), 
 	$\Omega_{1(2)}$ is increased while 
-	$\Omega_{2(1)} = \text{const} \ll 
+	$\Omega_{2(1)} = \text{const},\ \Omega_{2(1)} \ll 
 	\Omega_{1(2)}$; two topologically different 
 	types of anticrossings arise depending on 
 	which transmon is driven stronger. In the 
 	bottom row, we show how the splittings vanish 
 	when the weaker driving is increased to match 
 	with the stronger one. Gray dashed lines show 
-	the solution with no driving, in black are 
+	the solution without driving, in black are 
 	the model curves based on Sections 
 	\ref{sec:theory} and \ref{sec:münchhausen}.}
 	\label{fig:difdrive}
@@ -815,18 +810,14 @@ more detail in a separate section below.
 Though it is not possible to describe all of the 
 experimental features with the unperturbed model, 
 we can still use it to identify most of the 
-observed transitions as follows. As said above, 
-by numerical diagonalization, we calculate the 
+observed transitions as follows. By numerical diagonalization, we calculate the 
 unperturbed frequencies of the undriven SAM as 
 $\omega_{mn} = (E_n - E_m)/h$ where $n>m,\  
 n,m=0..9$. In \autoref{fig:two-tone}~(d), we 
-place them over the heatmap data depicting the 
-population of $\ket{10}$ optionally dividing 
-$\omega_{mn}$ by some integer $n$ to find the 
-frequency of an $n$-photon process to find a 
-match among the visible lines in the heatmap. 
+place them over the heatmap data optionally dividing 
+$\omega_{mn}$ by some integer $n$ for $n$-photon processes. 
 Since the number of SAM states is finite, we can 
-quickly find all such correspondences. 
+quickly find all matches between the heatmap and the calculated eigenlevels. 
 
 Next, at the sweet spot, we name the found lines 
 as $ij/n$ where $i,j$ denote the final basis 
@@ -844,19 +835,17 @@ only near the sweet spot before any two lines
 form an avoided crossing. When they do, their 
 names should be swapped.
  
-Having settled the naming system, we continue to 
-analyse the plots. Due to the strong driving, we 
-observe several multiphoton transitions besides 
+As one can see, various multiphoton transitions besides 
 the main lines at $\omega_{(1,2)}(I)/2\pi$ (or 
-$01$ and $10$ lines). The ${02/2}$ and ${20/2}$ 
+$01$ and $10$ lines) are visible. The ${02/2}$ and ${20/2}$ 
 are very commonly found for transmons and lie 
 $|\alpha_{(1,2)}|/2$ lower than the main lines 
-$\omega_{(1,2)}(I	)$. Another two-photon process 
+$\omega_{(1,2)}(I)$. Another two-photon process 
 appears as $11/2$ line when two SAAs are excited 
 simultaneously. This process is used, for 
 example, for doing the bSWAP 
 gate\cite{poletto2012entanglement}; in our case, 
-it is taking part in formation of feature I. A 
+it is taking part in feature I. A 
 three-photon process $12/3$ is also clearly 
 visible just below the $02/2$ line. As we will 
 see, it is involved in forming features II and 
@@ -868,55 +857,57 @@ should only appear with non-vanishing $\hat
 H_{int}$.
 
 When two lines intersect, they may form an 
-avoided crossing if the corresponding matrix 
+avoided crossing even for an unperturbed model if 
+the corresponding matrix 
 element of $\hat H_{int}$ is non-zero. In such 
 cases, the SAM becomes inseparable with some of 
 the eigenstates becoming superpositions of the 
 factorized states. For a two-transmon SAM, such 
-points are, for instance, crossings between 
-${01}$, ${10}$ or $ {11} $, $ {02} $($ {20} $). 
+points are, for instance, anticrossings between 
+${01}$,${10}$ or $ {11} $,$ {02} $($ {20} $) 
+visible clearly in \autoref{fig:two-tone}~(d). 
 Additionally, marked as feature 3 in 
 \autoref{fig:two-tone}, we see an avoided 
 crossing between ${12}/3,\ {21}/3$ at the same 
-$\Phi_e$ where ${01}$, ${10}$ intersect.
+current where ${01}$, ${10}$ intersect.
 
 
-\paragraph{Features I, II and III.} First, we have focused on the feature III and have reproduced this avoided crossing in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for the transmon 2. Upon this, it has become clear that feature II and feature III actually are of the same nature and differ only by the ordering of the transmons: for II, they appear whence the transition ${01}$ intersects with the two-photon one ${20/2}$ (${10}$ intersects ${02/2}$ in III); one can see this clearly in \autoref{fig:two-tone}~(b).
+\paragraph{Analysing features I, II and III.} 
+First, we have reproduced the avoided crossing of feature III in an additional numerical simulation taking only 2 levels for the transmon 1 and three levels for 
+the transmon 2. Upon this, it has become clear 
+that features II and III are actually of 
+the same nature and differ only by the ordering 
+of the transmons: for II, they appear whence the 
+transition ${01}$ intersects with the two-photon 
+one ${20/2}$, and for III when ${10}$ intersects ${02/2}$; 
+one can see this clearly in 
+\autoref{fig:two-tone}~(b).
 
 From \autoref{fig:two-tone}~(d) we conclude that 
 avoided crossing in III is between two 
 transitions: ${12/3}$ and ${10} - {02}$ 
 ($\ket{10}\rightarrow\ket{02}$) which are of the 
 same frequency when $\omega_1 = 
-\omega_2+\alpha_2/2$. The latter process is 
-discernible in \autoref{fig:two-tone}~(d) as it 
-depopulates ${10}$, but is not visible in 
-\autoref{fig:two-tone}~(a),(b). In II, the 
-reversed is true: ${21/3}$ and ${01} - {20}$ are 
+\omega_2+\alpha_2/2$. The latter process depopulating $01$ is better discernible in \autoref{fig:two-tone}~(d) 
+than in \autoref{fig:two-tone}~(a), (b). For II, the 
+opposite is true: ${21/3}$ and ${01} - {20}$ are 
 crossing when $\omega_2 = \omega_1+\alpha_1/2$. 
 From additional measurements and simulations, we 
 find that the splitting depends on the driving 
 power; the experimental and simulated results for 
-II are shown in \autoref{fig:zoom}~(a), (b). As 
-one can see, the growth of the splitting with 
+II are shown in colour in \autoref{fig:zoom}~(a), (b), respectively. As one can see, the growth of the splitting with 
 increasing power is linear: it is roughly equal 
 to the FWHM of the ${01}$ spectral line. To fully 
 quantify the shape of this splitting, in Section 
 \ref{sec:theory} we derive analytical expressions 
 for the dashed curves fitting the spectral lines 
-in \autoref{fig:zoom}. By measuring the 
-dependence of the splitting size on the microwave 
-power we confirm its proportionality to the 
-signal amplitude (see \autoref{fig:zoom}~(c)).
+in \autoref{fig:zoom}. In \autoref{fig:zoom}~(c), blue points, we present splitting sizes extracted by fitting of the model to the data as in \autoref{fig:zoom}~(a) for various power values of the microwave generator connected to the excitation waveguide. As one can see from the linear approximation of the points, the splitting indeed is simply proportional to the RMS voltage of the signal. From the model, we expect that the minimal distance between curves in the anticrossing is equal to $\frac{2\sqrt{3}}{3} \Omega_2$; using this relation, we extract the proportionality coefficient between $\Omega_2$ and $V_{rms}$ is around $0.23$ MHz/mV from the linear fit.
 
-We see a similar behaviour for feature I: 
-increasing drive amplitude on one of the 
+In \autoref{fig:difdrive}, we demonstrate a similar power dependence of feature I: increasing drive amplitude on one of the 
 transmons while keeping the other one small and 
 constant again elicits avoided crossings with the 
-proportional size. In \autoref{fig:difdrive} we 
-show only the simulation results; an experiment 
-is not possible with our sample because there is 
-no way to adjust the driving amplitudes 
+proportional size. We  show only the simulation results; an experiment is not possible with our sample because, since we have just a single excitation line, there is 
+no way for us to control the driving amplitudes 
 $\Omega_{1,2}$ individually. We note that two 
 qualitatively different patterns arise depending 
 on which of the transmons is driven stronger than 
@@ -925,15 +916,15 @@ splitting in feature I of
 \autoref{fig:two-tone}~(a), we can infer that 
 $\Omega_1/\Omega_2 \approx 2$ there (also 
 consistent with the 01, 10 linewidths in 
-\autoref{fig:two-tone}~(c)).
+\autoref{fig:two-tone}~(c)). If in contrast both transmons are driven with equal amplitudes, the avoided crossing vanishes. As can be seen from black dashed lines in \autoref{fig:difdrive}, all these cases are explained well by our analytical model described in detail in Sections \ref{sec:theory} and \ref{sec:münchhausen}}.
 
-These observations mean that effects I -- III are 
-caused by light dressing. In the case III, the 
+From all presented observations, we conclude that effects I -- III 
+are caused by light dressing. In the case III, the 
 first transmon is dressed by a strong resonant 
 field; in case II, the second one; finally, in 
-case I, both transmons are dressed at the same 
+case I, both transmons may be dressed at the same 
 time. We will discuss these effects in greater 
-detail in Section \ref{sec:theory}.
+detail in Sections \ref{sec:theory} and \ref{sec:münchhausen}.
 
 \paragraph{Secondary features.} Using 
 \autoref{fig:two-tone}~(d), we can get an insight 
@@ -962,12 +953,13 @@ a pair of avoided crossings near a single point
 (dotted lines in \autoref{fig:two-tone}~(d)). It 
 appears at the point where ${02/2}$ intersects 
 ${20/2}$ and is just barely visible in the 
-experimental data because of the noise. Feature 5 
-is located at the intersection between ${20/2}$ 
-and normally invisible ${10} - {02}$, and can be 
+experimental data because of the noise. 
+
+Feature 5 is located at the intersection between ${20/2}$ 
+and ${10} - {02}$, and can be 
 found in the experimental data, too. 
 
-Finally, when the coupling is turned off ($J=0$) in the simulation, the system does not demonstrate any of the described details. This means that all these effects can only be attributed to the SAM as a whole. 
+In conclusion to this section, we note that when the coupling is turned off ($J=0$) in the simulation, the system does not demonstrate any of the described details. This means that all these effects can only be attributed to the SAM as a whole. 
 
 \subsection{Explaining extra avoided crossings}\label{sec:theory}
 
@@ -976,21 +968,21 @@ avoided crossings with the light dressing, it was
 natural to expect an Autler-Townes-like effect to 
 be at the root of the additional spectral lines. 
 For a three-level system, the standard A-T effect 
-is reviewed in Appendix \ref{sec:3-level-at}. 
+is revised in Appendix \ref{sec:3-level-at}. 
 However, in our case the level structure and the 
 effect itself are more complicated. 
 
 First of all, since during the spectroscopy we 
 apply only a single microwave tone ($\omega_d^1 = 
-\omega_d^2$), for the A-T effect it has to be 
-simultaneously the coupler and the probe; the 
-latter must be much weaker than the former, as 
-well. These conditions are satisfied when 
+\omega_d^2$), it has to be 
+simultaneously the coupler and the probe
+in terms of the standard A-T effect; moreover, the 
+probe must be much weaker than the coupler. 
+Fortunately, all these conditions are satisfied near feature II(III) when 
 $\omega_{\{2,1\}} = 
 \omega_{\{1,2\}}+\alpha_{\{1,2\}}/2$  where we 
 can simultaneously excite transitions $01 (10)$ 
-and $20/2 (02/2)$ (features II and III, 
-respectively). Since the two-photon Rabi 
+and $20/2 (02/2)$. Since the two-photon Rabi 
 frequency is much smaller than the single-photon 
 $\Omega_2$, it is natural to view this two-photon 
 excitation as the probing process which does not 
@@ -1001,13 +993,11 @@ A-T coupling operator is $\hat H_{d}^1$ (strong),
 and the probing operator is $\hat H_{d}^2$ (weak 
 in the two-photon regime). However, their 
 separation in our case is not in frequency, but 
-in the Hilbert subspaces they act upon.
+in the Hilbert subspaces they act upon and in the number of participating photons.
 
-Similarly, for feature I, the simultaneously 
-excited transitions are $01(10)$ and the 
-two-photon $11/2$. However, as we demonstrate in 
-\autoref{fig:difdrive}, for the avoided crossings 
-in I to be clearly observed it is required that 
+For feature I, the simultaneously 
+excited transitions are $01,\ 10$ and the 
+two-photon $11/2$. In this case, the weak two-photon process is probing transitions in the doubly-dressed SAM. We find that if SAAs are dressed equally, $11/2$ does not form an avoided crossing, and for it to be clearly observed it is required that 
 $\Omega_{\{1,2\}} \gg \Omega_{\{2,1\}}$. 
 
 Below, we give the detailed explanation of features II and III, and finally, I.
@@ -1021,35 +1011,30 @@ Below, we give the detailed explanation of features II and III, and finally, I.
 	current (0.36 mA) where the first transmon 
 	(orange) is below the second one (blue) 
 	exactly by $\alpha_2/2$ and several 
-	transitions become resonant. So far we assume 
+	transitions become resonant. Here we assume 
 	that each transmon is driven at its own 
 	frequency. \textbf{(b)} System level 
-	structure at the resonant point including the 
-	driving $\hat H_{d}^1$ of the first transmon 
-	by a strong signal of amplitude $\Omega_1$ 
+	structure at the resonant point and the first transmon 
+	driving of amplitude $\Omega_1$ 
 	(orange ellipses) at a small detuning 
 	$\Delta_1$ from $\omega_1$. The second 
 	transmon driving is not shown here. Action of 
 	$\hat H_{int}$ in RWA is depicted as 
 	orange-blue circles. \textbf{(c)} In the 
-	frame rotating with the drive of the first 
-	transmon, all the states $\ket{0j},\ket{1j}$ 
+	frame rotating with $\hat 
+	H_{d}^1$, states $\ket{0j},\ket{1j}$ 
 	become nearly degenerate ($\omega_1 
-	\rightarrow \Delta_1$). Dressing by the 
-	strong excitation increases this splitting to 
-	$\Omega_1^R = \sqrt{\Omega_1^2 + 
-	\Delta_1^2}$. \textbf{(d)} Transitions in the 
-	light-dressed system when the second transmon 
-	is excited (level subspaces coupled by $\hat 
-	H_{d}^2$ are shown with blue ellipses). In 
+	\rightarrow \Delta_1$). Dressing increases this splitting to 
+	$\Omega_1^R$. \textbf{(d)} Transitions in the 
+	dressed system induced by $\hat 
+	H_{d}^2$ (coupled level subspaces are shown with blue ellipses). In 
 	the left part of the panel, all possible 
 	two-photon transitions near $\omega_1$ are 
-	depicted: the green transitions are not 
-	shifted in frequency, the red are red-shifted 
-	by $\Omega^R_1/2$ and the blue are 
-	blue-shifted by $\Omega^R_1/2$. In the right 
+	depicted: the blue transitions are not 
+	shifted in frequency, the light blue ones are shifted 
+	by $\pm\Omega^R_1/2$. In the right 
 	part, the most contributing trajectories are 
-	depicted; red crosses show transitions that 
+	depicted; gray crosses show transitions that 
 	are forbidden without the coupling $J$.}
 	\label{fig:main_scheme}
 \end{figure}
@@ -1062,8 +1047,8 @@ Below, we give the detailed explanation of features II and III, and finally, I.
 
 \paragraph{Features II and III.}  
 
-In \autoref{fig:main_scheme}, we elaborate on how 
-exactly the A-T effect occurs for feature III. 
+In \autoref{fig:main_scheme}, we elaborate on which transitions
+are involved in the A-T-like effect for feature III. 
 For simplicity, we will temporarily assume that 
 each transmon is driven at its own frequency 
 (this assumption will be lifted in the following 
@@ -1075,10 +1060,9 @@ first transmon (orange) is below the second
 shown with a dashed red line. Next, 
 \autoref{fig:main_scheme}~(b) demonstrates the 
 level structure of the SAM at 0.36 mA. Detuned by 
-$\Delta_1$ from $10$, single-photon driving of 
+$\Delta_1$ from $\omega_1$, single-photon driving by 
 $\hat H_d^1$ is shown with orange ellipses while 
-much weaker two-photon $\hat H_d^2$ is not shown 
-yet. Since from numerical simulations we know 
+much weaker two-photon driving by $\hat H_d^2$ is not shown because it does not alter the structure of energy levels. Since from numerical simulations we know 
 that the third level of the first transmon is not 
 necessary to observe the splitting, $\ket{20}$ is 
 shown transparent, and states $\ket{21},\ 
@@ -1096,19 +1080,19 @@ $\ket{a}$ and $\ket{b}$. Meanwhile, the second
 transmon energies stay the same.
 
 
-Finally, in \autoref{fig:main_scheme}~(d) we demonstrate possible two-photon transitions between the resulting eigenstates due to $\hat H_{d}^2$. In the left part of the panel, the unmodified transition at $\omega_1$ and two sidebands at $\omega_1 \pm \Omega_1^R/2$. The right part describes the mechanism of these two-photon processes through virtual excitations of the intermediate states. From here it becomes obvious that without the transmon-transmon interaction the sideband transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. However, we will show that they become allowed in the second order in $J$ when the coupling is turned on.  Remarkably, due to the two-photon nature of the transitions, the Autler-Townes splitting in this case will be just $\Omega_1^R$.
+Finally, in \autoref{fig:main_scheme}~(d) we demonstrate possible two-photon transitions between the dressed states induced by the second transmon driving $\hat H_{d}^2$. In the left part of the panel, one can find the unmodified two-photon transition $02/2$ at $\omega_1$ and two sidebands at $\omega_1 \pm \Omega_1^R/2$. This picture finally explains the observed triplet transition of feature III. The right part describes the mechanism of these two-photon processes through virtual excitations of the intermediate states. From here it becomes obvious that without the transmon-transmon interaction the sideband transitions are forbidden due the selection rule: $\bra{a,j}\hat{\mathbbm{1}}\otimes \hat n_2 \ket{b, j+1} = 0$ since $\braket{a}{b} = 0$. However, we will show that they become allowed in the second order in $J$ when the coupling is turned on.
 
 Now, we will repeat this reasoning using a 
 quantitative mathematical model. We start from 
 the initial Hamiltonian \autoref{Hsystem}. To 
 move to the rotating frame with 
-\autoref{eq:rotation} and apply the RWA, will use 
+\autoref{eq:rotation} and apply the RWA, we use 
 the following operator:
 \begin{equation}
 R = \exp[-it \omega_d^1 
 (b^{\dagger}b+c^{\dagger}c)].
 \end{equation}  
-Note that we rotate both transmon subspaces simultaneously in contrast to what is shown in \autoref{fig:main_scheme} because below it will be convenient to have time-independent $\hat H_{int}$. Now,
+Note that now we rotate both transmon subspaces simultaneously in contrast to what is shown in \autoref{fig:main_scheme} because below it will be convenient to have time-independent $\hat H_{int}$. Now,
 \begin{equation}
 \begin{aligned}
 \omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_{(1,2)} - \omega_d^{1},\\
@@ -1142,7 +1126,7 @@ theory for $\hat V_J$ summarized therein, we find
 the first-order corrected wave functions of $\hat 
 H^D + \hat V_J$, labelled $\ket{k},\ k=1..6$. 
 
-The time-dependent perturbation theory that we use to calculate the transition rates of the two-photon processes stimulated by $\hat V_t$ is reviewed in Appendix \ref{sec:2pp}. Using the corrected eigenstates $\ket{k}$ and neglecting small terms we obtain the following expression for the transition rates per unit time\cite{faisal2013theory}:
+The time-dependent perturbation theory that we use to calculate the transition rates of the two-photon processes stimulated by $\hat V_t$ is reviewed in Appendix \ref{sec:2pp}. Using the corrected eigenstates $\ket{k}$ and neglecting small terms, we obtain the following expressions for the transition rates per unit time\cite{faisal2013theory}:
 \begin{equation}
 \begin{aligned}
 R^{(2)}_{1\rightarrow 6} &\approx 2\pi\Omega_2^4 
@@ -1169,7 +1153,7 @@ dressed, and the splitting has the shape shown in
 \autoref{fig:featureI}~(a). For the opposite case 
 ($\Omega_1 \gg \Omega_2$), the logic is the same. 
 
-As one can see from \autoref{fig:difdrive}, only the two-photon transition $11/2$ is affected and experiences a frequency shift approaching the 01-10 intersection while the other spectral lines are not moving. Similarly to II and III, in the frame rotating with the second transmon it tuns into two different single-photon transitions for $\hat H_d^1$ located at $\omega_1 \pm \Omega_2^R$, see \autoref{fig:featureI}~(b). We will show below that in the experiment with a single excitation frequency, it is not possible to observe both transitions simultaneously; this is clearly visible in \autoref{fig:difdrive}. Instead, we observe one line to the left and the other to the right from the $01-10$ intersection.
+As one can see from \autoref{fig:difdrive}, near the 01, 10 intersection only the two-photon transition $11/2$ is affected and deviates from unperturbed spectrum while the spectral lines 01, 10 do not shift. Similarly to II and III, in the frame rotating with the second transmon it tuns into two different single-photon transitions for $\hat H_d^1$ located at $\omega_1 \pm \Omega_2^R$, see \autoref{fig:featureI}~(b). We will show below that in the experiment with a single excitation frequency, it is not possible to observe both transitions simultaneously which is also clear from \autoref{fig:difdrive} where we observe one line to the left and the other to the right from the 01, 10 intersection.
 
 
 
@@ -1179,31 +1163,31 @@ As one can see from \autoref{fig:difdrive}, only the two-photon transition $11/2
 
 Before, we have assumed that the transmons are driven independently at two different frequencies. In this section, we will employ the same model from \autoref{fig:main_scheme} to explain the experimentally observed splittings when only a single frequency $\omega_d$ is sent at the SAM. 
 
-\paragraph{Features II, III.}As shown in 
+\paragraph{Features II, III.} We start again with feature III. As shown in 
 \autoref{fig:main_scheme}~(d), the sideband 
 transitions are formed by two-photon processes 
-for $\hat H_d^2$. On the other hand, we know from 
+with $\hat H_d^2$. On the other hand, we know from 
 the unperturbed solution that in the laboratory 
 frame the two transitions forming the avoided 
 crossing are $10 - 02$ (one-photon) and $12/3$ 
 (three-photon). This means that there should be a 
-smooth transformation between 1-, 2- and 3-photon 
+smooth transformation between these 1-, 2- and 3-photon 
 processes when the system approaches the resonant 
-point. Let's consider two-photon transitions $(10 
+point where $\alpha_2 + 2 \omega_{2} = 2\omega_1$. Let us consider hypothetical two-photon transitions $(10 
 - 02)/2$ and $12/2$. In the frame rotating with 
-the first transmon (like in 
-\autoref{fig:main_scheme}~(c)) when $\Omega_1$ = 
-0 (no driving yet on the first transmon), their 
+the first transmon like in 
+\autoref{fig:main_scheme}~(c) when $\Omega_1$ = 
+0, their 
 frequencies are
 \begin{equation}
 \begin{aligned}
 \omega_{(10-02)/2} &= (\alpha_2 + 2 \omega_{2} - \Delta_1)/2,\\
- \omega_{12/2} &= (\alpha_2 + 2 \omega_{2} + \Delta_2)/2.
+ \omega_{12/2} &= (\alpha_2 + 2 \omega_{2} + \Delta_1)/2.
 \end{aligned}
 \end{equation}
-When the first transmon becomes dressed by $\Omega_1 \neq 0$, its splitting $\Delta_1$ changes to $\Omega^R_1 =\sqrt{\Omega_{1}^2 + \left(\omega_{1} - \omega_{d}\right)^{2}}$. At this point it becomes clear that at the resonant point where $\alpha_2 + 2 \omega_{2} = 2\omega_1$, $\omega_{(10-02)/2}$ and $\omega_{12/2}$ are exactly equal to the two-photon sideband frequencies $\omega_1 \pm \Omega_1^R/2$ established above and thus should be used to model the splitting behaviour.
+When the first transmon becomes dressed by $\Omega_1 \neq 0$, its splitting $\Delta_1$ changes to $\Omega^R_1 =\sqrt{\Omega_{1}^2 + \left(\omega_{1} - \omega_{d}\right)^{2}}$. Substituting this new splitting into the equations above we find that $\omega_{(10-02)/2}$ and $\omega_{12/2}$ are exactly equal to the two-photon sideband frequencies $\omega_1 \pm \Omega_1^R/2$ established in the previous section. Therefore, it is logical to use them to model the splitting behaviour beyond the resonant point.
 
-Since we are simultaneously dressing the states by $\hat H_d^1$ and probing two-photon transitions between them with $\hat H_d^2$ both at $\omega_d$, self-consistent equations have to be solved to find at which $\omega_d$ the sideband spectral lines will appear at
+Since we are simultaneously dressing the states by $\hat H_d^1$ and probing two-photon transitions between them with $\hat H_d^2$ at $\omega_d$, self-consistent equations have to be solved to find at which $\omega_d$ the sideband spectral lines will appear
 \begin{equation}
 \begin{aligned}
 \omega_{(10-02)/2} &= \omega_d,\\
@@ -1224,13 +1208,12 @@ When $\Omega_1 \neq 0$, we obtain the following solutions:
 The minimal splitting between these lines is 
 found at the resonant point and equals $\frac{2 
 \sqrt{3}}{{3}} \Omega_1$. All these calculations 
-may be repeated exactly for the feature II by 
+can be repeated exactly for the feature II by 
 swapping the transmons; in that case, the 
 splitting will be $\frac{2 \sqrt{3}}{{3}} 
 \Omega_2$.
 
-We find excellent agreement between our 
-analytical model \autoref{eq:splitting_model} and 
+We find excellent agreement between this self-consistent analytical model \autoref{eq:splitting_model} and 
 both the experimental and simulated data as can 
 be seen in \autoref{fig:zoom}. To plot the model 
 curves we have fitted the 
@@ -1243,19 +1226,19 @@ approximation for a range of microwave powers to
 confirm the linear dependence of the splitting on 
 excitation amplitude (see \autoref{fig:zoom}~(c)).
 
-The upper branch is expected to deviate from the model (see dashed curves in \autoref{fig:zoom}) because of the avoided crossing marked as the secondary feature 3 which was not incorporated in the simple linear model. The small discrepancy between the experimental and simulated data in the upper branch is caused by a slight elevation of the lower sweet spot of the first transmon moving the avoided crossing 3 closer to the feature II; however, it is not important for our reasoning.	
+The upper branch of the fitted anticrossing is expected to deviate from the model (see \autoref{fig:zoom}) because of the avoided crossing marked as the secondary feature 3 which was not incorporated in the simple linear model. The small discrepancy between the experimental and simulated data in the upper branch is caused by a slight elevation of the lower sweet spot of the first transmon moving the avoided crossing 3 closer to the feature II; however, it is not important for our reasoning.	
 
 
-\paragraph{Feature I.} Feature I may be explained using the same dressing model. Looking at \autoref{fig:featureI} for the case $\Omega_2 \gg \Omega_1$, we can write the other pair of self-consistent equations:
+\paragraph{Feature I.} Feature I may be explained using the same dressing model. Looking at \autoref{fig:featureI} for the case $\Omega_2 \gg \Omega_1$, we can write another pair of self-consistent equations:
 \begin{equation}
 \omega_{1} \pm \Omega_2^R = \omega_d.
 \end{equation}
-Due to the fact that $\Omega_2^R = \sqrt{\Omega_2^2 + (\omega_2 - \omega_d)^2}$, these equations only have the same single solution:
+Due to the fact that $\Omega_2^R = \sqrt{\Omega_2^2 + (\omega_2 - \omega_d)^2}$, this system has a single solution:
 \begin{equation}
 \omega_d = \frac{\omega_1 + \omega_2}{2} - \frac{ \Omega_{2}^{2}}{2 \left(\omega_{1} - \omega_{2}\right)},
 \label{eq:topo_1}
 \end{equation}
-which gives back the frequency of $11/2$ in the laboratory frame when $\Omega_2$ is zero. When $\Omega_2$ is non-zero, the solution near the point $\omega_1 \approx \omega_2$ is a hyperbolic curve, which agrees well with the numerical simulation. However, due to the finite coupling $J$ between the transmons, they never reach each other in frequency, and thus this model is not applicable when $|\omega_1 - \omega_2| \leq J$.
+which gives back the frequency of $11/2$ in the laboratory frame when $\Omega_2$ is zero. When $\Omega_2$ is non-zero, the solution near the point $\omega_1 \approx \omega_2$ is a hyperbolic curve, which agrees well with the numerical simulation. However, in reality we do not observe the asymptotically vertical parts of this model since it becomes invalid when $|\omega_1 - \omega_2| \leq J$ due to the finite coupling $J$ between the transmons. Since they never reach each other in frequency, the denominator in \eqref{eq:topo_1} is limited from below and there is no divergence.
 
 When $\Omega_1 \gg \Omega_2$, besides the 
 replacement $\Omega_2 \rightarrow \Omega_1$, 
@@ -1284,7 +1267,7 @@ dashed curves in \autoref{fig:difdrive} taking
 the $\Omega_{1,2}$ values from the simulation 
 parameters shown therein. The frequencies 
 $\omega_{1,2}$ are extracted from the fits to the 
-visible spectral lines. We find good agreement 
+visible spectral lines. We again find good agreement 
 between the model and the simulated data.
 
 
@@ -1305,30 +1288,28 @@ and attributed them to an altered version of the
 well-known Autler-Townes effect.
 
 In the standard A-T effect, the coupler and the 
-probe tone are separated in frequency and power. 
+probe lasers are separated both in frequency and power. 
 In our case, there is only a single spectroscopic 
-frequency interacting with the system; therefore, 
+tone interacting with the system; therefore, 
 it has to be both the coupler tone and the probe 
 tone at the same time. However, since there are 
 two components in the driving operator (one for 
 each transmon), the separation between the 
-coupler and the probe may be in the Hilbert space 
-rather than in frequency. Moreover, the 
-effectively weak driving for the probe is 
+coupler and the probe occurs in the Hilbert space and in the number of photons involved 
+rather than in frequency and amplitude. The 
+effectively weak driving limit for the probe part is 
 achieved when it stimulates a two-photon 
-transition while the coupler tone is resonant 
-with a single-photon one and is dressing the 
-system. We have build a self-consistent model in 
-the frame rotating with the dressed transmon to 
+transition while the coupler part is resonant 
+with a single-photon one being strong enough to dress the 
+system. We have built self-consistent models in 
+rotating frame to 
 model the experimental splittings induced by the 
 same field that probes them, and found a good 
 agreement between the model, the experiment, and 
-the numerical simulation. Interestingly, just as 
-in the standard A-T effect on transmons reported 
-previously, no new transitions appear in this 
+the numerical simulation. Interestingly, no new spectral lines appear in this 
 more complex case. Instead, for example, spectral 
 lines $12/3$ (three-photon) and $10-02$ (single 
-photon) form an avoided crossing of a 
+photon) morph to an additional avoided crossing of a 
 non-standard size of $\frac{2\sqrt{3}}{3} 
 \Omega_1$.
 
@@ -1336,21 +1317,12 @@ Another interesting effect occurs when both
 components of the driving operator are in the 
 single-photon regime. Now, both transmons are 
 dressed and probed simultaneously. In this case, 
-the $11/2$ transition is split at the resonance 
-into a hyperbolic curve, never forming a doublet 
-in frequency. Moreover, its shape and visibility 
-depends on the relation between the driving 
-amplitudes: if they are equal, it disappears 
-completely. In our sample, we have a fixed ratio 
+the $11/2$ transition is being split at the resonance between $01$ and $10$ into a hyperbolic curve, though never forming a doublet transition. The shape of the splitting and its visibility 
+depends qualitatively on the relation between the driving 
+amplitudes; for instant, if they are equal, the splitting does not appear at all. In our sample, we have a fixed ratio 
 of approximately 2 between $\Omega_1$ and 
-$\Omega_2$ which allows us to distinguish the 
-splitting experimentally. In additional 
-simulations with full freedom of choice for the 
-parameter values, we have studied this effect in 
-detail and observed two possible topologically 
-different configurations of this splitting 
-depending on which driving amplitude is larger. 
-Notably, the frequency of $11/2$ transition far 
+$\Omega_2$ which still allows us to distinguish the 
+splitting experimentally. Notably, the frequency of $11/2$ transition far 
 from resonance is also changed noticeably with 
 changing power, which means that a fast bSWAP 
 gate should be performed at a different frequency 
@@ -1380,17 +1352,17 @@ The underlying cause of the A-T effect is the dressing of the atomic levels by s
 
 \begin{figure}[b]	
 	\includegraphics[width=\linewidth]{intro_scheme}
-	\caption{Illustrating the A-T splitting by  the classical driving in the rotating frame ($\hbar=1$ here). \textbf{(a)} A three-level system is driven strongly by a ``coupler'' tone of amplitude $\Omega$ at frequency $\omega_{01}-\Delta$ which induces Rabi oscillations between $\ket{0}$ and $\ket{1}$ at the generalized Rabi frequency $\Omega_R = \sqrt{\Omega^2 + \Delta^2}$. \textbf{(b)} Moving to the frame rotating with the drive, we effectively change the $\ket{0}\rightarrow \ket{1}$ transition frequency to $\Delta$. However, when the RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\Omega^R$. Now, the experimenter may observe a doublet transition from these levels to the state $\ket{2}$ at frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$.} 
+	\caption{Illustrating the A-T splitting by  the classical driving in the rotating frame. \textbf{(a)} A three-level system is driven strongly by the coupler tone of amplitude $\Omega_c$ at frequency $\omega_c = \omega_{01}-\Delta$. \textbf{(b)} In the frame rotating with the drive changes, the $\ket{0}\rightarrow \ket{1}$ transition frequency changes to $\Delta$. However, when the RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\hbar \Omega^R$. Now, a doublet transition from these levels to the state $\ket{2}$ at frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$ may be observed.} 
 	\label{fig:at-standard}
 \end{figure}
 
-\paragraph{Classical derivation.} In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_1$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$ (the \textit{coupler} tone). Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_2$ between $\ket{1}$ and $\ket{2}$ (the \textit{probe} tone). This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
+\paragraph{Classical derivation.} In the classical case, the mathematical description goes as follows. At first, there is a three-level system which is driven by a strong radiation with an amplitude $\Omega_c$ at a frequency detuned by $\Delta$ from the $\ket{0}\rightarrow \ket{1}$ transition with a frequency $\omega_{01}$ (the \textit{coupler} tone). Additionally, we have a weak probe radiation at a frequency $\omega_{p}$ and with an amplitude $\Omega_p$ between $\ket{1}$ and $\ket{2}$ (the \textit{probe} tone). This step is illustrated in \autoref{fig:at-standard}~(a). The Hamiltonian for such system is as follows:
 
 \begin{equation*}
-\hat H^c_0/\hbar = \left[\begin{matrix}
-0 & \Omega_{1} \cos{\left(\omega_{01}- \Delta \right)t} & 0\\
-\Omega_{1} \cos{\left(\omega_{01} - \Delta \right)t}   & \omega_{01} &\Omega_{2} \cos\omega_p t  \\
-0 & \Omega_{2} \cos{\omega_p t}  & \omega_{02}\end{matrix}\right].
+\hat H_0/\hbar = \left[\begin{matrix}
+0 & \Omega_{c} \cos{\left(\omega_{01}- \Delta \right)t} & 0\\
+\Omega_{c} \cos{\left(\omega_{01} - \Delta \right)t}   & \omega_{01} &\Omega_{p} \cos\omega_p t  \\
+0 & \Omega_{p} \cos{\omega_p t}  & \omega_{02}\end{matrix}\right].
 \end{equation*}
 
 Next, we move to the rotating frame by using an operator
@@ -1398,45 +1370,45 @@ Next, we move to the rotating frame by using an operator
 \hat R = \left[\begin{matrix} 
 1 & 0 & 0\\0 & e^{- i t \left(\omega_{01}- \Delta\right)} & 0\\0 & 0 & e^{- i t \left(\omega_{01}- \Delta\right)}\end{matrix}\right].
 \]
-Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_2$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat R^\dag \hat H_0 \hat R - i \hat{R}^\dag \partial_t  \hat R$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
+Note here that level $\ket{2}$ is also rotated: this is convenient to preserve the frequency of the driving term with $\Omega_p$. The new Hamiltonian should be calculated as follows: $\hat H_1 = \hat R^\dag \hat H_0 \hat R - i \hat{R}^\dag \partial_t  \hat R$. The level structure without driving  is shown in the left part of \autoref{fig:at-standard}~(b). Applying the RWA, we obtain:
 \begin{equation*}
-\hat H^c_1/\hbar = \left[\begin{matrix}0 &\Omega_{1}/2 & 0\\\Omega_{1}/2 & \Delta & \Omega_{2} e^{i t \omega_p}/2\\0 & \Omega_{2} e^{-i t \omega_p}/2 & \omega_{02} - \omega_{01}+\Delta \end{matrix}\right].
+\hat H_1/\hbar = \left[\begin{matrix}0 &\Omega_{c}/2 & 0\\\Omega_{c}/2 & \Delta & \Omega_{p} e^{i t \omega_p}/2\\0 & \Omega_{p} e^{-i t \omega_p}/2 & \omega_{02} - \omega_{01}+\Delta \end{matrix}\right].
 \end{equation*}
 
 Next, moving to the basis where the upper left 2x2 corner is diagonal (the right part of \autoref{fig:at-standard}~(b)), we obtain:
 
 \begin{equation*}
-\hat H^c_3/\hbar = \left[\begin{matrix} 
-\frac{\Delta}{2} - \frac{\sqrt{\Delta^{2} + \Omega_{1}^{2}}}{2} & 
+\hat H_3/\hbar = \left[\begin{matrix} 
+\frac{\Delta}{2} - \frac{\sqrt{\Delta^{2} + \Omega_{c}^{2}}}{2} & 
 0 &
-\frac{\Omega_{2} e^{i t \omega_{p}}}{2}\sin(\theta)
+\frac{\Omega_{p} e^{i t \omega_{p}}}{2}\sin(\theta)
 \\
 0 & 
-\frac{\Delta}{2} + \frac{\sqrt{\Delta^{2} + \Omega_{1}^{2}}}{2} & 
-\frac{\Omega_{2} e^ {i t \omega_p}}{2}\cos(\theta)
+\frac{\Delta}{2} + \frac{\sqrt{\Delta^{2} + \Omega_{c}^{2}}}{2} & 
+\frac{\Omega_{p} e^ {i t \omega_p}}{2}\cos(\theta)
 \\
-\frac{\Omega_{2} e^{-i t \omega_{p}} }{2}\sin(\theta) & 
-\frac{\Omega_{2} e^{-i t \omega_{p}}}{2} \cos(\theta) & 
+\frac{\Omega_{p} e^{-i t \omega_{p}} }{2}\sin(\theta) & 
+\frac{\Omega_{p} e^{-i t \omega_{p}}}{2} \cos(\theta) & 
 \omega_{12} +\Delta 
 \end{matrix}\right].
 \end{equation*}
 
-One may see that now resonant conditions for the probe drive are $\omega_p = \omega_{12} + \dfrac{(\Delta \pm \Omega^R)}{2}$, where $\Omega^R = \sqrt{\Omega_1^2 + \Delta^2}$, $\omega_{12} = \omega_{02}- \omega_{01}$, and its amplitude is renormalized by an angle $\theta,\ \tan 2\theta = -\frac{\Omega_1}{\Delta}$.
+One may see that now resonant conditions for the probe drive are $\omega_p = \omega_{12} + {(\Delta \pm \Omega^R)}/{2}$, where $\Omega^R = \sqrt{\Omega_c^2 + \Delta^2}$, $\omega_{12} = \omega_{02}- \omega_{01}$, and its amplitude is renormalized by an angle $\theta,\ \tan 2\theta = -\Omega_c/\Delta$.
 
 
 \paragraph{Quantum derivation.} For the fully quantum interpretation, we model the incident radiation at the frequency $\omega_{01}-\Delta$ as a single-mode quantum oscillator which is coupled to the system. The Hamiltonian for this model will be as follows:
 \[
 \begin{split}
-\hat H^q_0/\hbar = \omega_{01} \ket{1}\bra{1} + \omega_{02} \ket{2}\bra{2} + (\omega_{01}-\Delta) \hat a^\dag \hat a + \\\ g (\hat a^\dag + \hat a)\otimes (\ket{1}\bra{0}+\ket{0}\bra{1}),
+\hat H_0/\hbar = \omega_{01} \ket{1}\bra{1} + \omega_{02} \ket{2}\bra{2} + (\omega_{01}-\Delta) \hat a^\dag \hat a + \\\ g (\hat a^\dag + \hat a)\otimes (\ket{1}\bra{0}+\ket{0}\bra{1}),
 \end{split}
 \]
 where $g$ is the coupling strength and $a$ is the photon annihilation operator. After moving to the rotating frame with $\hat R = \exp[i t (\omega_{01}-\Delta)(\hat a^\dag \hat a + \ket{1}\bra{1}+\ket{2}\bra{2})]$ and applying the RWA, the Hamiltonian transforms into
 \begin{equation}
 \begin{split}
-\hat H^q_1/\hbar = \Delta \ket{1}\bra{1} + (\omega_{12}+\Delta) \ket{2}\bra{2} + \\\ g \left[\hat a^\dag \otimes \ket{0}\bra{1} + \hat a \otimes \ket{1}\bra{0}\right].
+\hat H_1/\hbar = \Delta \ket{1}\bra{1} + (\omega_{12}+\Delta) \ket{2}\bra{2} + \\\ g \left[\hat a^\dag \otimes \ket{0}\bra{1} + \hat a \otimes \ket{1}\bra{0}\right].
 \end{split}
 \end{equation}
-If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, we from the interaction term will obtain again the classical driving strength $\Omega_1 = 2 \sqrt{\langle N \rangle} g$ in correspondence with the classical driving case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\hbar\Delta$ to $\hbar\Omega_R = \hbar\sqrt{\Omega_1+\Delta}$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_2$ in the last equation.
+If we presume that the resonator is in a coherent state $\ket{\alpha e^{-it(\omega_{01}-\Delta)}}$ with $\langle N\rangle = \alpha^2$ photons and average $\hat H_1^q$ over the resonator subspace, from the interaction term we will obtain again the classical driving term $\Omega_c \left(\ket{0}\bra{1} + \ket{1}\bra{0}\right)$, where $\Omega_c = 2 g \sqrt{\langle N \rangle}$ in correspondence with the previous case. Similarly, the energy levels $\ket{1, N-1}$ and $\ket{0, N}$ become mixed due to the coupling, and their splitting changes from $\hbar\Delta$ to $\hbar\Omega_R$. The following steps completely reproduce the classical case if we add the probe tone $\Omega_p$ in the last equation.
 
 \section{Degenerate perturbation theory}
 \label{sec:dpt}
@@ -1562,34 +1534,34 @@ $$
 $$
 where $\hbar \omega_{ij} = E_j - E_i$. Formally, we can write down the solution of the Schrödinger equation in the interaction picture corresponding to the initial state $\ket{i}$ as
 \begin{equation}\label{forpsi}
-	\ket{\psi_i(t)}=\ket{i} - i \int_{-\infty}^{t} d\tau_1 \hat{V}_I(\tau_1)\ket{{\psi_i}(\tau_1)}.
+	\ket{\psi_i(t)}=\ket{i} - \frac{i}{\hbar} \int_{-\infty}^{t} d\tau_1 \hat{V}_I(\tau_1)\ket{{\psi_i}(\tau_1)}.
 \end{equation} 
 Solving \autoref{forpsi} by simple iterations 
 gives the series solution for it:
 \begin{align}
 	U(t,-\infty) &= 1 + \sum_{n} U^{(n)}(t,-\infty),\\
-	U^{(n)}(t,-\infty) &= -i^n \int\limits_{-\infty}^{t}d \tau_1\hat V_I(\tau_1)...\int\limits_{-\infty}^{\tau_{n-1}}d \tau_n\hat{V}_I(\tau_n),
+	U^{(n)}(t,-\infty) &= \left(-\frac{i}{\hbar}\right)^n \int\limits_{-\infty}^{t}d \tau_1\hat V_I(\tau_1)...\int\limits_{-\infty}^{\tau_{n-1}}d \tau_n\hat{V}_I(\tau_n),
 \end{align}
 where $U(t,-\infty)$ is the evolution operator. For a weak perturbation, this series may be truncated at a finite term $n$, and the $n^{\text{th}}$ order transition amplitude $\bra{f}U^{(n)}(t,-\infty)\ket{i}$ can be evaluated:
 \begin{equation}
 	\begin{aligned}
-	\bra{f}U^{(1)}(t,-\infty)\ket{i}&=-i\int\limits_{-\infty}^{t}d\tau_1\hat{V}_I(\tau_1)\\ &=-i\frac{\Omega}{2}\big[\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}-\omega_d)\tau_1}\bra{f}\hat{B}\ket{i}+\\
-	&\quad\quad\quad\quad\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}+\omega_d)\tau_1}\bra{f}\hat{B}\ket{i}\big].
+	\bra{f}U^{(1)}(t,-\infty)\ket{i}&=-\frac{i}{\hbar}\int\limits_{-\infty}^{t}d\tau_1\hat{V}_I(\tau_1)\\ &=-\frac{i}{2\hbar}\big[\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}-\omega_d)\tau_1}\bra{f}\hat{V}\ket{i}+\\
+	&\quad\quad\quad\quad\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}+\omega_d)\tau_1}\bra{f}\hat{V}\ket{i}\big].
 	\end{aligned}
 \end{equation}
 \begin{equation}
 	\begin{aligned}
-	\bra{f}U^{(2)}(t,-\infty)\ket{i}=-\bra{f}\int\limits_{-\infty}^{t}d\tau_1\hat{V}_I(\tau_1)\int\limits_{-\infty}^{\tau_1}d\tau_2\hat{V}_I(\tau_2)\ket{i}=\\
-	-\sum_j\int\limits_{-\infty}^{t}d\tau_1 e^{i\omega_{jf}\tau_1}\bra{f}\hat V(\tau_1)\ket{j}\int\limits_{-\infty}^{\tau_1}d\tau_2 e^{i\omega_{ij}\tau_2}\bra{j}\hat V(\tau_2)\ket{i}.
+	\bra{f}U^{(2)}(t,-\infty)\ket{i}=-\frac{1}{\hbar^2}\bra{f}\int\limits_{-\infty}^{t}d\tau_1\hat{V}_I(\tau_1)\int\limits_{-\infty}^{\tau_1}d\tau_2\hat{V}_I(\tau_2)\ket{i}=\\
+	-\frac{1}{\hbar^2}\sum_j\int\limits_{-\infty}^{t}d\tau_1 e^{i\omega_{jf}\tau_1}\bra{f}\hat V(\tau_1)\ket{j}\int\limits_{-\infty}^{\tau_1}d\tau_2 e^{i\omega_{ij}\tau_2}\bra{j}\hat V(\tau_2)\ket{i}.
 	\end{aligned}
 \end{equation}
 Go over the long-time limit $t\rightarrow\infty$ in the final integral and collect the terms belongings to the same delta functions. This gives\cite{faisal2013theory}
 \begin{equation}
 	\begin{split}
-	\bra{f}U^{(2)}(t, -\infty)\ket{i}=\\{2\pi i}\bigg[\delta(\omega_{if}+2\omega_d)\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_{ij}+\omega_d}+\\
-	\delta(\omega_{if})\bigg(\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_{ij}+\omega_d}+\\
-	\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_{ij}-\omega_d}\bigg)+\\
-	\delta(\omega_{if}-2\omega_d)\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_{ij}-\omega_d}\bigg].
+	\bra{f}U^{(2)}(t, -\infty)\ket{i}=\\\frac{2\pi i}{4\hbar^2}\bigg[\delta(\omega_{if}+2\omega_d)\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}+\omega_d}+\\
+	\delta(\omega_{if})\bigg(\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}+\omega_d}+\\
+	\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}-\omega_d}\bigg)+\\
+	\delta(\omega_{if}-2\omega_d)\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}-\omega_d}\bigg].
 	\end{split}
 \end{equation}
 The probability of two-photon transition from state $\ket{i}$ to state $\ket{f}$ is the square modulus of the corresponding amplitude, $P^{(2)}_{i\rightarrow f}= |\bra{f}\hat U^{(2)}(\infty, -\infty)\ket{i}|^2$.
@@ -1604,10 +1576,12 @@ To cancel out one of the delta functions in the resulting expression, we can use
 In overall, for $\omega_d=\omega_{if}/2$:
 \begin{equation}\label{prob}
 \begin{aligned}
-	W^{(2)}_{i\rightarrow f}&=2\pi\bigg|\sum_j\frac{\bra{f}\hat{B}\ket{j}\bra{j}\hat{B}\ket{i}}{\omega_{ij}-\omega_d}\bigg|^2\delta(\omega_{if}-2\omega_d)\\ 
+	W^{(2)}_{i\rightarrow f}&=\frac{\pi}{8\hbar^4}\bigg|\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}-\omega_d}\bigg|^2\delta(\omega_{if}-2\omega_d)\\ 
 	&=R_{i\rightarrow f}^{(2)}\delta(\omega_{if}-2\omega_d).
 \end{aligned}
 \end{equation}
+
+For our case, $\hat V = \hbar \Omega_2 (\hat b + \hat b^\dag),\ \omega_d = \delta$ which leads to \eqref{eq:rates}.
 
 \section{Measurement setup and 
 methods}\label{sec:meas_setup}

@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.21459375"
-     inkscape:cx="313.41816"
-     inkscape:cy="829.97506"
+     inkscape:zoom="0.4291875"
+     inkscape:cx="622.71671"
+     inkscape:cy="470.59916"
      inkscape:document-units="mm"
      inkscape:current-layer="surface7945"
      showgrid="false"
@@ -1502,7 +1502,23 @@
            height="100%"
            style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.1539015;stroke-opacity:1" />
       </g>
-    </g>
+      <path
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.75554158;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+         d="m -154.56931,72.270103 h 38.92905"
+         id="path1225"
+         inkscape:connector-curvature="0" />
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot1227"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         transform="matrix(0.24302346,0,0,0.24302346,-254.41738,-122.11129)"><flowRegion
+           id="flowRegion1229"><rect
+             id="rect1231"
+             width="227.17343"
+             height="80.384445"
+             x="412.40717"
+             y="809.15448" /></flowRegion><flowPara
+           id="flowPara1233">300 um</flowPara></flowRoot>    </g>
     <g
        id="surface83513"
        transform="matrix(1.0868064,0,0,1.0868064,115.93936,232.63396)"

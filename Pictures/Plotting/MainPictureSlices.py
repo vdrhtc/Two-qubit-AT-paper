@@ -32,7 +32,8 @@ class MainPictureSlices:
             # ax.plot([self._X_exp[index]]*2, [self._Y_exp[0], self._Y_exp[-1]], 'black', lw=0.1)
             ax.plot(np.real(self._C_exp[:,index]), self._Y_exp, zorder=1, color="gray",
                     label="Exp.")
-            ax.plot(np.real(self._C_th[:,indices_th[counter]]), self._Y_exp, zorder=3,
+            th_slice = np.real(self._C_th[:,indices_th[counter]])
+            ax.plot(th_slice, np.linspace(self._Y_exp[0], self._Y_exp[-1], len(th_slice)), zorder=3,
                     color="black", lw=.5, label ="Sim.")
 
             rect = patches.Rectangle((np.min(np.real(self._C_exp[:,index]))-.001, 5.3575),
