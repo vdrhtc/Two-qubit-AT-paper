@@ -1129,13 +1129,13 @@ H^D + \hat V_J$, labelled $\ket{k},\ k=1..6$.
 The time-dependent perturbation theory that we use to calculate the transition rates of the two-photon processes stimulated by $\hat V_t$ is reviewed in Appendix \ref{sec:2pp}. Using the corrected eigenstates $\ket{k}$ and neglecting small terms, we obtain the following expressions for the transition rates per unit time\cite{faisal2013theory}:
 \begin{equation}
 \begin{aligned}
-R^{(2)}_{1\rightarrow 6} &\approx 2\pi\Omega_2^4 
-\frac{18 J^4 \left(2 \alpha + 
-\text{$\Omega_1$}\right)^2}{\alpha 
-^{6}\Omega_1^2},\\
-R^{(2)}_{2\rightarrow 5} &\approx 2\pi\Omega_2^4 
-\frac{18 J^4 \left(2 \alpha - \text{$\Omega_1
-		$}\right)^2}{\alpha ^{6}\Omega_1^2},
+R^{(2)}_{1\rightarrow 6} &\approx \pi\Omega_2^4 
+\frac{16 J^4 \left(3 \alpha^2 + 
+\text{$7\Omega_1^2$}\right)^2}{\alpha 
+^{10}},\\
+R^{(2)}_{5\rightarrow 2} &\approx \pi\Omega_2^4 
+\frac{4 J^4 \left(5 \alpha - \text{$3\Omega_1
+		$}\right)^2}{\alpha ^{8}},
 \end{aligned}\label{eq:rates}
 \end{equation}
 when $\alpha \gg \Omega_1, \Omega_2, J$ which is 
@@ -1520,7 +1520,7 @@ Similarly, the first-order corrections for a non-degenerate state are
 \section{Transition rates of the two-photon process}\label{sec:2pp}
 We will employ the time-dependent perturbation theory that gives analytical expressions for the transition rates for single and multi-photon processes\cite{faisal2013theory}.
 
-Let's consider a time-dependent perturbation $\hat V(t) = \hat V \cos{\omega_d t}$ to the unperturbed Hamiltonian $\hat H$. In the interaction picture, the Schrödinger equation looks as 
+Let's consider a time-dependent perturbation $\hat V(t) =\frac{\hbar\Omega_{2}}{2}(\hat{c}e^{i\omega_d t}+\hat{c}^{\dagger}e^{-i\omega_d t}) $ to the unperturbed Hamiltonian $\hat H$. In the interaction picture, the Schrödinger equation looks as 
 $$
 i\hbar \partial_t{\psi(t)} = \hat {V_I}(t)\psi(t),
 $$ 
@@ -1545,8 +1545,8 @@ gives the series solution for it:
 where $U(t,-\infty)$ is the evolution operator. For a weak perturbation, this series may be truncated at a finite term $n$, and the $n^{\text{th}}$ order transition amplitude $\bra{f}U^{(n)}(t,-\infty)\ket{i}$ can be evaluated:
 \begin{equation}
 	\begin{aligned}
-	\bra{f}U^{(1)}(t,-\infty)\ket{i}&=-\frac{i}{\hbar}\int\limits_{-\infty}^{t}d\tau_1\hat{V}_I(\tau_1)\\ &=-\frac{i}{2\hbar}\big[\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}-\omega_d)\tau_1}\bra{f}\hat{V}\ket{i}+\\
-	&\quad\quad\quad\quad\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}+\omega_d)\tau_1}\bra{f}\hat{V}\ket{i}\big].
+	\bra{f}U^{(1)}(t,-\infty)\ket{i}&=-\frac{i}{\hbar}\int\limits_{-\infty}^{t}d\tau_1\hat{V}_I(\tau_1)\\ &=-\frac{i\Omega_2}{2}\big[\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}-\omega_d)\tau_1}\bra{f}\hat{c}^{\dagger}\ket{i}+\\
+	&\quad\quad\quad\quad\int\limits_{-\infty}^{t}d\tau_1 e^{i(\omega_{if}+\omega_d)\tau_1}\bra{f}\hat{c}\ket{i}\big].
 	\end{aligned}
 \end{equation}
 \begin{equation}
@@ -1558,10 +1558,10 @@ where $U(t,-\infty)$ is the evolution operator. For a weak perturbation, this se
 Go over the long-time limit $t\rightarrow\infty$ in the final integral and collect the terms belongings to the same delta functions. This gives\cite{faisal2013theory}
 \begin{equation}
 	\begin{split}
-	\bra{f}U^{(2)}(t, -\infty)\ket{i}=\\\frac{2\pi i}{4\hbar^2}\bigg[\delta(\omega_{if}+2\omega_d)\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}+\omega_d}+\\
-	\delta(\omega_{if})\bigg(\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}+\omega_d}+\\
-	\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}-\omega_d}\bigg)+\\
-	\delta(\omega_{if}-2\omega_d)\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}-\omega_d}\bigg].
+	\bra{f}U^{(2)}(t, -\infty)\ket{i}=\\\frac{2\pi i\Omega_2^2}{4}\bigg[\delta(\omega_{if}+2\omega_d)\sum_j\frac{\bra{f}\hat{c}\ket{j}\bra{j}\hat{c}\ket{i}}{\omega_{ij}+\omega_d}+\\
+	\delta(\omega_{if})\bigg(\sum_j\frac{\bra{f}\hat{c}^{\dagger}\ket{j}\bra{j}\hat{c}\ket{i}}{\omega_{ij}+\omega_d}+\\
+	\sum_j\frac{\bra{f}\hat{c}\ket{j}\bra{j}\hat{c}^{\dagger}\ket{i}}{\omega_{ij}-\omega_d}\bigg)+\\
+	\delta(\omega_{if}-2\omega_d)\sum_j\frac{\bra{f}\hat{c}^{\dagger}\ket{j}\bra{j}\hat{c}^{\dagger}\ket{i}}{\omega_{ij}-\omega_d}\bigg].
 	\end{split}
 \end{equation}
 The probability of two-photon transition from state $\ket{i}$ to state $\ket{f}$ is the square modulus of the corresponding amplitude, $P^{(2)}_{i\rightarrow f}= |\bra{f}\hat U^{(2)}(\infty, -\infty)\ket{i}|^2$.
@@ -1573,15 +1573,23 @@ To cancel out one of the delta functions in the resulting expression, we can use
 \begin{equation}\nonumber
 	\delta(\omega_f-\omega_i-2\omega_d) =\frac{1}{2\pi} \lim\limits_{T\rightarrow\infty}\int_{-T/2}^{T/2}e^{i(\omega_{if}-2\omega_d)t}dt = \lim\limits_{T\rightarrow\infty}\frac{T}{2\pi}.
 \end{equation} 
-In overall, for $\omega_d=\omega_{if}/2$:
+A two-photon emission:
 \begin{equation}\label{prob}
 \begin{aligned}
-	W^{(2)}_{i\rightarrow f}&=\frac{\pi}{8\hbar^4}\bigg|\sum_j\frac{\bra{f}\hat{V}\ket{j}\bra{j}\hat{V}\ket{i}}{\omega_{ij}-\omega_d}\bigg|^2\delta(\omega_{if}-2\omega_d)\\ 
-	&=R_{i\rightarrow f}^{(2)}\delta(\omega_{if}-2\omega_d).
+	W^{(2)}_{i\rightarrow f}&=\frac{\pi\Omega_2^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{c}\ket{j}\bra{j}\hat{c}\ket{i}}{\omega_{ij}+\omega_d}\bigg|^2\delta(\omega_{if}+2\omega_d)\\ 
+	&=R_{i\rightarrow f}^{(2)}\delta(\omega_{if}+2\omega_d).
 \end{aligned}
 \end{equation}
 
-For our case, $\hat V = \hbar \Omega_2 (\hat b + \hat b^\dag),\ \omega_d = \delta$ which leads to \eqref{eq:rates}.
+A two-photon absorption:
+\begin{equation}\label{prob1}
+\begin{aligned}
+W^{(2)}_{f\rightarrow i}&=\frac{\pi\Omega_2^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{c}^{\dagger}\ket{j}\bra{j}\hat{c}^{\dagger}\ket{i}}{\omega_{ij}-\omega_d}\bigg|^2\delta(\omega_{if}-2\omega_d)\\ 
+&=R_{f\rightarrow i}^{(2)}\delta(\omega_{if}-2\omega_d).
+\end{aligned}
+\end{equation}
+
+For our case, $ \omega_d = \delta$ which leads to \eqref{eq:rates}.
 
 \section{Measurement setup and 
 methods}\label{sec:meas_setup}
