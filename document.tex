@@ -167,9 +167,8 @@ diatomic supercondufcing artificial molecule}
 	both these processes at the same time that 
 	agree well with both experiment and numerical 
 	simulation. This study is an important step 
-	towards understanding the behaviour of more 
-	complex systems of many atoms interacting 
-	with strong radiation.
+	towards understanding the behaviour of complex
+	systems of many atoms interacting	with strong radiation.
 	\end{abstract}
 	
 	\maketitle
@@ -183,12 +182,12 @@ Over the past twenty years, superconducting
 artificial atoms (SAAs) were used in numerous 
 experiments in a compelling demonstration of the 
 validity of fundamental quantum mechanical 
-laws\cite{you2011atomic}. Due to synthetic nature 
+laws. Due to synthetic nature 
 of SAAs, their Hamiltonians can be pre-designed 
 and engineered which makes them a particularly 
-versatile tool for studies in quantum optics. 
-Notably, high controllability of their parameters 
-allows direct observation of novel physical 
+versatile tool for studies in microwave quantum 
+optics \cite{you2011atomic,Qopt_1300refs}. Notably, high controllability
+of their parameters allows direct observation of novel physical 
 effects previously inaccessible for natural 
 systems. 
 
@@ -196,7 +195,7 @@ One of the most prominent milestones that
 superconducting quantum circuits have reached so 
 far is the strong coupling with light in {circuit 
 QED}\cite{wallraff2004strong, 
-chiorescu2004coherent} when the decoherence rates 
+chiorescu2004coherent} when the relaxation and decoherence rates 
 appear smaller than the Rabi frequency. 
 Currently, they are surpassing all other 
 implementations of strong coupling in terms of 
@@ -218,8 +217,7 @@ approach}\cite{cohen1998atom} is employed when
 the radiation has to be directly included in the 
 Hamiltonian and affects its level structure.
 
-So far, main experiments in on-chip quantum 
-optics with intense propagating light were 
+So far, experiments with intense driving fields resulting in the dressing effects in on-chip quantum optics  were 
 focused on single artificial 
 atoms\cite{baur2009measurement, 
 sillanpaa2009autler, astafiev2010resonance, 
@@ -228,19 +226,17 @@ koshino2013observation,
 braumuller2015multiphoton, peng2018vacuum, 
 gasparinetti2019two}. In all these works, light 
 dressing of the atom manifests itself through 
-Mollow triplets or Autler-Townes splittings of 
+Mollow triplets or Autler-Townes (A-T) splittings of 
 different kinds. However, despite the recent 
 successes in control of large arrays of 
 interacting SAAs\cite{Song574, ye2019propagation, 
 arute2019quantum}, there were, up to our best 
 knowledge, no experiments concerning interaction 
-of such composite structures with intense free 
-radiation. While there were studies on dressing 
+of similar composite structures with intense driving field. While there were studies on dressing 
 of multi-atomic systems in a 
 cavity\cite{fink2009dressed, 
 macha2014implementation, shulga2017observation, 
-yang2018probing}, their interaction with free 
-radiation is no less attractive since its 
+yang2018probing}, their interaction with external dressing field is not less attractive since its 
 frequency may be easily tuned to observe various 
 absorption processes for arbitrary configurations 
 of the system parameters.
@@ -253,11 +249,11 @@ transmons\cite{koch2007charge} interacting with
 each other through a cavity 
 bus\cite{majer2007coupling}. Microwave radiation 
 is applied to this system through an on-chip 
-coplanar waveguide while its state can be 
+coplanar antenna while its state can be 
 monitored by joint dispersive readout using the 
 same coupling cavity\cite{chow2010detecting}. We 
 find that strong interaction with microwaves not 
-only calls forth multiphoton transitions of 
+only results in multiphoton transitions of 
 various orders between SAM states, but also 
 significantly modifies its level structure. Even 
 in a simple diatomic molecule, this leads to 
@@ -275,7 +271,7 @@ were no such experiments with natural molecules,
 which could in principle demonstrate same 
 effects, because they lack controllability and 
 coherence of superconducting quantum devices, and 
-previous studies of SAAs and free radiation have 
+previous studies of SAAs under strong driving field 
 either involved just a single atom or have 
 demonstrated only the standard spectral 
 signatures known from the quantum optics (see 
@@ -312,10 +308,9 @@ to a single notch-type\cite{probst2015efficient}
 $\lambda/4$ resonator ($f_r = 7$ GHz, $\kappa = 
 1/100\ \text{ns}^{-1}$) which both 
 couples\cite{majer2007coupling} the transmons and 
-allows joint\cite{chow2010detecting} readout of 
+allows joint readout \cite{chow2010detecting} of 
 their states. In \autoref{fig:experiment}~(a), 
-the optical photograph of the device is shown 
-depicting the layout of the components. The 
+the optical photograph of the device is shown, where the layout of the components is presented. The 
 resonator in its upper part is connected to a 
 coplanar waveguide through which the readout is 
 performed. In its lower part, it is coupled to 
@@ -329,7 +324,7 @@ In \autoref{fig:experiment}~(b), the equivalent
 electrical circuit of the device is shown. The 
 resonator fundamental mode is approximated as an 
 LC-circuit (in the middle), the transmons are 
-shown in colour on the sides; their SQUIDs are 
+shown in color on the sides; their SQUIDs are 
 represented as tunable Josephson junctions. A 
 capacitively coupled excitation line is also 
 shown in green. Finally, in 
@@ -858,8 +853,7 @@ gate\cite{poletto2012entanglement}; in our case,
 it is taking part in formation of feature I. A 
 three-photon process $12/3$ is also clearly 
 visible just below the $02/2$ line. As we will 
-see, it is involved in forming features II and 
-III. Notably, transitions $11/2$, ${21/3}$ and 
+see, processes $12/3$~and~$21/3$ are involved in forming features III and II, respectively. Notably, transitions $11/2$, ${21/3}$ and 
 ${12/3}$ are forbidden when there is no 
 interaction between transmons ($J=0$). Therefore, 
 it is expected that all Roman-numbered features 
@@ -895,10 +889,10 @@ one can see this clearly in
 
 From \autoref{fig:two-tone}~(d) we conclude that 
 avoided crossing in III is between two 
-transitions: ${12/3}$ and ${10} - {02}$ 
+transitions: ${12/3}$ (three-photon transition $\ket{00}\rightarrow\ket{12}$) and ${10} - {02}$ 
 ($\ket{10}\rightarrow\ket{02}$) which are of the 
 same frequency when $\omega_1 = 
-\omega_2+\alpha_2/2$. The latter process depopulating $01$ is better discernible in \autoref{fig:two-tone}~(d) 
+\omega_2+\alpha_2/2$. The latter process is depopulating $10$ and it is better discernible in \autoref{fig:two-tone}~(d) 
 than in \autoref{fig:two-tone}~(a), (b). For II, the 
 opposite is true: ${21/3}$ and ${01} - {20}$ are 
 crossing when $\omega_2 = \omega_1+\alpha_1/2$. 
@@ -926,7 +920,7 @@ splitting in feature I of
 \autoref{fig:two-tone}~(a), we can infer that 
 $\Omega_1/\Omega_2 \approx 2$ there (also 
 consistent with the 01, 10 linewidths in 
-\autoref{fig:two-tone}~(c)). If in contrast both transmons are driven with equal amplitudes, the avoided crossing vanishes. As can be seen from black dashed lines in \autoref{fig:difdrive}, all these cases are explained well by our analytical model described in detail in Sections \ref{sec:theory} and \ref{sec:münchhausen}}.
+\autoref{fig:two-tone}~(c)). If in contrast both transmons are driven with equal amplitudes, the avoided crossing vanishes. As can be seen from black dashed lines in \autoref{fig:difdrive}, all these cases are explained well by our analytical model described in detail in Sections \ref{sec:theory} and \ref{sec:münchhausen}.
 
 From all presented observations, we conclude that effects I -- III 
 are caused by light dressing. In the case III, the 
@@ -1017,7 +1011,7 @@ Below, we give the detailed explanation of features II and III, and finally, I.
 	\includegraphics[width=\linewidth]{main_scheme_2}  
 	\caption{Explaining feature III. \textbf{(a)} 
 	Schematic of the transition frequencies near 
-	III (not to scale). Red dashed line shows the 
+	III (not to scale). Black dashed line shows the 
 	current (0.36 mA) where the first transmon 
 	(orange) is below the second one (blue) 
 	exactly by $\alpha_2/2$ and several 
@@ -1068,7 +1062,7 @@ section). For convenience, in
 reproduce the transitions near III where the 
 first transmon (orange) is below the second 
 (blue), and the resonance point in current is 
-shown with a dashed red line. Next, 
+shown with a dashed black line. Next, 
 \autoref{fig:main_scheme}~(b) demonstrates the 
 level structure of the SAM at 0.36 mA. Detuned by 
 $\Delta_1$ from $10$, single-photon driving of 
@@ -1196,6 +1190,7 @@ frequencies are
 \omega_{(10-02)/2} &= (\alpha_2 + 2 \omega_{2} - \Delta_1)/2,\\
  \omega_{12/2} &= (\alpha_2 + 2 \omega_{2} + \Delta_1)/2.
 \end{aligned}
+\label{eq:two-photon_lab}
 \end{equation}
 When the first transmon becomes dressed by $\Omega_1 \neq 0$, its splitting $\Delta_1$ changes to $\Omega^R_1 =\sqrt{\Omega_{1}^2 + \left(\omega_{1} - \omega_{d}\right)^{2}}$. Substituting this new splitting into the equations above we find that $\omega_{(10-02)/2}$ and $\omega_{12/2}$ are exactly equal to the two-photon sideband frequencies $\omega_1 \pm \Omega_1^R/2$ established in the previous section. Therefore, it is logical to use them to model the splitting behaviour beyond the resonant point.
 
@@ -1208,7 +1203,7 @@ Since we are simultaneously dressing the states by $\hat H_d^1$ and probing two-
 \label{eq:two-photon}
 \end{equation}
 
-When $\Omega_1 = 0$, these equations yield indentical pairs of solutions due to the properties of the modulus $|\omega_1 - \omega_d|$. Intriguingly, they are the three-photon and single-photon transition frequencies in the laboratory frame
+When $\Omega_1 = 0$, these equations yield indentical pairs of solutions due to the properties of the modulus $|\omega_1 - \omega_d|$. Substituting \autoref{eq:two-photon} into \autoref{eq:two-photon_lab}, we obtain the frequencies and identify them as the three-photon and single-photon transition frequencies in the laboratory frame:
 \begin{equation}
 \omega_d = \begin{cases} \frac{\alpha_2}{3} + \frac{2 \omega_{2}}{3} + \frac{\omega_{1}}{3}, \\ \alpha_2 + 2 \omega_{2} - \omega_{1}.\end{cases}
 \end{equation}
@@ -1270,7 +1265,7 @@ Solving it for $\omega_d$, we obtain the
 generalization of \autoref{eq:topo_1} and 
 \autoref{eq:topo_1_inv}:
 \begin{equation}
-\omega_d = \frac{\omega_{1} - \omega_{2}}{2} + \frac{\Omega_{1}^{2} - \Omega_{2}^{2}}{ 2\left(\omega_{1} - \omega_{2}\right)}
+\omega_d = \frac{\omega_{1} + \omega_{2}}{2} + \frac{\Omega_{1}^{2} - \Omega_{2}^{2}}{ 2\left(\omega_{1} - \omega_{2}\right)}
 \label{eq:topo_comm}
 \end{equation}
 
@@ -1361,7 +1356,7 @@ We want to thank our parents and our cat Coconut. Also FPI grant
 
 \appendix
 
-\section{Standard Autler-Townes effect for a three-level atom} \label{sec:3-level-at}
+\section{Standard Autler-Townes effect for a three-level $\Xi$ atom} \label{sec:3-level-at}
 
 The underlying cause of the A-T effect is the dressing of the atomic levels by strong EM radiation. There are two equivalent mathematical models for it: the light may be classical or quantized.
 
@@ -1451,13 +1446,13 @@ states $\ket{a, j}, \ket{a,j+1}$ and $\ket{b, j},
 \ket{b,j+1}$.
 
 
-The choice of zero-order state vectors $\ket{N^0}$ from a degenerate subspace is arbitrary because any linear combination of basis vectors $\ket{n}$ from this subspace will satisfy the unperturbed Schrödinger equation. However, if we demand the \textit{change} of $\ket{N^0}$ to be small under the perturbation $\hat V$, they become determined and are given by diagonalization of $\hat V$ in the degenerate subspace. Unfortunately, $\hat V$ is zero in both our subspaces, so technically any choice of zero-order states will diagonalize $\hat V$. In other words, the degeneracy is not lifted in the first-order, and thus we have diagonalize the matrix\cite{landau2013quantum}
+The choice of zero-order state vectors $\ket{N^0}$ from a degenerate subspace is arbitrary because any linear combination of basis vectors $\ket{n}$ from this subspace will satisfy the unperturbed Schrödinger equation. However, if we demand the \textit{change} of $\ket{N^0}$ to be small under the perturbation $\hat V_J$, they become determined and are given by diagonalization of $\hat V_J$ in the degenerate subspace. Unfortunately, $\hat V_J$ is zero in both our subspaces, so technically any choice of zero-order states will diagonalize $\hat V_J$. In other words, the degeneracy is not lifted in the first-order, and thus we have diagonalize the matrix\cite{landau2013quantum}
 \begin{equation}
 	M_{nn'} = \sum\limits_{m}\frac{V_{ nm}V_{mn^\prime}}{E_n-E_m}.
 \end{equation}
 Here, $\ket{n}$ and $\ket{n'}$ are the basis 
 states from the degenerate subspace with energy 
-$E_n$, and $V_{mn} = \bra{m} \hat  V \ket{n}$. 
+$E_n$, and $V_{mn} = \bra{m} \hat  V_J \ket{n}$. 
 The sum is over all other zero-order states 
 $\ket{m}$ outside the degenerate subspace.
 
@@ -1507,7 +1502,7 @@ $\ket{m}$ outside the degenerate subspace.
 	\end{equation}
 \end{widetext}
 
-For example, in our case for one of the degenerate subspaces ($E_n^0 = -\Omega_1/2,\ \hat V = \hat V_J$)
+For example, in our case for one of the degenerate subspaces ($E_n^0 = -\Omega_1/2,\ \hat V = \hat V_J$) we obtain the following matrix:
 \renewcommand{\kbldelim}{[}% Left delimiter
 \renewcommand{\kbrdelim}{]}% Right delimiter
 \begin{equation}
