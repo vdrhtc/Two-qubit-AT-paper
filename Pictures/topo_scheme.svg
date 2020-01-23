@@ -2848,8 +2848,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="134.11903"
-     inkscape:cy="120.08184"
+     inkscape:cx="315.44141"
+     inkscape:cy="118.06153"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -2926,7 +2926,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -3300,10 +3300,10 @@
          style="stroke-width:2.53666759">2</flowPara></flowRoot>    <g
        id="surface5964317"
        transform="matrix(0.5928224,0,0,0.5928224,86.89122,161.01264)"
-       style="stroke-width:0.59508169">
+       style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1">
       <g
          id="g45911"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.59508169">
+         style="fill:#a2d5f2;fill-opacity:1;stroke-width:0.59508169">
         <use
            id="use45909"
            y="8.7790003"
@@ -3311,11 +3311,11 @@
            xlink:href="#glyph0-1-26"
            width="100%"
            height="100%"
-           style="stroke-width:0.59508169" />
+           style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1" />
       </g>
       <g
          id="g45915"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.59508169">
+         style="fill:#a2d5f2;fill-opacity:1;stroke-width:0.59508169">
         <use
            id="use45913"
            y="10.27314"
@@ -3323,11 +3323,11 @@
            xlink:href="#glyph1-1-5"
            width="100%"
            height="100%"
-           style="stroke-width:0.59508169" />
+           style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1" />
       </g>
       <g
          id="g45919"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.59508169"
+         style="fill:#a2d5f2;fill-opacity:1;stroke-width:0.59508169"
          transform="translate(-3.1068051)">
         <use
            id="use45917"
@@ -3336,11 +3336,11 @@
            xlink:href="#glyph2-1-2"
            width="100%"
            height="100%"
-           style="stroke-width:0.59508169" />
+           style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1" />
       </g>
       <g
          id="g45923"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.59508169"
+         style="fill:#a2d5f2;fill-opacity:1;stroke-width:0.59508169"
          transform="translate(-5.1780085)">
         <use
            id="use45921"
@@ -3349,11 +3349,11 @@
            xlink:href="#glyph3-1-0"
            width="100%"
            height="100%"
-           style="stroke-width:0.59508169" />
+           style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1" />
       </g>
       <g
          id="g45927"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.59508169"
+         style="fill:#a2d5f2;fill-opacity:1;stroke-width:0.59508169"
          transform="translate(-5.1780085)">
         <use
            id="use45925"
@@ -3362,11 +3362,11 @@
            xlink:href="#glyph4-1-9"
            width="100%"
            height="100%"
-           style="stroke-width:0.59508169" />
+           style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1" />
       </g>
       <g
          id="g45931"
-         style="fill:#000000;fill-opacity:1;stroke-width:0.59508169"
+         style="fill:#a2d5f2;fill-opacity:1;stroke-width:0.59508169"
          transform="translate(-5.1780085)">
         <use
            id="use45929"
@@ -3375,7 +3375,7 @@
            xlink:href="#glyph1-2-2"
            width="100%"
            height="100%"
-           style="stroke-width:0.59508169" />
+           style="stroke-width:0.59508169;fill:#a2d5f2;fill-opacity:1" />
       </g>
     </g>
     <path
