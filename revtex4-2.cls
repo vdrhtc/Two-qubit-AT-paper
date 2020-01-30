@@ -1,40 +1,47 @@
 %%
-%% This is file `revtex4-1.cls',
+%% This is file `revtex4-2.cls',
 %% generated with the docstrip utility.
 %%
 %% The original source files were:
 %%
-%% revtex4-1.dtx  (with options: `kernel')
+%% revtex4-2.dtx  (with options: `kernel')
 %% ltxutil.dtx  (with options: `kernel')
 %% ltxfront.dtx  (with options: `kernel')
 %% ltxgrid.dtx  (with options: `kernel')
-%% revtex4-1.dtx  (with options: `options')
+%% revtex4-2.dtx  (with options: `options')
 %% ltxutil.dtx  (with options: `options')
 %% ltxfront.dtx  (with options: `options')
 %% ltxgrid.dtx  (with options: `options')
-%% revtex4-1.dtx  (with options: `package')
+%% revtex4-2.dtx  (with options: `package')
 %% 
 %% This file is part of the APS files in the REVTeX 4 distribution.
 %% For the version number, search on the string 
 %% Original version by David Carlisle
 %% Modified by Arthur Ogawa (mailto:arthur_ogawa at sbcglobal dot net)
 %% 
-%% Copyright (c) 2009 The American Physical Society.
-%% http://publish.aps.org/revtex4/
-%% mailto:revtex4@aps.org
+%% Version (4.2a, unreleased)
+%% Modified by Aptara on behalf of American Physical Society and American Institute of Physics
 %% 
-%% See the REVTeX 4 README file for restrictions and more information.
+%% Version (4.2b,4.2c)
+%% Modified by Mark Doyle, American Physical Society (mailto:revtex at aps.org)
+%% 
+%% Copyright (c) 2019 American Physical Society.
+%% https://journals.aps.org/revtex/
+%% mailto:revtex@aps.org
+%% 
+%% See the REVTeX 4.2 README-REVTEX file for restrictions and more information.
 %% 
 \NeedsTeXFormat{LaTeX2e}[1996/12/01]%
-\ProvidesClass{revtex4-1}
- [2010/07/25/20:33:00 4.1r (http://publish.aps.org/revtex4/ for documentation)]% \fileversion
+\ProvidesClass{revtex4-2}
+ [2019/01/18/14:29:48 4.2c (https://journals.aps.org/revtex/ for documentation)]% \fileversion
 \let\class@name\@gtempa
 \GenericInfo{}{\space
- Copyright (c) 2009 The American Physical Society.^^J
+ Copyright (c) 2019 American Physical Society.^^J
  mailto:revtex@aps.org^^J
  Licensed under the LPPL:^^Jhttp://www.ctan.org/tex-archive/macros/latex/base/lppl.txt^^J
  Arthur Ogawa <arthur_ogawa at sbcglobal dot net>^^J
  Based on work by David Carlisle <david at dcarlisle.demon.co.uk>%
+ Version (4.2c): Modified by Mark Doyle^^J
  \@gobble
 }%
 \if@compatibility
@@ -47,7 +54,7 @@
 \fi
 \typeout{%
 ltxutil%
- [2010/07/25/20:33:00 4.1r utilities package (portions licensed from W. E. Baxter web at superscript.com)]% \fileversion
+ [2019/01/18/14:29:48 4.2c utilities package (portions licensed from W. E. Baxter web at superscript.com)]% \fileversion
 }%
 \def\class@err#1{\ClassError{\class@name}{#1}\@eha}%
 \def\class@warn#1{\ClassWarningNoLine{\class@name}{#1}}%
@@ -1926,7 +1933,7 @@ ltxutil%
 \providecommand \URL@prefix [0]{URL }%
 \providecommand\doi[0]{\begingroup\@sanitize@url\@doi}%
 \def\@doi#1{\endgroup\@@startlink{\doibase#1}doi:\discretionary {}{}{}#1\@@endlink }%
-\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \doibase [0]{https://doi.org/}%
 \providecommand \@sanitize@url[0]{\chardef\cat@space\the\catcode`\ \@sanitize\catcode`\ \cat@space}%
 \def\@@startlink#1{}%
 \def\@@endlink{}%
@@ -2046,7 +2053,7 @@ ltxutil%
 }{}%
 \typeout{%
 ltxfront%
- [2010/07/25/20:33:00 4.1r frontmatter package (AO,DPC)]% \fileversion
+ [2019/01/18/14:29:48 4.2c frontmatter package (AO,DPC,MD)]% \fileversion
 }%
 \appdef\class@documenthook{\frontmatter@init}%
 \let\frontmatter@init\@empty
@@ -3082,7 +3089,7 @@ ltxfront%
 }%
 \typeout{%
 ltxgrid%
- [2010/07/25/20:33:00 4.1r page grid package (portions licensed from W. E. Baxter web at superscript.com)]% \fileversion
+ [2019/01/18/14:29:48 4.2c page grid package (portions licensed from W. E. Baxter web at superscript.com)]% \fileversion
 }%
 \newcounter{linecount}
 \def\loop@line#1#2{%
@@ -5796,8 +5803,8 @@ ltxgrid%
  \ExecuteOptions{12pt}%
 }%
 \DeclareOption{reprint}{%
- \@booleanfalse\preprintsty@sw
- \@booleantrue\twocolumn@sw
+\@booleanfalse\preprintsty@sw
+\@booleantrue\twocolumn@sw
  \ExecuteOptions{10pt}%
 }%
 \DeclareOption{manuscript}{%
@@ -5888,7 +5895,7 @@ ltxgrid%
 \@booleanfalse\citeautoscript@sw
 \DeclareOption{longbibliography}{\@booleantrue\longbibliography@sw}%
 \DeclareOption{nolongbibliography}{\@booleanfalse\longbibliography@sw}%
-\@booleanfalse\longbibliography@sw
+\@booleantrue\longbibliography@sw
 \DeclareOption{eprint}{\@booleantrue\eprint@enable@sw}%
 \DeclareOption{noeprint}{\@booleanfalse\eprint@enable@sw}%
 \@booleantrue\eprint@enable@sw
@@ -5899,7 +5906,7 @@ ltxgrid%
 \DeclareOption{twoside}{\@booleantrue \twoside@sw\@mparswitchfalse}%
 \DeclareOption{oneside}{\@booleanfalse\twoside@sw\@mparswitchtrue}%
 \DeclareOption{onecolumn}{\@booleanfalse\twocolumn@sw}%
-\DeclareOption{twocolumn}{\@booleantrue \twocolumn@sw}%
+\DeclareOption{twocolumn}{\@booleantrue\twocolumn@sw}%
 \@booleanfalse\twocolumn@sw
 \def\select@column@grid{%
  \twocolumn@sw{%
@@ -6210,31 +6217,31 @@ ltxgrid%
  \@booleanfalse\runinaddress@sw
 }%
 %%%  @LaTeX-file{
-%%%     filename        = "revtex4-1.dtx",
-%%%     version         = "4.1r",
-%%%     date            = "2010/07/25",
-%%%     time            = "20:33:00 UT-8",
-%%%     checksum        = "7177",
-%%%     author          = "Arthur Ogawa (mailto:arthur_ogawa at sbcglobal.net),
+%%%     filename        = "revtex4-2.dtx",
+%%%     version         = "4.2c",
+%%%     date            = "2019/01/18",
+%%%     time            = "14:29:48 UT-5",
+%%%     checksum        = "6584",
+%%%     author          = "Mark Doyle (mailto: revtex at aps.org), Arthur Ogawa (mailto:arthur_ogawa at sbcglobal.net),
 %%%                        commissioned by the American Physical Society.
 %%%                        ",
-%%%     copyright       = "Copyright (C) 1999, 2009 Arthur Ogawa,
+%%%     copyright       = "Copyright (C) 1999, 2009 Arthur Ogawa, Version 4.2 Copyright (C) 2019 American Physical Society
 %%%                        distributed under the terms of the
-%%%                        LaTeX Project Public License, see
+%%%                        LaTeX Project Public License 1.3c, see
 %%%                        ftp://ctan.tug.org/macros/latex/base/lppl.txt
 %%%                        ",
-%%%     address         = "Arthur Ogawa,
+%%%     address         = "Mark Doyle,
 %%%                        USA",
 %%%     telephone       = "",
 %%%     FAX             = "",
-%%%     email           = "mailto colon arthur_ogawa at sbcglobal.net",
+%%%     email           = "mailto colon revtex at aps.org",
 %%%     codetable       = "ISO/ASCII",
-%%%     keywords        = "latex, page grid, main vertical list",
+%%%     keywords        = "",
 %%%     supported       = "yes",
-%%%     abstract        = "package to change page grid, MVL",
+%%%     abstract        = "",
 %%%     docstring       = "The checksum field above generated by ltxdoc",
 %%%  }
-\def\substyle@post{4-1}%
+\def\substyle@post{4-2}%
 \def\substyle@ext{rtx}%
 \DeclareOption*{\OptionNotUsed}%
 \def\@process@society#1{%
@@ -7007,7 +7014,7 @@ ltxgrid%
    \@if@empty{#1}{%
     \expandafter\bibliography@latex\expandafter{\pre@bibdata}%
    }{%
-    \expandafter\bibliography@latex\expandafter{build/\pre@bibdata,#1}%
+    \expandafter\bibliography@latex\expandafter{\pre@bibdata,#1}%
    }%
   }%
  \endgroup
@@ -7143,12 +7150,12 @@ ltxgrid%
 \def\@bibdataout@rev{%
  \immediate\write\@bibdataout{%
   @CONTROL{%
-   REVTEX41Control%
-   \eprint@enable@sw{}{,eprint=""}%
+   REVTEX42Control%
+   \eprint@enable@sw{}{,eprint="1"}%
   }%
  }%
  \if@filesw
-  \immediate\write\@auxout{\string\citation{REVTEX41Control}}%
+  \immediate\write\@auxout{\string\citation{REVTEX42Control}}%
  \fi
 }%
 \def\printendnotes{%
@@ -7507,9 +7514,41 @@ ltxgrid%
  \global\let\eqnum\@gobble
 }%
 \appdef\rtx@require@packages{%
- \RequirePackage{revsymb4-1}%
+ \RequirePackage{revsymb4-2}%
 }%
 \appdef\class@documenthook{\revsymb@inithook}%
+%%
+\def\@startflt#1{%
+  \begingroup
+    %\toc@pre
+    \makeatletter
+    \@input{\jobname.#1}%
+    \if@filesw
+      \expandafter\newwrite\csname tf@#1\endcsname
+      \immediate\openout \csname tf@#1\endcsname \jobname.#1\relax
+    \fi
+    \@nobreakfalse
+    %\toc@post
+  \endgroup
+}%
+\def\att@TOC{toc}%
+\def\print@toc#1{%
+ \begingroup
+  \expandafter\section
+  \expandafter*%
+  \expandafter{%
+              \csname#1name\endcsname
+              }%
+  \let\appendix\appendix@toc
+  \def\tempa{#1}%
+  \ifx\tempa\att@TOC%%
+  \@starttoc{#1}%
+  \else%%
+  \@startflt{#1}%%
+  \fi%%
+ \endgroup
+}%
+%%
 \def\@LN@LLerror@org{%
  \PackageError{lineno}{%
   \string\linelabel\space without \string\linenumbers
@@ -7547,7 +7586,8 @@ ltxgrid%
 \expandafter\@process@pointsize\expandafter{\@pointsize@default}%
 \@options
 \rtx@require@packages
+\appdef\setup@hook{\normalsize}%
 \setup@hook
 \endinput
 %%
-%% End of file `revtex4-1.cls'.
+%% End of file `revtex4-2.cls'.
