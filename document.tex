@@ -22,7 +22,7 @@
 % Use this file as a source of example code for your aip document.
 % Use the file aiptemplate.tex as a template for your document.
 \documentclass[%
- pra,
+ aps, prx,
 % jmp,
 % bmf,
 % sd,
@@ -33,7 +33,8 @@
 %author-year,%
 %author-numerical,%
 % Conference Proceedings
-]{revtex4-1}
+superscriptaddress
+]{revtex4-2}
 
 \usepackage{graphicx}% Include figure files
 %\usepackage{dcolumn}% Align table columns on decimal point
@@ -52,6 +53,7 @@
 \usepackage{xparse}
 \usepackage{bbm}
 \usepackage{xcolor}
+\usepackage{url}
 
 
 %\usepackage{multirow}
@@ -62,7 +64,7 @@
 \renewcommand*{\equationautorefname}{Eq.}
 
 \newcommand{\mytitile}{Light-dressing of a 
-diatomic supercondufcing artificial molecule}
+diatomic superconducting artificial molecule}
 
 \begin{document}
 	\preprint{AIP/123-QED}
@@ -81,10 +83,8 @@ diatomic supercondufcing artificial molecule}
 		National University of Science and Technology MISIS, Moscow, Russia
 	}%
 	\author{V.B. Yursa}
-	\affiliation{ 
-		Skolkovo Institute of Science and 
-		Technology, Moscow, Russian Federation
-	}%
+	\affiliation{Skolkovo Institute of Science 
+		and Technology, Moscow, Russian Federation}%
 
 \affiliation{ 
 	Moscow Institute of Physics and Technology, 
@@ -127,7 +127,7 @@ diatomic supercondufcing artificial molecule}
 	State Technical University, Moscow, Russia}
 	
 	
-	\author{A.A. Pischimova}
+	\author{A.A. Pishchimova}
 	\affiliation{FMN Laboratory, Bauman Moscow 
 	State Technical University, Moscow, Russia}
 	\affiliation{Dukhov Automatics Research 
@@ -136,8 +136,10 @@ diatomic supercondufcing artificial molecule}
 	\author{O.V. Astafiev}
 	\affiliation{Skolkovo Institute of Science 
 		and Technology, Moscow, Russian Federation}
-	\affiliation{
-		Moscow Institute of Physics and Technology, Dolgoprundiy, Russia}
+	\affiliation{ 
+		Moscow Institute of Physics and Technology, 
+		Dolgoprundiy, Russia
+	}
 	\affiliation{Physics Department, Royal 
 	Holloway, University of London, Egham, Surrey 
 	TW20 0EX, United Kingdom}
@@ -170,7 +172,7 @@ diatomic supercondufcing artificial molecule}
 	agree well with both experiment and numerical 
 	simulation. This study is an important step 
 	towards understanding the behaviour of complex
-	systems of many atoms interacting	with strong radiation.
+	systems of many atoms interacting coherently with strong radiation.
 	\end{abstract}
 	
 	\maketitle
@@ -184,76 +186,75 @@ Over the past twenty years, superconducting
 artificial atoms (SAAs) were used in numerous 
 experiments in a compelling demonstration of the 
 validity of fundamental quantum mechanical 
-laws\cite{you2011atomic,Qopt_1300refs}. Their Hamiltonians can be pre-designed
+laws \cite{you2011atomic,Qopt_1300refs}. Their Hamiltonians can be pre-designed 
 and engineered which makes them a particularly 
-versatile tool for studies in quantum optics, and high controllability of their parameters
-allows direct observation of novel physical 
-effects previously inaccessible for natural 
+versatile tool for studies in quantum optics, and high controllability of their parameters 
+allows direct observation of novel physical effects previously inaccessible for natural 
 systems. 
 
 One of the most prominent milestones that 
 superconducting quantum circuits have reached so 
 far is the strong coupling with light in {circuit 
-QED}\cite{wallraff2004strong, 
-chiorescu2004coherent} when the relaxation and decoherence rates
+QED} \cite{wallraff2004strong, 
+chiorescu2004coherent} when the relaxation and decoherence rates 
 appear smaller than the Rabi frequency. 
 Currently, they are surpassing all other 
 implementations of strong coupling in terms of 
-coherence\cite{forn2019ultrastrong}. 
+coherence \cite{forn2019ultrastrong}. 
 However, in sharp contrast with natural atoms and 
 molecules, SAAs do not even require confined 
 radiation to implement strong coupling with 
 light: they may be coupled unprecedently strongly 
 to free-propagating electromagnetic waves in 1D 
-on-chip waveguides\cite{astafiev2010resonance} 
+on-chip waveguides \cite{astafiev2010resonance} 
 without using cavities at all. The Rabi frequency 
 in this case may reach 50\% of the transition 
-frequency\cite{deng2015observation} which is even 
+frequency \cite{deng2015observation} which is even 
 beyond strong coupling 
-regime\cite{forn2019ultrastrong}. To correctly 
+regime \cite{forn2019ultrastrong}. To correctly 
 describe the behaviour of an atom in these 
 conditions, the so-called \textit{dressed atom 
-approach}\cite{cohen1998atom} is employed when 
+approach} \cite{cohen1998atom} is employed when 
 the radiation has to be directly included in the 
 Hamiltonian and affects its level structure.
 
-So far, experiments with intense driving fields resulting in the dressing effects in on-chip quantum optics  were
+So far, experiments with intense driving fields resulting in the dressing effects in on-chip quantum optics  were 
 focused on single artificial 
-atoms\cite{baur2009measurement, 
+atoms \cite{baur2009measurement, 
 sillanpaa2009autler, astafiev2010resonance, 
 novikov2013autler, suri2013observation, 
 koshino2013observation, 
 braumuller2015multiphoton, peng2018vacuum, 
 gasparinetti2019two}. In all these works, light 
 dressing of the atom manifests itself through 
-Mollow triplets or Autler-Townes (A-T) splittings of
+Mollow triplets or Autler-Townes (A-T) splittings of 
 different kinds. However, despite the recent 
 successes in control of large arrays of 
-interacting SAAs\cite{Song574, ye2019propagation, 
+interacting SAAs \cite{Song574, ye2019propagation, 
 arute2019quantum}, there were, up to our best 
 knowledge, no experiments concerning interaction 
-of similar composite structures with intense driving field. While there were studies on dressing
+of similar composite structures with intense driving field. While there were studies on dressing 
 of multi-atomic systems in a 
-cavity\cite{fink2009dressed, 
+cavity \cite{fink2009dressed, 
 macha2014implementation, shulga2017observation, 
-yang2018probing}, their interaction with external dressing field is not less attractive since its
+yang2018probing}, their interaction with external dressing field is not less attractive since its 
 frequency may be easily tuned to observe various 
 absorption processes for arbitrary configurations 
 of the system parameters.
 
 In this work, we study a pair of strongly coupled 
 artificial atoms: a superconducting artificial 
-molecule\cite{kou2017fluxonium} (SAM). We use two 
-Xmon-type\cite{barends2013coherent} 
-transmons\cite{koch2007charge} interacting with 
+molecule \cite{kou2017fluxonium} (SAM). We use two 
+Xmon-type \cite{barends2013coherent} 
+transmons \cite{koch2007charge} interacting with 
 each other through a cavity 
-bus\cite{majer2007coupling}. Microwave radiation 
+bus \cite{majer2007coupling}. Microwave radiation 
 is applied to this system through an on-chip 
-coplanar antenna while its state can be
+coplanar antenna while its state can be 
 monitored by joint dispersive readout using the 
-same coupling cavity\cite{chow2010detecting}. We 
+same coupling cavity \cite{chow2010detecting}. We 
 find that strong interaction with microwaves not 
-only results in multiphoton transitions of
+only results in multiphoton transitions of 
 various orders between SAM states, but also 
 significantly modifies its level structure. Even 
 in a simple diatomic molecule, this leads to 
@@ -263,7 +264,7 @@ only be explained in the dressed picture. We note
 that although the A-T splittings have been 
 investigated before in a wide range of quantum 
 systems (including natural 
-molecules\cite{tamarat1995pump, 
+molecules \cite{tamarat1995pump, 
 ahmed2012autler}), we find qualitatively new 
 spectral manifestations of light dressing when 
 SAAs are irradiated unequally. We note that there 
@@ -271,7 +272,7 @@ were no such experiments with natural molecules,
 which could in principle demonstrate same 
 effects, because they lack controllability and 
 coherence of superconducting quantum devices, and 
-previous studies of SAAs under strong driving field
+previous studies of SAAs under strong driving field 
 either involved just a single atom or have 
 demonstrated only the standard spectral 
 signatures known from the quantum optics (see 
@@ -282,7 +283,7 @@ experiment may be useful for future quantum
 computers: a quantum engineer should account for 
 the observed behaviours carefully controlling the 
 driving power (for instance, as we will show, the 
-bSWAP gate\cite{poletto2012entanglement} is 
+bSWAP gate \cite{poletto2012entanglement} is 
 directly affected by light dressing).
 
 The manuscript consists of four main parts and an 
@@ -301,21 +302,21 @@ details of the theoretical framework that we use.
 \subsection{Device design and control}
 We have designed the SAM as a pair of transmon 
 (Xmon) SAAs with asymmetric 
-SQUIDs\cite{hutchings2017tunable} (maximal Josephson energies $E^1_{J,
+SQUIDs \cite{hutchings2017tunable} (maximal Josephson energies $E^1_{J, 
 \sum}/h = 24.3$ GHz, $E^2_{J,\sum}/h = 18.3$ GHz, 
-charging energies $E^{1,2}_C/h = 220$ MHz, asymmetries $d^{1,2} =0.75$) coupled
-to a single notch-type\cite{probst2015efficient} 
+charging energies $E^{1,2}_C/h = 220$ MHz, asymmetries $d^{1,2} =0.75$) coupled 
+to a single notch-type \cite{probst2015efficient} 
 $\lambda/4$ resonator ($f_r = 7$ GHz, $\kappa = 
 1/100\ \text{ns}^{-1}$) which both 
-couples\cite{majer2007coupling} the transmons and 
-allows joint readout \cite{chow2010detecting} of
+couples \cite{majer2007coupling} the transmons and 
+allows joint readout  \cite{chow2010detecting} of 
 their states. In \autoref{fig:experiment}~(a), 
-the optical photograph of the device is shown, where the layout of the components is presented. The
+the optical photograph of the device is shown, where the layout of the components is presented. The 
 resonator in its upper part is connected to a 
 coplanar waveguide through which the readout is 
 performed. In its lower part, it is coupled to 
 the transmons by a dual 
-``claw''\cite{barends2013coherent} coupler. Flux 
+``claw'' \cite{barends2013coherent} coupler. Flux 
 lines that allow independent control of the 
 transmon frequencies are coming from the sides. 
 Finally, the excitation waveguide coming from 
@@ -324,7 +325,7 @@ In \autoref{fig:experiment}~(b), the equivalent
 electrical circuit of the device is shown. The 
 resonator fundamental mode is approximated as an 
 LC-circuit (in the middle), the transmons are 
-shown in color on the sides; their SQUIDs are
+shown in color on the sides; their SQUIDs are 
 represented as tunable Josephson junctions. A 
 capacitively coupled excitation line is also 
 shown in green. Finally, in 
@@ -352,7 +353,7 @@ area being close to their sweet spots.
 
 \begin{figure}
 	 	\includegraphics[width=\linewidth]{experiment_2}
-	\caption{\textbf{(a)} Optical image of
+	\caption{\textbf{(a)} Optical image of 
 	the device (false coloured). Two transmons 
 	(orange, 1 and blue, 2) are coupled 
 	capacitively to a $\lambda/4$ coplanar 
@@ -417,7 +418,7 @@ transition frequency and $\alpha$ is the
 anharmonicity of the transmon. By applying 
 magnetic flux to the transmon's SQUID (either via 
 an individual on-chip line or via an external 
-coil) it is possible\cite{koch2007charge} to 
+coil) it is possible \cite{koch2007charge} to 
 directly  control $\omega$. In our modelling, we 
 take into account the three lowest states of the 
 transmon ($\ket{0},\ \ket{1}$ and $\ket{2}$).
@@ -451,7 +452,7 @@ b^\dag)(\hat c+\hat c^{\dagger})$ is the
 transverse interaction between the atoms. 
 Strictly speaking, $J = J(\omega_1, \omega_2)$ 
 depends on the transmon 
-frequencies\cite{koch2007charge}, but we take $J$ 
+frequencies \cite{koch2007charge}, but we take $J$ 
 to be a constant as in \autoref{tab:parameters} 
 due to its negligible variation for our range of 
 frequencies.  
@@ -483,7 +484,7 @@ R.\label{eq:rotation}
 Here we use subscripts 1 and 2 to denote first and second SAAs. After the transformation and application of the RWA
 \begin{equation}
 \begin{aligned}
-	\omega_{(1,2)} &\rightarrow \Delta_{(1,2)} = \omega_{(1,2)} - \omega_d^{(1,2)},\\
+	\omega_{\{1,2\}} &\rightarrow \Delta_{\{1,2\}} = \omega_{\{1,2\}} - \omega_d^{\{1,2\}},\\
 	\hat H_{int} &\rightarrow \hbar J \left[\hat 
 	b^\dag \hat c e^{it(\omega_d^1 - \omega_d^2)} 
 	+ \hat b \hat c^\dag e^{-it(\omega_d^1 - 
@@ -498,7 +499,7 @@ account the incoherent processes of relaxation
 and dephasing for each transmon. They are 
 modelled using the Lindblad equation with the 
 following collapse 
-operators\cite{bishop2010circuit}:
+operators \cite{bishop2010circuit}:
 \begin{equation}\
 \begin{split}
 \hat{{O}}_{\gamma, 1} = \sqrt{\gamma_1}\, \hat b,\ 
@@ -515,7 +516,7 @@ the pure dephasing rates. As one can see, the
 collapse operators are in a separable form, i.e. 
 acting only upon a single transmon each. This is 
 a valid approach until the coupling strength $J$ 
-is not too large\cite{beaudoin2011dissipation}. 
+is not too large \cite{beaudoin2011dissipation}. 
 Therefore, the complete evolution equation for 
 the system density matrix $\hat \rho$ is
 \begin{equation}
@@ -534,7 +535,7 @@ solution density matrix are in the rotating frame
 with RWA. In this work, we do not alter the 
 dissipator terms when changing the reference 
 frame despite that it may not be correct in 
-general\cite{shavit2019bridging}.
+general \cite{shavit2019bridging}.
 
 
 The readout resonator is not included in the 
@@ -550,7 +551,7 @@ calculate $S_{21}(f_p)$ via offsetting the
 experimental resonance curve measured when the 
 SAM is in the ground state by the dispersive 
 shifts corresponding to the SAM basis 
-states\cite{filipp2009two, chow2010detecting}. Since we have not
+states \cite{filipp2009two, chow2010detecting}. Since we have not 
 directly measured these dispersive shifts, in our 
 modelling they are treated as fitting parameters. 
 Finally, the observable value for any state $\hat 
@@ -564,11 +565,11 @@ Finally, the observable value for any state $\hat
 Numerical simulations are necessary for studying 
 \autoref{eq:master} since is does not have an 
 analytical solution. We have been using the 
-\textit{qutip}\cite{johansson2013qutip} (quantum 
+\textit{qutip} \cite{johansson2013qutip} (quantum 
 optics toolbox in Python) to simulate the 
 dynamics and to find the steady state of the 
 system for various parameter combinations of the 
-Liouvillian.
+Liouvillian. The source code for the simulations can be found on GitHub \footnote{\url{https://github.com/vdrhtc/Examples/tree/master/transmon-simulations/two_transmons}}. 
 
 Two distinct modes of simulation were used in the 
 modelling. The first one is for the Liouvillians 
@@ -583,7 +584,7 @@ linear equations obtained from \autoref{eq:master}
 \end{equation}
 This equation is solved with the qutip's 
 \textit{steadystate} 
-function\footnote{http://qutip.org/docs/4.0.2/guide/guide-steady.html}.
+function \footnote{\url{http://qutip.org/docs/4.0.2/guide/guide-steady.html}}.
  This method is applicable when the driving 
 frequency for both transmons is the same because 
 from \autoref{eq:RWA} follows that $\hat H_{int}$ 
@@ -619,7 +620,7 @@ with a period of $T = 2\pi/\delta$, it is
 possible to calculate the steady state as the 
 eigenvector $\hat \rho_{ss}$ of the single-period 
 propagator $\Lambda(T, 0)$ corresponding to its 
-largest eigenvalue\cite{dittrich1998quantum, 
+largest eigenvalue  \cite{dittrich1998quantum, 
 rivas2012open}. Upon infinitely many applications 
 of $\Lambda$
 \[
@@ -666,7 +667,7 @@ of $\Lambda$
 	frequencies $\Omega_{1,2}$ may be extracted 
 	as FWHM of the spectral lines 10 and 01, 
 	respectively. \textbf{(d)} Simulated 
-	population of the state $\ket{10}$ ($\lg 
+	population of the state $\ket{10}$ ($\log_{10} 
 	P_{\ket{10}}$ is shown with colour). Lines 
 	show various transition frequencies from the 
 	unperturbed Hamiltonian. In the legend, the 
@@ -703,7 +704,7 @@ experimental spectrum, we have solved the master
 equation \autoref{eq:master} finding the steady 
 states of the system $\hat \rho_{ss}$ and the 
 corresponding expected measurement outcomes 
-$\mathfrak{Re} \Tr[\hat M \hat \rho_{ss}]$ 
+$\mathfrak{Re}\ \Tr[\hat M \hat \rho_{ss}]$ 
 depending on the excitation frequency and 
 magnetic flux. The results are shown in 
 \autoref{fig:two-tone}~(b) where all the 
@@ -770,7 +771,7 @@ more detail in a separate section below.
 	colours show the population of the ground 
 	state. \textbf{(c)} Linear dependence of the 
 	splitting size on the driving voltage of the 
-	microwave source $V_{rms}$, ${\Omega_2}/{V_{rms}} = 0.23\
+	microwave source $V_{rms}$, ${\Omega_2}/{V_{rms}} = 0.23\ 
 	{\text{MHz}}/{\text{mV}}$. From Section 
 	\ref{sec:theory}, the splitting size is 
 	$\frac{2\sqrt{3}}{3} \Omega_2$.}
@@ -786,7 +787,7 @@ more detail in a separate section below.
 	same frequency but at different amplitudes 
 	$\Omega_{1,2}$. In the top row (middle row), 
 	$\Omega_{1(2)}$ is increased while 
-	$\Omega_{2(1)} = \text{const},\ \Omega_{2(1)} \ll
+	$\Omega_{2(1)} = \text{const},\ \Omega_{2(1)} \ll 
 	\Omega_{1(2)}$; two topologically different 
 	types of anticrossings arise depending on 
 	which transmon is driven stronger. In the 
@@ -807,14 +808,14 @@ more detail in a separate section below.
 Though it is not possible to describe all of the 
 experimental features with the unperturbed model, 
 we can still use it to identify most of the 
-observed transitions as follows. By numerical diagonalization, we calculate the
+observed transitions as follows. By numerical diagonalization, we calculate the 
 unperturbed frequencies of the undriven SAM as 
 $\omega_{mn} = (E_n - E_m)/h$ where $n>m,\  
 n,m=0..9$. In \autoref{fig:two-tone}~(d), we 
-place them over the heatmap data optionally dividing
-$\omega_{mn}$ by some integer $n$ for $n$-photon processes.
+place them over the heatmap data optionally dividing 
+$\omega_{mn}$ by some integer $n$ for $n$-photon processes. 
 Since the number of SAM states is finite, we can 
-quickly find all matches between the heatmap and the calculated eigenlevels.
+quickly find all matches between the heatmap and the calculated eigenlevels. 
 
 Next, at the sweet spot, we name the found lines 
 as $ij/n$ where $i,j$ denote the final basis 
@@ -832,20 +833,20 @@ only near the sweet spot before any two lines
 form an avoided crossing. When they do, their 
 names should be swapped.
  
-As one can see, various multiphoton transitions besides
-the main lines at $\omega_{(1,2)}(I)/2\pi$ (or 
-$01$ and $10$ lines) are visible. The ${02/2}$ and ${20/2}$
+As one can see, various multiphoton transitions besides 
+the main lines at $\omega_{\{1,2\}}(I)/2\pi$ (or 
+$01$ and $10$ lines) are visible. The ${02/2}$ and ${20/2}$ 
 are very commonly found for transmons and lie 
-$|\alpha_{(1,2)}|/2$ lower than the main lines 
-$\omega_{(1,2)}(I)$. Another two-photon process 
+$|\alpha_{\{1,2\}}|/2$ lower than the main lines 
+$\omega_{\{1,2\}}(I)$. Another two-photon process 
 appears as $11/2$ line when two SAAs are excited 
 simultaneously. This process is used, for 
 example, for doing the bSWAP 
-gate\cite{poletto2012entanglement}; in our case, 
-it is taking part in feature I. A
+gate \cite{poletto2012entanglement}; in our case, 
+it is taking part in feature I. A 
 three-photon process $12/3$ is also clearly 
 visible just below the $02/2$ line. As we will 
-see, processes $12/3$~and~$21/3$ are involved in forming features III and II, respectively. Notably, transitions $11/2$, ${21/3}$ and
+see, processes $12/3$~and~$21/3$ are involved in forming features III and II, respectively. Notably, transitions $11/2$, ${21/3}$ and 
 ${12/3}$ are forbidden when there is no 
 interaction between transmons ($J=0$). Therefore, 
 it is expected that all Roman-numbered features 
@@ -881,10 +882,10 @@ one can see this clearly in
 
 From \autoref{fig:two-tone}~(d) we conclude that 
 avoided crossing in III is between two 
-transitions: ${12/3}$ (three-photon transition $\ket{00}\rightarrow\ket{12}$) and ${10} - {02}$
+transitions: ${12/3}$ (three-photon transition $\ket{00}\rightarrow\ket{12}$) and ${10} - {02}$ 
 ($\ket{10}\rightarrow\ket{02}$) which are of the 
 same frequency when $\omega_1 = 
-\omega_2+\alpha_2/2$. The latter process is depopulating $10$ and it is better discernible in \autoref{fig:two-tone}~(d)
+\omega_2+\alpha_2/2$. The latter process is depopulating $10$ and it is better discernible in \autoref{fig:two-tone}~(d) 
 than in \autoref{fig:two-tone}~(a), (b). For II, the 
 opposite is true: ${21/3}$ and ${01} - {20}$ are 
 crossing when $\omega_2 = \omega_1+\alpha_1/2$. 
@@ -1003,7 +1004,7 @@ Below, we give the detailed explanation of features II and III, and finally, I.
 	\includegraphics[width=\linewidth]{main_scheme_2}  
 	\caption{Explaining feature III. \textbf{(a)} 
 	Schematic of the transition frequencies near 
-	III (not to scale). Black dashed line shows the
+	III (not to scale). Black dashed line shows the 
 	current (0.36 mA) where the first transmon 
 	(orange) is below the second one (blue) 
 	exactly by $\alpha_2/2$ and several 
@@ -1021,7 +1022,7 @@ Below, we give the detailed explanation of features II and III, and finally, I.
 	H_{d}^1$, states $\ket{0j},\ket{1j}$ 
 	become nearly degenerate ($\omega_1 
 	\rightarrow \Delta_1$). Dressing increases this splitting to 
-	$\Omega_1^R$. \textbf{(d)} Transitions in the
+	$\Omega_1^R$. \textbf{(d)} Transitions in the 
 	dressed system induced by $\hat 
 	H_{d}^2$ (coupled level subspaces are shown with blue ellipses). In 
 	the left part of the panel, all possible 
@@ -1053,12 +1054,12 @@ section). For convenience, in
 reproduce the transitions near III where the 
 first transmon (orange) is below the second 
 (blue), and the resonance point in current is 
-shown with a dashed black line. Next,
+shown with a dashed black line. Next, 
 \autoref{fig:main_scheme}~(b) demonstrates the 
 level structure of the SAM at 0.36 mA. Detuned by 
-$\Delta_1$ from $\omega_1$, single-photon driving by
+$\Delta_1$ from $\omega_1$, single-photon driving by 
 $\hat H_d^1$ is shown with orange ellipses while 
-much weaker two-photon driving by $\hat H_d^2$ is not shown because it does not alter the structure of energy levels. Since from numerical simulations we know
+much weaker two-photon driving by $\hat H_d^2$ is not shown because it does not alter the structure of energy levels. Since from numerical simulations we know 
 that the third level of the first transmon is not 
 necessary to observe the splitting, $\ket{20}$ is 
 shown transparent, and states $\ket{21},\ 
@@ -1120,22 +1121,22 @@ be seen in \autoref{eq:ham_matrix} of Appendix
 \ref{sec:dpt}. Using the degenerate perturbation 
 theory for $\hat V_J$ summarized therein, we find 
 the first-order corrected wave functions of $\hat 
-H^D + \hat V_J$, labelled $\ket{k},\ k=1..6$. 
+H^D + \hat V_J$, labelled $\ket{k},\ k=1..6$. We find the mean relative element-wise error of around 3\% between numerically obtained eigenvectors and perturbative ones for our experimental parameters.
 
-The time-dependent perturbation theory that we use to calculate the transition rates of the two-photon processes stimulated by $\hat V_t$ is reviewed in Appendix \ref{sec:2pp}. Using the corrected eigenstates $\ket{k}$ and neglecting small terms, we obtain the following expressions for the transition rates per unit time\cite{faisal2013theory}:
+The time-dependent perturbation theory that we use to calculate the transition rates of the two-photon processes stimulated by $\hat V_t$ is reviewed in Appendix \ref{sec:2pp}. Using the corrected eigenstates $\ket{k}$ and neglecting small terms, we obtain the following expressions for the transition rates per unit time \cite{faisal2013theory}:
 \begin{equation}
 \begin{aligned}
-R^{(2)}_{1\rightarrow 6} &\approx \pi\Omega_2^4
-\frac{16 J^4 \left(3 \alpha^2 +
-\text{$7\Omega_1^2$}\right)^2}{\alpha
+R^{(2)}_{2\rightarrow 5} &\approx \pi\Omega_2^4 
+\frac{16 J^4 \left(3 \alpha^2 + 
+\text{$7\Omega_1^2$}\right)^2}{\alpha 
 ^{10}},\\
-R^{(2)}_{5\rightarrow 2} &\approx \pi\Omega_2^4
+R^{(2)}_{1\rightarrow 6} &\approx \pi\Omega_2^4 
 \frac{4 J^4 \left(5 \alpha - \text{$3\Omega_1
 		$}\right)^2}{\alpha ^{8}},
 \end{aligned}\label{eq:rates}
 \end{equation}
 when $\alpha \gg \Omega_1, \Omega_2, J$ which is 
-true for our setup. From \autoref{eq:rates} 
+true for our setup. Tailor expansion here leads to errors of less than 0.5\%.  From \autoref{eq:rates} 
 follows that the sideband transitions are 
 prohibited without the interaction in the SAM 
 $(J=0)$, and the extra avoided crossings will not 
@@ -1214,7 +1215,7 @@ We find excellent agreement between this self-consistent analytical model \autor
 both the experimental and simulated data as can 
 be seen in \autoref{fig:zoom}. To plot the model 
 curves we have fitted the 
-$\omega_{(1,2)}(\Phi_e)$ transitions with simple 
+$\omega_{\{1,2\}}(\Phi_e)$ transitions with simple 
 linear functions and substituted them in 
 \autoref{eq:splitting_model}; $\alpha_1$ is known 
 from spectroscopy. The only free parameter left 
@@ -1223,7 +1224,7 @@ approximation for a range of microwave powers to
 confirm the linear dependence of the splitting on 
 excitation amplitude (see \autoref{fig:zoom}~(c)).
 
-The upper branch of the fitted anticrossing is expected to deviate from the model (see \autoref{fig:zoom}) because of the avoided crossing marked as the secondary feature 3 which was not incorporated in the simple linear model. The small discrepancy between the experimental and simulated data in the upper branch is caused by a slight elevation of the lower sweet spot of the first transmon moving the avoided crossing 3 closer to the feature II; however, it is not important for our reasoning.
+The upper branch of the fitted anticrossing is expected to deviate from the model (see \autoref{fig:zoom}) because of the avoided crossing marked as the secondary feature 3 which was not incorporated in the simple linear model. The small discrepancy between the experimental and simulated data in the upper branch is caused by a slight elevation of the lower sweet spot of the first transmon moving the avoided crossing 3 closer to the feature II; however, it is not important for our reasoning.	
 
 
 \paragraph{Feature I.} Feature I may be explained using the same dressing model. Looking at \autoref{fig:featureI} for the case $\Omega_2 \gg \Omega_1$, we can write another pair of self-consistent equations:
@@ -1314,9 +1315,9 @@ Another interesting effect occurs when both
 components of the driving operator are in the 
 single-photon regime. Now, both transmons are 
 dressed and probed simultaneously. In this case, 
-the $11/2$ transition is being split at the resonance between $01$ and $10$ into a hyperbolic curve, though never forming a doublet transition. The shape of the splitting and its visibility
+the $11/2$ transition is being split at the resonance between $01$ and $10$ into a hyperbolic curve, though never forming a doublet transition. The shape of the splitting and its visibility 
 depends qualitatively on the relation between the driving 
-amplitudes; for instant, if they are equal, the splitting does not appear at all. In our sample, we have a fixed ratio
+amplitudes; for instant, if they are equal, the splitting does not appear at all. In our sample, we have a fixed ratio 
 of approximately 2 between $\Omega_1$ and 
 $\Omega_2$ which still allows us to distinguish the 
 splitting experimentally. Notably, the frequency of $11/2$ transition far 
@@ -1339,7 +1340,8 @@ In overall, irradiating an individual diatomic artificial molecule with intense 
 
 \section{Acknowledgements}
 
-We want to thank our parents and our cat Coconut. Also FPI grant
+We gratefully acknowledge valuable discussions with I. Besedin, V. Ryazanov and A. Ustinov. 
+Experimental investigation was conducted with the support of Russian Science Foundation, Grant No. 16-12-00070. Numerical simulations were supported by the Russian Science Foundation (contract no. 16-12-00095). Theoretical work was supported by Ministry of Science and Higher Education of Russian Federation in the framework of Increase Competitiveness Program of the NUST MISIS (contract no. K2-2017-081). Devices/Samples were fabricated at the BMSTU Nanofabrication Facility (Functional Micro/Nanosystems, FMNS REC, ID 74300)
 
 \appendix
 
@@ -1349,7 +1351,7 @@ The underlying cause of the A-T effect is the dressing of the atomic levels by s
 
 \begin{figure}[b]	
 	\includegraphics[width=\linewidth]{intro_scheme}
-	\caption{Illustrating the A-T splitting by  the classical driving in the rotating frame. \textbf{(a)} A three-level system is driven strongly by the coupler tone of amplitude $\Omega_c$ at frequency $\omega_c = \omega_{01}-\Delta$. \textbf{(b)} In the frame rotating with the drive changes, the $\ket{0}\rightarrow \ket{1}$ transition frequency changes to $\Delta$. However, when the RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\hbar \Omega^R$. Now, a doublet transition from these levels to the state $\ket{2}$ at frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$ may be observed.}
+	\caption{Illustrating the A-T splitting by  the classical driving in the rotating frame. \textbf{(a)} A three-level system is driven strongly by the coupler tone of amplitude $\Omega_c$ at frequency $\omega_c = \omega_{01}-\Delta$. \textbf{(b)} In the frame rotating with the drive changes, the $\ket{0}\rightarrow \ket{1}$ transition frequency changes to $\Delta$. However, when the RWA is applied and Hamiltonian is re-diagonalized, the splitting between two lowest levels (dressed states $\ket{a}$ and $\ket{b}$) becomes $\hbar \Omega^R$. Now, a doublet transition from these levels to the state $\ket{2}$ at frequencies $\omega_{12}+(\Delta \pm \Omega^R)/2$ may be observed.} 
 	\label{fig:at-standard}
 \end{figure}
 
@@ -1375,17 +1377,17 @@ Note here that level $\ket{2}$ is also rotated: this is convenient to preserve t
 Next, moving to the basis where the upper left 2x2 corner is diagonal (the right part of \autoref{fig:at-standard}~(b)), we obtain:
 
 \begin{equation*}
-\hat H_3/\hbar = \left[\begin{matrix}
-\frac{\Delta}{2} - \frac{\sqrt{\Delta^{2} + \Omega_{c}^{2}}}{2} &
+\hat H_3/\hbar = \left[\begin{matrix} 
+\frac{\Delta}{2} - \frac{\sqrt{\Delta^{2} + \Omega_{c}^{2}}}{2} & 
 0 &
 \frac{\Omega_{p} e^{i t \omega_{p}}}{2}\sin(\theta)
 \\
 0 & 
-\frac{\Delta}{2} + \frac{\sqrt{\Delta^{2} + \Omega_{c}^{2}}}{2} &
+\frac{\Delta}{2} + \frac{\sqrt{\Delta^{2} + \Omega_{c}^{2}}}{2} & 
 \frac{\Omega_{p} e^ {i t \omega_p}}{2}\cos(\theta)
 \\
-\frac{\Omega_{p} e^{-i t \omega_{p}} }{2}\sin(\theta) &
-\frac{\Omega_{p} e^{-i t \omega_{p}}}{2} \cos(\theta) &
+\frac{\Omega_{p} e^{-i t \omega_{p}} }{2}\sin(\theta) & 
+\frac{\Omega_{p} e^{-i t \omega_{p}}}{2} \cos(\theta) & 
 \omega_{12} +\Delta 
 \end{matrix}\right].
 \end{equation*}
@@ -1433,13 +1435,14 @@ states $\ket{a, j}, \ket{a,j+1}$ and $\ket{b, j},
 \ket{b,j+1}$.
 
 
-The choice of zero-order state vectors $\ket{N^0}$ from a degenerate subspace is arbitrary because any linear combination of basis vectors $\ket{n}$ from this subspace will satisfy the unperturbed Schrödinger equation. However, if we demand the \textit{change} of $\ket{N^0}$ to be small under the perturbation $\hat V$, they become determined and are given by diagonalization of $\hat V$ in the degenerate subspace. Unfortunately, all matrix elements of $\hat V = \hat V_J$ are zero in both our degenerate subspaces, so technically any choice of zero-order states will diagonalize it. In other words, the degeneracy is not lifted in the first-order, and thus we have to diagonalize the matrix\cite{landau2013quantum}
+
+The choice of zero-order state vectors $\ket{N^0}$ from a degenerate subspace is arbitrary because any linear combination of basis vectors $\ket{n}$ from this subspace will satisfy the unperturbed Schrödinger equation. However, if we demand the \textit{change} of $\ket{N^0}$ to be small under the perturbation $\hat V$, they become determined and are given by diagonalization of $\hat V$ in the degenerate subspace. Unfortunately, all matrix elements of $\hat V = \hat V_J$ are zero in both our degenerate subspaces, so technically any choice of zero-order states will diagonalize it. In other words, the degeneracy is not lifted in the first-order, and thus we have to diagonalize the matrix \cite{landau2013quantum}
 \begin{equation}
 	M_{nn'} = \sum\limits_{m}\frac{V_{ nm}V_{mn^\prime}}{E_n-E_m}.
 \end{equation}
 Here, $\ket{n}$ and $\ket{n'}$ are the basis 
 states from the degenerate subspace with energy 
-$E_n$, and $V_{mn} = \bra{m} \hat  V_J \ket{n}$.
+$E_n$, and $V_{mn} = \bra{m} \hat  V_J \ket{n}$. 
 The sum is over all other zero-order states 
 $\ket{m}$ outside the degenerate subspace.
 
@@ -1514,10 +1517,11 @@ Similarly, the first-order corrections for a non-degenerate state are
 	\ket{m^1} = \sum_{j\ne m}\ket{m}\frac{\bra{j}\hat V\ket{m}}{E_m-E_j}.
 \end{equation}
 
-\section{Transition rates of the two-photon process}\label{sec:2pp}
-We will employ the time-dependent perturbation theory that gives analytical expressions for the transition rates for single and multi-photon processes\cite{faisal2013theory}.
 
-Let's consider a time-dependent perturbation $\hat V(t) =\frac{\hbar\Omega_{2}}{2}(\hat{c}e^{i\omega_d t}+\hat{c}^{\dagger}e^{-i\omega_d t}) $ to the unperturbed Hamiltonian $\hat H$. In the interaction picture, the Schrödinger equation looks as
+\section{Transition rates of the two-photon process}\label{sec:2pp}
+We will employ the time-dependent perturbation theory that gives analytical expressions for the transition rates for single and multi-photon processes \cite{faisal2013theory}.
+
+Let's consider a time-dependent perturbation $\hat V(t) =\frac{\hbar\Omega_{2}}{2}(\hat{c}e^{i\omega_d t}+\hat{c}^{\dagger}e^{-i\omega_d t}) $ to the unperturbed Hamiltonian $\hat H$. In the interaction picture, the Schrödinger equation looks as 
 $$
 i\hbar \partial_t{\psi(t)} = \hat {V_I}(t)\psi(t),
 $$ 
@@ -1552,7 +1556,7 @@ where $U(t,-\infty)$ is the evolution operator. For a weak perturbation, this se
 	-\frac{1}{\hbar^2}\sum_j\int\limits_{-\infty}^{t}d\tau_1 e^{i\omega_{jf}\tau_1}\bra{f}\hat V(\tau_1)\ket{j}\int\limits_{-\infty}^{\tau_1}d\tau_2 e^{i\omega_{ij}\tau_2}\bra{j}\hat V(\tau_2)\ket{i}.
 	\end{aligned}
 \end{equation}
-Go over the long-time limit $t\rightarrow\infty$ in the final integral and collect the terms belongings to the same delta functions. This gives\cite{faisal2013theory}
+Go over the long-time limit $t\rightarrow\infty$ in the final integral and collect the terms belongings to the same delta functions. This gives \cite{faisal2013theory}
 \begin{equation}
 	\begin{split}
 	\bra{f}U^{(2)}(t, -\infty)\ket{i}=\\\frac{2\pi i\Omega_2^2}{4}\bigg[\delta(\omega_{if}+2\omega_d)\sum_j\frac{\bra{f}\hat{c}\ket{j}\bra{j}\hat{c}\ket{i}}{\omega_{ij}+\omega_d}+\\
@@ -1573,7 +1577,7 @@ To cancel out one of the delta functions in the resulting expression, we can use
 A two-photon emission:
 \begin{equation}\label{prob}
 \begin{aligned}
-	W^{(2)}_{i\rightarrow f}&=\frac{\pi\Omega_2^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{c}\ket{j}\bra{j}\hat{c}\ket{i}}{\omega_{ij}+\omega_d}\bigg|^2\delta(\omega_{if}+2\omega_d)\\
+	W^{(2)}_{i\rightarrow f}&=\frac{\pi\Omega_2^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{c}\ket{j}\bra{j}\hat{c}\ket{i}}{\omega_{ij}+\omega_d}\bigg|^2\delta(\omega_{if}+2\omega_d)\\ 
 	&=R_{i\rightarrow f}^{(2)}\delta(\omega_{if}+2\omega_d).
 \end{aligned}
 \end{equation}
@@ -1581,14 +1585,14 @@ A two-photon emission:
 A two-photon absorption:
 \begin{equation}\label{prob1}
 \begin{aligned}
-W^{(2)}_{f\rightarrow i}&=\frac{\pi\Omega_2^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{c}^{\dagger}\ket{j}\bra{j}\hat{c}^{\dagger}\ket{i}}{\omega_{ij}-\omega_d}\bigg|^2\delta(\omega_{if}-2\omega_d)\\
+W^{(2)}_{f\rightarrow i}&=\frac{\pi\Omega_2^4}{8}\bigg|\sum_j\frac{\bra{f}\hat{c}^{\dagger}\ket{j}\bra{j}\hat{c}^{\dagger}\ket{i}}{\omega_{ij}-\omega_d}\bigg|^2\delta(\omega_{if}-2\omega_d)\\ 
 &=R_{f\rightarrow i}^{(2)}\delta(\omega_{if}-2\omega_d).
 \end{aligned}
 \end{equation}
 
 For our case, $ \omega_d = \delta$ which leads to \eqref{eq:rates}.
 
-\section{Measurement setup and
+\section{Measurement setup and 
 methods}\label{sec:meas_setup}
 The sample was measured in a BlueFors LD250 dilution refrigerator at 16 mK. For the readout a Keysight PNA-L N5232A VNA was used. For the coherent excitation of the SAM, we used an Agilent MXG N5183B analog signal generator. The sample was 
 flux biased using Yokogawa GS200 current sources (two for the flux lines and one for the external coil wrapped around the sample).
@@ -1627,5 +1631,5 @@ NMP followed by IPA was used to lift off the
 resist mask stack.
 
 
-\bibliography{papers_bibliography}% Produces the bibliography via BibTeX.
+\bibliography{papers_bibliography}% Produces the bibliography via BibTeX.	
 \end{document}
