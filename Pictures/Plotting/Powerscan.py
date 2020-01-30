@@ -30,10 +30,10 @@ class ZoomPlot:
 
             m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r")
             if idx % 2 == 0:
-                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ [GHz]');
+                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ (GHz)');
                 ax.yaxis.set_major_locator(MultipleLocator(0.01))
             if idx > 1:
-                ax.set_xlabel('Current [$10^{-4}$ A]');
+                ax.set_xlabel('Current ($10^{-4}$ A)');
 
         self._Omega_2s = array([6e-3, 15e-3, 30e-3, 60e-3])*0.75
         self._plot_theory(axes)
@@ -54,7 +54,6 @@ class ZoomPlot:
         plt.text(.375, .025, r"$P_{exc} =$-20 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,0].transAxes, ha='left', color="black")
 
-
         plt.text(.66, .025, r"-12 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,1].transAxes, ha='left', color="black")
 
@@ -65,11 +64,11 @@ class ZoomPlot:
                  transform=axes[1,1].transAxes, ha='left', color="black")
 
 
-        cbaxes1 = fig.add_axes([0.125,.95,0.5,.015])
+        cbaxes1 = fig.add_axes([0.125,.95,0.6,.015])
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$\mathfrak{Re} [S^{exp}_{21}]$ [mU]", position=(1.3,-2))
+        cb.ax.set_title(r"$\mathfrak{Re}\ S^{exp}_{21}$", position=(1.15,-2))
 
         plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=20,
                  transform=axes[0,0].transAxes)

@@ -30,12 +30,12 @@ class Powerscan1D:
 
             m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r")
             if idx % 3 == 0:
-                ax.set_ylabel('Frequency [GHz]');
+                ax.set_ylabel('Frequency (GHz)');
                 ax.yaxis.set_major_locator(MultipleLocator(0.01))
                 ax.set_xlabel("")
                 ax.set_xticklabels([])
             if idx > 8:
-                ax.set_xlabel('Current [$10^{-4}$ A]');
+                ax.set_xlabel('Current ($10^{-4}$ A)');
 
         self._Omega_2s = array([6e-3, 7.55e-3, 9.5e-3, 11.9e-3, 15e-3, 19e-3,
                                 23e-3, 30e-3, 37.8e-3, 47.65e-3, 60e-3]) * 0.75
@@ -46,7 +46,7 @@ class Powerscan1D:
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$\mathfrak{Re} [S^{exp}_{21}]$ [mU]", position=(1.3, -2))
+        cb.ax.set_title(r"$\mathfrak{Re}\ S^{exp}_{21}$", position=(1.3, -2))
 
         plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=22,
                  transform=axes[0, 0].transAxes)
@@ -65,8 +65,8 @@ class Powerscan1D:
         #         sqrt(3) / 3 * 2 / 5),
         #          fontdict={"name": "STIX"}, fontsize=12,
         #          transform=plt.gca().transAxes)
-        plt.xlabel("$V_{rms}$ [mV]")
-        plt.ylabel("Splitting [MHz]")
+        plt.xlabel("$V_{rms}$ (mV)")
+        plt.ylabel("Splitting (MHz)")
         plt.legend()
         plt.grid(color='black', linestyle=':', linewidth=1)
 

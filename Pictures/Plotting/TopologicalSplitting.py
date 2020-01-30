@@ -38,9 +38,9 @@ class TopologicalSplitting:
             m = ax.pcolormesh(self._X, self._Y, array(self._plots[idx]).T,
                               vmin=0, vmax=1, cmap="Spectral", rasterized=True)
             if idx in [8, 7, 6]:
-                ax.set_xlabel("Current [$10^{-4}$ A]")
+                ax.set_xlabel("Current ($10^{-4}$ A)")
             if idx in [0, 3, 6]:
-                ax.set_ylabel("$\omega_d^{1,2}/2\pi$ [GHz]")
+                ax.set_ylabel("$\omega_d^{1,2}/2\pi$ (GHz)")
             if idx in [0]:
                 plt.text(.5, .7, "$\Omega_1: {0}$ MHz\n$\Omega_2: {1}$ MHz".format(Omegas[idx][0],
                                                                                    Omegas[idx][
@@ -130,7 +130,7 @@ class TopologicalSplitting:
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$P_{\left|00\right\rangle}$", position=(1.125, -2))
+        cb.ax.set_title(r"$P_{\left|00\right\rangle}$", position=(1.05, -2), fontsize=13)
 
         plt.savefig("../topological_splittings.pdf", bbox_inches="tight", dpi=600)
 

@@ -45,9 +45,9 @@ class MainPicturePlot:
         img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022, cmap = self._cmap)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
-        ax.set_xlabel('Current [$10^{-4}$ A]');
-        ax.set_ylabel('$\omega_d^{1,2}/2\pi$ [GHz]');
-        cb.ax.set_title(r"$\mathfrak{Re} [S^{exp}_{21}]$", position=(1.125,-1.5))
+        ax.set_xlabel('Current ($10^{-4}$ A)');
+        ax.set_ylabel('$\omega_d^{1,2}/2\pi$ (GHz)');
+        cb.ax.set_title(r"$\mathfrak{Re}\ S^{exp}_{21}$", position=(1.125,-1.5))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()
@@ -104,9 +104,9 @@ class MainPicturePlot:
         img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C), cmap = self._cmap)
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
-        ax.set_xlabel('Current [$10^{-4}$ A]');
+        ax.set_xlabel('Current ($10^{-4}$ A)');
         # ax.set_ylabel('Frequency [GHz]');
-        cb.ax.set_title(r"$\mathfrak{Re} [S^{sim}_{21}]$", position=(-0.125,-1.5))
+        cb.ax.set_title(r"$\mathfrak{Re}\ S^{sim}_{21}$", position=(-0.125,-1.5))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()

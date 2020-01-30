@@ -22,9 +22,9 @@ class ZoomPlot:
             m = ax.pcolormesh(self._X, self._Y, real(array(self._plots[idx]).T),
                               vmax=1, vmin=0, rasterized=True, cmap="Spectral")
             if idx % 2 == 0:
-                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ [GHz]');
+                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ (GHz)');
             if idx > 1:
-                ax.set_xlabel('Current [$10^{-4}$ A]');
+                ax.set_xlabel('Current ($10^{-4}$ A)');
 
 
         self._Omega_2s = array([6e-3, 15e-3, 30e-3, 60e-3])*0.75
@@ -60,7 +60,7 @@ class ZoomPlot:
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$P_{\left|00\right\rangle}$", position=(1.125,-2))
+        cb.ax.set_title(r"$P_{\left|00\right\rangle}$", position=(1.125,-2), fontsize=13)
 
         plt.text(-0.35, 1.15, "(b)", fontdict={"name": "STIX"}, fontsize=20,
                  transform=axes[0,0].transAxes)
