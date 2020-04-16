@@ -16,7 +16,7 @@ class ZoomPlot:
         self._load_data()
 
 
-        fig, axes = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(5, 5))
+        fig, axes = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(4.5, 4.5))
         plt.subplots_adjust(wspace=.2, hspace=.2)
 
         for idx, ax in enumerate(axes.ravel()[:]):
@@ -30,7 +30,7 @@ class ZoomPlot:
 
             m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r")
             if idx % 2 == 0:
-                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ (GHz)');
+                ax.set_ylabel('$\omega_d^{(1,2)}/2\pi$ (GHz)');
                 ax.yaxis.set_major_locator(MultipleLocator(0.01))
             if idx > 1:
                 ax.set_xlabel('Current ($10^{-4}$ A)');
@@ -51,24 +51,24 @@ class ZoomPlot:
         plt.text(.7, .9, r"$01$", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,0].transAxes, ha='center', color="black", rotation=70)
 
-        plt.text(.375, .025, r"$P_{exc} =$-20 dBm", fontdict={"name": "STIX"}, fontsize=12,
+        plt.text(.30, .025, r"$P_{exc} =$-20 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,0].transAxes, ha='left', color="black")
 
-        plt.text(.66, .025, r"-12 dBm", fontdict={"name": "STIX"}, fontsize=12,
+        plt.text(.62, .025, r"-12 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,1].transAxes, ha='left', color="black")
 
-        plt.text(.7, .025, r"-6 dBm", fontdict={"name": "STIX"}, fontsize=12,
+        plt.text(.67, .025, r"-6 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[1,0].transAxes, ha='left', color="black")
 
         plt.text(.7, .025, r"0 dBm", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[1,1].transAxes, ha='left', color="black")
 
 
-        cbaxes1 = fig.add_axes([0.125,.95,0.6,.015])
+        cbaxes1 = fig.add_axes([0.125,.95,0.575,.015])
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$\mathfrak{Re}\ S^{exp}_{21}$", position=(1.15,-2))
+        cb.ax.set_title(r"$10^3$ Re $S^{exp}_{21}$", position=(1.2,-2))
 
         plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=20,
                  transform=axes[0,0].transAxes)

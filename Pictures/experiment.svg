@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.4291875"
-     inkscape:cx="622.71671"
-     inkscape:cy="470.59916"
+     inkscape:zoom="1.71675"
+     inkscape:cx="441.48991"
+     inkscape:cy="131.96797"
      inkscape:document-units="mm"
      inkscape:current-layer="surface7945"
      showgrid="false"
@@ -35,8 +35,8 @@
      inkscape:guide-bbox="true"
      inkscape:snap-midpoints="true"
      inkscape:snap-global="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="741"
+     inkscape:window-width="1280"
+     inkscape:window-height="997"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -1511,14 +1511,16 @@
          xml:space="preserve"
          id="flowRoot1227"
          style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-         transform="matrix(0.24302346,0,0,0.24302346,-254.41738,-122.11129)"><flowRegion
+         transform="matrix(0.24302346,0,0,0.24302346,-254.41738,-123.56944)"><flowRegion
            id="flowRegion1229"><rect
              id="rect1231"
              width="227.17343"
              height="80.384445"
              x="412.40717"
              y="809.15448" /></flowRegion><flowPara
-           id="flowPara1233">300 um</flowPara></flowRoot>    </g>
+           id="flowPara1230">300 <flowSpan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:46.66666794px;font-family:STIX;-inkscape-font-specification:STIX"
+   id="flowSpan1232">μm</flowSpan></flowPara></flowRoot>    </g>
     <g
        id="surface83513"
        transform="matrix(1.0868064,0,0,1.0868064,115.93936,232.63396)"

@@ -96,8 +96,8 @@ class MainPictureSlices:
 
 
 
-        axes[0].set_ylabel("$\omega_d^{1,2}/2\pi$ (GHz)")
-        axes[1].set_xlabel(r"$\mathfrak{Re}\ S^{exp,\,sim}_{21}$")
+        axes[0].set_ylabel("$\omega_d^{(1,2)}/2\pi$ (GHz)")
+        axes[1].set_xlabel(r"Re $S^{exp,\,sim}_{21}$")
 
 
         plt.text(-0.53, 1.1, "(c)", fontdict={"name": "STIX"}, fontsize=17,

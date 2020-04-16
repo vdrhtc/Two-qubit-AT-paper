@@ -40,7 +40,7 @@ class TopologicalSplitting:
             if idx in [8, 7, 6]:
                 ax.set_xlabel("Current ($10^{-4}$ A)")
             if idx in [0, 3, 6]:
-                ax.set_ylabel("$\omega_d^{1,2}/2\pi$ (GHz)")
+                ax.set_ylabel("$\omega_d^{(1,2)}/2\pi$ (GHz)")
             if idx in [0]:
                 plt.text(.5, .7, "$\Omega_1: {0}$ MHz\n$\Omega_2: {1}$ MHz".format(Omegas[idx][0],
                                                                                    Omegas[idx][

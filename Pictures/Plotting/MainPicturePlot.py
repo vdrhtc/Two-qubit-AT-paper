@@ -46,8 +46,8 @@ class MainPicturePlot:
         cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current ($10^{-4}$ A)');
-        ax.set_ylabel('$\omega_d^{1,2}/2\pi$ (GHz)');
-        cb.ax.set_title(r"$\mathfrak{Re}\ S^{exp}_{21}$", position=(1.125,-1.5))
+        ax.set_ylabel('$\omega_d^{(1,2)}/2\pi$ (GHz)');
+        cb.ax.set_title(r"Re $S^{exp}_{21}$", position=(1.125,-1.5))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()
@@ -83,10 +83,22 @@ class MainPicturePlot:
                     arrowprops=dict(facecolor='black', width=.5, headwidth=3, headlength=3.5,
                                     shrink=0.05))
 
+        J_eff = 8e-3*np.sqrt(2)
+        lower_branch = 5.283
+        x_pos = 5.41
+        bar_size = 5e-2
+        # ax.plot([x_pos+bar_size]*2, [lower_branch, lower_branch+J_eff], color="black", lw=.5)
+        ax.plot([x_pos, x_pos + bar_size], [lower_branch] * 2, color="black", lw=.5)
+        ax.plot([x_pos, x_pos + bar_size], [lower_branch+J_eff] * 2, color="black", lw=.5)
+
+
+        ax.annotate(r"J$\sqrt{2}$", xy=(x_pos+bar_size+.01, lower_branch+J_eff/2), xytext=(x_pos+bar_size+.11, lower_branch+.01),
+                    ha="left", va="bottom", fontsize=7,
+                    arrowprops=dict(facecolor="black", width=.1, headwidth=3, headlength=3.5,
+                                    shrink=0.1))
         self._zoom(ax, data, vmin=-0.005, vmax = 0.022)
 
     def plot_theory(self, ax):
-
         # try:
         #     C = self._cache[self.nstate]
         # except KeyError:
@@ -106,7 +118,7 @@ class MainPicturePlot:
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current ($10^{-4}$ A)');
         # ax.set_ylabel('Frequency [GHz]');
-        cb.ax.set_title(r"$\mathfrak{Re}\ S^{sim}_{21}$", position=(-0.125,-1.5))
+        cb.ax.set_title(r"Re $S^{sim}_{21}$", position=(-0.125,-1.5))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()

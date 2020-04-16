@@ -61,8 +61,8 @@ class StationaryPlot:
         m = 1
         t = .5
         typ1 = (0, (5, 0))
-        typ2 = (0, (1, 2))
-        secondary_colour = (0.5, 0.5, 0.2)
+        typ2 = "-" #(0, (1, 2))
+        secondary_colour = (0.5, 0.5, 0.5, 0.25)
 
         energies = energies[len(currs)//2+12:, :]
         currs = currs[len(currs)//2+12:]
@@ -117,29 +117,29 @@ class StationaryPlot:
                  linestyle=typ1);  # 00->10
 
         plt.plot(currs, ((energies[:, 3].T - energies[:, 0]).T / 2),
-                 label=r"20/2",
-                 linewidth=m, linestyle=typ1);  # 00->20
+                 label=r"20/2", color = "C1",
+                 linewidth=m, linestyle=":");  # 00->20
 
         plt.plot(currs, ((energies[:, 4].T - energies[:, 0]).T / 2),
-                 label=r"02/2",
-                 linewidth=m, linestyle=typ1);  # 00->02
+                 label=r"02/2",color = "C0",
+                 linewidth=m, linestyle=":");  # 00->02
 
         plt.plot(currs, ((energies[:, 4].T - energies[:, 1]).T),
                  label=r"10-02", linewidth=m,
-                 linestyle=typ1);  # 10->02
+                 linestyle="--");  # 10->02
 
         plt.plot(currs, ((energies[:, 5].T - energies[:, 0]).T / 2), label=r"11/2",
-                 linewidth=m, linestyle=typ1)  # , color='black');  # 00->11
+                 linewidth=m, linestyle="--", color="C5")  # , color='black');  # 00->11
 
         plt.plot(currs, ((energies[:, 6].T - energies[:, 0]).T / 3), label=r"21/3",
-                 linestyle=typ1, linewidth=m , color='C7');  # 00->21/3
+                 linestyle="-.", linewidth=m , color='C7');  # 00->21/3
 
         plt.plot(currs, ((energies[:, 7].T - energies[:, 0]).T / 3), label=r"12/3",
-                 linestyle=typ1, linewidth=m, color="C9");  # 00->12
+                 linestyle="-.", linewidth=m, color="C9");  # 00->12
 
         plt.ylim(5.1, 5.5)
         plt.xlim(2,6)
-        ax.set_ylabel("$\omega_{d}^{1,2}/2\pi$ (GHz)")
+        ax.set_ylabel("$\omega_{d}^{(1,2)}/2\pi$ (GHz)")
 
         ax.set_xlabel("Current ($10^{-4}$ A)")
         plt.legend(ncol=3, fontsize=7)

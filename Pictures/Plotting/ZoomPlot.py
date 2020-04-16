@@ -15,14 +15,14 @@ class ZoomPlot:
         with open('zoom2.pkl', 'rb') as f:
             self._X, self._Y, self._plots = pickle.load(f)
 
-        fig, axes = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(5, 5))
+        fig, axes = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(4.5, 4.5))
         plt.subplots_adjust(wspace=.2, hspace=.2)
 
         for idx, ax in enumerate(axes.ravel()):
             m = ax.pcolormesh(self._X, self._Y, real(array(self._plots[idx]).T),
                               vmax=1, vmin=0, rasterized=True, cmap="Spectral")
             if idx % 2 == 0:
-                ax.set_ylabel('$\omega_d^{1,2}/2\pi$ (GHz)');
+                ax.set_ylabel('$\omega_d^{(1,2)}/2\pi$ (GHz)');
             if idx > 1:
                 ax.set_xlabel('Current ($10^{-4}$ A)');
 
@@ -42,14 +42,14 @@ class ZoomPlot:
         plt.text(.7, .9, r"$01$", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0, 0].transAxes, ha='center', color="black", rotation=70)
 
-        plt.text(.15, .025, r"$\Omega_{1,2} / 2\pi  = $4.5 MHz ", fontdict={"name": "STIX"}, fontsize=12,
+        plt.text(.12, .025, r"$\Omega_{1,2} / 2\pi  = $4.5 MHz ", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,0].transAxes, ha='left', color="black")
 
 
-        plt.text(.57, .025, r"11.25 MHz", fontdict={"name": "STIX"}, fontsize=12,
+        plt.text(.52, .025, r"11.25 MHz", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[0,1].transAxes, ha='left', color="black")
 
-        plt.text(.6, .025, r"22.5 MHz", fontdict={"name": "STIX"}, fontsize=12,
+        plt.text(.55, .025, r"22.5 MHz", fontdict={"name": "STIX"}, fontsize=12,
                  transform=axes[1,0].transAxes, ha='left', color="black")
 
         plt.text(.65, .025, r"45 MHz", fontdict={"name": "STIX"}, fontsize=12,
