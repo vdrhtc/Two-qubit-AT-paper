@@ -139,7 +139,7 @@ class StationaryPlot:
 
         plt.ylim(5.1, 5.5)
         plt.xlim(2,6)
-        ax.set_ylabel("$\omega_{d}^{(1,2)}/2\pi$ (GHz)")
+        ax.set_ylabel("$\omega_{d}/2\pi$ (GHz)")
 
         ax.set_xlabel("Current ($10^{-4}$ A)")
         plt.legend(ncol=3, fontsize=7)

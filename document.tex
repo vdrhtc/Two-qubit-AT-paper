@@ -282,7 +282,7 @@ either involved just a single atom \cite{baur2009measurement,
 	gasparinetti2019two} or have 
 demonstrated only the standard spectral 
 signatures known from the quantum optics \cite{suri2013observation} (see 
-Appendix \ref{sec:3-level-at}). Moreover, most of the previous spectroscopic experiments with coupled transmons were done at low powers and resolved only the most prominent single-photon transitions \cite{majer2007coupling, filipp2011multimode}, or used two distinct excitation frequencies to reach higher energy levels \cite{dicarlo2009demonstration}, or did not study the spectral data with necessary resolution \cite{kounalakis2018tuneable}, or used non-tunable transmons \cite{poletto2012entanglement}. In contrast, we put a tunable system in a new regime of intense driving which allows to discover and quantify both experimentally and theoretically its novel unexplored behaviours. Likewise, we could not find reports of such effects in natural molecules, 
+Appendix \ref{sec:3-level-at}). Moreover, most of the previous spectroscopic experiments with coupled transmons were done at low powers and resolved only the most prominent single-photon transitions \cite{majer2007coupling, filipp2011multimode}, or used simultaneous excitation at two distinct frequencies to reach higher energy levels \cite{dicarlo2009demonstration}, or did not study the spectral data with necessary resolution \cite{kounalakis2018tuneable}, or used non-tunable transmons \cite{poletto2012entanglement}. In contrast, we put a tunable system in a new regime of intense driving which allows to discover and quantify both experimentally and theoretically its novel unexplored behaviours. Likewise, we could not find reports of such effects in natural molecules, 
 which could in principle be observed there; most probably, this is caused by reduced controllability and 
 coherence compared to superconducting quantum devices. 
 
@@ -301,42 +301,60 @@ our experimental and theoretical research,
 including numerical simulations and analytical 
 analysis; finally, in Section IV we make a 
 conclusion of our work and discuss future 
-prospects. The Appendix contains important 
-details of the theoretical framework that we use.
+prospects. The Appendix contains the 
+details of the theoretical framework that we use and additional information about the sample and the measurement techniques.
 
-\vspace{-.25cm}
-\section{Methods}
+\section{Methods}\label{sec:methods}
 
 \subsection{Device design and control}
-We have designed the SAM as a pair of transmon 
-(Xmon) SAAs with asymmetric 
-SQUIDs \cite{hutchings2017tunable}. Single-transmon parameters determined from spectroscopy: maximal Josephson energies $E^{(1)}_{J, 
-\sum}/h = 24.3$ GHz, $E^{(2)}_{J,\sum}/h = 18.3$ GHz, 
-charging energies $E^{(1,2)}_C/h = 220$ MHz, SQUID asymmetries $d^{(1,2)} = 0.75$ defined as in \cite{koch2007charge}) coupled 
+
+
+
+
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{experiment_2}
+	\caption{\textbf{(a)} Optical image of 
+		the device (false colored). Two transmons 
+		(orange, 1 and blue, 2) are coupled 
+		capacitively to a $\lambda/4$ coplanar 
+		resonator. Frequency control lines come from 
+		both sides, and from below a waveguide for 
+		microwave excitation  is connected (green). 
+		\textbf{(b)} The equivalent electrical 
+		circuit. Tunable Josephson junctions are 
+		SQUIDs with magnetic flux control. 
+		\textbf{(c)} A sketch of the frequencies of the fundamental 
+		transitions of the transmons $\omega_1(I)$ 
+		and $\omega_2(I)$ depending on the current 
+		$I$ in an external coil when correctly 
+		aligned by the individual flux control lines. 
+		In this work, we focus on the area inside the 
+		dashed rectangle.}
+	\label{fig:experiment}
+\end{figure}
+
+
+We have designed the SAM as a pair of tunable Xmon SAAs with asymmetric 
+SQUIDs \cite{hutchings2017tunable, koch2007charge, barends2013coherent}. They are coupled 
 to a single notch-type \cite{probst2015efficient} 
-$\lambda/4$ resonator ($f_r = 7$ GHz, $\kappa = 
-1/100\ \text{ns}^{-1}$) which both 
-couples \cite{majer2007coupling} the transmons and 
-allows joint readout  \cite{chow2010detecting} of 
-their states. In \autoref{fig:experiment}~(a), 
-the optical photograph of the device is shown, where the layout of the components is presented. The 
+$\lambda/4$ resonator ($f_r = 7.34$ GHz, $Q_e \approx 1900,\ Q_l \approx 1100$) which 
+serves for the dispersive readout of their states \cite{chow2010detecting}. In \autoref{fig:experiment}~(a), 
+the optical photograph of the device is shown presenting the physical layout of the components. The 
 resonator in its upper part is connected to a 
 coplanar waveguide through which the readout is 
 performed. In its lower part, it is coupled to 
 the transmons by a dual 
 ``claw'' \cite{barends2013coherent} coupler. Flux 
-lines that allow independent control of the 
-transmon frequencies are coming from the sides. 
-Finally, the excitation waveguide coming from 
-below directs microwave signal towards the SAM. 
+lines allowing independent control of the 
+transmon frequencies are coming from the sides, and the excitation waveguide from 
+below directs the microwave signal towards the SAM (green). 
 In \autoref{fig:experiment}~(b), the equivalent 
 electrical circuit of the device is shown. The 
-resonator fundamental mode is approximated as an 
-LC-circuit (in the middle), the transmons are 
-shown in color on the sides; their SQUIDs are 
-represented as tunable Josephson junctions. A 
-capacitively coupled excitation line is also 
-shown in green. Finally, in 
+resonator is inductively and capacitively coupled to the transmission line. Here we simplify the distributed coupling down to lumped elements, as in \cite{khalil2012analysis}, even though there is a more rigorous approach this case \cite{besedin2018quality}. The transmons 1 and 2 are colored orange and blue, respectively, and their SQUIDs are 
+represented as tunable Josephson junctions. One can note that our design gives rise to two types of coupling in the SAM. The first is the dispersive virtual photon exchange through the multimode cavity\cite{majer2007coupling, filipp2011multimode} and the second is the direct coupling via a mutual capacitance. We find that both them contribute noticeably to the observed effective coupling strength, but with opposite signs (details can be found in Appendix \ref{sec:full_model}).
+
+Finally, in 
 \autoref{fig:experiment}~(c) we show 
 schematically the frequencies of the transmons 
 depending on electric current $I$ which we apply 
@@ -358,36 +376,11 @@ are better protected from the flux noise in this
 area being close to their sweet spots.
 
 
-
-\begin{figure}
-	 	\includegraphics[width=\linewidth]{experiment_2}
-	\caption{\textbf{(a)} Optical image of 
-	the device (false colored). Two transmons 
-	(orange, 1 and blue, 2) are coupled 
-	capacitively to a $\lambda/4$ coplanar 
-	resonator. Frequency control lines come from 
-	both sides, and from below a waveguide for 
-	microwave excitation  is connected (green). 
-	\textbf{(b)} The equivalent electrical 
-	circuit. Tunable Josephson junctions are 
-	SQUIDs with magnetic flux control. 
-	\textbf{(c)} A sketch of the frequencies of the fundamental 
-	transitions of the transmons $\omega_1(I)$ 
-	and $\omega_2(I)$ depending on the current 
-	$I$ in an external coil when correctly 
-	aligned by the individual flux control lines. 
-	In this work, we focus on the area inside the 
-	dashed rectangle.}
-	\label{fig:experiment}
-\end{figure}
-
-
-\vspace{-.25cm}
 \subsection{Quantum-mechanical description}
 
 A single transmon SAA can be regarded as an 
 oscillator with a quartic perturbation describing 
-the leading-order anharmonicity. Therefore, in 
+the leading-order anharmonicity \cite{koch2007charge, yan2018tunable}. Therefore, in 
 the main text we do not use the charge and phase 
 operators and write down its Hamiltonian using 
 only the annihilation operator $\hat b$:
@@ -437,8 +430,7 @@ b^\dag)(\hat c+\hat c^{\dagger})$.
 Strictly speaking, $J = J(\omega_1, \omega_2)$ 
 depends on the transmon 
 frequencies \cite{koch2007charge}, but we take $J$ 
-to be a constant due to its negligible variation for our range of frequencies.
-
+to be a constant due to its negligible variation for our range of frequencies (see also Appendix \ref{sec:full_model} for details).
 
 For brevity, the SAM Hamiltonian without driving 
 terms and the corresponding eigenenergies will be 
@@ -520,19 +512,18 @@ dissipator terms when changing the reference
 frame despite that it may not be correct in 
 general \cite{shavit2019bridging}.
 
-We summarize the parameters of the SAM model in \autoref{tab:parameters}. The coherence times $T_1 = 1/\gamma$, $T_2^{*} = 1/(\gamma/2 + \gamma_{\phi})$ were measured independently in the lower and upper sweet spot for transmons 1 and 2, respectively. The remaining parameters were extracted from the fits of the unperturbed model to the observed spectral lines; this procedure will be discussed in more detail in Section \ref{sec:level1}.
-
-
+We summarize the parameters of the SAM model in \autoref{tab:parameters}. The coherence times $T_1 = 1/\gamma$, $T_2^{*} = 1/(\gamma/2 + \gamma_{\phi})$ were measured independently in the lower and the upper sweet spots for transmons 1 and 2, respectively. The remaining parameters were extracted from the fits of the unperturbed model to the observed spectral lines; this procedure will be discussed in more detail in Section \ref{sec:level1}. The underlying electrical parameters of the transmons are the Josephson energies $E^{(1)}_{J, 
+\sum}/h = 24.3$ GHz, $E^{(2)}_{J,\sum}/h = 18.3$ GHz,  the charging energies $E^{(1,2)}_C/h = 220$ MHz, and SQUID asymmetries $d^{(1,2)} = 0.7$ (all these parameters are defined as in \cite{koch2007charge})
 
 \begin{table}
 	\begin{ruledtabular}
 		\begin{tabular}{rll}
 			Parameter & Transmon 1  & Transmon 2\\\hline
-			$\omega/2\pi$ [GHz] & 5.12 - 6.3  & 4 - 5.45\\
-			$\alpha/2\pi$ [MHz] & -220 & -220 \\
-			$T_1$ [$\mu$s]  & 6.82 &  4.41 \\
-			$T_2^*$ [$\mu$s]  & 5.14  &  3.33\\\hline
-			$J/2\pi$ [MHz] &\multicolumn{2}{c}{8} 
+			$\omega/2\pi$ (GHz) & 5.12 - 6.3  & 4 - 5.45\\
+			$\alpha/2\pi$ (MHz) & -220 & -220 \\
+			$T_1$ ($\mu$s)  & 6.82 &  4.41 \\
+			$T_2^*$ ($\mu$s)  & 5.14  &  3.33\\\hline
+			$J/2\pi$ (MHz) &\multicolumn{2}{c}{8.69} 
 		\end{tabular}
 	\end{ruledtabular}
 	\caption{SAM model parameters. Transmons are only 
@@ -549,24 +540,20 @@ We summarize the parameters of the SAM model in \autoref{tab:parameters}. The co
 
 The readout resonator is not included in the 
 model since in the dispersive regime it does not 
-affect the dynamics of the SAM. Hence, the 
-readout is modelled just by some measurement 
+affect the dynamics of the SAM. Therefore, we model the 
+readout simply by a measurement 
 operator $\hat M(f_p)$ that can be obtained by 
 finding the transmission $S_{21}(f_p)$ ($f_p$ is 
-the probe frequency near the resonance) through 
+the probe frequency near the resonator frequency) through 
 the sample after preparing various states of the 
 SAM. Another way to find $\hat M(f_p)$ is to 
 calculate $S_{21}(f_p)$ via offsetting the 
 experimental resonance curve measured when the 
 SAM is in the ground state by the dispersive 
 shifts corresponding to the SAM basis 
-states \cite{filipp2009two, chow2010detecting}. Since we have not 
-directly measured these dispersive shifts, in our 
-modelling they are treated as fitting parameters. 
-Finally, the observable value for any state $\hat 
+states \cite{filipp2009two, chow2010detecting}. We calculate them with the parameters that can be found in Appendix \ref{sec:full_model} according to \cite{koch2007charge}, Eq. D3. Finally, the observable value for any state $\hat 
 \rho$ is calculated as $S_{21}^{sim}(f_p) = 
-\Tr[\hat M(f_p) \hat \rho]$.
-
+\Tr[\hat M(f_p) \hat \rho]$. 
 
 \subsection{Numerical solution in \textit{qutip}}
 
@@ -650,14 +637,13 @@ of $\Lambda$
 	\includegraphics[width=.495\linewidth]{stationary}
 	\caption{SAM spectroscopy: experiment 
 	and numerical modelling. \textbf{(a)} 
-	Experimental data. Color shows the real part 
-	of complex transmission  through the sample. 
+	Experimental data. Color shows the absolute deviation $|\Delta S_{21}| (I, \omega_d)$ of the complex transmission through the sample from its value in the lower left corner. 
 	Two transmons are aligned as in 
 	\autoref{fig:experiment}~(c) and form a 
 	symmetric picture. Experimental data contain 
 	an additional horizontal line from a 
 	parasitic resonance interacting with the 
-	readout resonator. Three avoided crossings 
+	readout resonator. Three effects
 	not predicted by the unperturbed model are 
 	shown in insets I, II and III; other 
 	pronounced features reproduced by the 
@@ -665,7 +651,7 @@ of $\Lambda$
 	text for description). \textbf{(b)} Numerical 
 	simulation reproducing experimental results 
 	with labelled transitions (see Section 
-	\ref{sec:analysis} for notation). 
+	\ref{sec:analysis} for notation). The simulated $|\Delta S_{21}| (I, \omega_d)$ is multiplied by 1.3 to match with the experiment.
 	\textbf{(c)} Slices of (a) and (b) at various 
 	currents: 0.365 mA (feature III), 0.411 mA 
 	(sweet spot), 0.333 mA (feature I); 
@@ -700,21 +686,14 @@ several points they become resonant with each
 other. At three pairs of such resonant points, we 
 observe distinct features shown in insets marked 
 with Roman numbers. Some secondary details are 
-shown with Arabic-numbered markers.
-
-In areas I, II and III, we observe peculiar 
-avoided crossings forming triplet transitions. In 
-I and II, they are barely visible, however in III 
-the splitting is very pronounced. To check 
-whether our theoretical model summarized in 
+shown with Arabic-numbered markers. To avoid any possible confusion, we emphasize that by feature I we mean not the usual avoided crossing between $\omega_{1}(I)$ and $\omega_{2}(I)$, studied extensively in the past at lower powers, but its apparent disappearance and the noticeable change in the shape of the two-photon spectral line that would usually pass straight through it \cite{filipp2011multimode}. To check whether the standard theoretical model summarized in 
 \autoref{eq:master} can reproduce the 
 experimental spectrum, we have solved the master 
 equation \autoref{eq:master} finding the steady 
-states of the system $\hat \rho_{ss}$ and the 
+states of the system $\hat \rho_{ss}(I, \omega_d)$ and the 
 corresponding expected measurement outcomes 
-$\mathfrak{Re}\ \Tr[\hat M \hat \rho_{ss}]$ 
-depending on the excitation frequency and 
-magnetic flux. The parameters of the unperturbed Hamiltonian were established by fitting the system transition frequencies obtained from numerical diagonalization to the observed spectral lines in \autoref{fig:two-tone}~(a). The transmon interaction strength $J$ is usually determined from the size of the avoided crossing between $\omega_1$ and $\omega_2$. However, die to the strong drive in our experiment it is smaller than the linewidths and is not resolved. Alternatively, $J$ can be determined from the size of the  splitting located at 5.3 GHz and $2.9\cdot 10^{-4}$A (or $5.4 \cdot 10^{-4}$A). It is a well-known effect \cite{dicarlo2009demonstration} widely used for CZ gates with transmons; its size is $(2 \cdot J_{eff})/2$, where $J_{eff} = \sqrt{2} J$ is the corresponding matrix element of $\hat H_{int}$ and division by two is required as we observe an intersection between two-photon processes in our data.
+$\Tr[\hat M \hat \rho_{ss}(I, \omega_d)]$ 
+depending on the external coil current, and the excitation frequency $\omega_d$.
 
 The results are shown in 
 \autoref{fig:two-tone}~(b) where all the 
@@ -727,22 +706,24 @@ the propagator approach \autoref{eq:propagator})
 and did not find any noticeable difference in the 
 results; though, the runtime of the whole 401 by 
 401 points simulation was 9 hours without RWA vs. 
-3 minutes with RWA. As can be seen from three 
+3 minutes with RWA. The driving amplitudes $\Omega_{1,2}$ were chosen to be $20$ and $10$ MHz, respectively. The parameters of the unperturbed Hamiltonian summarized in \autoref{tab:parameters} were established by fitting the system transition frequencies obtained from numerical diagonalization to the observed spectral lines in \autoref{fig:two-tone}~(a). The transmon interaction strength $J$ is usually determined from the size of the avoided crossing between $\omega_1$ and $\omega_2$. However, due to the strong drive in \autoref{fig:two-tone}~(a) it is smaller than the linewidths and is not resolved. Fitting a separately measured data at lower power we have obtained $J = 8.69$ MHz. Alternatively, $J$ can be determined from the size of the  splitting located at 5.3 GHz and $2.9\cdot 10^{-4}$A (or $5.4 \cdot 10^{-4}$A). It is a well-known effect \cite{dicarlo2009demonstration} widely used for implementing cPhase gates on transmons; its size is $(2 \cdot J_{eff})/2$, where $J_{eff} = \sqrt{2} J$ is the corresponding matrix element of $\hat H_{int}$ and division by two is required as we observe an intersection between two-photon processes in our data. As can be seen from three 
 slices of \autoref{fig:two-tone}~(a),(b) in 
 \autoref{fig:two-tone}~(c), the numerical results 
 are in a good agreement with the experiment (the 
-spurious resonance is softened). The parameters 
-of model were chosen to match with the 
-experimental data.
+spurious resonance is softened).
+
+One problem that we have faced when modelling the measurement operator was that the depth of the resonance dip reduced slightly upon SAM excitation. Therefore, the experimental response was in fact higher than that predicted by the dispersive shifts. Therefore, in \autoref{fig:two-tone}~(b,c) we had to artificially scale the theoretical data up approximately by 30\% to obtain the best match with the experiment. We believe that this problem is connected with the very low observed internal Q-factor of the readout resonator which was 100 times lower than the corresponding Q-factors of the test resonators and of the transmons on the same chip. We have observed this suppression of the readout resonator internal Q-factor for several similar devices, but so far we could not find an explanation for that. However, this problem does not affect our main results which only concern the behaviour of the SAM.
+
+
 
 Remarkably, features I, II and III turn out to be 
 impossible to explain using only the unperturbed 
-Hamiltonian; we confirm this by numerical 
+Hamiltonian; we demonstrate this by numerical 
 diagonalization taking the same 9 SAM states as 
-in the previous simulation. To substantiate that claim, in \autoref{fig:two-tone}~(d) we show all possible 
+in the previous simulation. In \autoref{fig:two-tone}~(d) we show all possible 
 single and multiphoton transitions between all resulting pairs of the unperturbed eigenlevels that fall into the relevant frequency range depending on the coil current. While correctly reproducing, for 
 instance, the avoided crossing labelled as 
-feature 3, there are no levels following the spectral lines observed in the Roman-numbered effects. 
+feature 3, the unperturbed model does not produce any transitions following the spectral lines observed in the Roman-numbered areas. Particularly, in I one can see that the unperturbed transition 11/2 passes straight in the middle of the avoided crossing between 01 and 10. The experiment and the full simulation demonstrate that this is not the case in the regime of strong driving.
 
 So far, we have established the fact that the 
 same model SAM yields different spectra depending 
@@ -795,7 +776,7 @@ more detail in a separate section below.
 	$\Omega_{1(2)}$ is increased while 
 	$\Omega_{2(1)} = \text{const},\ \Omega_{2(1)} \ll 
 	\Omega_{1(2)}$; two topologically different 
-	types of anticrossings arise depending on 
+	types of splittings arise depending on 
 	which transmon is driven stronger. In the 
 	bottom row, we show how the splittings vanish 
 	when the weaker driving is increased to match 
@@ -906,12 +887,11 @@ quantify the shape of this splitting, in Section
 for the dashed curves fitting the spectral lines 
 in \autoref{fig:zoom}. In \autoref{fig:zoom}~(c), blue points, we present splitting sizes extracted by fitting of the model to the data as in \autoref{fig:zoom}~(a) for various power values of the microwave generator connected to the excitation waveguide. As one can see from the linear approximation of the points, the splitting indeed is simply proportional to the RMS voltage of the signal. From the model, we expect that the minimal distance between curves in the anticrossing is equal to $\frac{2\sqrt{3}}{3} \Omega_2$; using this relation, we extract the proportionality coefficient between $\Omega_2$ and $V_{rms}$ is around $0.23$ MHz/mV from the linear fit.
 
-In \autoref{fig:difdrive}, we demonstrate a similar power dependence of feature I: increasing drive amplitude on one of the 
+In \autoref{fig:difdrive}, we demonstrate a similar power dependence of feature I: increasing the drive amplitude on one of the 
 transmons while keeping the other one small and 
-constant again elicits avoided crossings with the 
-proportional size. We  show only the simulation results; an experiment is not possible with our sample because, since we have just a single excitation line, there is 
+constant again result in a splitting of the line 11/2. We show only the simulation results; an experiment is not possible with our sample since we have just a single excitation line and there is 
 no way for us to control the driving amplitudes 
-$\Omega_{1,2}$ individually. We note that two 
+$\Omega_{1,2}$ independently. We note that two 
 qualitatively different patterns arise depending 
 on which of the transmons is driven stronger than 
 the other. From this and from the shape of the 
@@ -919,7 +899,7 @@ splitting in feature I of
 \autoref{fig:two-tone}~(a), we can infer that 
 $\Omega_1/\Omega_2 \approx 2$ there (also 
 consistent with the 01, 10 linewidths in 
-\autoref{fig:two-tone}~(c)). If in contrast both transmons are driven with equal amplitudes, the avoided crossing vanishes. As can be seen from black dashed lines in \autoref{fig:difdrive}, all these cases are explained well by our analytical model described in detail in Sections \ref{sec:theory} and \ref{sec:münchhausen}.
+\autoref{fig:two-tone}~(c)). If in contrast both transmons are driven with equal amplitudes, the splitting of 11/2 vanishes. As can be seen from black dashed lines in \autoref{fig:difdrive}, all these cases are explained well by our analytical model described in detail in Sections \ref{sec:theory} and \ref{sec:münchhausen}.
 
 From all presented observations, we conclude that effects I -- III 
 are caused by light dressing. In the case III, the 
@@ -964,10 +944,10 @@ found in the experimental data, too.
 
 In conclusion to this section, we note that when the coupling is turned off ($J=0$) in the simulation, the system does not demonstrate any of the described details. This means that all these effects can only be attributed to the SAM as a whole. 
 
-\subsection{Explaining extra avoided crossings}\label{sec:theory}
+\subsection{Explaining Roman-numbered effects}\label{sec:theory}
 
 Since we had already connected the additional 
-avoided crossings with the light dressing, it was 
+spectral features with the light dressing, it was 
 natural to expect an Autler-Townes-like effect to 
 be at the root of the additional spectral lines. 
 For a three-level system, the standard A-T effect 
@@ -1000,7 +980,7 @@ in the Hilbert subspaces they act upon and in the number of participating photon
 
 For feature I, the simultaneously 
 excited transitions are $01,\ 10$ and the 
-two-photon $11/2$. In this case, the weak two-photon process is probing transitions in the doubly-dressed SAM. We find that if SAAs are dressed equally, $11/2$ does not form an avoided crossing, and for it to be clearly observed it is required that 
+two-photon $11/2$. In this case, the weak two-photon process is probing transitions in the doubly-dressed SAM. We find that if SAAs are dressed equally, $11/2$ does not split, and for it to be clearly observed it is required that 
 $\Omega_{1,2} \gg \Omega_{2,1}$. 
 
 Below, we give the detailed explanation of features II and III, and finally, I.
@@ -1161,7 +1141,7 @@ As one can see from \autoref{fig:difdrive}, near the 01, 10 intersection only th
 
 
 
-\subsection{Self-consistent equations for the avoided crossings}
+\subsection{Self-consistent equations for the I, II, III}
 \label{sec:münchhausen}
 
 Before, we have assumed that the transmons are driven independently at two different frequencies. In this section, we will employ the same model from \autoref{fig:main_scheme} to explain the experimentally observed splittings when only a single frequency $\omega_d$ is sent at the SAM. 
@@ -1350,7 +1330,79 @@ Experimental investigation was conducted with the support of Russian Science Fou
 
 \appendix
 
-\section{Derivation of the approximated SAM model}
+\section{Full circuit model}\label{sec:full_model}
+
+In this section we substantiate our use of the simplified model in \autoref{Hsystem} and compare our device with previous works. From the scheme in \autoref{fig:experiment}~(b) and from \cite{yan2018tunable} we can conclude, that we have two types of interaction between SAAs, and that our choice for $\hat H_{int}$ is valid. The only difference is in the representation of the charge operator $\hat n$ which we choose to be proportional to $\hat b^\dag + \hat b$ instead of $i(\hat b^\dag - \hat b)$ which is a question of the basis choice. The only change it causes is in the positive sign before counter-RWA terms important only for the coupling to the resonator, which leads to an altered rotation operator in the Schrieffer-Wolff transformation but identical final results.  The symmetries of the driving and of the coupling operator remain the same. Therefore, we can proceed and calculate the coupling strengths. that are 
+
+The first one, $J_{12}$, is caused by the direct capacitive coupling, and following \cite{yan2018tunable} we see that:
+\[
+J_{12} = \frac{1}{2}(1 + \eta)\frac{C_{12}}{\sqrt{C_1 C_2}} \sqrt{\omega_1 \omega_2},
+\] 
+where $C_{12}$ is the direct capacitance between the transmon islands, $C_{1,2}$ are their capacitances to the ground, and $\omega_{1,2}$ are defined as in the main text. The coefficient  $\eta$ is around 6$\cdot 10^{-2}$ for our parameters as will be shown later.
+
+
+The second coupling mechanism is via the multimode quantum bus, similar to \cite{majer2007coupling, filipp2011multimode}. However, the models used in these papers can now be improved using \cite{yan2018tunable} (counter-RWA terms must be taken into account for higher modes that are in the strong dispersive regime) and \cite{malekakhlagh2017cutoff, gely2017convergence} that have solved the divergence problems and found rigorously the effective cut-off frequency $f_{max}$ that we will employ. For our case, $f_{max}$ can be calculated using the equivalent capacitance of the network at the open end of the $\lambda/4$ resonator:
+\[
+C_{eff} \approx C_{claw} + (C_{g1}^{-1} + C_{1}^{-1})^{-1} + (C_{g2}^{-1} + C_{2}^{-1})^{-1},
+\] 
+where $C_{g1, g2}$ are the capacitances between the transmons and the resonator, $C_{claw}$ is the direct capacitance of the claw coupler to the ground plane, and $C_{12}$ and capacitances to the drive antenna are neglected. Now, to find $f_{max}$ we need to solve the equation
+\[
+\left|\frac{1}{i 2\pi f_{max} C_{eff}}\right| = |Z_{res}| \approx 50\ \Omega
+\]
+which marks the frequency above which the capacitive impedance at the end of the resonator will become small enough to effectively change the boundary condition there to a short, turning off the electric field and thus the capacitive coupling of the higher-frequency modes to the transmons. 
+
+Next, we use the expression for the coupling through the j\textsuperscript{th} mode with the frequency $\omega_j$ based on \cite{yan2018tunable} with the counter-RWA terms:
+
+\begin{equation}
+\label{eq:bus_coupling}
+J^{(j)}_{bus} \approx \frac{g_1^{(j)}g_2^{(j)}}{2}\left(\frac{1}{\Delta_{1}^{(j)}}+\frac{1}{\Delta_{2}^{(j)}}-\frac{1}{\Sigma_{1}^{(j)}}-\frac{1}{\Sigma_2^{(j)}}\right),
+\end{equation}
+where $\Delta_{1, 2}^{(j)}=\omega_{1,2}-\omega_j < 0\ \forall j$, $\Sigma_{1,2}^{(j)}=\omega_{1,2}+\omega_j$, and
+\begin{equation}
+\label{eq:g}
+	g_{1,2}^{(j)} =\frac{1}{2}\frac{C_{g1, g2}}{\sqrt{C_{1,2}C_r}}\sqrt{\omega_{1,2}\omega_j},
+\end{equation}
+where the effective mode capacitance $C_r = C_r' l_r/2 + C_{claw}$ does not depend on $j$ \cite{yan2018tunable, pozar2009microwave}. $C_r' = 160$ fF/mm being the per-unit-length capacitance may be calculated for a CPW (center width of 7 $\mu$m, gap of 4 $\mu$m) with standard means (here and below we take the substrate $\varepsilon$ to be 11.45 \cite{krupka2006measurements}); $l_r = 3.477$ mm is the resonator length without the claw. $C_{claw}$ may be found from EM simulations or from the equation determining the observed resonator frequency:
+\begin{equation}
+	\label{eq:resonator_freq}
+	\omega_0 = \frac{1}{\sqrt{L_r^{(0)}(1+\alpha) (C_r' l_r/2 + C_{claw})}},
+\end{equation}
+where $\alpha = 0.14$ is the kinetic inductance contribution determined from two test resonators without claws and $L_r^{(0)} = 8 L_r' l_r/\pi^2$ is the geometric equivalent inductance of the fundamental mode, $L_r' = 0.4$ nH/mm.
+From EM simulation, we find $C_{claw}$ = 64 fF; however, from \autoref{eq:resonator_freq} we obtain $C_{claw} = $ 53 fF. We are unable to explain why the difference is so significant, even though we could successfully describe the frequencies of all 4 different resonators on the chip (two with transmon pairs and claws, at 6.840 and 7.340 GHz, and two test ones, at 7.700 and 7.800 GHz) up to MHz accuracy with \autoref{eq:resonator_freq} while fitting only $\alpha$ and $C_{claw}$. Below we will use the smaller value for $C_{claw}$ determined from the experimental data.
+
+
+\begin{figure}[b]
+	\includegraphics[width=\linewidth]{sts}
+	\caption{Determining the coupling strength from the resonator spectroscopy (external coil current is swept, flux bias lines turned off, transmission amplitude is shown). The transmon parameters $E_{J,\Sigma}^{(1,2)},\ E_C^{(1,2)},\ d^{(1,2)}$ are fixed to the values from Section \ref{sec:methods} A, and the bare cavity frequency, current sweet spots, current periods and coupling capacitance $C_g = C_{g1} = C_{g2}$ are the fitting parameters. The orange curve shows the theoretical prediction for the optimal values: $\omega_0/2\pi = 7.340$ GHz, sweet spots at -1.2 and 0.45 mA, periods of 1.15 and 0.74 mA, $C_g$ = 2.5 fF.}
+	\label{fig:sts}
+\end{figure}
+
+
+\begin{figure}[b]
+	\includegraphics[width=\linewidth]{multimode_J}
+	\caption{Multimode coupling vs $\omega_{j_{max}}$. Blue points show the RWA result (without the $\Sigma_{1,2}^{(j)}$ terms) and orange show the full calculation. Gray dashed line shows the calculated cut-off frequency of 55 GHz. The parameters for the calculation: $\omega_{1,2}/2\pi = 5.3$ GHz, $\omega_0/2\pi$ = 7.3 GHz, $C_{1,2} = $ 88 fF, $ C_r $ = 337 fF, $C_{g1,g2}$ = 2.5 fF giving $ g_{1,2}^{(0)}/2\pi = $ 45 MHz.}
+	\label{fig:Jbus}
+\end{figure}
+
+Knowing	$C_r = 337$ fF, the capacitances $C_{g1, g2}$ may be determined with high accuracy by fitting the fundamental mode frequency dependence on the flux using \autoref{eq:g} when the transmon parameters are known (see also \cite{fedorov2019automated}). $C_{1,2}$ can be extracted from the experimental anharmonicity using the equation
+\[
+-\hbar \alpha = E_{C}^{1,2} = \frac{e^2}{2 C_{1,2}},
+\]
+which yields $C_{1,2}\approx$ 88 fF (we use here the renormalized $ E_{C}^{1,2} $ from \cite{gely2017convergence}, Eq. 6). The fit is shown in \autoref{fig:sts}, which yields the capacitances $C_{g1, g2}$ of 2.5 fF each, which agrees reasonably well with the value of 2.3 fF that we have obtained from EM simulation. We have checked that the sweet spots found this way agree with an independent direct SAM spectroscopy similar to \autoref{fig:two-tone}~(a). The discrepancy in $C_{g1,g2}$ probably arises from the real configuration of the ground electrode enclosing the chip in the sample holder which we do not include in the simulation. Similarly, we obtain simulated $C_{1,2}$ to be only 80 fF. This problem also hampers the accuracy of the calculated $C_{12}$ which unfortunately can not be found independently in this experiment. In overall, the total interaction 
+\[
+J = J_{12} + \sum_{j=0}^{j_{max}} J^{(j)}_{bus},
+\]
+where $j_{max}: \omega_j \approx 2\pi f_{max}$. For our configuration, the first term is positive, and the second is negative. Note that in contrast to \cite{filipp2011multimode}, the contribution from every mode is of the same negative sign since the transmons are located at the same resonator end and are below all modes in frequency. Below, we calculate the value of $J$ at $\omega_{1,2} \approx$ 5.3 GHz where we can determine its value experimentally from the size of the avoided crossing.
+
+For the parameters $C_{1,2} = 88$ fF, $C_{g1, g2} = 2.5$ fF, $C_{claw} = 53$ fF we find that $C_{eff} \approx 59$ fF and $f_{max} \approx 55$ GHz. This means that we only need to include 4 terms for the multimode virtual interaction between the transmons because the frequency of the j\textsuperscript{th} mode for a $\lambda/4$ resonator is $\omega_j = (2j+1)\omega_0$, $\omega_0/2\pi \approx 7.3$ GHz, and $\omega_3/2\pi \approx 51 \text{ GHz} \approx f_{max}$. We note that this very low cut-off is due to the large direct capacitance of the claw to the ground.
+
+Having found the cut-off, we can evaluate the multimode contribution. In \autoref{fig:Jbus}, we show its value depending on the number of included modes with and without RWA. As one can see, the cumulative value at the cut-off is approximately $-3$ MHz for the non-RWA case, and 1.5 lower in magnitude for the RWA. For higher cut-off frequencies, their ratio tends to 2, since $\Sigma_{1,2}^{(j)} \approx -\Delta_{1,2}^{(j)}$ there.
+
+Next, we find the direct coupling constant. As we have already mentioned, the capacitance $C_{12}$ can only be determined in a FEM simulation; however, it depends on the configuration of the ground plane stronger than $C_{g1, g2}$ and $C_{1,2}$ and thus is less accurately determined. The root of this is in the large size of the transmon island electrodes comparable to the substrate thickness of 0.4 mm. We use a sample holder with a machined cavity under the chip, and for a realistic FEM model we obtain $C_{12} = 0.34$ fF. This yields $\eta = C_{g1}C_{g2}/C_{12}C_r = .059$, and the resulting direct coupling $J_{12} \approx 11$ MHz. 
+
+In overall, adding both contributions, we find $J \approx 8$ MHz which agrees reasonably well with the experimental value of 8.69 MHz. The positive sign of the coupling is confirmed by the dark state in located the lower branch of the avoided crossing between 01 and 10 both in the simulation and in the experimental data \cite{filipp2011multimode}. Despite the uncertainty in $J_{12}$, this result confirms that the cut-off frequency for cQED with a transmission line resonator should be calculated regarding the effective capacitance at its end and may be quite low. However, our accuracy is not enough to demonstrate confidently the necessity of the counter-RWA terms. It is notable that, in contrast to this work, \cite{filipp2011multimode} describes the experimental data within RWA, but does not include possibly lower cut-off for their capacitances, so a separate study may be required to clarify the contribution of the counter-rotating terms. Additionally, it would be interesting to compare the results with \cite{solgun2019simple}, presenting a classical approach to the problem, suitable for low-anharmonicity circuits.
+
+To end this subsection, we would like to comment on the possible error sources in our reasoning. First, a more rigorous cut-off free analysis similar to \cite{gely2017convergence} should be conducted for our circuit to substantiate the use of the cut-off and find the renormalized Hamiltonian parameters. It would be possible if it is possible to find analytically the inverse capacitance matrix of the system, as was done in \cite{gely2017convergence}. Second, the use of the $(\hat b^\dag + \hat b) (\hat c^\dag + \hat c)$ form for the coupling via the bus is not absolutely rigorous, because for higher transmon levels \autoref{eq:bus_coupling} will include slightly different $\Delta_{1,2}^{(j)}$ and $\Sigma_{1,2}^{(j)}$ due to the non-zero $\alpha$ \cite{chow2010phd}.
 
 \section{Standard Autler-Townes effect for a three-level $\Xi$ atom} \label{sec:3-level-at}
 
@@ -1435,6 +1487,7 @@ by $-\alpha/2$.
 
 
 
+
 Note that $\hat V_J = \hat S^T \hat H_{int} \hat 
 S$ that we treat as perturbation now has an sub- 
 and super-diagonal block form and couples all the 
@@ -1453,51 +1506,6 @@ $E_n$, and $V_{mn} = \bra{m} \hat  V_J \ket{n}$.
 The sum is over all other zero-order states 
 $\ket{m}$ outside the degenerate subspace.
 
-
-
-\renewcommand{\kbldelim}{[}% Left delimiter
-\renewcommand{\kbrdelim}{]}% Right delimiter
-\begin{widetext}
-	\begin{equation}
-	\hat H^D + \hat V_J + \hat V_t  = 
-	\kbordermatrix{
-		&\ket{a,0} & \ket{b,0} & \ket{a,1} & 
-		\ket{b,1} & \ket{a,2} & \ket{b,2} \\
-		\ket{a,0}& -\frac{\Omega_1}{2} & 0 & 
-		\frac{\Omega_{2}e^{i \text{$\delta$} 
-		t}}{2} -\frac{J}{2} & \frac{J}{2} & 0 & 0 
-		\\
-		\ket{b,0} & 0 & \frac{\Omega_1}{2} & 
-		-\frac{J}{2} & \frac{\Omega_2 e^{i \delta 
-		t}}{2} + \frac{J}{2} & 0 & 0 \\
-		\ket{a,1} &\frac{\Omega_2 e^{-i 
-		\text{$\delta$} t} }{2}  - \frac{J}{2} & 
-		-\frac{J}{2} & - \frac{\alpha}{2} - 
-		\frac{\Omega_1}{2}&
-		0 & \frac{\text{$\Omega_2$} e^{i 
-		\text{$\delta$} t}}{\sqrt{2}} 
-		-\frac{J}{\sqrt2} & \frac{J}{\sqrt2} \\
-		\ket{b,1} & \frac{J}{2} & 
-		\frac{\text{$\Omega_2$} e^{-i 
-		\text{$\delta $} t}}{2} +\frac{J}{2} & 0 
-		& - \frac{\alpha}{2} + \frac{\Omega_1}{2} 
-		& -\frac{J}{\sqrt 2} & 
-		\frac{\text{$\Omega_2$} e^{i \text{$\delta
-					$} t}}{\sqrt 2} + 
-					\frac{J}{\sqrt 2} \\
-		\ket{a,2} & 0 & 0 & \frac{\Omega_2 e^{-i 
-		\delta t}}{2} - \frac{J}{\sqrt 2} & 
-		-\frac{J}{\sqrt 2} &
-		-\frac{\Omega_{1}}{2} & 0 \\
-		\ket{b,2} & 0 & 0 & \frac{J}{\sqrt 2} & 
-		\frac{\text{$\Omega_2$} e^{-i 
-		\text{$\delta $} t}}{\sqrt 2} + 
-		\frac{J}{\sqrt 2} & 0 & 
-		\frac{\Omega_{1}}{2}\\
-	}
-	\label{eq:ham_matrix}
-	\end{equation}
-\end{widetext}
 
 For example, in our case for one of the degenerate subspaces ($E_n^0 = -\Omega_1/2,\ \hat V = \hat V_J$) we obtain the following matrix:
 \renewcommand{\kbldelim}{[}% Left delimiter
@@ -1523,6 +1531,52 @@ Similarly, the first-order corrections for a non-degenerate state are
 \begin{equation}
 	\ket{m^1} = \sum_{j\ne m}\ket{m}\frac{\bra{j}\hat V\ket{m}}{E_m-E_j}.
 \end{equation}
+
+
+
+\renewcommand{\kbldelim}{[}% Left delimiter
+\renewcommand{\kbrdelim}{]}% Right delimiter
+\begin{widetext}
+	\begin{equation}
+	\hat H^D + \hat V_J + \hat V_t  = 
+	\kbordermatrix{
+		&\ket{a,0} & \ket{b,0} & \ket{a,1} & 
+		\ket{b,1} & \ket{a,2} & \ket{b,2} \\
+		\ket{a,0}& -\frac{\Omega_1}{2} & 0 & 
+		\frac{\Omega_{2}e^{i \text{$\delta$} 
+				t}}{2} -\frac{J}{2} & \frac{J}{2} & 0 & 0 
+		\\
+		\ket{b,0} & 0 & \frac{\Omega_1}{2} & 
+		-\frac{J}{2} & \frac{\Omega_2 e^{i \delta 
+				t}}{2} + \frac{J}{2} & 0 & 0 \\
+		\ket{a,1} &\frac{\Omega_2 e^{-i 
+				\text{$\delta$} t} }{2}  - \frac{J}{2} & 
+		-\frac{J}{2} & - \frac{\alpha}{2} - 
+		\frac{\Omega_1}{2}&
+		0 & \frac{\text{$\Omega_2$} e^{i 
+				\text{$\delta$} t}}{\sqrt{2}} 
+		-\frac{J}{\sqrt2} & \frac{J}{\sqrt2} \\
+		\ket{b,1} & \frac{J}{2} & 
+		\frac{\text{$\Omega_2$} e^{-i 
+				\text{$\delta $} t}}{2} +\frac{J}{2} & 0 
+		& - \frac{\alpha}{2} + \frac{\Omega_1}{2} 
+		& -\frac{J}{\sqrt 2} & 
+		\frac{\text{$\Omega_2$} e^{i \text{$\delta
+					$} t}}{\sqrt 2} + 
+		\frac{J}{\sqrt 2} \\
+		\ket{a,2} & 0 & 0 & \frac{\Omega_2 e^{-i 
+				\delta t}}{2} - \frac{J}{\sqrt 2} & 
+		-\frac{J}{\sqrt 2} &
+		-\frac{\Omega_{1}}{2} & 0 \\
+		\ket{b,2} & 0 & 0 & \frac{J}{\sqrt 2} & 
+		\frac{\text{$\Omega_2$} e^{-i 
+				\text{$\delta $} t}}{\sqrt 2} + 
+		\frac{J}{\sqrt 2} & 0 & 
+		\frac{\Omega_{1}}{2}\\
+	}
+	\label{eq:ham_matrix}
+	\end{equation}
+\end{widetext}
 
 
 \section{Transition rates of the two-photon process}\label{sec:2pp}
@@ -1632,8 +1686,8 @@ Raith Voyager EBL system and then developed.
 Next, the sample was placed into a high-vacuum 
 electron-beam evaporation
 chamber (Plassys) and after a gentle ion-milling 
-step, a double-angle evaporation technique at 10 
-is used to deposit Al/AlOx/Al layer. Finally, hot 
+step, a double-angle evaporation technique at 10 degrees 
+is used to deposit Al/AlOx/Al layer (25/45 nm). Finally, hot 
 NMP followed by IPA was used to lift off the 
 resist mask stack.
 

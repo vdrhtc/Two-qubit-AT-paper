@@ -21,14 +21,16 @@ class ZoomPlot:
 
         for idx, ax in enumerate(axes.ravel()[:]):
 
-            X, Y, data = self._data[idx]["Current [A]"]*1e4,\
+            X, Y = self._data[idx]["Current [A]"]*1e4,\
                          self._data[idx]["Frequency [Hz]"]/1e9, \
-                         real(self._data[idx]["data"]*exp(1j*pi/2)).T*1e3
+
 
             if idx in [0]:
-                data = data - median(data, axis=0)
+                data = abs(self._data[idx]["data"].T - median(self._data[idx]["data"].T[:,:], axis=0))*1e3
+            else:
+                data = abs(self._data[idx]["data"] - mean(self._data[idx]["data"][0, :])).T * 1e3
 
-            m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r")
+            m = ax.pcolormesh(X, Y, data, rasterized=True, cmap="Spectral_r", vmin=0, vmax=1)
             if idx % 2 == 0:
                 ax.set_ylabel('$\omega_d^{(1,2)}/2\pi$ (GHz)');
                 ax.yaxis.set_major_locator(MultipleLocator(0.01))
@@ -68,7 +70,8 @@ class ZoomPlot:
         # clb.make_axes(axes[0, 0], location="top", shrink=0.8,
         #                         aspect=50, pad=0.075, anchor=(0, 1))[0]
         cb = plt.colorbar(m, ax=axes[0, 0], cax=cbaxes1, orientation="horizontal")
-        cb.ax.set_title(r"$10^3$ Re $S^{exp}_{21}$", position=(1.2,-2))
+        cb.ax.set_title(r"$10^3 |\Delta S^{exp}_{21}|$", position=(1.2,-2))
+        # cb.ax.xaxis.set_major_locator(MultipleLocator(0.005))
 
         plt.text(-0.35, 1.15, "(a)", fontdict={"name": "STIX"}, fontsize=20,
                  transform=axes[0,0].transAxes)

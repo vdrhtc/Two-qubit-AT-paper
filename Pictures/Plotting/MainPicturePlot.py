@@ -13,7 +13,7 @@ class MainPicturePlot:
 
     def __init__(self):
         self._cache_file = "main_pic_cache.pkl"
-        self._cmap = "Spectral"
+        self._cmap = "Spectral_r"
         self.nstate = 0
         try:
             with open(self._cache_file, "rb") as f:
@@ -41,13 +41,14 @@ class MainPicturePlot:
 
 
     def plot_experiment(self, ax):
-        data = self._X_exp, self._Y_exp, np.real(self._C_exp)
-        img1 = ax.pcolormesh(*data, rasterized=True, vmin=-0.005, vmax=0.022, cmap = self._cmap)
-        cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(0,0))[0]
+
+        data = self._X_exp, self._Y_exp, np.abs(self._C_exp - self._C_exp[0,0])
+        img1 = ax.pcolormesh(*data, rasterized=True, vmin=0, vmax=.022, cmap = self._cmap)
+        cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.09, anchor=(0,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current ($10^{-4}$ A)');
-        ax.set_ylabel('$\omega_d^{(1,2)}/2\pi$ (GHz)');
-        cb.ax.set_title(r"Re $S^{exp}_{21}$", position=(1.125,-1.5))
+        ax.set_ylabel('$\omega_d/2\pi$ (GHz)');
+        cb.ax.set_title(r"$|\Delta S^{exp}_{21}|$", position=(1.125,-2.5))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()
@@ -96,7 +97,7 @@ class MainPicturePlot:
                     ha="left", va="bottom", fontsize=7,
                     arrowprops=dict(facecolor="black", width=.1, headwidth=3, headlength=3.5,
                                     shrink=0.1))
-        self._zoom(ax, data, vmin=-0.005, vmax = 0.022)
+        self._zoom(ax, data, vmin=0, vmax = .022)
 
     def plot_theory(self, ax):
         # try:
@@ -108,17 +109,16 @@ class MainPicturePlot:
         #             C[i,j] = self._C_th[i][j][self.nstate][0][self.nstate].real
         #     self._cache[self.nstate] = C
 
-        C = np.real(self._C_th.T)
-        C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.02+(0.02/2+0.0025)# + np.random.normal(scale=0.001,
+        C = np.real(self._C_th.T)*1.3
+        # C = (C-np.min(C)-np.ptp(C)/2)/np.ptp(C)*0.02+(0.02/2+0.0025)# + np.random.normal(scale=0.001,
                                                            #                    size=C.shape)
-        C = C
         data = self._X_th, self._Y_th, C
-        img1 = ax.pcolormesh(*data, rasterized=True, vmax = 1.025*np.max(C), cmap = self._cmap)
-        cbaxes1 = clb.make_axes(ax, location="top", shrink=0.8, aspect=50, pad=0.075, anchor=(1,0))[0]
+        img1 = ax.pcolormesh(*data, rasterized=True, vmax = .022, vmin=0, cmap = self._cmap)
+        cbaxes1 = clb.make_axes(ax, location="top", shrink=0.7, aspect=50, pad=0.09, anchor=(1,0))[0]
         cb = plt.colorbar(img1, ax=ax, cax=cbaxes1, orientation="horizontal")
         ax.set_xlabel('Current ($10^{-4}$ A)');
         # ax.set_ylabel('Frequency [GHz]');
-        cb.ax.set_title(r"Re $S^{sim}_{21}$", position=(-0.125,-1.5))
+        cb.ax.set_title(r"$1.3 \, |\Delta S^{sim}_{21}$|", position=(-0.225,-3))
         loc = ticker.MultipleLocator(base=0.01)  # this locator puts ticks at regular intervals
         cb.locator = loc
         cb.update_ticks()
@@ -165,7 +165,7 @@ class MainPicturePlot:
                  transform=ax.transAxes)
 
 
-        self._zoom(ax, data, vmin=np.min(C), vmax = np.max(C))
+        self._zoom(ax, data, vmin=0, vmax = .022)
 
 
     def _zoom(self, ax, data, vmin, vmax):
@@ -223,7 +223,7 @@ class MainPicturePlot:
         self._C_exp = self._data_exp['data'].T
 
         # if self.nstate not in self._cache:
-        with open('two-tone-0.1-0.05_color_only.pkl', 'rb') as f:
+        with open('two-tone-0.12-0.06_color_only_3.pkl', 'rb') as f:
             self._data_th = pickle.load(f)
             self._C_th = np.array(self._data_th)
         # else:
